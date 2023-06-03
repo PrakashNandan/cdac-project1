@@ -45,17 +45,18 @@ function FindAllData({allData, handleFindALL}) {
 
   const handleUpdateData=(id)=>{
       setShowModal(true);
-      // handleSubmit(id);
+      setDataForUpdate((prevUser) => ({ ...prevUser, id: id }));
   }
 
   const closeModal = ()=>{
     return setShowModal(false);
+    
   }
 
-  const handleSubmit=(id)=>{
+  const handleSubmit=async()=>{
         // event.preventDefault();
         try{
-          const res = axios.put(`/users/${id}`, [dataForUpdate] );
+          const res = await axios.put(`/users/${dataForUpdate.id}`, dataForUpdate );
           alert("updated Successfully")
         }catch(error){
           alert("error")
@@ -77,12 +78,12 @@ function FindAllData({allData, handleFindALL}) {
 
   const mainModal =(
 
-    <Mymodal closeModal={closeModal} handleSubmit={handleSubmit(id)} handleInputChange={handleInputChange} >
+    <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
 
           <button id='close-btn' onClick={closeModal}>close</button>
           <h2>Form</h2>
 
-          <form onSubmit={handleSubmit(id)}  className='form'>
+          <form onSubmit={handleSubmit}  className='form'>
 
           <div >
               {/* <label htmlFor="chargeName">Charge Name:</label> */}
