@@ -1,0 +1,41 @@
+
+*{
+    box-sizing: border-box;
+}
+
+
+.find-container{
+    position: relative;
+}
+
+.btn-find{
+    position: absolute;
+    left: 4rem;
+    top: 0rem;
+    height: 2.5965rem;
+
+}
+
+.findButtonClass{
+    margin: 0.6rem 0;
+    display: inline;
+}
+
+#chargeHeadID{
+    margin: 0.865rem 0;
+}
+
+.parentSearchInput{
+    /* position: relative; */
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+#searchInput{
+    width: 22%;
+}
+
+#searchDataID{
+    height: 2.5965rem;
+}
