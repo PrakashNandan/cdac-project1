@@ -1,90 +1,114 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
-import { SidebarData } from './SidebarData.js';
-import SubMenu from './SubMenu';
-import { IconContext } from 'react-icons/lib';
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faAngleDown, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import './Sidebar.css';
 
-const Nav = styled.div`
-  background:white;
-  height: 70px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  
-`;
+const TripleLevelDropdown = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isDropdown2Open, setIsDropdown2Open] = useState(false);
+  const [isDropdown3Open, setIsDropdown3Open] = useState(false);
+  const [isDropdown4Open, setIsDropdown4Open] = useState(false);
+  const [isDropdown5Open, setIsDropdown5Open] = useState(false);
 
-const NavIcon = styled(Link)`
-  margin-left: 2rem;
-  font-size: 2rem;
-  height: 80px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-`;
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
-const SidebarNav = styled.nav`
-  background: #0A121A;
-  width: 250px;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  position: fixed;
-  top: 11.2rem;
-  right:6rem;
-  left: ${({ sidebar }) => (sidebar ? '0' : '-100%')};
-  transition: 350ms;
-  z-index: 10;
-  overflow-y: scroll;
-`;
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
 
-const SidebarWrap = styled.div`
-  width: 100%;
-`;
+  const toggleDropdown2 = () => {
+    setIsDropdown2Open(!isDropdown2Open);
+  };
 
+  const toggleDropdown3 = () => {
+    setIsDropdown3Open(!isDropdown3Open);
+  };
 
+  const toggleDropdown4 = () => {
+    setIsDropdown4Open(!isDropdown4Open);
+  };
 
-
-
-
-const Sidebar = () => {
-  const [sidebar, setSidebar] = useState(false);
-
-  const showSidebar = () => setSidebar(!sidebar);
-
-  useEffect(() => {
-    // Scroll to the top of the dropdown when it opens
-    const dropdowns = document.getElementsByClassName('dropdown-container');
-    for (let i = 0; i < dropdowns.length; i++) {
-      dropdowns[i].addEventListener('click', () => {
-        dropdowns[i].scrollTop = 0;
-      });
-    }
-  }, []);
+  const toggleDropdown5 = () => {
+    setIsDropdown5Open(!isDropdown5Open);
+  };
 
   return (
-    <>
-      <IconContext.Provider value={{ color: 'rgb(0 20 71);' }}>
-        <Nav>
-          <NavIcon to='#'>
-            <FaIcons.FaBars onClick={showSidebar} />
-          </NavIcon>
-        </Nav>
-        <SidebarNav sidebar={sidebar}>
-          <SidebarWrap>
-            <NavIcon to='#'>
-              <AiIcons.AiOutlineClose onClick={showSidebar} />
-            </NavIcon>
-            {SidebarData.map((item, index) => {
-              return <SubMenu item={item} key={index} />;
-            })}
-          </SidebarWrap>
-        </SidebarNav>
-      </IconContext.Provider>
-    </>
+    <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
+      <div className="sidebar-header" onClick={toggleSidebar}>
+        <FontAwesomeIcon icon={faBars} className="sidebar-toggle-icon" />
+        
+      </div>
+      {isSidebarOpen && (
+        <ul className="sidebar-menu">
+          <li>
+            <button className="sidebar-dropdown" onClick={toggleDropdown}>
+              <span>Admin</span>
+              <FontAwesomeIcon icon={isDropdownOpen ? faAngleDown : faAngleRight} />
+            </button>
+            {isDropdownOpen && (
+              <ul className="sidebar-submenu">
+                <li>
+                  <button className="sidebar-dropdown2" onClick={toggleDropdown2}>
+                    <span>1</span>
+                    <FontAwesomeIcon icon={isDropdown2Open ? faAngleDown : faAngleRight} />
+                  </button>
+                  {isDropdown2Open && (
+                    <ul className="sidebar-submenu2">
+                      <li>A</li>
+                      <li>B</li>
+                      <li>C</li>
+                    </ul>
+                  )}
+                </li>
+                <li>
+                  <button className="sidebar-dropdown3" onClick={toggleDropdown3}>
+                    <span>2</span>
+                    <FontAwesomeIcon icon={isDropdown3Open ? faAngleDown : faAngleRight} />
+                  </button>
+                  {isDropdown3Open && (
+                    <ul className="sidebar-submenu3">
+                      <li>A</li>
+                      <li>B</li>
+                      <li>C</li>
+                    </ul>
+                  )}
+                </li>
+              </ul>
+            )}
+          </li>
+          <li>
+            <button className="sidebar-dropdown" onClick={toggleDropdown4}>
+              <span>Developers</span>
+              <FontAwesomeIcon icon={isDropdown4Open ? faAngleDown : faAngleRight} />
+            </button>
+            {isDropdown4Open && (
+              <ul className="sidebar-submenu">
+                <li>A</li>
+                <li>C</li>
+                <li>C</li>
+              </ul>
+            )}
+          </li>
+          <li>
+            <button className="sidebar-dropdown" onClick={toggleDropdown5}>
+              <span>Employee</span>
+              <FontAwesomeIcon icon={isDropdown5Open ? faAngleDown : faAngleRight} />
+            </button>
+            {isDropdown5Open && (
+              <ul className="sidebar-submenu">
+                <li>A</li>
+                <li>B</li>
+                <li>C</li>
+              </ul>
+            )}
+          </li>
+        </ul>
+      )}
+    </div>
   );
 };
 
-export default Sidebar;
+export default TripleLevelDropdown;
