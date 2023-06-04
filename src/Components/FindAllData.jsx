@@ -8,19 +8,22 @@ function FindAllData({allData, handleFindALL}) {
 
   const [showModal, setShowModal] = useState(false);
   const [dataForUpdate, setDataForUpdate] = useState([]);
+  const [uid, setUid]= useState();
 
-  // const id =1;
+  
 
-  // useEffect(()=>{
-  //   try{
+//  useEffect(async()=>{
+//     try{
 
-  //     const res = axios.get(`/users/${id}`);
-  //     setDataForUpdate(res.data);
-  //   }catch(error){
-  //     console.log(error.message)
-  //   }
-  // },[])
+//       const res = await axios.get(`/users/${uid}`);
+//       setDataForUpdate(res.data);
+//     }catch(error){
+//       alert("error from useEffect")
+//       console.log(error.message)
+//     }
+//   },[uid])
 
+ 
 
 
 
@@ -43,9 +46,20 @@ function FindAllData({allData, handleFindALL}) {
     }
   }
 
-  const handleUpdateData=(id)=>{
+  const handleUpdateData=async(id)=>{
       setShowModal(true);
-      setDataForUpdate((prevUser) => ({ ...prevUser, id: id }));
+      // setDataForUpdate((prevUser) => ({ ...prevUser, id: id }));
+      setUid(id);
+
+      // try{
+      //   const res = await axios.get(`/users/${uid}`);
+      //   setDataForUpdate(res.data);
+
+      //   }catch(error){
+      //     console.log(error.message);
+      //     alert("error........")
+      //   }
+
   }
 
   const closeModal = ()=>{
@@ -53,14 +67,19 @@ function FindAllData({allData, handleFindALL}) {
     
   }
 
-  const handleSubmit=async()=>{
-        // event.preventDefault();
+  const handleSubmit=async(event)=>{
+        event.preventDefault();
         try{
-          const res = await axios.put(`/users/${dataForUpdate.id}`, dataForUpdate );
-          alert("updated Successfully")
+          const res = await axios.put(`/users/${uid}`, dataForUpdate );
+          console.log(res);
+          toast.success("updated Successfully")
         }catch(error){
-          alert("error")
+          toast.error("Error !! Not updated");
+          console.log(error.message);
         }
+        
+        closeModal();
+
   }
 
   const handleInputChange=(event)=>{
@@ -68,11 +87,6 @@ function FindAllData({allData, handleFindALL}) {
     const inputValue = type === 'checkbox' ? checked : value;
     setDataForUpdate((prevUser) => ({ ...prevUser, [name]: inputValue }));
   }
-
-  const showToast=()=>{
-    toast.success("Updated Successfully")
-  }
-
 
 
 
@@ -188,7 +202,7 @@ function FindAllData({allData, handleFindALL}) {
                 name="hoaPostingRequired"
                 id="hoaPostingRequired"
                 checked={dataForUpdate.hoaPostingRequired}
-                // onChange={handleInputChange}
+                onChange={handleInputChange}
                 placeholder="Enter hoaPostingRequired"
                 
               />
@@ -200,14 +214,14 @@ function FindAllData({allData, handleFindALL}) {
                 name="isDepositetoGovt"
                 id="isDepositetoGovt"
                 checked={dataForUpdate.isDepositetoGovt}
-                // onChange={handleInputChange}
+                onChange={handleInputChange}
                 placeholder="Enter isDepositetoGovt"
                 
               />
           </div>
                     
           {/* onClick={closeModal} */}
-            <button className='modal-btn' type='submit' onClick={showToast}>Submit</button>
+            <button className='modal-btn' type='submit'>Submit</button>
           </form>
 
     </Mymodal>
