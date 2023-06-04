@@ -60,6 +60,10 @@ function FindAllData({allData, handleFindALL}) {
       //     alert("error........")
       //   }
 
+      console.log(allData[id-1]);
+      const user1 = allData[id-1];
+      setDataForUpdate(user1);
+
   }
 
   const closeModal = ()=>{
