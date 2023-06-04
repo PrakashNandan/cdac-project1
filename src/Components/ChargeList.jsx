@@ -94,12 +94,6 @@ function ChargeList() {
                             <th>hoaPostingRequired</th>
                             <th>isDepositetoGovt</th>
                             <th>Operations</th>
-
-                            {/* <th>ID</th>
-                            <th>Name</th>
-                            <th>userName</th>
-                            <th>email</th>
-                            <th>Operations</th> */}
                         </tr>
                     </thead>
                     <tbody>

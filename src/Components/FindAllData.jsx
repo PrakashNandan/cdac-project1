@@ -46,7 +46,7 @@ function FindAllData({allData, handleFindALL}) {
     }
   }
 
-  const handleUpdateData=async(id)=>{
+  const handleUpdateData=(id)=>{
       setShowModal(true);
       // setDataForUpdate((prevUser) => ({ ...prevUser, id: id }));
       setUid(id);
@@ -63,6 +63,7 @@ function FindAllData({allData, handleFindALL}) {
       console.log(allData[id-1]);
       const user1 = allData[id-1];
       setDataForUpdate(user1);
+
 
   }
 
@@ -83,7 +84,7 @@ function FindAllData({allData, handleFindALL}) {
         }
         
         closeModal();
-
+        handleFindALL();
   }
 
   const handleInputChange=(event)=>{
@@ -230,8 +231,6 @@ function FindAllData({allData, handleFindALL}) {
 
     </Mymodal>
 )
-
-
 
 
   return (
