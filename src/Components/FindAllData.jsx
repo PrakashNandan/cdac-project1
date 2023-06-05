@@ -10,7 +10,6 @@ function FindAllData({allData, handleFindALL}) {
   const [dataForUpdate, setDataForUpdate] = useState([]);
   const [uid, setUid]= useState();
 
-  
 
 //  useEffect(async()=>{
 //     try{
@@ -22,10 +21,6 @@ function FindAllData({allData, handleFindALL}) {
 //       console.log(error.message)
 //     }
 //   },[uid])
-
- 
-
-
 
 
   const handleDeleteData=async(id)=>{
@@ -46,25 +41,28 @@ function FindAllData({allData, handleFindALL}) {
     }
   }
 
-  const handleUpdateData=(id)=>{
+  const handleUpdateData=async(id)=>{
       setShowModal(true);
       // setDataForUpdate((prevUser) => ({ ...prevUser, id: id }));
       setUid(id);
 
-      // try{
-      //   const res = await axios.get(`/users/${uid}`);
-      //   setDataForUpdate(res.data);
+      if(allData.length===1){
+        console.log(allData[0]);
+        const user1=allData[0];
+        setDataForUpdate(user1);
 
-      //   }catch(error){
-      //     console.log(error.message);
-      //     alert("error........")
-      //   }
-
-      console.log(allData[id-1]);
-      const user1 = allData[id-1];
-      setDataForUpdate(user1);
-
-
+      }else{
+        try{
+            const res = await axios.get(`/users/${id}`);
+            setDataForUpdate(res.data);
+    
+            }catch(error){
+              console.log(error.message);
+              toast.error("NOT Found !!!")
+            }
+    
+      }
+      
   }
 
   const closeModal = ()=>{
@@ -252,9 +250,7 @@ function FindAllData({allData, handleFindALL}) {
             hoaPostingRequired,
             isDepositetoGovt,} = curData;
 
-            // const {id,name,username,email} = curData;
-           
-
+          
             return (
                 <tr >
                     <td>{id}</td> 
@@ -268,10 +264,6 @@ function FindAllData({allData, handleFindALL}) {
                     <td>{hoaPostingRequired===true ? "YES" : "NO" }</td>
                     <td>{isDepositetoGovt===true ? "YES" : "NO"}</td>  
 
-                    {/* <td>{id}</td>
-                    <td>{name}</td>
-                    <td>{username}</td>
-                    <td>{email}</td> */}
                     <td><button type="button" class="btn btn-danger" onClick={()=>handleDeleteData(id)}>Delete</button>
                         <button type="button" class="btn m-1 btn-light" onClick={()=>handleUpdateData(id)}>Update</button>
                     </td>

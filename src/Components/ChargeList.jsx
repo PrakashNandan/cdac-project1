@@ -47,7 +47,7 @@ function ChargeList() {
         try{
             const res = await axios.get(`/users/${inputId}`)
             setAllData([res.data]);
-            console.log(res.data);
+            console.log([res.data]);
         }catch(error){
             setisError(error.message);
             console.log(error.message);
