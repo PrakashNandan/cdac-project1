@@ -9,7 +9,7 @@ function UserDetail() {
     <div>
       <Sidebar/>
       {/* <AddAndDisplayUserPage/> */}
-      {/* <Addcharges/> */}
+      <Addcharges/>
       <ChargeList/>
 
         

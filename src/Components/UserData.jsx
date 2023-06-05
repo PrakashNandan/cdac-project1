@@ -4,7 +4,7 @@ function UserData({users}) {
   return (
     <>
     {
-        users.map((curUser) => {
+        users.map((curUser, index) => {
             const {chargeName,
             chargeType,
             chargeRate,
@@ -17,7 +17,7 @@ function UserData({users}) {
            
 
             return (
-                <tr >
+                <tr key={index}>
                     {/* <td>{id}</td> */}
                     <td>{chargeName}</td>
                     <td>{chargeType}</td>

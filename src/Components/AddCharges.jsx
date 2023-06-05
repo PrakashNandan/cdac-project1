@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from './axios.jsx'
 import React, {useEffect, useState}from 'react'
 import ShowModal from './ShowModal'
 import Mymodal from './ShowModal';
@@ -7,7 +7,7 @@ import UserData from './UserData';
 import '../style/UserData.css'
 import {ToastContainer, toast} from 'react-toastify'
 import Pagination from './Pagination';
-const API="https://jsonplaceholder.typicode.com"
+// const API="https://jsonplaceholder.typicode.com"
 
 function Addcharges() {
 
@@ -15,15 +15,6 @@ function Addcharges() {
     const [currentPage, setCurrentPage]=useState(1);
     const [userPerPage, setUserPerPage] = useState(3);
     const [isError, setIsError] =useState('');
-
-    if(userPerPage<1){
-      setUserPerPage(3);
-    }
-
-    const closeModal = ()=>{
-        return setShowModal(false);
-    }
-
 
     const [user, setUser] = useState({
         chargeName: '',
@@ -38,15 +29,26 @@ function Addcharges() {
       });
     
       const [users, setUsers] = useState([]);
-    
-      const handleInputChange = (event) => {
+
+
+
+    if(userPerPage<1){
+      setUserPerPage(3);
+    }
+
+    const closeModal = ()=>{
+        return setShowModal(false);
+    }
+
+
+    const handleInputChange = (event) => {
         const { name, value, type, checked } = event.target;
         const inputValue = type === 'checkbox' ? checked : value;
         setUser((prevUser) => ({ ...prevUser, [name]: inputValue }));
-      };
+    };
 
 
-      const  handleSubmit = (event) => {
+      const  handleSubmit = async (event) => {
         event.preventDefault();
         setUsers([...users, user]);
         // setUser({
@@ -61,9 +63,23 @@ function Addcharges() {
         //   isDepositetoGovt:'',
         // });
 
-        postFormData(`${API}/posts`);
-        const userStr =JSON.stringify(user);
-        console.log(userStr);
+        // postFormData(`${API}/posts`);
+        // const userStr =JSON.stringify(user);
+        // console.log(userStr);
+
+        
+
+
+        try{
+          const res = await axios.post("/users", {user});
+          toast.success('Submit Successfully')
+          console.log(res);
+        }catch(error){
+          toast.error("Form not Submitted !! , please try again")
+          console.log(error);
+        }
+
+
 
       };
 
@@ -228,7 +244,7 @@ function Addcharges() {
               </div>
                         
               {/* onClick={closeModal} */}
-                <button className='modal-btn' type='submit' onClick={showToast}>Submit</button>
+                <button className='modal-btn' type='submit' >Submit</button>
               </form>
 
         </Mymodal>
