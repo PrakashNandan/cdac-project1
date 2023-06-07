@@ -3,13 +3,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faAngleDown, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import './Sidebar.css';
 
-const TripleLevelDropdown = () => {
+
+
+const TripleLevelDropdown = ({setShowChargeList}) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDropdown2Open, setIsDropdown2Open] = useState(false);
   const [isDropdown3Open, setIsDropdown3Open] = useState(false);
   const [isDropdown4Open, setIsDropdown4Open] = useState(false);
   const [isDropdown5Open, setIsDropdown5Open] = useState(false);
+  const [isDropdown14Open, setIsDropdown14Open] = useState(false);
+  const [isDropdown15Open, setIsDropdown15Open] = useState(false);
+  const [isDropdown16Open, setIsDropdown16Open] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -34,6 +39,24 @@ const TripleLevelDropdown = () => {
   const toggleDropdown5 = () => {
     setIsDropdown5Open(!isDropdown5Open);
   };
+  const toggleDropdown14 = () => {
+    setIsDropdown14Open(!isDropdown14Open);
+  };
+  const toggleDropdown15 = () => {
+    setIsDropdown15Open(!isDropdown15Open);
+  };
+  const toggleDropdown16 = () => {
+    setIsDropdown16Open(!isDropdown16Open);
+  };
+
+
+
+  function handleClick1(){
+    setShowChargeList(false);
+  }
+  function handleClick2(){
+    setShowChargeList(true);
+  }
 
   return (
     <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
@@ -52,27 +75,61 @@ const TripleLevelDropdown = () => {
               <ul className="sidebar-submenu">
                 <li>
                   <button className="sidebar-dropdown2" onClick={toggleDropdown2}>
-                    <span>1</span>
+                    <span>Acc Charge</span>
                     <FontAwesomeIcon icon={isDropdown2Open ? faAngleDown : faAngleRight} />
                   </button>
                   {isDropdown2Open && (
                     <ul className="sidebar-submenu2">
-                      <li>A</li>
-                      <li>B</li>
-                      <li>C</li>
+                      <li><button className="sidebar-dropdown3" onClick={()=>handleClick1()}>AddCharge</button></li>
+                      <li><button className="sidebar-dropdown3" onClick={()=>handleClick2()}>ChargeList</button></li>
                     </ul>
                   )}
                 </li>
                 <li>
-                  <button className="sidebar-dropdown3" onClick={toggleDropdown3}>
-                    <span>2</span>
+                  <button className="sidebar-dropdown2" onClick={toggleDropdown3}>
+                    <span>Bill Category</span>
                     <FontAwesomeIcon icon={isDropdown3Open ? faAngleDown : faAngleRight} />
                   </button>
                   {isDropdown3Open && (
                     <ul className="sidebar-submenu3">
-                      <li>A</li>
-                      <li>B</li>
-                      <li>C</li>
+                      <li><button className="sidebar-dropdown3" onClick={()=>handleClick1()}>AddCharge</button></li>
+                      <li><button className="sidebar-dropdown3" onClick={()=>handleClick2()}>ChargeList</button></li>
+                    </ul>
+                  )}
+                </li>
+                <li>
+                  <button className="sidebar-dropdown2" onClick={toggleDropdown14}>
+                    <span>Bill Type</span>
+                    <FontAwesomeIcon icon={isDropdown14Open ? faAngleDown : faAngleRight} />
+                  </button>
+                  {isDropdown14Open && (
+                    <ul className="sidebar-submenu3">
+                     <li><button className="sidebar-dropdown3" onClick={()=>handleClick1()}>AddCharge</button></li>
+                      <li><button className="sidebar-dropdown3" onClick={()=>handleClick2()}>ChargeList</button></li>
+                    </ul>
+                  )}
+                </li>
+                <li>
+                  <button className="sidebar-dropdown2" onClick={toggleDropdown15}>
+                    <span>Department</span>
+                    <FontAwesomeIcon icon={isDropdown15Open ? faAngleDown : faAngleRight} />
+                  </button>
+                  {isDropdown15Open && (
+                    <ul className="sidebar-submenu3">
+                      <li><button className="sidebar-dropdown3" onClick={()=>handleClick1()}>AddCharge</button></li>
+                      <li><button className="sidebar-dropdown3" onClick={()=>handleClick2()}>ChargeList</button></li>
+                    </ul>
+                  )}
+                </li>
+                <li>
+                  <button className="sidebar-dropdown2" onClick={toggleDropdown16}>
+                    <span>FinancialYear</span>
+                    <FontAwesomeIcon icon={isDropdown16Open ? faAngleDown : faAngleRight} />
+                  </button>
+                  {isDropdown16Open && (
+                    <ul className="sidebar-submenu3">
+                      <li><button className="sidebar-dropdown3" onClick={()=>handleClick1()}>AddCharge</button></li>
+                      <li><button className="sidebar-dropdown3" onClick={()=>handleClick2()}>ChargeList</button></li>
                     </ul>
                   )}
                 </li>
@@ -87,7 +144,7 @@ const TripleLevelDropdown = () => {
             {isDropdown4Open && (
               <ul className="sidebar-submenu">
                 <li>A</li>
-                <li>C</li>
+                <li>B</li>
                 <li>C</li>
               </ul>
             )}

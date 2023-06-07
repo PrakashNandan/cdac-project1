@@ -1,16 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Sidebar from './Sidebar'
 import AddAndDisplayUserPage from './AddUser'
 import Addcharges from './AddCharges'
 import ChargeList from './ChargeList'
 
 function UserDetail() {
+
+// const 
+const [showChargeList,setShowChargeList]=useState(false);
   return (
     <div>
-      <Sidebar/>
+      <Sidebar setShowChargeList={setShowChargeList}></Sidebar>
       {/* <AddAndDisplayUserPage/> */}
-      <Addcharges/>
-      <ChargeList/>
+      {/* <Addcharges/> */}
+     {showChargeList? <ChargeList/>:<Addcharges/>}
 
         
 

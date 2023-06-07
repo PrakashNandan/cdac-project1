@@ -42,13 +42,12 @@ td {
 
 
 
-.user-list .userPerPageClass{
+.user-list .userPerPageClass {
   display: flex;
   flex-wrap: wrap;
   width: 24%;
-  margin-left: 0.4rem;
+  margin-left: 15.4rem;
 }
-
 
 
 
