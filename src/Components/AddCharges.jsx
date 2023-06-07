@@ -7,7 +7,6 @@ import UserData from './UserData';
 import '../style/UserData.css'
 import {ToastContainer, toast} from 'react-toastify'
 import Pagination from './Pagination';
-// const API="https://jsonplaceholder.typicode.com"
 
 function Addcharges() {
 
@@ -51,24 +50,6 @@ function Addcharges() {
       const  handleSubmit = async (event) => {
         event.preventDefault();
         setUsers([...users, user]);
-        // setUser({
-        //   chargeName: '',
-        //   chargeType: '',
-        //   chargeRate: '',
-        //   entryDate: '',
-        //   chargeAmount: '',
-        //   chargeApplyOnBaseAmount: '',
-        //   roundingType: '',
-        //   hoaPostingRequired: '',
-        //   isDepositetoGovt:'',
-        // });
-
-        // postFormData(`${API}/posts`);
-        // const userStr =JSON.stringify(user);
-        // console.log(userStr);
-
-        
-
 
         try{
           const res = await axios.post("/users", {user});
@@ -79,11 +60,8 @@ function Addcharges() {
           console.log(error);
         }
 
-
-
       };
 
-      
 
       const postFormData=async(url)=>{
 
@@ -97,13 +75,6 @@ function Addcharges() {
           }
       }
 
-
-
-    // useEffect(()=>{
-    //       postFormData(`${API}/posts`);
-    //       // handleUserPerPage();
-
-    // },[])
 
     const handleUserPerPage=({e,target,value})=>{
       return setUserPerPage(e.target.value)
@@ -294,7 +265,6 @@ function Addcharges() {
     <ToastContainer/>
    
    </>
-
     
   )
 }

@@ -5,7 +5,7 @@ import FindAllData from './FindAllData.jsx'
 import {ToastContainer, toast} from 'react-toastify'
 
 
-function ChargeList() {
+function ChargeList({findAll}) {
 
     const [allData, setAllData]=useState([]);
     const [isError, setisError]=useState('');
@@ -30,6 +30,8 @@ function ChargeList() {
         }
 
     }
+
+    findAll && handleFindALL();
 
     const showErrorToast=()=>{
         toast.error("Something went wrong, check your connection !!")
@@ -70,7 +72,7 @@ function ChargeList() {
 
 
            <div className='find-container'>
-            <div className='findButtonClass'><button className='btn-find btn btn-primary' onClick={handleFindALL}>FindAll</button></div>
+            {/* <div className='findButtonClass'><button className='btn-find btn btn-primary' onClick={handleFindALL}>FindAll</button></div> */}
 
             <div className="parentSearchInput">
                 <input type="number" placeholder='search by ID' id='searchInput' value={inputId} onChange={(e) => setInputId(e.target.value)} /> 

@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faAngleDown, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import './Sidebar.css';
+import axios from './axios.jsx';
 
 
 
-const TripleLevelDropdown = ({setShowChargeList}) => {
+const TripleLevelDropdown = ({setShowChargeList,setFindAll}) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDropdown2Open, setIsDropdown2Open] = useState(false);
@@ -54,12 +55,35 @@ const TripleLevelDropdown = ({setShowChargeList}) => {
   function handleClick1(){
     setShowChargeList(false);
   }
-  function handleClick2(){
+  function handleClick2 (){
     setShowChargeList(true);
+      setFindAll(true);
+
   }
 
+
+  const sidebarRef = useRef(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        setIsSidebarOpen(false);
+      }
+    };
+
+    document.body.addEventListener('click', handleOutsideClick);
+
+    return () => {
+      document.body.removeEventListener('click', handleOutsideClick);
+    };
+  }, []);
+
+
+
   return (
-    <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
+    <>
+        {/* <div  onClick={setIsSidebarOpen(false)}></div> */}
+    <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`} ref={sidebarRef}>
       <div className="sidebar-header" onClick={toggleSidebar}>
         <FontAwesomeIcon icon={faBars} className="sidebar-toggle-icon" />
         
@@ -92,8 +116,8 @@ const TripleLevelDropdown = ({setShowChargeList}) => {
                   </button>
                   {isDropdown3Open && (
                     <ul className="sidebar-submenu3">
-                      <li><button className="sidebar-dropdown3" onClick={()=>handleClick1()}>AddCharge</button></li>
-                      <li><button className="sidebar-dropdown3" onClick={()=>handleClick2()}>ChargeList</button></li>
+                      <li><button className="sidebar-dropdown3" >AddCharge</button></li>
+                      <li><button className="sidebar-dropdown3" >ChargeList</button></li>
                     </ul>
                   )}
                 </li>
@@ -104,8 +128,8 @@ const TripleLevelDropdown = ({setShowChargeList}) => {
                   </button>
                   {isDropdown14Open && (
                     <ul className="sidebar-submenu3">
-                     <li><button className="sidebar-dropdown3" onClick={()=>handleClick1()}>AddCharge</button></li>
-                      <li><button className="sidebar-dropdown3" onClick={()=>handleClick2()}>ChargeList</button></li>
+                     <li><button className="sidebar-dropdown3" >AddCharge</button></li>
+                      <li><button className="sidebar-dropdown3" >ChargeList</button></li>
                     </ul>
                   )}
                 </li>
@@ -116,8 +140,8 @@ const TripleLevelDropdown = ({setShowChargeList}) => {
                   </button>
                   {isDropdown15Open && (
                     <ul className="sidebar-submenu3">
-                      <li><button className="sidebar-dropdown3" onClick={()=>handleClick1()}>AddCharge</button></li>
-                      <li><button className="sidebar-dropdown3" onClick={()=>handleClick2()}>ChargeList</button></li>
+                      <li><button className="sidebar-dropdown3" >AddCharge</button></li>
+                      <li><button className="sidebar-dropdown3" >ChargeList</button></li>
                     </ul>
                   )}
                 </li>
@@ -128,8 +152,8 @@ const TripleLevelDropdown = ({setShowChargeList}) => {
                   </button>
                   {isDropdown16Open && (
                     <ul className="sidebar-submenu3">
-                      <li><button className="sidebar-dropdown3" onClick={()=>handleClick1()}>AddCharge</button></li>
-                      <li><button className="sidebar-dropdown3" onClick={()=>handleClick2()}>ChargeList</button></li>
+                      <li><button className="sidebar-dropdown3" >AddCharge</button></li>
+                      <li><button className="sidebar-dropdown3" >ChargeList</button></li>
                     </ul>
                   )}
                 </li>
@@ -165,6 +189,7 @@ const TripleLevelDropdown = ({setShowChargeList}) => {
         </ul>
       )}
     </div>
+    </>
   );
 };
 
