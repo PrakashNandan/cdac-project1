@@ -22,11 +22,7 @@ function UserData({users}) {
             chargeApplyOnBaseAmount,
             roundingType,
             hoaPostingRequired,
-<<<<<<< HEAD
-            isDepositToGovt,} = curUser;
-=======
             depositToGovt} = curUser;
->>>>>>> 2a7de0df04ef26efe184afca4e435d6a2c470eab
            
 
             return (
@@ -40,11 +36,7 @@ function UserData({users}) {
                     <td>{chargeApplyOnBaseAmount}</td>
                     <td>{roundingType}</td>
                     <td>{hoaPostingRequired===true ? "YES" : "NO" }</td>
-<<<<<<< HEAD
-                    <td>{isDepositToGovt===true ? "YES" : "NO"}</td>  
-=======
                     <td>{depositToGovt===true ? "YES" : "NO"}</td>  
->>>>>>> 2a7de0df04ef26efe184afca4e435d6a2c470eab
                 </tr>
             )
         })

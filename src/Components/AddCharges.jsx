@@ -25,13 +25,8 @@ function Addcharges() {
         chargeApplyOnBaseAmount:'',
         roundingType:'',
         hoaPostingRequired:false,
-<<<<<<< HEAD
-        isDepositToGovt:false
-      });
-=======
         depositToGovt:false,
       },[]);
->>>>>>> 2a7de0df04ef26efe184afca4e435d6a2c470eab
     
       const [users, setUsers] = useState([]);
 
@@ -112,12 +107,12 @@ function Addcharges() {
         <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
 
               <button id='close-btn' onClick={closeModal}>close</button>
-                     <h2>Form</h2>
+              <h2>Form</h2>
 
               <form onSubmit={handleSubmit}  className='form'>
 
               <div >
-                  <label htmlFor="chargeName">Charge Name:</label>
+                  {/* <label htmlFor="chargeName">Charge Name:</label> */}
                   <input
                     type="text"
                     name="chargeName"
@@ -126,10 +121,10 @@ function Addcharges() {
                     onChange={handleInputChange}
                     placeholder="Enter chargeName"
                     required
-                  /> 
+                  />
               </div>
               <div >
-                  <label htmlFor="chargeType">Charge Type:</label>
+                  {/* <label htmlFor="chargeType">Charge Type:</label> */}
                   <input
                     type="number"
                     name="chargeType"
@@ -141,7 +136,7 @@ function Addcharges() {
                   />
               </div>
               <div >
-                  <label htmlFor="chargeRate">Charge Rate:</label>
+                  {/* <label htmlFor="chargeRate">Charge Rate:</label> */}
                   <input
                     type="number"
                     name="chargeRate"
@@ -165,7 +160,7 @@ function Addcharges() {
                   />
               </div>
               <div >
-                  <label htmlFor="chargeAmount">charge Amount:</label>
+                  {/* <label htmlFor="chargeAmount">charge Amount:</label> */}
                   <input
                     type="number"
                     name="chargeAmount"
@@ -177,7 +172,7 @@ function Addcharges() {
                   />
               </div>
               <div >
-                  <label htmlFor="chargeApplyOnBaseAmount">chargeApplyOnBaseAmount:</label>
+                  {/* <label htmlFor="chargeApplyOnBaseAmount">chargeApplyOnBaseAmount:</label> */}
                   <input
                     type="number"
                     name="chargeApplyOnBaseAmount"
@@ -189,7 +184,7 @@ function Addcharges() {
                   />
               </div>
               <div >
-                  <label htmlFor="roundingType">Rounding Type:</label>
+                  {/* <label htmlFor="roundingType">Rounding Type:</label> */}
                   <input
                     type="number"
                     name="roundingType"
@@ -214,16 +209,6 @@ function Addcharges() {
                   />
               </div>
               <div >
-<<<<<<< HEAD
-                  <label htmTor="isDepositetoGovt">is Deposite to Govt ? </label>
-                  <input
-                    type="checkbox"
-                    Tme="isDepositetoGovt"
-                Tid="isDepositetoGovt"
-                    checked={user.isDepositToGovt}
-                    onChange={handleInputChange}
-                    placeholder="Tter isDepositetoGovt"
-=======
                   <label htmlFor="depositToGovt">is Deposit to Govt ? </label>
                   <input
                     type="checkbox"
@@ -232,7 +217,6 @@ function Addcharges() {
                     checked={user.depositToGovt}
                     onChange={handleInputChange}
                     placeholder="Enter depositToGovt"
->>>>>>> 2a7de0df04ef26efe184afca4e435d6a2c470eab
                     
                   />
               </div>
@@ -270,11 +254,7 @@ function Addcharges() {
                 <th>chargeApplyOnBaseAmount</th>
                 <th>roundingType</th>
                 <th>hoaPostingRequired</th>
-<<<<<<< HEAD
-            T<th>isDepositetoGovt</th>
-=======
                 <th>depositToGovt</th>
->>>>>>> 2a7de0df04ef26efe184afca4e435d6a2c470eab
             </tr>
             </thead>
             <tbody>

@@ -12,13 +12,10 @@ function ChargeList() {
     const [inputId, setInputId] = useState('');
     const [showAllData,setShowAllData]=useState(true);
 
-<<<<<<< HEAD
     useEffect(()=>{
         handleFindALL();
     },[])
-=======
    
->>>>>>> 2a7de0df04ef26efe184afca4e435d6a2c470eab
 
 
 
@@ -42,12 +39,9 @@ function ChargeList() {
         handleFindALL();
     },[])
 
-<<<<<<< HEAD
     // findAll && handleFindALL();
-=======
 
     
->>>>>>> 2a7de0df04ef26efe184afca4e435d6a2c470eab
 
     const showErrorToast=()=>{
         toast.error("Something went wrong, check your connection !!")
@@ -112,11 +106,8 @@ function ChargeList() {
                             <th>chargeApplyOnBaseAmount</th>
                             <th>roundingType</th>
                             <th>hoaPostingRequired</th>
-<<<<<<< HEAD
                             <th>isDepositToGovt</th>
-=======
                             <th>depositToGovt</th>
->>>>>>> 2a7de0df04ef26efe184afca4e435d6a2c470eab
                             <th>Operations</th>
                         </tr>
                     </thead>

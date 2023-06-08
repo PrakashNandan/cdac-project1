@@ -75,14 +75,11 @@
     justify-content: center;
     /* align-items: center; */
     width: 70%;
-<<<<<<< HEAD:src/style/modal.css
     /* overflow-y: auto; */
 
  }
  .form label{
     display: inline;
-=======
->>>>>>> 2a7de0df04ef26efe184afca4e435d6a2c470eab:src/Components/modal.css
  }
  .form div{
     margin-bottom: 0.5rem;;

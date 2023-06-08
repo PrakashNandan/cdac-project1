@@ -1,12 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faAngleDown, faAngleRight } from '@fortawesome/free-solid-svg-icons';
-<<<<<<< HEAD
 import '../style/Sidebar.css';
 import axios from './axios.jsx';
-=======
-import './Sidebar.css';
->>>>>>> 2a7de0df04ef26efe184afca4e435d6a2c470eab
+import '../style/Sidebar.css';
 
 
 
@@ -67,11 +64,8 @@ const TripleLevelDropdown = ({setShowChargeList,setFindAll,findAll}) => {
   }
   function handleClick2(){
     setShowChargeList(true);
-<<<<<<< HEAD
       // setFindAll(true);
-=======
     
->>>>>>> 2a7de0df04ef26efe184afca4e435d6a2c470eab
 
   }
 
