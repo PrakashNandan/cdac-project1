@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faAngleDown, faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import './Sidebar.css';
+import '../style/Sidebar.css';
 import axios from './axios.jsx';
 
 
@@ -57,7 +57,7 @@ const TripleLevelDropdown = ({setShowChargeList,setFindAll}) => {
   }
   function handleClick2 (){
     setShowChargeList(true);
-      setFindAll(true);
+      // setFindAll(true);
 
   }
 
@@ -116,8 +116,8 @@ const TripleLevelDropdown = ({setShowChargeList,setFindAll}) => {
                   </button>
                   {isDropdown3Open && (
                     <ul className="sidebar-submenu3">
-                      <li><button className="sidebar-dropdown3" >AddCharge</button></li>
-                      <li><button className="sidebar-dropdown3" >ChargeList</button></li>
+                      <li><button className="sidebar-dropdown3" >Add Bill-Category</button></li>
+                      <li><button className="sidebar-dropdown3" >Bill Category List</button></li>
                     </ul>
                   )}
                 </li>

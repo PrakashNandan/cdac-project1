@@ -2,7 +2,7 @@ import axios from './axios.jsx'
 import React, {useEffect, useState}from 'react'
 import ShowModal from './ShowModal'
 import Mymodal from './ShowModal';
-import './modal.css'
+import '../style/modal.css'
 import UserData from './UserData';
 import '../style/UserData.css'
 import {ToastContainer, toast} from 'react-toastify'
@@ -24,7 +24,7 @@ function Addcharges() {
         chargeApplyOnBaseAmount:'',
         roundingType:'',
         hoaPostingRequired:false,
-        isDepositetoGovt:false,
+        isDepositToGovt:false
       });
     
       const [users, setUsers] = useState([]);
@@ -101,12 +101,12 @@ function Addcharges() {
         <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
 
               <button id='close-btn' onClick={closeModal}>close</button>
-              <h2>Form</h2>
+                     <h2>Form</h2>
 
               <form onSubmit={handleSubmit}  className='form'>
 
               <div >
-                  {/* <label htmlFor="chargeName">Charge Name:</label> */}
+                  <label htmlFor="chargeName">Charge Name:</label>
                   <input
                     type="text"
                     name="chargeName"
@@ -115,10 +115,10 @@ function Addcharges() {
                     onChange={handleInputChange}
                     placeholder="Enter chargeName"
                     required
-                  />
+                  /> 
               </div>
               <div >
-                  {/* <label htmlFor="chargeType">Charge Type:</label> */}
+                  <label htmlFor="chargeType">Charge Type:</label>
                   <input
                     type="number"
                     name="chargeType"
@@ -130,7 +130,7 @@ function Addcharges() {
                   />
               </div>
               <div >
-                  {/* <label htmlFor="chargeRate">Charge Rate:</label> */}
+                  <label htmlFor="chargeRate">Charge Rate:</label>
                   <input
                     type="number"
                     name="chargeRate"
@@ -154,7 +154,7 @@ function Addcharges() {
                   />
               </div>
               <div >
-                  {/* <label htmlFor="chargeAmount">charge Amount:</label> */}
+                  <label htmlFor="chargeAmount">charge Amount:</label>
                   <input
                     type="number"
                     name="chargeAmount"
@@ -166,7 +166,7 @@ function Addcharges() {
                   />
               </div>
               <div >
-                  {/* <label htmlFor="chargeApplyOnBaseAmount">chargeApplyOnBaseAmount:</label> */}
+                  <label htmlFor="chargeApplyOnBaseAmount">chargeApplyOnBaseAmount:</label>
                   <input
                     type="number"
                     name="chargeApplyOnBaseAmount"
@@ -178,7 +178,7 @@ function Addcharges() {
                   />
               </div>
               <div >
-                  {/* <label htmlFor="roundingType">Rounding Type:</label> */}
+                  <label htmlFor="roundingType">Rounding Type:</label>
                   <input
                     type="number"
                     name="roundingType"
@@ -202,14 +202,14 @@ function Addcharges() {
                   />
               </div>
               <div >
-                  <label htmlFor="isDepositetoGovt">is Deposite to Govt ? </label>
+                  <label htmTor="isDepositetoGovt">is Deposite to Govt ? </label>
                   <input
                     type="checkbox"
-                    name="isDepositetoGovt"
-                    id="isDepositetoGovt"
-                    checked={user.isDepositetoGovt}
+                    Tme="isDepositetoGovt"
+                Tid="isDepositetoGovt"
+                    checked={user.isDepositToGovt}
                     onChange={handleInputChange}
-                    placeholder="Enter isDepositetoGovt"
+                    placeholder="Tter isDepositetoGovt"
                     
                   />
               </div>
@@ -247,7 +247,7 @@ function Addcharges() {
                 <th>chargeApplyOnBaseAmount</th>
                 <th>roundingType</th>
                 <th>hoaPostingRequired</th>
-                <th>isDepositetoGovt</th>
+            T<th>isDepositetoGovt</th>
             </tr>
             </thead>
             <tbody>

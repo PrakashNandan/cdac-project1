@@ -13,7 +13,7 @@ function UserData({users}) {
             chargeApplyOnBaseAmount,
             roundingType,
             hoaPostingRequired,
-            isDepositetoGovt,} = curUser;
+            isDepositToGovt,} = curUser;
            
 
             return (
@@ -27,7 +27,7 @@ function UserData({users}) {
                     <td>{chargeApplyOnBaseAmount}</td>
                     <td>{roundingType}</td>
                     <td>{hoaPostingRequired===true ? "YES" : "NO" }</td>
-                    <td>{isDepositetoGovt===true ? "YES" : "NO"}</td>  
+                    <td>{isDepositToGovt===true ? "YES" : "NO"}</td>  
                 </tr>
             )
         })

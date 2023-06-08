@@ -19,11 +19,13 @@ function Mymodal({closeModal, children, handleSubmit}) {
     <>
 
           <div className="modal_wrapper"  onClick={closeModal}></div>
-          <div className="modal_container">
-            
-            {children}
-             
+          <div id='modalParent'>
+            <div className="modal_container">
+              
+              {children}
+              
 
+            </div>
           </div>
     </>,
     document.querySelector('.myPortalModalDiv')
