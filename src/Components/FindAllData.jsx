@@ -4,7 +4,7 @@ import {ToastContainer, toast} from 'react-toastify'
 import Mymodal from './ShowModal.jsx';
 
 
-function FindAllData({allData, handleFindALL}) {
+function FindAllData({allData,setAllData, handleFindALL}) {
 
   const [showModal, setShowModal] = useState(false);
   const [dataForUpdate, setDataForUpdate] = useState([]);
@@ -25,19 +25,22 @@ function FindAllData({allData, handleFindALL}) {
 
   const handleDeleteData=async(id)=>{
 
-    const conf = window.confirm("Are you sure to delete the data with id: "+id)
+    const conf = window.confirm("Are you sure to delete the data with id: "+(+id))
     if(conf){
 
         try{
-            const res = await axios.delete(`/users/${id}`)
+            const res = await axios.get(`/delete/${id}`)
             toast.warn("The data has Deleted Successfully")
+            setAllData(res.data);
             console.log(res);
+            handleFindALL();
+
         }catch(error){
             toast.error("Error in deletion")
             console.log(error.message);
         }
     
-        handleFindALL();
+        // handleFindALL();
     }
   }
 
@@ -53,7 +56,7 @@ function FindAllData({allData, handleFindALL}) {
 
       }else{
         try{
-            const res = await axios.get(`/users/${id}`);
+            const res = await axios.get(`/find/${id}`);
             setDataForUpdate(res.data);
     
             }catch(error){
@@ -73,8 +76,8 @@ function FindAllData({allData, handleFindALL}) {
   const handleSubmit=async(event)=>{
         event.preventDefault();
         try{
-          const res = await axios.put(`/users/${uid}`, dataForUpdate );
-          console.log(res);
+          const res = await axios.put(`/update/${uid}`, dataForUpdate );
+          console.log(res.data);
           toast.success("updated Successfully")
         }catch(error){
           toast.error("Error !! Not updated");
@@ -211,14 +214,14 @@ function FindAllData({allData, handleFindALL}) {
               />
           </div>
           <div >
-              <label htmlFor="isDepositetoGovt">is Deposite to Govt ? </label>
+              <label htmlFor="depositToGovt">is Deposite to Govt ? </label>
               <input
                 type="checkbox"
-                name="isDepositetoGovt"
-                id="isDepositetoGovt"
-                checked={dataForUpdate.isDepositetoGovt}
+                name="depositToGovt"
+                id="depositToGovt"
+                checked={dataForUpdate.depositToGovt}
                 onChange={handleInputChange}
-                placeholder="Enter isDepositetoGovt"
+               
                 
               />
           </div>
@@ -239,8 +242,9 @@ function FindAllData({allData, handleFindALL}) {
 
 
     {
+      allData && allData.length > 0 &&
         allData.map((curData) => {
-            const {id,chargeName,
+            const {chargeId,chargeName,
             chargeType,
             chargeRate,
             entryDate,
@@ -248,12 +252,12 @@ function FindAllData({allData, handleFindALL}) {
             chargeApplyOnBaseAmount,
             roundingType,
             hoaPostingRequired,
-            isDepositetoGovt,} = curData;
+            depositToGovt,} = curData;
 
           
             return (
                 <tr >
-                    <td>{id}</td> 
+                    <td>{chargeId}</td> 
                     <td>{chargeName}</td>
                     <td>{chargeType}</td>
                     <td>{chargeRate}</td>
@@ -262,10 +266,10 @@ function FindAllData({allData, handleFindALL}) {
                     <td>{chargeApplyOnBaseAmount}</td>
                     <td>{roundingType}</td>
                     <td>{hoaPostingRequired===true ? "YES" : "NO" }</td>
-                    <td>{isDepositetoGovt===true ? "YES" : "NO"}</td>  
+                    <td>{depositToGovt===true ? "YES" : "NO"}</td>  
 
-                    <td><button type="button" class="btn btn-danger" onClick={()=>handleDeleteData(id)}>Delete</button>
-                        <button type="button" class="btn m-1 btn-light" onClick={()=>handleUpdateData(id)}>Update</button>
+                    <td><button type="button" class="btn btn-danger" onClick={()=>handleDeleteData(chargeId)}>Delete</button>
+                        <button type="button" class="btn m-1 btn-light" onClick={()=>handleUpdateData(chargeId)}>Update</button>
                     </td>
                 </tr>
             )

@@ -5,33 +5,39 @@ import FindAllData from './FindAllData.jsx'
 import {ToastContainer, toast} from 'react-toastify'
 
 
-function ChargeList({findAll}) {
+function ChargeList() {
 
     const [allData, setAllData]=useState([]);
     const [isError, setisError]=useState('');
     const [inputId, setInputId] = useState('');
+    const [showAllData,setShowAllData]=useState(true);
 
-    useEffect(()=>{
-        // handleFindALL();
-    },[])
+   
 
 
 
     const handleFindALL=async()=>{
+       
         try{
-            const res = await axios.get("/users");
+            
+            const res = await axios.get("/findAll");
             setAllData(res.data);
             console.log(res.data);
+
 
         }catch(error){
             setisError(error.message);
             console.log(error.message);
             showErrorToast();
         }
-
     }
+   
+    useEffect(()=>{
+        handleFindALL();
+    },[])
 
-    findAll && handleFindALL();
+
+    
 
     const showErrorToast=()=>{
         toast.error("Something went wrong, check your connection !!")
@@ -46,8 +52,9 @@ function ChargeList({findAll}) {
     // };
 
     const fetchData=async()=>{
+        
         try{
-            const res = await axios.get(`/users/${inputId}`)
+            const res = await axios.get(`/find/${inputId}`)
             setAllData([res.data]);
             console.log([res.data]);
         }catch(error){
@@ -55,6 +62,7 @@ function ChargeList({findAll}) {
             console.log(error.message);
             showErrorNotFoundToast();
         } 
+    
     }
 
 
@@ -72,7 +80,7 @@ function ChargeList({findAll}) {
 
 
            <div className='find-container'>
-            {/* <div className='findButtonClass'><button className='btn-find btn btn-primary' onClick={handleFindALL}>FindAll</button></div> */}
+            {/* <div className='findButtonClass'><button className='btn-find btn btn-primary' onClick={()=>handleFindALL()}>FindAll</button></div> */}
 
             <div className="parentSearchInput">
                 <input type="number" placeholder='search by ID' id='searchInput' value={inputId} onChange={(e) => setInputId(e.target.value)} /> 
@@ -94,12 +102,12 @@ function ChargeList({findAll}) {
                             <th>chargeApplyOnBaseAmount</th>
                             <th>roundingType</th>
                             <th>hoaPostingRequired</th>
-                            <th>isDepositetoGovt</th>
+                            <th>depositToGovt</th>
                             <th>Operations</th>
                         </tr>
                     </thead>
                     <tbody>
-                    <FindAllData allData={allData} handleFindALL={handleFindALL}/>
+                    <FindAllData allData={allData} setAllData={setAllData} handleFindALL={handleFindALL}/>
                     </tbody>
                   
                 </table> 

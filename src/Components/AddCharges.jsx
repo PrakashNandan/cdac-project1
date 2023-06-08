@@ -7,6 +7,7 @@ import UserData from './UserData';
 import '../style/UserData.css'
 import {ToastContainer, toast} from 'react-toastify'
 import Pagination from './Pagination';
+// const API="https://jsonplaceholder.typicode.com"
 
 function Addcharges() {
 
@@ -24,8 +25,8 @@ function Addcharges() {
         chargeApplyOnBaseAmount:'',
         roundingType:'',
         hoaPostingRequired:false,
-        isDepositetoGovt:false,
-      });
+        depositToGovt:false,
+      },[]);
     
       const [users, setUsers] = useState([]);
 
@@ -48,13 +49,19 @@ function Addcharges() {
 
 
       const  handleSubmit = async (event) => {
+        
         event.preventDefault();
-        setUsers([...users, user]);
-
+        
+        
+        console.log(user);  
+        
+        
         try{
-          const res = await axios.post("/users", {user});
+          const res = await axios.post("/save", user);
           toast.success('Submit Successfully')
+          setUsers([...users, user]);
           console.log(res);
+
         }catch(error){
           toast.error("Form not Submitted !! , please try again")
           console.log(error);
@@ -62,7 +69,7 @@ function Addcharges() {
 
       };
 
-
+      
       const postFormData=async(url)=>{
 
           try{
@@ -74,7 +81,6 @@ function Addcharges() {
             console.log(error.message);
           }
       }
-
 
     const handleUserPerPage=({e,target,value})=>{
       return setUserPerPage(e.target.value)
@@ -195,6 +201,7 @@ function Addcharges() {
                     type="checkbox"
                     name="hoaPostingRequired"
                     id="hoaPostingRequired"
+                    
                     checked={user.hoaPostingRequired}
                     onChange={handleInputChange}
                     placeholder="Enter hoaPostingRequired"
@@ -202,14 +209,14 @@ function Addcharges() {
                   />
               </div>
               <div >
-                  <label htmlFor="isDepositetoGovt">is Deposite to Govt ? </label>
+                  <label htmlFor="depositToGovt">is Deposit to Govt ? </label>
                   <input
                     type="checkbox"
-                    name="isDepositetoGovt"
-                    id="isDepositetoGovt"
-                    checked={user.isDepositetoGovt}
+                    name="depositToGovt"
+                    id="depositToGovt"
+                    checked={user.depositToGovt}
                     onChange={handleInputChange}
-                    placeholder="Enter isDepositetoGovt"
+                    placeholder="Enter depositToGovt"
                     
                   />
               </div>
@@ -247,7 +254,7 @@ function Addcharges() {
                 <th>chargeApplyOnBaseAmount</th>
                 <th>roundingType</th>
                 <th>hoaPostingRequired</th>
-                <th>isDepositetoGovt</th>
+                <th>depositToGovt</th>
             </tr>
             </thead>
             <tbody>
@@ -265,6 +272,7 @@ function Addcharges() {
     <ToastContainer/>
    
    </>
+
     
   )
 }

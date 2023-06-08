@@ -40,7 +40,7 @@
     color: #fff;
     cursor: pointer;
     transform: scale((0.9));
-    margin: 0.32rem;
+    margin: 1rem;
 }
 .modal-btn:hover{
     background-color: #7a7a7a;
@@ -51,39 +51,29 @@
 
 }
 
-/* #close-btn{
+#close-btn{
     
     background-color: red;
-    position: sticky;
+    position: fixed;
     left: 24.8rem;
     bottom: 36.2rem;
     padding: 0.3rem 0.3rem;
     border: none;
     cursor: pointer;
-    justify-content: flex-end;
-} */
-
-
-#close-btn {
-    background-color: red;
-    position: absolute;
-    top: 1.25rem;
-    right: 0.7rem;
-    padding: 0.3rem 0.3rem;
-    border: none;
-    cursor: pointer;
-    justify-content: flex-end;
-    border-radius: 5px;
-  }
-  
+}
  .form{
     display: flex;
     flex-direction: column;
     justify-content: center;
     /* align-items: center; */
     width: 70%;
-    overflow-y: auto;
  }
  .form div{
     margin-bottom: 0.5rem;;
  }
+ .user-list .userPerPageClass {
+    display: flex;
+    flex-wrap: wrap;
+    width: 24%;
+    margin-left: 15.4rem;
+  }

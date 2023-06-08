@@ -8,18 +8,15 @@ function UserDetail() {
 
 // const 
 const [showChargeList,setShowChargeList]=useState(false);
-const [findAll, setFindAll]=useState(false)
 
 
 
   return (
     <div>
-      <Sidebar setShowChargeList={setShowChargeList}  setFindAll={setFindAll}></Sidebar>
+      <Sidebar setShowChargeList={setShowChargeList}  ></Sidebar>
       {/* <AddAndDisplayUserPage/> */}
       {/* <Addcharges/> */}
-     {showChargeList? <ChargeList findAll={findAll} />:<Addcharges/>}
-
-        
+     {showChargeList? <ChargeList />:<Addcharges/>}
 
     </div>
   )
