@@ -1,7 +1,10 @@
 import axios from "axios";
 
 const API = axios.create({
-    baseURL:"http://localhost:3000"
+    baseURL:"http://10.248.1.75:8085/api/v1/charge"
 })
 
 export default API;
+
+
+//http://10.248.1.75:8085/api/v1/calls/findAll

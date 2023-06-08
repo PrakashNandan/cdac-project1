@@ -7,6 +7,7 @@ import UserData from './UserData';
 import '../style/UserData.css'
 import {ToastContainer, toast} from 'react-toastify'
 import Pagination from './Pagination';
+// const API="https://jsonplaceholder.typicode.com"
 
 function Addcharges() {
 
@@ -24,8 +25,13 @@ function Addcharges() {
         chargeApplyOnBaseAmount:'',
         roundingType:'',
         hoaPostingRequired:false,
+<<<<<<< HEAD
         isDepositToGovt:false
       });
+=======
+        depositToGovt:false,
+      },[]);
+>>>>>>> 2a7de0df04ef26efe184afca4e435d6a2c470eab
     
       const [users, setUsers] = useState([]);
 
@@ -48,13 +54,19 @@ function Addcharges() {
 
 
       const  handleSubmit = async (event) => {
+        
         event.preventDefault();
-        setUsers([...users, user]);
-
+        
+        
+        console.log(user);  
+        
+        
         try{
-          const res = await axios.post("/users", {user});
+          const res = await axios.post("/save", user);
           toast.success('Submit Successfully')
+          setUsers([...users, user]);
           console.log(res);
+
         }catch(error){
           toast.error("Form not Submitted !! , please try again")
           console.log(error);
@@ -62,7 +74,7 @@ function Addcharges() {
 
       };
 
-
+      
       const postFormData=async(url)=>{
 
           try{
@@ -74,7 +86,6 @@ function Addcharges() {
             console.log(error.message);
           }
       }
-
 
     const handleUserPerPage=({e,target,value})=>{
       return setUserPerPage(e.target.value)
@@ -195,6 +206,7 @@ function Addcharges() {
                     type="checkbox"
                     name="hoaPostingRequired"
                     id="hoaPostingRequired"
+                    
                     checked={user.hoaPostingRequired}
                     onChange={handleInputChange}
                     placeholder="Enter hoaPostingRequired"
@@ -202,6 +214,7 @@ function Addcharges() {
                   />
               </div>
               <div >
+<<<<<<< HEAD
                   <label htmTor="isDepositetoGovt">is Deposite to Govt ? </label>
                   <input
                     type="checkbox"
@@ -210,6 +223,16 @@ function Addcharges() {
                     checked={user.isDepositToGovt}
                     onChange={handleInputChange}
                     placeholder="Tter isDepositetoGovt"
+=======
+                  <label htmlFor="depositToGovt">is Deposit to Govt ? </label>
+                  <input
+                    type="checkbox"
+                    name="depositToGovt"
+                    id="depositToGovt"
+                    checked={user.depositToGovt}
+                    onChange={handleInputChange}
+                    placeholder="Enter depositToGovt"
+>>>>>>> 2a7de0df04ef26efe184afca4e435d6a2c470eab
                     
                   />
               </div>
@@ -247,7 +270,11 @@ function Addcharges() {
                 <th>chargeApplyOnBaseAmount</th>
                 <th>roundingType</th>
                 <th>hoaPostingRequired</th>
+<<<<<<< HEAD
             T<th>isDepositetoGovt</th>
+=======
+                <th>depositToGovt</th>
+>>>>>>> 2a7de0df04ef26efe184afca4e435d6a2c470eab
             </tr>
             </thead>
             <tbody>
@@ -265,6 +292,7 @@ function Addcharges() {
     <ToastContainer/>
    
    </>
+
     
   )
 }

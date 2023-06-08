@@ -1,10 +1,19 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState } from 'react'
 
 function UserData({users}) {
+
+
+  const [filteredData, setFilteredData]=useState([]);
+  
+  // const res = axios.get("/find")
+
+
+
   return (
     <>
     {
-        users.map((curUser, index) => {
+        users.map((curUser) => {
             const {chargeName,
             chargeType,
             chargeRate,
@@ -13,11 +22,15 @@ function UserData({users}) {
             chargeApplyOnBaseAmount,
             roundingType,
             hoaPostingRequired,
+<<<<<<< HEAD
             isDepositToGovt,} = curUser;
+=======
+            depositToGovt} = curUser;
+>>>>>>> 2a7de0df04ef26efe184afca4e435d6a2c470eab
            
 
             return (
-                <tr key={index}>
+                <tr >
                     {/* <td>{id}</td> */}
                     <td>{chargeName}</td>
                     <td>{chargeType}</td>
@@ -27,7 +40,11 @@ function UserData({users}) {
                     <td>{chargeApplyOnBaseAmount}</td>
                     <td>{roundingType}</td>
                     <td>{hoaPostingRequired===true ? "YES" : "NO" }</td>
+<<<<<<< HEAD
                     <td>{isDepositToGovt===true ? "YES" : "NO"}</td>  
+=======
+                    <td>{depositToGovt===true ? "YES" : "NO"}</td>  
+>>>>>>> 2a7de0df04ef26efe184afca4e435d6a2c470eab
                 </tr>
             )
         })

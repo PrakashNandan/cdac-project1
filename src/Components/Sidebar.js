@@ -1,12 +1,17 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faAngleDown, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+<<<<<<< HEAD
 import '../style/Sidebar.css';
 import axios from './axios.jsx';
+=======
+import './Sidebar.css';
+>>>>>>> 2a7de0df04ef26efe184afca4e435d6a2c470eab
 
 
 
-const TripleLevelDropdown = ({setShowChargeList,setFindAll}) => {
+
+const TripleLevelDropdown = ({setShowChargeList,setFindAll,findAll}) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDropdown2Open, setIsDropdown2Open] = useState(false);
@@ -19,9 +24,14 @@ const TripleLevelDropdown = ({setShowChargeList,setFindAll}) => {
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+    
+
   };
 
+ 
+
   const toggleDropdown = () => {
+
     setIsDropdownOpen(!isDropdownOpen);
   };
 
@@ -55,12 +65,15 @@ const TripleLevelDropdown = ({setShowChargeList,setFindAll}) => {
   function handleClick1(){
     setShowChargeList(false);
   }
-  function handleClick2 (){
+  function handleClick2(){
     setShowChargeList(true);
+<<<<<<< HEAD
       // setFindAll(true);
+=======
+    
+>>>>>>> 2a7de0df04ef26efe184afca4e435d6a2c470eab
 
   }
-
 
   const sidebarRef = useRef(null);
 
@@ -78,11 +91,7 @@ const TripleLevelDropdown = ({setShowChargeList,setFindAll}) => {
     };
   }, []);
 
-
-
   return (
-    <>
-        {/* <div  onClick={setIsSidebarOpen(false)}></div> */}
     <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`} ref={sidebarRef}>
       <div className="sidebar-header" onClick={toggleSidebar}>
         <FontAwesomeIcon icon={faBars} className="sidebar-toggle-icon" />
@@ -189,7 +198,6 @@ const TripleLevelDropdown = ({setShowChargeList,setFindAll}) => {
         </ul>
       )}
     </div>
-    </>
   );
 };
 
