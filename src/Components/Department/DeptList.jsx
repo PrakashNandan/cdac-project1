@@ -1,11 +1,11 @@
 import React, {useState, useEffect}from 'react'
-import '../style/chargeList.css'
-import axios from './axios.jsx'
-import FindAllData from './FindAllData.jsx'
+import '../../style/chargeList.css'
+import axios from '../axios.jsx'
 import {ToastContainer, toast} from 'react-toastify'
+import FindAllDept from './FindAllDept'
 
 
-function ChargeList() {
+function DeptList() {
 
     const [allData, setAllData]=useState([]);
     const [isError, setisError]=useState('');
@@ -17,13 +17,11 @@ function ChargeList() {
     },[])
    
 
-
-
     const handleFindALL=async()=>{
        
         try{
             
-            const res = await axios.get("/findAll");
+            const res = await axios.get("dept/findAll");
             setAllData(res.data);
             console.log(res.data);
 
@@ -51,14 +49,12 @@ function ChargeList() {
     }
 
 
-    // const findDataById = (id) => {
-    //     return data.find((item) => item.id === id);
-    // };
+
 
     const fetchData=async()=>{
         
         try{
-            const res = await axios.get(`/find/${inputId}`)
+            const res = await axios.get(`dept/find/${inputId}`)
             setAllData([res.data]);
             console.log([res.data]);
         }catch(error){
@@ -80,7 +76,7 @@ function ChargeList() {
 
     <>
     
-            <h2 id='chargeHeadID'>Charge List</h2>
+            <h2 id='chargeHeadID'>Departemnt List</h2>
 
 
            <div className='find-container'>
@@ -97,22 +93,15 @@ function ChargeList() {
                 <table className='table userTable'>
                     <thead>
                         <tr>
-                            <th>ID</th> 
-                            <th>ChargeName</th>
-                            <th>ChargeType</th>
-                            <th>ChargeRate</th>
-                            <th>entryDate</th>
-                            <th>chargeAmount</th>
-                            <th>chargeApplyOnBaseAmount</th>
-                            <th>roundingType</th>
-                            <th>hoaPostingRequired</th>
-                            <th>isDepositToGovt</th>
-                            <th>depositToGovt</th>
-                            <th>Operations</th>
+                            <th>Department ID</th> 
+                            <th>Department Name</th>
+                            <th>Department code</th>
+                           
+                           
                         </tr>
                     </thead>
                     <tbody>
-                    <FindAllData allData={allData} setAllData={setAllData} handleFindALL={handleFindALL}/>
+                    <FindAllDept allData={allData} setAllData={setAllData} handleFindALL={handleFindALL}/>
                     </tbody>
                   
                 </table> 
@@ -126,4 +115,4 @@ function ChargeList() {
   )
 }
 
-export default ChargeList
+export default DeptList;

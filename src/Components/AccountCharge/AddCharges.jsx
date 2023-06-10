@@ -1,12 +1,12 @@
-import axios from './axios.jsx'
+import axios from '../axios.jsx'
 import React, {useEffect, useState}from 'react'
-import ShowModal from './ShowModal'
-import Mymodal from './ShowModal';
-import '../style/modal.css'
+// import ShowModal from './ShowModal'
+import Mymodal from '../ShowModal.jsx';
+import '../../style/modal.css'
 import UserData from './UserData';
-import '../style/UserData.css'
+import '../../style/UserData.css'
 import {ToastContainer, toast} from 'react-toastify'
-import Pagination from './Pagination';
+import Pagination from '../Pagination';
 // const API="https://jsonplaceholder.typicode.com"
 
 function Addcharges() {

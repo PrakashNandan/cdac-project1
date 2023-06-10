@@ -30,13 +30,17 @@
    border-radius: 0.5rem;
    display: flex;
    flex-direction: column;
-   justify-content: center;
+   /* justify-content: center; */
    align-items: center;
    width: 33vw;
   
    max-height: 100vh;
    overflow-y: auto;
+   /* height: 100%; */
   
+}
+.modal_container h2{
+  margin-bottom: 0.6rem;
 }
 
 .modal-btn{
@@ -62,12 +66,13 @@
 #close-btn{
     
     background-color: red;
-    position: fixed;
+    position: sticky;
     left: 24.8rem;
     bottom: 36.2rem;
     padding: 0.3rem 0.3rem;
     border: none;
     cursor: pointer;
+    border-radius: 0.26rem;
 }
  .form{
     display: flex;
@@ -78,8 +83,15 @@
     /* overflow-y: auto; */
 
  }
+ .form input{
+   
+    padding: 0.28rem;
+
+
+ }
  .form label{
     display: inline;
+    font-weight: bold;
  }
  .form div{
     margin-bottom: 0.5rem;;

@@ -1,7 +1,7 @@
-import axios from './axios.jsx';
+import axios from '../axios.jsx';
 import React, {useEffect, useState} from 'react'
 import {ToastContainer, toast} from 'react-toastify'
-import Mymodal from './ShowModal.jsx';
+import Mymodal from '../ShowModal.jsx';
 
 
 function FindAllData({allData,setAllData, handleFindALL}) {
