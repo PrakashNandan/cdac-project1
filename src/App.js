@@ -9,7 +9,7 @@ import Dashboard from './Pages/Dashboard';
 import Header from './Components/Header';
 import UserDetail from './Components/UserDetail';
 import Sidebar from './Components/Sidebar';
-import AddAndDisplayUserPage from './Components/AddUser';
+
 
 
 
@@ -31,7 +31,7 @@ function App() {
             <Route path='/register' element={<Register/>}/>
 
             <Route path='/loggedin' element={<UserDetail/>}/>
-            <Route path='/form' element = {<AddAndDisplayUserPage/>}/>
+            
             
             
            

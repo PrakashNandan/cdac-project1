@@ -32,8 +32,30 @@
     align-items: end;
 }
 
-#searchInput{
+/* .ParentPagination{
+    display: flex;
+    justify-content: start;
+    align-items: start;
+} */
+.ParentPagination{
+    display: block;
+    position: relative;
+}
+
+#Pagi_input_id{
+    position: absolute;
+    left: 2rem;
     width: 22%;
+    padding: 0.4rem;
+    border-radius: 3.5px;
+}
+
+#searchInput{
+    position: absolute;
+    right: 5rem;
+    width: 22%;
+    padding: 0.4rem;
+    border-radius: 3.5px;
 }
 
 #searchDataID{
