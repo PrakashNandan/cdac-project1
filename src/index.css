@@ -33,13 +33,13 @@ h2,
 h3 {
   font-weight: 600;
   margin-bottom: 1px;
+  text-decoration: none;
 }
 
 .container {
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
-  padding: 0 20px;
   text-align: center;
 }
 
@@ -47,15 +47,16 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
+  padding: 14px 0;
   border-bottom: 1px solid #e6e6e6;
-  margin-bottom: 17px;
 }
 
 .header ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 0;
+  margin-top: 8px;
 }
 
 .header ul li {
@@ -63,12 +64,13 @@ h3 {
 }
 
 .header ul li a {
+  text-decoration: none;
   display: flex;
   align-items: center;
 }
 
 .header ul li a:hover {
-  color: #777;
+  color: #7b7b7b;
 }
 
 .header ul li a svg {
@@ -195,6 +197,7 @@ h3 {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
