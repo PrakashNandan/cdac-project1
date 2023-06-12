@@ -15,7 +15,7 @@ function PaymentTypeData({paymentTypes}) {
     {
         paymentTypes.map((curPaymentType) => {
             const {paymentTypeName,
-              entryDate
+              entryDate,isValid
             } = curPaymentType;
            
 
@@ -24,6 +24,7 @@ function PaymentTypeData({paymentTypes}) {
                     {/* <td>{id}</td> */}
                     <td>{paymentTypeName}</td>
                     <td>{entryDate}</td>
+                    <td>{isValid}</td>
                      
                 </tr>
             )

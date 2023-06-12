@@ -18,7 +18,8 @@ function AddPaymentType() {
 
     const [paymentType, setPaymentType] = useState({
         paymentTypeName: '',
-        entryDate: ''
+        entryDate: '',
+        isValid:''
         
 
         
@@ -131,6 +132,17 @@ function AddPaymentType() {
                     // required
                   />
               </div>
+              <div >
+                  <input
+                    type="isValid"
+                    name="isValid"
+                    id="isValid"
+                    value={paymentType.isValid}
+                    onChange={handleInputChange}
+                    placeholder="isValid"
+                    // required
+                  />
+              </div>
               {/* onClick={closeModal} */}
                 <button className='modal-btn' type='submit' >Submit</button>
               </form>
@@ -156,7 +168,9 @@ function AddPaymentType() {
             <thead>
             <tr>
                 {/* <th>ID</th> */}
-                <th>PaymentType</th>
+                <th>PaymentType Name</th>
+                <th>Entry Date</th>
+                <th>Is Valid</th>
                 
             </tr>
             </thead>

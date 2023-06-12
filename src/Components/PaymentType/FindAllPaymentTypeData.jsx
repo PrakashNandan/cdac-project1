@@ -143,6 +143,17 @@ function FindAllPaymentType({allData,setAllData, handleFindALL}) {
                 // required
               />
           </div>
+          <div >
+                  <input
+                    type="isValid"
+                    name="isValid"
+                    id="isValid"
+                    value={dataForUpdate.isValid}
+                    onChange={handleInputChange}
+                    placeholder="is Valid"
+                    // required
+                  />
+              </div>
           
           
           
@@ -168,7 +179,7 @@ function FindAllPaymentType({allData,setAllData, handleFindALL}) {
       allData && allData.length > 0 &&
         allData.map((curData) => {
             const {paymentTypeId,paymentTypeName,
-              entryDate
+              entryDate,isValid
             } = curData;
 
           
@@ -177,6 +188,7 @@ function FindAllPaymentType({allData,setAllData, handleFindALL}) {
                     <td>{paymentTypeId}</td> 
                     <td>{paymentTypeName}</td>
                     <td>{entryDate}</td>
+                    <td>{isValid}</td>
                     
                     {/* <td>{entryDate}</td> */}
                    
