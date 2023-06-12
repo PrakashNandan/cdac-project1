@@ -60,6 +60,8 @@ function AddFinYear() {
           console.log(error);
         }
 
+        closeModal();
+
       };
 
       

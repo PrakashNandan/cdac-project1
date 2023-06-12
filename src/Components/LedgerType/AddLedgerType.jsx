@@ -49,7 +49,7 @@ function AddLedgerType() {
         
         
         try{
-          const res = await axios.post("/save", ledgerType);
+          const res = await axios.post("/ledgerType/save", ledgerType);
           toast.success('Submit Successfully')
           setAllLedgerType([...allLedgerType, ledgerType]);
           console.log(res);
@@ -58,6 +58,8 @@ function AddLedgerType() {
           toast.error("Form not Submitted !! , please try again")
           console.log(error);
         }
+
+        closeModal();
 
       };
 

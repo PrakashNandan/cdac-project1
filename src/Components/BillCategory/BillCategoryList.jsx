@@ -112,7 +112,7 @@ function BillCategoryList() {
                         <tr>
                             <th>BillCategotyID</th> 
                             <th>billCategoryName</th>
-                            <th>operations</th>
+                            <th>Action</th>
                            
                         </tr>
                     </thead>

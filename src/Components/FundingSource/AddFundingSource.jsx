@@ -57,6 +57,8 @@ function AddFundingSource() {
           console.log(error);
         }
 
+        closeModal();
+
       };
 
       

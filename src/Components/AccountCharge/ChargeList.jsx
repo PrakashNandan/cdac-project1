@@ -23,7 +23,7 @@ function ChargeList() {
        
         try{
             
-            const res = await axios.get("/findAll");
+            const res = await axios.get("/charge/findAll");
             setAllData(res.data);
             console.log(res.data);
 
@@ -58,7 +58,7 @@ function ChargeList() {
     const fetchData=async()=>{
         
         try{
-            const res = await axios.get(`/find/${inputId}`)
+            const res = await axios.get(`/charge/find/${inputId}`)
             setAllData([res.data]);
             console.log([res.data]);
         }catch(error){
@@ -108,7 +108,7 @@ function ChargeList() {
                             <th>hoaPostingRequired</th>
                             <th>isDepositToGovt</th>
                             <th>depositToGovt</th>
-                            <th>Operations</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>

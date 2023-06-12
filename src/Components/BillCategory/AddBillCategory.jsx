@@ -59,6 +59,8 @@ function AddBillCategory() {
           console.log(error);
         }
 
+        closeModal();
+
       };
 
       

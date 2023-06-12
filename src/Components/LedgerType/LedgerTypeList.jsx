@@ -24,7 +24,7 @@ function LedgerTypeList() {
        
         try{
             
-            const res = await axios.get("/findAll");
+            const res = await axios.get("/ledgerType/findAll");
             setAllData(res.data);
             console.log(res.data);
 
@@ -57,7 +57,7 @@ function LedgerTypeList() {
     const fetchData=async()=>{
         
         try{
-            const res = await axios.get(`/find/${inputId}`)
+            const res = await axios.get(`/ledgerType/find/${inputId}`)
             setAllData([res.data]);
             console.log([res.data]);
         }catch(error){
@@ -98,6 +98,7 @@ function LedgerTypeList() {
                         <tr>
                             <th>ledgerTypeId</th> 
                             <th>ledgerTypeName</th>
+                            <th>Actions</th>
                            
                         </tr>
                     </thead>

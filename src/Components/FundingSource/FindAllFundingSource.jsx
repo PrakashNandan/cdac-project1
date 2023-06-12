@@ -31,7 +31,7 @@ function FindAllFundingSource({allData,setAllData, handleFindALL}) {
         try{
             const res = await axios.get(`/fundSource/delete/${id}`)
             toast.warn("The data has Deleted Successfully")
-            setAllData(res.data);
+            setAllData([res.data]);
             console.log(res);
             handleFindALL();
 
@@ -90,7 +90,7 @@ function FindAllFundingSource({allData,setAllData, handleFindALL}) {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setAllData((prevFundingSource) => ({ ...prevFundingSource, [name]: value }));
+    setDataForUpdate((prevFundingSource) => ({ ...prevFundingSource, [name]: value }));
 };
 
   const mainModal =(

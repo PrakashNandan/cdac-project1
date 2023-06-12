@@ -59,6 +59,7 @@ function AddDept() {
           toast.error("Form not Submitted !! , please try again")
           console.log(error);
         }
+        closeModal();
 
       };
 

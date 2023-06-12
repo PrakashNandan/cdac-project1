@@ -21,7 +21,7 @@ function DeptList() {
        
         try{
             
-            const res = await axios.get("dept/findAll");
+            const res = await axios.get("/dept/findAll");
             setAllData(res.data);
             console.log(res.data);
 
@@ -96,6 +96,7 @@ function DeptList() {
                             <th>Department ID</th> 
                             <th>Department Name</th>
                             <th>Department code</th>
+                            <th>Action</th>
                            
                            
                         </tr>

@@ -21,8 +21,6 @@ function AddPaymentType() {
         entryDate: '',
         isValid:''
         
-
-        
       },[]);
     
       const [paymentTypes, setPaymentTypes] = useState([]);
@@ -63,7 +61,8 @@ function AddPaymentType() {
           toast.error("Form not Submitted !! , please try again")
           console.log(error);
         }
-
+        
+        closeModal();
       };
 
       
@@ -134,7 +133,7 @@ function AddPaymentType() {
               </div>
               <div >
                   <input
-                    type="isValid"
+                    type="number"
                     name="isValid"
                     id="isValid"
                     value={paymentType.isValid}

@@ -102,6 +102,7 @@ function PaymentTypeList() {
                             <th>PaymentType</th>
                             <th>EntryDate</th>
                             <th>Is Valid</th>
+                            <th>Action</th>
                             
                         </tr>
                     </thead>

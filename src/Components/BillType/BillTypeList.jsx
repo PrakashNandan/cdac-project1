@@ -101,6 +101,7 @@ function BillTypeList() {
                             <th>BillType ID</th> 
                             <th>BillType</th>
                             <th>EntryDate</th>
+                            <th>Action</th>
                             
                         </tr>
                     </thead>

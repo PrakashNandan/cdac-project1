@@ -19,9 +19,7 @@ function AddBillType() {
     const [billType, setBillType] = useState({
         billTypeName: '',
         entryDate: ''
-        
-
-        
+ 
       },[]);
     
       const [billTypes, setBillTypes] = useState([]);
@@ -62,6 +60,7 @@ function AddBillType() {
           toast.error("Form not Submitted !! , please try again")
           console.log(error);
         }
+        closeModal();
 
       };
 
@@ -157,6 +156,7 @@ function AddBillType() {
             <tr>
                 {/* <th>ID</th> */}
                 <th>BillType</th>
+                <th>entryDate</th>
                 
             </tr>
             </thead>

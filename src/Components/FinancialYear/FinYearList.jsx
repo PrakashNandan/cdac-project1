@@ -100,6 +100,7 @@ function FinYearList() {
                             <th>finYearName</th>
                             <th>remarks</th>
                             <th>entryDate</th>
+                            <th>Action</th>
                             
                            
                         </tr>

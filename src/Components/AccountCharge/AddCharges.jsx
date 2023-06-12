@@ -57,7 +57,7 @@ function Addcharges() {
         
         
         try{
-          const res = await axios.post("/save", user);
+          const res = await axios.post("/charge/save", user);
           toast.success('Submit Successfully')
           setUsers([...users, user]);
           console.log(res);
@@ -66,6 +66,8 @@ function Addcharges() {
           toast.error("Form not Submitted !! , please try again")
           console.log(error);
         }
+
+        closeModal();
 
       };
 
@@ -232,11 +234,11 @@ function Addcharges() {
   return (
    <>
 
-   <button className='modal-btn' onClick={()=>setShowModal(true)}>Add User</button>
+   <button className='modal-btn' onClick={()=>setShowModal(true)}>Add charges</button>
    {ShowModal && mainModal}
 
    <div className="user-list">
-        <h3>User List</h3>
+        <h3>Charges List</h3>
 
           <input type="number" className='userPerPageClass' name='userPerPage' value={userPerPage} onChange={(e)=>{setUserPerPage(e.target.value)}} />
 
@@ -255,6 +257,7 @@ function Addcharges() {
                 <th>roundingType</th>
                 <th>hoaPostingRequired</th>
                 <th>depositToGovt</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -264,7 +267,7 @@ function Addcharges() {
         </table> 
         <Pagination totalUsers={users.length} userPerPage={userPerPage} setCurrentPage={setCurrentPage} currPage={currentPage}/>
         </div>: (
-          <p>No users added yet.</p>
+          <p>No Charges added yet.</p>
         )}
       </div>
   

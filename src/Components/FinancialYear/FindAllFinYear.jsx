@@ -31,7 +31,7 @@ function FindAllFinYear({allData,setAllData, handleFindALL}) {
         try{
             const res = await axios.get(`finYear/delete/${id}`)
             toast.warn("The data has Deleted Successfully")
-            setAllData(res.data);
+            setAllData([res.data]);
             console.log(res);
             handleFindALL();
 
@@ -90,7 +90,7 @@ function FindAllFinYear({allData,setAllData, handleFindALL}) {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setAllData((prevFinYear) => ({ ...prevFinYear, [name]: value }));
+    setDataForUpdate((prevFinYear) => ({ ...prevFinYear, [name]: value }));
 };
 
   const mainModal =(

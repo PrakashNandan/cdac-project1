@@ -31,7 +31,7 @@ function FindAllDept({allData,setAllData, handleFindALL}) {
         try{
             const res = await axios.get(`dept/delete/${id}`)
             toast.warn("The data has Deleted Successfully")
-            setAllData(res.data);
+            setAllData([res.data]);
             console.log(res);
             handleFindALL();
 
@@ -90,7 +90,7 @@ function FindAllDept({allData,setAllData, handleFindALL}) {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setAllData((prevDept) => ({ ...prevDept, [name]: value }));
+    setDataForUpdate((prevDept) => ({ ...prevDept, [name]: value }));
 };
 
   const mainModal =(
