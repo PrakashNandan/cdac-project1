@@ -1,12 +1,12 @@
 import axios from '../axios.jsx'
 import React, {useEffect, useState}from 'react'
-import ShowModal from '../ShowModal.jsx'
+// import ShowModal from './ShowModal'
 import Mymodal from '../ShowModal.jsx';
 import '../../style/modal.css'
-import UserData from './UserData.jsx';
+import UserData from './UserData';
 import '../../style/UserData.css'
 import {ToastContainer, toast} from 'react-toastify'
-import Pagination from '../Pagination.js';
+import Pagination from '../Pagination';
 // const API="https://jsonplaceholder.typicode.com"
 
 function Addcharges() {
@@ -232,11 +232,11 @@ function Addcharges() {
   return (
    <>
 
-   <button className='modal-btn' onClick={()=>setShowModal(true)}>Add Charges</button>
+   <button className='modal-btn' onClick={()=>setShowModal(true)}>Add User</button>
    {ShowModal && mainModal}
 
    <div className="user-list">
-        <h3>charges List</h3>
+        <h3>User List</h3>
 
           <input type="number" className='userPerPageClass' name='userPerPage' value={userPerPage} onChange={(e)=>{setUserPerPage(e.target.value)}} />
 

@@ -27,7 +27,7 @@ function BillCategoryList() {
        
         try{
             
-            const res = await axios.get("/allBillCategory");
+            const res = await axios.get("/billCategory/findAll");
             setAllData(res.data);
             console.log(res.data);
 
@@ -60,7 +60,7 @@ function BillCategoryList() {
     const fetchData=async()=>{
         
         try{
-            const res = await axios.get(`/allBillCategory/${inputId}`)
+            const res = await axios.get(`/billCategory/find/${inputId}`)
             setAllData([res.data]);
             console.log([res.data]);
         }catch(error){
@@ -80,7 +80,7 @@ function BillCategoryList() {
     
     const lastIndex = currentPage*userPerPage;
     const firstIndex = lastIndex - userPerPage;
-    const slicedAllData=allData.slice(firstIndex, lastIndex);
+    // const slicedAllData=allData.slice(firstIndex, lastIndex);
 
 
 
@@ -117,11 +117,11 @@ function BillCategoryList() {
                         </tr>
                     </thead>
                     <tbody>
-                    <FindAllBillCategory allData={slicedAllData} setAllData={setAllData} handleFindALL={handleFindALL}/>
+                    <FindAllBillCategory allData={allData} setAllData={setAllData} handleFindALL={handleFindALL}/>
                     </tbody>
                   
                 </table> 
-                <Pagination totalUsers={allData.length} userPerPage={userPerPage} setCurrentPage={setCurrentPage} currPage={currentPage}/>
+                {/* <Pagination totalUsers={allData.length} userPerPage={userPerPage} setCurrentPage={setCurrentPage} currPage={currentPage}/> */}
         </div>
         </div>
    

@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react'
 
-function LidgerTypeData({slicedLidgerType}) {
+function LedgerTypeData({slicedLidgerType}) {
 
   return (
     <>
@@ -24,4 +24,4 @@ function LidgerTypeData({slicedLidgerType}) {
   )
 }
 
-export default LidgerTypeData;
+export default LedgerTypeData;

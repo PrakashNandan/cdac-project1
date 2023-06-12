@@ -50,7 +50,7 @@ function AddDept() {
         
         
         try{
-          const res = await axios.post("/save", dept);
+          const res = await axios.post("dept/save", dept);
           toast.success('Submit Successfully')
           setAllDept([...allDept, dept]);
           console.log(res);

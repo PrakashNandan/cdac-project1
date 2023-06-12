@@ -55,29 +55,29 @@ function Register() {
       const onSubmit = (e) => {
         e.preventDefault()
 
-        console.log(formData);
-    //data validate
+            console.log(formData);
+        //data validate
 
-    //call server api for sending data
-    signUp(formData).then((response)=>{ 
-      console.log(response)
-      console.log('success log')
-      toast.success('User is registered successfully !! user id' +response.id)
-      setFormData({
-        name:'',
-        email:'',
-        password:'',
-        about:'',
-      })
-    }).catch((error)=>{
-      console.log(error)
-      console.log("Error log")
-      //handle errors in proper way
-      setError({
-        errors:error,
-        isError:true
-      })
-    });
+        //call server api for sending data
+          signUp(formData).then((response)=>{ 
+          console.log(response)
+          console.log('success log')
+          toast.success('User is registered successfully !! user id' +response.id)
+          setFormData({
+            name:'',
+            email:'',
+            password:'',
+            about:'',
+          })
+        }).catch((error)=>{
+          console.log(error)
+          console.log("Error log")
+          //handle errors in proper way
+          setError({
+            errors:error,
+            isError:true
+          })
+        });
   };
 
 

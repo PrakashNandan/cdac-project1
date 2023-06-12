@@ -52,7 +52,7 @@ function Login() {
         }
     
         if (isSuccess || user) {
-          navigate('/login')
+          navigate('/loggedin')
         }
     
         dispatch(reset())

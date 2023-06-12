@@ -3,7 +3,7 @@ import '../../style/chargeList.css'
 import axios from '../axios.jsx'
 import FindAllData from '../AccountCharge/FindAllData.jsx'
 import {ToastContainer, toast} from 'react-toastify'
-import FindAllLidgerType from './FindAllLidgerType'
+import FindAllLidgerType from './FindAllLedgerType'
 
 
 function LedgerTypeList() {

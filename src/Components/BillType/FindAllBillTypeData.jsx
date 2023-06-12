@@ -4,7 +4,7 @@ import {ToastContainer, toast} from 'react-toastify'
 import Mymodal from '../ShowModal.jsx';
 
 
-function FindAllLidgerType({allData,setAllData, handleFindALL}) {
+function FindAllBillType({allData,setAllData, handleFindALL}) {
 
   const [showModal, setShowModal] = useState(false);
   const [dataForUpdate, setDataForUpdate] = useState([]);
@@ -29,9 +29,9 @@ function FindAllLidgerType({allData,setAllData, handleFindALL}) {
     if(conf){
 
         try{
-            const res = await axios.get(`/delete/${id}`)
+            const res = await axios.get(`/billType/delete/${id}`)
             toast.warn("The data has Deleted Successfully")
-            setAllData(res.data);
+            setAllData([res.data]);
             console.log(res);
             handleFindALL();
 
@@ -56,7 +56,7 @@ function FindAllLidgerType({allData,setAllData, handleFindALL}) {
 
       }else{
         try{
-            const res = await axios.get(`/find/${id}`);
+            const res = await axios.get(`/billType/find/${id}`);
             setDataForUpdate(res.data);
     
             }catch(error){
@@ -76,7 +76,7 @@ function FindAllLidgerType({allData,setAllData, handleFindALL}) {
   const handleSubmit=async(event)=>{
         event.preventDefault();
         try{
-          const res = await axios.put(`/update/${uid}`, dataForUpdate );
+          const res = await axios.put(`/billType/update/${uid}`, dataForUpdate );
           console.log(res.data);
           toast.success("updated Successfully")
         }catch(error){
@@ -88,10 +88,13 @@ function FindAllLidgerType({allData,setAllData, handleFindALL}) {
         handleFindALL();
   }
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setAllData((prevLedgerType) => ({ ...prevLedgerType, [name]: value }));
-};
+  const handleInputChange=(event)=>{
+    const { name, value, type, checked } = event.target;
+    const inputValue = type === 'checkbox' ? checked : value;
+    setDataForUpdate((prevBillType) => ({ ...prevBillType, [name]: inputValue }));
+  }
+
+
 
   const mainModal =(
 
@@ -103,32 +106,48 @@ function FindAllLidgerType({allData,setAllData, handleFindALL}) {
           <form onSubmit={handleSubmit}  className='form'>
 
           <div >
-              <label htmlFor="ledgerTypeId">ledgerType Id:</label>
+              {/* <label htmlFor="chargeName">Charge Name:</label> */}
               <input
                 type="number"
-                name="ledgerTypeId"
-                id="ledgerTypeId"
-                value={dataForUpdate.ledgerTypeId}
+                name="billTypeId"
+                id="billTypeId"
+                value={dataForUpdate.billTypeId}
                 onChange={handleInputChange}
-                placeholder="ledgerTypeId"
+                placeholder="billTypeId"
                 disabled
               />
           </div>
           <div >
-              <label htmlFor="ledgerTypeName">ledgerType Name:</label>
+              {/* <label htmlFor="chargeName">Charge Name:</label> */}
               <input
                 type="text"
-                name="ledgerTypeName"
-                id="ledgerTypeName"
-                value={dataForUpdate.ledgerTypeName}
+                name="billTypeName"
+                id="billTypeName"
+                value={dataForUpdate.billTypeName}
                 onChange={handleInputChange}
-                placeholder="Enter ledgerTypeName"
+                placeholder="Enter Bill Type"
                 required
               />
           </div>
-     
-       
-        
+          
+          
+          <div >
+              <label htmlFor="entryDate">Entry Date:</label>
+              <input
+                type="date"
+                name="entryDate"
+                id="entryDate"
+                value={dataForUpdate.entryDate}
+                onChange={handleInputChange}
+                placeholder="Enter entryDate"
+                // required
+              />
+          </div>
+          
+          
+          
+          
+          
                     
           {/* onClick={closeModal} */}
             <button className='modal-btn' type='submit'>Submit</button>
@@ -148,18 +167,21 @@ function FindAllLidgerType({allData,setAllData, handleFindALL}) {
     {
       allData && allData.length > 0 &&
         allData.map((curData) => {
-            const {ledgerTypeId,ledgerTypeName,
-           } = curData;
+            const {billTypeId,billTypeName, entryDate
+            } = curData;
 
           
             return (
                 <tr >
-                    <td>{ledgerTypeId}</td> 
-                    <td>{ledgerTypeName}</td>
+                    <td>{billTypeId}</td> 
+                    <td>{billTypeName}</td>
+                    <td>{entryDate}</td>
+                    
+                    {/* <td>{entryDate}</td> */}
                    
 
-                    <td><button type="button" class="btn btn-danger" onClick={()=>handleDeleteData(ledgerTypeId)}>Delete</button>
-                        <button type="button" class="btn m-1 btn-light" onClick={()=>handleUpdateData(ledgerTypeId)}>Update</button>
+                    <td><button type="button" class="btn btn-danger" onClick={()=>handleDeleteData(billTypeId)}>Delete</button>
+                        <button type="button" class="btn m-1 btn-light" onClick={()=>handleUpdateData(billTypeId)}>Update</button>
                     </td>
                 </tr>
             )
@@ -172,4 +194,4 @@ function FindAllLidgerType({allData,setAllData, handleFindALL}) {
   )
 }
 
-export default FindAllLidgerType;
+export default FindAllBillType;

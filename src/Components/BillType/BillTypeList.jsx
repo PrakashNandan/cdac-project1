@@ -1,12 +1,12 @@
 import React, {useState, useEffect}from 'react'
 import '../../style/chargeList.css'
 import axios from '../axios.jsx'
-import FindAllData from '../AccountCharge/FindAllData.jsx'
+import FindAllBillType from './FindAllBillTypeData'
 import {ToastContainer, toast} from 'react-toastify'
-import FindAllFinYear from './FindAllFinYear'
 
 
-function FinYearList() {
+
+function BillTypeList() {
 
     const [allData, setAllData]=useState([]);
     const [isError, setisError]=useState('');
@@ -18,11 +18,13 @@ function FinYearList() {
     },[])
    
 
+
+
     const handleFindALL=async()=>{
        
         try{
             
-            const res = await axios.get("/findAll");
+            const res = await axios.get("/billType/findAll");
             setAllData(res.data);
             console.log(res.data);
 
@@ -50,12 +52,14 @@ function FinYearList() {
     }
 
 
-
+    // const findDataById = (id) => {
+    //     return data.find((item) => item.id === id);
+    // };
 
     const fetchData=async()=>{
         
         try{
-            const res = await axios.get(`/find/${inputId}`)
+            const res = await axios.get(`/billType/find/${inputId}`)
             setAllData([res.data]);
             console.log([res.data]);
         }catch(error){
@@ -77,7 +81,7 @@ function FinYearList() {
 
     <>
     
-            <h2 id='chargeHeadID'>Financial Year List</h2>
+            <h2 id='chargeHeadID'>Bill Types</h2>
 
 
            <div className='find-container'>
@@ -94,18 +98,14 @@ function FinYearList() {
                 <table className='table userTable'>
                     <thead>
                         <tr>
-                            <th>FinYear ID</th>
-                            <th>finYearStartDate</th>
-                            <th>finYearEndDate</th>
-                            <th>finYearName</th>
-                            <th>remarks</th>
-                            <th>entryDate</th>
+                            <th>BillType ID</th> 
+                            <th>BillType</th>
+                            <th>EntryDate</th>
                             
-                           
                         </tr>
                     </thead>
                     <tbody>
-                    <FindAllFinYear allData={allData} setAllData={setAllData} handleFindALL={handleFindALL}/>
+                    <FindAllBillType allData={allData} setAllData={setAllData} handleFindALL={handleFindALL}/>
                     </tbody>
                   
                 </table> 
@@ -119,4 +119,4 @@ function FinYearList() {
   )
 }
 
-export default FinYearList;
+export default BillTypeList;

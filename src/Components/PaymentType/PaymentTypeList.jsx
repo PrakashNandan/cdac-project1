@@ -1,11 +1,12 @@
 import React, {useState, useEffect}from 'react'
 import '../../style/chargeList.css'
 import axios from '../axios.jsx'
+import FindAllPaymentType from './FindAllPaymentTypeData'
 import {ToastContainer, toast} from 'react-toastify'
-import FindAllDept from './FindAllDept'
 
 
-function DeptList() {
+
+function PaymentTypeList() {
 
     const [allData, setAllData]=useState([]);
     const [isError, setisError]=useState('');
@@ -17,11 +18,13 @@ function DeptList() {
     },[])
    
 
+
+
     const handleFindALL=async()=>{
        
         try{
             
-            const res = await axios.get("dept/findAll");
+            const res = await axios.get("/paymentType/findAll");
             setAllData(res.data);
             console.log(res.data);
 
@@ -49,12 +52,14 @@ function DeptList() {
     }
 
 
-
+    // const findDataById = (id) => {
+    //     return data.find((item) => item.id === id);
+    // };
 
     const fetchData=async()=>{
         
         try{
-            const res = await axios.get(`dept/find/${inputId}`)
+            const res = await axios.get(`/paymentType/find/${inputId}`)
             setAllData([res.data]);
             console.log([res.data]);
         }catch(error){
@@ -76,7 +81,7 @@ function DeptList() {
 
     <>
     
-            <h2 id='chargeHeadID'>Departemnt List</h2>
+            <h2 id='chargeHeadID'>Payment Types</h2>
 
 
            <div className='find-container'>
@@ -93,15 +98,14 @@ function DeptList() {
                 <table className='table userTable'>
                     <thead>
                         <tr>
-                            <th>Department ID</th> 
-                            <th>Department Name</th>
-                            <th>Department code</th>
-                           
-                           
+                            <th>PaymentType ID</th> 
+                            <th>PaymentType</th>
+                            <th>EntryDate</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
-                    <FindAllDept allData={allData} setAllData={setAllData} handleFindALL={handleFindALL}/>
+                    <FindAllPaymentType allData={allData} setAllData={setAllData} handleFindALL={handleFindALL}/>
                     </tbody>
                   
                 </table> 
@@ -115,4 +119,4 @@ function DeptList() {
   )
 }
 
-export default DeptList;
+export default PaymentTypeList;

@@ -29,7 +29,7 @@ function FindAllDept({allData,setAllData, handleFindALL}) {
     if(conf){
 
         try{
-            const res = await axios.get(`/delete/${id}`)
+            const res = await axios.get(`dept/delete/${id}`)
             toast.warn("The data has Deleted Successfully")
             setAllData(res.data);
             console.log(res);
@@ -56,7 +56,7 @@ function FindAllDept({allData,setAllData, handleFindALL}) {
 
       }else{
         try{
-            const res = await axios.get(`/find/${id}`);
+            const res = await axios.get(`dept/find/${id}`);
             setDataForUpdate(res.data);
     
             }catch(error){
@@ -76,7 +76,7 @@ function FindAllDept({allData,setAllData, handleFindALL}) {
   const handleSubmit=async(event)=>{
         event.preventDefault();
         try{
-          const res = await axios.put(`/update/${uid}`, dataForUpdate );
+          const res = await axios.put(`dept/update/${uid}`, dataForUpdate );
           console.log(res.data);
           toast.success("updated Successfully")
         }catch(error){

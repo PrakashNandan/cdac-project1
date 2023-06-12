@@ -49,7 +49,7 @@ function AddBillCategory() {
         
         
         try{
-          const res = await axios.post("/allBillCategory", billCategory);
+          const res = await axios.post("billCategory/save", billCategory);
           toast.success('Submit Successfully')
           setAllBillcategory([...allBillCategory, billCategory]);
           console.log(res);

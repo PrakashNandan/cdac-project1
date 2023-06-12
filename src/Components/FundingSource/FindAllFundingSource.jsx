@@ -4,7 +4,7 @@ import {ToastContainer, toast} from 'react-toastify'
 import Mymodal from '../ShowModal.jsx';
 
 
-function FindAllBillCategory({allData,setAllData, handleFindALL}) {
+function FindAllFundingSource({allData,setAllData, handleFindALL}) {
 
   const [showModal, setShowModal] = useState(false);
   const [dataForUpdate, setDataForUpdate] = useState([]);
@@ -29,7 +29,7 @@ function FindAllBillCategory({allData,setAllData, handleFindALL}) {
     if(conf){
 
         try{
-            const res = await axios.get(`/billCategory/delete/${id}`)
+            const res = await axios.get(`/fundSource/delete/${id}`)
             toast.warn("The data has Deleted Successfully")
             setAllData(res.data);
             console.log(res);
@@ -56,7 +56,7 @@ function FindAllBillCategory({allData,setAllData, handleFindALL}) {
 
       }else{
         try{
-            const res = await axios.get(`/billCategory/find/${id}`);
+            const res = await axios.get(`/fundSource/find/${id}`);
             setDataForUpdate(res.data);
     
             }catch(error){
@@ -75,23 +75,22 @@ function FindAllBillCategory({allData,setAllData, handleFindALL}) {
 
   const handleSubmit=async(event)=>{
         event.preventDefault();
-        console.log(dataForUpdate);
         try{
-          const res = await axios.put(`/billCategory/update/${uid}`, dataForUpdate );
+          const res = await axios.put(`/fundSource/update/${uid}`, dataForUpdate );
           console.log(res.data);
           toast.success("updated Successfully")
-          handleFindALL();
         }catch(error){
           toast.error("Error !! Not updated");
           console.log(error.message);
         }
         
         closeModal();
+        handleFindALL();
   }
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setDataForUpdate((prevBillCategory) => ({ ...prevBillCategory, [name]: value }));
+    setAllData((prevFundingSource) => ({ ...prevFundingSource, [name]: value }));
 };
 
   const mainModal =(
@@ -104,26 +103,26 @@ function FindAllBillCategory({allData,setAllData, handleFindALL}) {
           <form onSubmit={handleSubmit}  className='form'>
 
           <div >
-              <label htmlFor="billCategoryId">Bill Category ID:</label>
+              {/* <label htmlFor="chargeName">Charge Name:</label> */}
               <input
                 type="number"
-                name="billCategoryId"
-                id="billCategoryId"
-                value={dataForUpdate.billCategoryId}
+                name="fundingSourceId"
+                id="fundingSourceId"
+                value={dataForUpdate.fundingSourceId}
                 onChange={handleInputChange}
-                placeholder="billCategoryId"
+                placeholder="fundingSourceId"
                 disabled
               />
           </div>
           <div >
-              <label htmlFor="billCategoryName">Bill Category Name:</label>
+              {/* <label htmlFor="chargeName">Charge Name:</label> */}
               <input
                 type="text"
-                name="billCategoryName"
-                id="billCategoryName"
-                value={dataForUpdate.billCategoryName}
+                name="fundingSourceName"
+                id="fundingSourceName"
+                value={dataForUpdate.fundingSourceName}
                 onChange={handleInputChange}
-                placeholder="Enter billCategoryName"
+                placeholder="Enter fundingSourceName"
                 required
               />
           </div>
@@ -149,17 +148,18 @@ function FindAllBillCategory({allData,setAllData, handleFindALL}) {
     {
       allData && allData.length > 0 &&
         allData.map((curData) => {
-            const {billCategoryId,billCategoryName,
+            const {fundingSourceId,fundingSourceName,
            } = curData;
 
           
             return (
                 <tr >
-                    <td>{billCategoryId}</td> 
-                    <td>{billCategoryName}</td>
+                    <td>{fundingSourceId}</td> 
+                    <td>{fundingSourceName}</td>
                    
-                    <td><button type="button" class="btn btn-danger" onClick={()=>handleDeleteData(billCategoryId)}>Delete</button>
-                        <button type="button" class="btn m-1 btn-light" onClick={()=>handleUpdateData(billCategoryId)}>Update</button>
+
+                    <td><button type="button" class="btn btn-danger" onClick={()=>handleDeleteData(fundingSourceId)}>Delete</button>
+                        <button type="button" class="btn m-1 btn-light" onClick={()=>handleUpdateData(fundingSourceId)}>Update</button>
                     </td>
                 </tr>
             )
@@ -172,4 +172,4 @@ function FindAllBillCategory({allData,setAllData, handleFindALL}) {
   )
 }
 
-export default FindAllBillCategory;
+export default FindAllFundingSource;

@@ -1,11 +1,13 @@
 import React, {useState, useEffect}from 'react'
 import '../../style/chargeList.css'
 import axios from '../axios.jsx'
+import FundingSourceData from './FundingSourceData'
 import {ToastContainer, toast} from 'react-toastify'
-import FindAllDept from './FindAllDept'
+import FindAllBillCategory from './FindAllFundingSource'
+import FindAllFundingSource from './FindAllFundingSource'
 
 
-function DeptList() {
+function FundingSourceList() {
 
     const [allData, setAllData]=useState([]);
     const [isError, setisError]=useState('');
@@ -17,11 +19,13 @@ function DeptList() {
     },[])
    
 
+
+
     const handleFindALL=async()=>{
        
         try{
             
-            const res = await axios.get("dept/findAll");
+            const res = await axios.get("/fundSource/findAll");
             setAllData(res.data);
             console.log(res.data);
 
@@ -54,7 +58,7 @@ function DeptList() {
     const fetchData=async()=>{
         
         try{
-            const res = await axios.get(`dept/find/${inputId}`)
+            const res = await axios.get(`/fundSource/find/${inputId}`)
             setAllData([res.data]);
             console.log([res.data]);
         }catch(error){
@@ -76,7 +80,7 @@ function DeptList() {
 
     <>
     
-            <h2 id='chargeHeadID'>Departemnt List</h2>
+            <h2 id='chargeHeadID'>Funding Source List</h2>
 
 
            <div className='find-container'>
@@ -93,15 +97,13 @@ function DeptList() {
                 <table className='table userTable'>
                     <thead>
                         <tr>
-                            <th>Department ID</th> 
-                            <th>Department Name</th>
-                            <th>Department code</th>
-                           
+                            <th>Funding Source ID</th> 
+                            <th>Funding Source Name</th>
                            
                         </tr>
                     </thead>
                     <tbody>
-                    <FindAllDept allData={allData} setAllData={setAllData} handleFindALL={handleFindALL}/>
+                    <FindAllFundingSource allData={allData} setAllData={setAllData} handleFindALL={handleFindALL}/>
                     </tbody>
                   
                 </table> 
@@ -115,4 +117,4 @@ function DeptList() {
   )
 }
 
-export default DeptList;
+export default FundingSourceList;

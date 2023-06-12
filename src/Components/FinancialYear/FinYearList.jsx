@@ -1,11 +1,12 @@
 import React, {useState, useEffect}from 'react'
 import '../../style/chargeList.css'
 import axios from '../axios.jsx'
+import FindAllData from '../AccountCharge/FindAllData.jsx'
 import {ToastContainer, toast} from 'react-toastify'
-import FindAllDept from './FindAllDept'
+import FindAllFinYear from './FindAllFinYear'
 
 
-function DeptList() {
+function FinYearList() {
 
     const [allData, setAllData]=useState([]);
     const [isError, setisError]=useState('');
@@ -21,7 +22,7 @@ function DeptList() {
        
         try{
             
-            const res = await axios.get("dept/findAll");
+            const res = await axios.get("finYear/findAll");
             setAllData(res.data);
             console.log(res.data);
 
@@ -54,7 +55,7 @@ function DeptList() {
     const fetchData=async()=>{
         
         try{
-            const res = await axios.get(`dept/find/${inputId}`)
+            const res = await axios.get(`finYear/find/${inputId}`)
             setAllData([res.data]);
             console.log([res.data]);
         }catch(error){
@@ -76,7 +77,7 @@ function DeptList() {
 
     <>
     
-            <h2 id='chargeHeadID'>Departemnt List</h2>
+            <h2 id='chargeHeadID'>Financial Year List</h2>
 
 
            <div className='find-container'>
@@ -93,15 +94,18 @@ function DeptList() {
                 <table className='table userTable'>
                     <thead>
                         <tr>
-                            <th>Department ID</th> 
-                            <th>Department Name</th>
-                            <th>Department code</th>
-                           
+                            <th>FinYear ID</th>
+                            <th>finYearStartDate</th>
+                            <th>finYearEndDate</th>
+                            <th>finYearName</th>
+                            <th>remarks</th>
+                            <th>entryDate</th>
+                            
                            
                         </tr>
                     </thead>
                     <tbody>
-                    <FindAllDept allData={allData} setAllData={setAllData} handleFindALL={handleFindALL}/>
+                    <FindAllFinYear allData={allData} setAllData={setAllData} handleFindALL={handleFindALL}/>
                     </tbody>
                   
                 </table> 
@@ -115,4 +119,4 @@ function DeptList() {
   )
 }
 
-export default DeptList;
+export default FinYearList;

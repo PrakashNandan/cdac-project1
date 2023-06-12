@@ -1,27 +1,25 @@
 import axios from '../axios.jsx'
 import React, {useEffect, useState}from 'react'
-import ShowModal from '../ShowModal.jsx'
 import Mymodal from '../ShowModal.jsx';
 import '../../style/modal.css'
-import UserData from '../AccountCharge/UserData.jsx';
+import FundingSourceData from './FundingSourceData.jsx';
 import '../../style/UserData.css'
 import {ToastContainer, toast} from 'react-toastify'
 import Pagination from '../Pagination.js';
-import LidgerTypeData from './LedgerTypeData.jsx';
 // const API="https://jsonplaceholder.typicode.com"
 
-function AddLedgerType() {
+function AddFundingSource() {
 
     const [ShowModal, setShowModal]=useState(false);
     const [currentPage, setCurrentPage]=useState(1);
     const [userPerPage, setUserPerPage] = useState(3);
     const [isError, setIsError] =useState('');
 
-    const [ledgerType, setLedgerType] = useState({
-      ledgerTypeName : '',
+    const [fundingSource, setFundingSource] = useState({
+      fundingSourceName : '',
     },[] );
     
-      const [allLedgerType, setAllLedgerType] = useState([]);
+      const [allFundingSource, setAllFundingSource] = useState([]);
 
 
 
@@ -36,7 +34,7 @@ function AddLedgerType() {
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        setLedgerType((prevLedgerType) => ({ ...prevLedgerType, [name]: value }));
+        setFundingSource((prevFundingSource) => ({ ...prevFundingSource, [name]: value }));
     };
 
 
@@ -45,13 +43,13 @@ function AddLedgerType() {
         event.preventDefault();
         
         
-        console.log(ledgerType);  
+        console.log(fundingSource);  
         
         
         try{
-          const res = await axios.post("/save", ledgerType);
+          const res = await axios.post("/fundSource/save", fundingSource);
           toast.success('Submit Successfully')
-          setAllLedgerType([...allLedgerType, ledgerType]);
+          setAllFundingSource([...allFundingSource, fundingSource]);
           console.log(res);
 
         }catch(error){
@@ -90,7 +88,7 @@ function AddLedgerType() {
 
     const lastIndex = currentPage*userPerPage;
     const firstIndex = lastIndex - userPerPage;
-    const slicedLidgerType=allLedgerType.slice(firstIndex, lastIndex);
+    const currFundingSource=allFundingSource.slice(firstIndex, lastIndex);
 
 
 
@@ -104,14 +102,14 @@ function AddLedgerType() {
               <form onSubmit={handleSubmit}  className='form'>
 
               <div >
-                  <label htmlFor="ledgerTypeName">ledgerType Name:</label>
+                  {/* <label htmlFor="chargeName">Charge Name:</label> */}
                   <input
                     type="text"
-                    name="ledgerTypeName"
-                    id="ledgerTypeName"
-                    value={ledgerType.ledgerTypeName}
+                    name="fundingSourceName"
+                    id="fundingSourceName"
+                    value={fundingSource.fundingSourceName}
                     onChange={handleInputChange}
-                    placeholder="Enter ledgerTypeName"
+                    placeholder="Enter fundingSourceName"
                     required
                   />
               </div>
@@ -130,32 +128,32 @@ function AddLedgerType() {
   return (
    <>
 
-   <button className='modal-btn' onClick={()=>setShowModal(true)}>Add LedgerType</button>
+   <button className='modal-btn' onClick={()=>setShowModal(true)}>Add Funding Source</button>
    {ShowModal && mainModal}
 
    <div className="user-list">
-        <h3>ledgerType List</h3>
+        <h3>Funding Source Name List</h3>
 
           <input type="number" className='userPerPageClass' name='userPerPage' value={userPerPage} onChange={(e)=>{setUserPerPage(e.target.value)}} />
 
-        {allLedgerType.length > 0 ?
+        {allFundingSource.length > 0 ?
         <div className='table-responsive'>
          <table className='table userTable'>
             <thead>
             <tr>
                 {/* <th>ID</th> */}
-                <th>LidgerTypeName</th>
+                <th>FundingSource Name</th>
                
             </tr>
             </thead>
             <tbody>
-            <LidgerTypeData slicedLidgerType={slicedLidgerType}/>
+            <FundingSourceData allFundingSource={currFundingSource}/>
             </tbody>
             {/* <Pagination totalUsers={users.length} userPerPage={userPerPage} setCurrentPage={setCurrentPage} currPage={currentPage}/> */}
         </table> 
-        <Pagination totalUsers={allLedgerType.length} userPerPage={userPerPage} setCurrentPage={setCurrentPage} currPage={currentPage}/>
+        <Pagination totalUsers={allFundingSource.length} userPerPage={userPerPage} setCurrentPage={setCurrentPage} currPage={currentPage}/>
         </div>: (
-          <p>No LidgerType added yet.</p>
+          <p>No funding Source added yet.</p>
         )}
       </div>
   
@@ -168,4 +166,4 @@ function AddLedgerType() {
   )
 }
 
-export default AddLedgerType;
+export default AddFundingSource;
