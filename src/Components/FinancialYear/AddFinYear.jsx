@@ -156,7 +156,7 @@ function AddFinYear() {
                   />
               </div>
               <div >
-                  <label htmlFor="entryDate">Entry Date :</label>
+                  <label htmlFor="entryDate">Entry Date: &nbsp;</label>
                   <input
                     type="date"
                     name="entryDate"

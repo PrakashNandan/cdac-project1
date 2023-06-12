@@ -5,7 +5,7 @@ body::-webkit-scrollbar {
 
 .sidebar {
   width: 70px;
-  height: 80px;
+  
   padding-top: 20px;
   position: absolute;
   top: 104px;

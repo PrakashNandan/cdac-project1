@@ -93,7 +93,7 @@ function ChargeList() {
 
 
 
-            <div className='table-responsive'>
+            <div className='table-responsive-sm'>
                 <table className='table userTable'>
                     <thead>
                         <tr>
