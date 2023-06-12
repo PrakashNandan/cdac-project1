@@ -107,7 +107,6 @@ function ChargeList() {
                             <th>roundingType</th>
                             <th>hoaPostingRequired</th>
                             <th>isDepositToGovt</th>
-                            <th>depositToGovt</th>
                             <th>Action</th>
                         </tr>
                     </thead>
