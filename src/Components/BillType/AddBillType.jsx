@@ -14,7 +14,7 @@ function AddBillType() {
     const [ShowModal, setShowModal]=useState(false);
     const [currentPage, setCurrentPage]=useState(1);
     const [billTypePerPage, setBillTypePerPage] = useState(3);
-    const [isError, setIsError] =useState('');
+    const [isError, setIsError] =useState('')
 
     const [billType, setBillType] = useState({
         billTypeName: '',
