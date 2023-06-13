@@ -24,7 +24,7 @@ function App() {
 
       <BrowserRouter>
         <div className='container'>
-          {/* <Header></Header> */}
+          <Header></Header>
          
            
           <Routes>
@@ -32,8 +32,8 @@ function App() {
             <Route path='/login' element={<Login/>}/>
             <Route path='/register' element={<Register/>}/>
 
-            {/* <Route path='/loggedin' element={<UserDetail/>}/> */}
-            <Route path='/loggedin' element={<AddBillbox/>}/>
+            <Route path='/loggedin' element={<UserDetail/>}/>
+            {/* <Route path='/loggedin' element={<AddBillbox/>}/> */}
             <Route path='/form' element = {<AddAndDisplayUserPage/>}/>
             
             

@@ -143,7 +143,7 @@ function AddBillbox() {
                 <h2 class="text-center">Form</h2>
                 <div class="div-element">
                     <div class="background-div">
-                        <div className="container">
+                        <div className="container4">
 
                             {/* left part */}
                             <div id="sidebar">
