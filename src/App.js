@@ -10,6 +10,7 @@ import Header from './Components/Header';
 import UserDetail from './Components/UserDetail';
 import Sidebar from './Components/Sidebar';
 import AddAndDisplayUserPage from './Components/AddUser';
+import AddBillbox from './Components/Billbox/AddBillbox';
 
 
 
@@ -23,14 +24,16 @@ function App() {
 
       <BrowserRouter>
         <div className='container'>
-          <Header></Header>
+          {/* <Header></Header> */}
+         
            
           <Routes>
             <Route path='/' element={<Dashboard/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/register' element={<Register/>}/>
 
-            <Route path='/loggedin' element={<UserDetail/>}/>
+            {/* <Route path='/loggedin' element={<UserDetail/>}/> */}
+            <Route path='/loggedin' element={<AddBillbox/>}/>
             <Route path='/form' element = {<AddAndDisplayUserPage/>}/>
             
             

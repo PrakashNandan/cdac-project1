@@ -705,14 +705,14 @@ setShowFinYearList(false);
           </li>
           <li>
             <button className="sidebar-dropdown" onClick={toggleDropdown2}>
-              <span>Developers</span>
+              <span>Transactions</span>
               <FontAwesomeIcon
                 icon={isDropdown2Open ? faAngleDown : faAngleRight}
               />
             </button>
             {isDropdown2Open && (
               <ul className="sidebar-submenu">
-                <li>A</li>
+                <li>BillBox</li>
                 <li>B</li>
                 <li>C</li>
               </ul>

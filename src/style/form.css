@@ -1,0 +1,55 @@
+.option1{
+      margin-right: 2rem;
+}
+.option11{
+      width: 120px; 
+}
+.option2{
+      width: 120px; 
+}
+.option33{
+      margin-right: 2rem;
+}
+#sidebar    {
+      width: 50%;
+  }
+  
+  #page-wrap  {
+      width: 50%;
+      margin-left: 80px;
+  }
+  #main{
+      
+  }
+  .input-box {
+      width: 120px; 
+    }
+    
+    .centered-form {
+      width: 300px;
+      padding: 20px;
+      background-color: #f1f1f1;
+    }
+    .container {
+      display: flex;
+      
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      justify-content: space-between;
+    }
+    .bottom-div {
+      margin-top: 32rem; 
+      position: absolute;
+  left: 1rem;
+    }
+    .div-element {
+      margin-bottom: 20px; 
+    }
+    .div-element1 {
+      margin-bottom: 100px; 
+    }
+    .date{
+
+    }
