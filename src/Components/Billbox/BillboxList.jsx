@@ -1,11 +1,11 @@
 import React, {useState, useEffect}from 'react'
 import '../../style/chargeList.css'
 import axios from '../axios.jsx'
-import FindAllData from './FindAllData.jsx'
 import {ToastContainer, toast} from 'react-toastify'
+import FindBillBoxData from './FindBillBoxData'
 
 
-function ChargeList() {
+function BillboxList() {
 
     const [allData, setAllData]=useState([]);
     const [isError, setisError]=useState('');
@@ -16,7 +16,6 @@ function ChargeList() {
         handleFindALL();
     },[])
    
-
 
 
     const handleFindALL=async()=>{
@@ -39,10 +38,8 @@ function ChargeList() {
         handleFindALL();
     },[])
 
-    // findAll && handleFindALL();
 
     
-
     const showErrorToast=()=>{
         toast.error("Something went wrong, check your connection !!")
     }
@@ -51,9 +48,6 @@ function ChargeList() {
     }
 
 
-    // const findDataById = (id) => {
-    //     return data.find((item) => item.id === id);
-    // };
 
     const fetchData=async()=>{
         
@@ -70,17 +64,12 @@ function ChargeList() {
     }
 
 
-    // const findDataById = () => {
-    //     return allData.find((item) => item.id === inputId);
-    //   };
-
-
 
   return (
 
     <>
     
-            <h2 id='chargeHeadID'>Charge List</h2>
+            <h2 id='chargeHeadID'>BillBox List</h2>
 
 
            <div className='find-container'>
@@ -91,27 +80,28 @@ function ChargeList() {
                 <button className='btn btn-primary' id='searchDataID' onClick={fetchData}>Search</button>   
             </div>
 
-
-
-            <div className='table-responsive'>
+            <div className='table-responsive-sm'>
                 <table className='table userTable'>
                     <thead>
                         <tr>
                             <th>ID</th> 
-                            <th>ChargeName</th>
-                            <th>ChargeType</th>
-                            <th>ChargeRate</th>
+                            <th>billSlNo</th>
+                            <th>BillType</th>
+                            <th>BillCategory</th>
+                            <th>FundingSource</th>
+                            <th>invoiceNo</th>
+                            <th>invoiceDate</th>
                             <th>entryDate</th>
-                            <th>chargeAmount</th>
-                            <th>chargeApplyOnBaseAmount</th>
-                            <th>roundingType</th>
-                            <th>hoaPostingRequired</th>
-                            <th>isDepositToGovt</th>
-                            <th>Action</th>
+                            <th>baseAmount</th>
+                            <th>billNetAmount</th>
+                            <th>valid</th>
+                            <th>remarks</th>
+                            <th>Actions</th>
+                            <th>Download</th>
                         </tr>
                     </thead>
                     <tbody>
-                    <FindAllData allData={allData} setAllData={setAllData} handleFindALL={handleFindALL}/>
+                    <FindBillBoxData allData={allData} setAllData={setAllData} handleFindALL={handleFindALL}/>
                     </tbody>
                   
                 </table> 
@@ -125,4 +115,4 @@ function ChargeList() {
   )
 }
 
-export default ChargeList
+export default BillboxList

@@ -14,7 +14,7 @@ import UserDetail from '../Components/UserDetail'
 function Login() {
 
     const [formData, setFormData] = useState({
-        email: '',
+        username: '',
         password: '',
        
       })
@@ -25,7 +25,7 @@ function Login() {
       //***************************/
 
 
-      const {email,password } = formData
+      const {username,password } = formData
 
       const navigate = useNavigate()
       const dispatch = useDispatch()
@@ -38,11 +38,11 @@ function Login() {
 
        
 
-          const handleClick = () => {
+          // const handleClick = () => {
            
-            navigate('/loggedin');
+          //   navigate('/loggedin');
 
-          };
+          // };
 
       //*************************************** */
 
@@ -56,7 +56,7 @@ function Login() {
         }
     
         dispatch(reset())
-      }, [user, isError, isSuccess, message, navigate, dispatch])
+      }, [user, isError, isSuccess, message,navigate, dispatch])
 
 
       const onChange = (e) => {
@@ -70,7 +70,7 @@ function Login() {
         e.preventDefault()
 
         const userData={
-            email,
+            username,
             password
         }
 
@@ -99,12 +99,12 @@ function Login() {
        
         <div className='form-group'>
           <input
-            type='email'
+            type='text'
             className='form-control'
-            id='email'
-            name='email'
-            value={email}
-            placeholder='Enter your email'
+            id='username'
+            name='username'
+            value={username}
+            placeholder='Enter your username'
             onChange={onChange}
           />
         </div>
@@ -121,7 +121,7 @@ function Login() {
           />
         </div>
         <div className='form-group'>
-          <button type='submit' className='btn1 btn-block' onClick={handleClick}>
+          <button type='submit' className='btn1 btn-block'>
             LogIn
           </button>
           

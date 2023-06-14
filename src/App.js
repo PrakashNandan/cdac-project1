@@ -10,6 +10,8 @@ import Header from './Components/Header';
 import UserDetail from './Components/UserDetail';
 import Sidebar from './Components/Sidebar';
 import AddAndDisplayUserPage from './Components/AddUser';
+import AddBillbox from './Components/Billbox/AddBillbox';
+import BillboxList from './Components/Billbox/BillboxList';
 
 
 
@@ -24,6 +26,7 @@ function App() {
       <BrowserRouter>
         <div className='container'>
           <Header></Header>
+         
            
           <Routes>
             <Route path='/' element={<Dashboard/>}/>
@@ -31,6 +34,8 @@ function App() {
             <Route path='/register' element={<Register/>}/>
 
             <Route path='/loggedin' element={<UserDetail/>}/>
+            {/* <Route path='/loggedin' element={<AddBillbox/>}/> */}
+            {/* <Route path='/loggedin' element={<BillboxList/>}/> */}
             <Route path='/form' element = {<AddAndDisplayUserPage/>}/>
             
             
