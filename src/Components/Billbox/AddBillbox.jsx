@@ -50,28 +50,30 @@ function AddBillbox() {
 
     const fetchDataForSelect1 = async () => {
         try {
-            const response = await axios.get('select1-api-endpoint');
+            const response = await axios.get('/billType/findAll');
+            console.log(response.data);
             setSelect1Data(response.data);
         } catch (error) {
-            console.error('Error fetching data for Select 1:', error);
+            console.error('Error fetching data for Bill Type:', error);
         }
     };
 
     const fetchDataForSelect2 = async () => {
         try {
-            const response = await axios.get('select2-api-endpoint');
+            const response = await axios.get('/BillCategory/findAll');
+            console.log(response.data);
             setSelect2Data(response.data);
         } catch (error) {
-            console.error('Error fetching data for Select 2:', error);
+            console.error('Error fetching data for BillCategory:', error);
         }
     };
 
     const fetchDataForSelect3 = async () => {
         try {
-            const response = await axios.get('select3-api-endpoint');
+            const response = await axios.get('/FundingSource/findAll');
             setSelect3Data(response.data);
         } catch (error) {
-            console.error('Error fetching data for Select 3:', error);
+            console.error('Error fetching data for FundingSource:', error);
         }
     };
 
@@ -160,7 +162,7 @@ function AddBillbox() {
                                         <option value="">BillType</option>
                                             {select1Data.map(item => (
                                             <option key={item.id} value={item.id}>
-                                                {item.name}
+                                                {item.billTypeName}
                                          </option>
                                             ))}
                                     </select>
@@ -169,9 +171,9 @@ function AddBillbox() {
                                 <div class="div-element">
                                     <select className="option11" value={selectedOption2} onChange={handleSelect2Change}>
                                     <option value="">BillCategory</option>
-                                            {select2Data.map(item => (
+                                            {select2Data.map((item, index) => (
                                             <option key={item.id} value={item.id}>
-                                                {item.name}
+                                                {item.billCategoryName}
                                          </option>
                                             ))}
                                         
@@ -185,7 +187,7 @@ function AddBillbox() {
                                         <option value="">Funding Source</option>
                                             {select3Data.map(item => (
                                             <option key={item.id} value={item.id}>
-                                                {item.name}
+                                                {item.fundingSourceName}
                                          </option>
                                             ))}
                                         

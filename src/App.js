@@ -11,6 +11,7 @@ import UserDetail from './Components/UserDetail';
 import Sidebar from './Components/Sidebar';
 import AddAndDisplayUserPage from './Components/AddUser';
 import AddBillbox from './Components/Billbox/AddBillbox';
+import BillboxList from './Components/Billbox/BillboxList';
 
 
 
@@ -34,6 +35,7 @@ function App() {
 
             <Route path='/loggedin' element={<UserDetail/>}/>
             {/* <Route path='/loggedin' element={<AddBillbox/>}/> */}
+            {/* <Route path='/loggedin' element={<BillboxList/>}/> */}
             <Route path='/form' element = {<AddAndDisplayUserPage/>}/>
             
             
