@@ -50,30 +50,28 @@ function AddBillbox() {
 
     const fetchDataForSelect1 = async () => {
         try {
-            const response = await axios.get('/billType/findAll');
-            console.log(response.data);
+            const response = await axios.get('select1-api-endpoint');
             setSelect1Data(response.data);
         } catch (error) {
-            console.error('Error fetching data for Bill Type:', error);
+            console.error('Error fetching data for Select 1:', error);
         }
     };
 
     const fetchDataForSelect2 = async () => {
         try {
-            const response = await axios.get('/BillCategory/findAll');
-            console.log(response.data);
+            const response = await axios.get('select2-api-endpoint');
             setSelect2Data(response.data);
         } catch (error) {
-            console.error('Error fetching data for BillCategory:', error);
+            console.error('Error fetching data for Select 2:', error);
         }
     };
 
     const fetchDataForSelect3 = async () => {
         try {
-            const response = await axios.get('/FundingSource/findAll');
+            const response = await axios.get('select3-api-endpoint');
             setSelect3Data(response.data);
         } catch (error) {
-            console.error('Error fetching data for FundingSource:', error);
+            console.error('Error fetching data for Select 3:', error);
         }
     };
 
@@ -138,11 +136,11 @@ function AddBillbox() {
 
         <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
 
-            <button id='close-btn' onClick={closeModal}>close</button>
-            <h2>Form</h2>
-
+            <button id='close-btn1' onClick={closeModal}>close</button>
+            
+            <h2 id="text">Form</h2>
             <form class="centered-form">
-                <h2 class="text-center">Form</h2>
+                
                 <div class="div-element">
                     <div class="background-div">
                         <div className="container4">
@@ -151,7 +149,7 @@ function AddBillbox() {
                             <div id="sidebar">
 
                                 <div class="div-element">
-                                    <input type="number" class="input-box" value={billBox.billSlNo} placeholder="Bill Sl No" onChange={handleInputChange}/>
+                                    <input type="number" id="input-box1" value={billBox.billSlNo} placeholder="Bill Sl No" onChange={handleInputChange}/>
                                 </div>
 
 
@@ -162,7 +160,7 @@ function AddBillbox() {
                                         <option value="">BillType</option>
                                             {select1Data.map(item => (
                                             <option key={item.id} value={item.id}>
-                                                {item.billTypeName}
+                                                {item.name}
                                          </option>
                                             ))}
                                     </select>
@@ -171,9 +169,9 @@ function AddBillbox() {
                                 <div class="div-element">
                                     <select className="option11" value={selectedOption2} onChange={handleSelect2Change}>
                                     <option value="">BillCategory</option>
-                                            {select2Data.map((item, index) => (
+                                            {select2Data.map(item => (
                                             <option key={item.id} value={item.id}>
-                                                {item.billCategoryName}
+                                                {item.name}
                                          </option>
                                             ))}
                                         
@@ -182,12 +180,12 @@ function AddBillbox() {
 
                                 <div class="div-element">
 
-                                    <select className="option33" value={selectedOption3} onChange={handleSelect3Change}>
+                                    <select className="option33" id="input-box1" value={selectedOption3} onChange={handleSelect3Change}>
                 
                                         <option value="">Funding Source</option>
                                             {select3Data.map(item => (
                                             <option key={item.id} value={item.id}>
-                                                {item.fundingSourceName}
+                                                {item.name}
                                          </option>
                                             ))}
                                         
@@ -197,7 +195,7 @@ function AddBillbox() {
                                 </div>
 
                                 <div class="div-element1">
-                                    <input type="number" placeholder='Bill Net Amount' value={billBox.billNetAmount}  name='billNetAmount' onChange={()=>handleInputChange}/>
+                                    <input type="number" id="yes"  placeholder='Bill Net Amount' value={billBox.billNetAmount}  name='billNetAmount' onChange={()=>handleInputChange}/>
                                 </div>
 
                             </div>
@@ -205,20 +203,20 @@ function AddBillbox() {
                             {/* right part */}
                             <div id="page-wrap">
                                 <div class="div-element">
-                                    <input type="string" placeholder='Invoice no' name='invoiceNo' value={billBox.invoiceNo} onChange={handleInputChange}/>
+                                    <input type="string" placeholder='Invoice no' id = "input-box" name='invoiceNo' value={billBox.invoiceNo} onChange={handleInputChange}/>
 
                                 </div>
                                 <div class="div-element">
                                     <label htmlFor="date" class="date">Invoice Date</label>
-                                    <input type="date" placeholder='Invoice date' name='invoiceDate' value={billBox.invoiceDate} onChange={handleInputChange} />
+                                    <input type="date" id = "class1" placeholder='Invoice date' name='invoiceDate' value={billBox.invoiceDate} onChange={handleInputChange} />
                                 </div>
                                 <div class="div-element">
                                     <label htmlFor="date" class="date">Entry Date</label>
-                                    <input type="date" placeholder='entry date' name='entryDate' value={billBox.entryDate} onChange={handleInputChange} />
+                                    <input type="date" id="entry" placeholder='entry date' name='entryDate' value={billBox.entryDate} onChange={handleInputChange} />
 
                                 </div>
                                 <div class="div-element">
-                                    <input type="number" placeholder='Base Amount' name='baseAmount' value={billBox.baseAmount} onChange={handleInputChange}/>
+                                    <input type="number" id = "no" placeholder='Base Amount' name='baseAmount' value={billBox.baseAmount} onChange={handleInputChange}/>
                                 </div>
 
                             </div>
@@ -232,8 +230,11 @@ function AddBillbox() {
                                 </div>
                                 <div class="div-element" >
                                     <p><b>Remarks</b></p>
-                                    <textarea id="w3review" name="w3review" rows="4" cols="50" value={billBox.remarks} onChange={handleInputChange}></textarea>
+                                    <textarea id="w3review" name="w3review" rows="4" cols="40" ></textarea>
                                 </div>
+                                <button id='modal-btn1' type='submit' >Submit</button>
+
+                                {/* value={billBox.remarks} onChange={handleInputChange} */}
                             </div>
                         </div>
                     </div>

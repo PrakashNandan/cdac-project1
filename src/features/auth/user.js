@@ -1,4 +1,4 @@
-import  myAxios  from "../../service/helperUtil";
+import { myAxios } from "../../service/helperUtil";
 
 
 export const signUp=(user)=>{

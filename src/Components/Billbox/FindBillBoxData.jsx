@@ -227,6 +227,24 @@ function FindBillBoxData({allData,setAllData, handleFindALL}) {
 
       {showModal && mainModal}
 
+        /*
+
+                            <th>ID</th> 
+                            <th>billSlNo</th>
+                            <th>BillType</th>
+                            <th>BillCategory</th>
+                            <th>FundingSource</th>
+                            <th>invoiceNo</th>
+                            <th>invoiceDate</th>
+                            <th>entryDate</th>
+                            <th>baseAmount</th>
+                            <th>billNetAmount</th>
+                            <th>valid</th>
+                            <th>remarks</th>
+                            <th>Actions</th>
+                            <th>Download</th>
+
+        */
     {
       allData && allData.length > 0 &&
         allData.map((curData) => {
@@ -250,8 +268,8 @@ function FindBillBoxData({allData,setAllData, handleFindALL}) {
                     <td>{valid===1 ? "YES" : "NO" }</td>
                     <td>{remarks}</td>
   
-                    <td><button type="button" class="btn btn-danger" onClick={()=>handleDeleteData(billBoxId)}>Delete</button>
-                        <button type="button" class="btn m-1 btn-light" onClick={()=>handleUpdateData(billBoxId)}>Update</button>
+                    <td><button type="button" class="btn btn-danger" onClick={()=>handleDeleteData(chargeId)}>Delete</button>
+                        <button type="button" class="btn m-1 btn-light" onClick={()=>handleUpdateData(chargeId)}>Update</button>
                     </td>
                     <td>Pdf</td>
                 </tr>

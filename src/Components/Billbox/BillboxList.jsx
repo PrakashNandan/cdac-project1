@@ -1,11 +1,11 @@
 import React, {useState, useEffect}from 'react'
 import '../../style/chargeList.css'
 import axios from '../axios.jsx'
+import FindAllData from './FindAllData.jsx'
 import {ToastContainer, toast} from 'react-toastify'
-import FindBillBoxData from './FindBillBoxData'
 
 
-function BillboxList() {
+function ChargeList() {
 
     const [allData, setAllData]=useState([]);
     const [isError, setisError]=useState('');
@@ -115,4 +115,4 @@ function BillboxList() {
   )
 }
 
-export default BillboxList
+export default ChargeList
