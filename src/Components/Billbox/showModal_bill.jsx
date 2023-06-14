@@ -20,7 +20,7 @@ function Mymodal({closeModal, children, handleSubmit}) {
 
           <div className="modal_wrapper"  onClick={closeModal}></div>
           <div id='modalParent'>
-            <div className="modal_container">
+            <div className="modal_container1">
               
               {children}
               

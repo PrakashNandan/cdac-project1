@@ -155,7 +155,7 @@ function AddBillType() {
             <thead>
             <tr>
                 {/* <th>ID</th> */}
-                <th>BillTypeName</th>
+                <th>BillType</th>
                 <th>entryDate</th>
                 
             </tr>

@@ -2,33 +2,62 @@
       margin-right: 2rem;
 }
 .option11{
-      width: 120px; 
+      width: 15rem; 
 }
 .option2{
-      width: 120px; 
+      width: 15rem; 
 }
 .option33{
       margin-right: 2rem;
+      width: 15rem;
 }
 #sidebar    {
       width: 50%;
+      margin-left: -15rem;
   }
   
   #page-wrap  {
       width: 50%;
       margin-left: 80px;
   }
-  #main{
-      
-  }
-  .input-box {
-      width: 120px; 
+   
+  
+  #input-box {
+      width: 15rem; 
     }
-    
+
+   
+    .modal_container1 {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50.5%);
+      background-color: white;
+      max-width: 50rem;
+      padding: 2rem 2rem;
+      border-radius: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      /* justify-content: center; */
+      align-items: center;
+      width: 60rem;
+      max-height: 100vh;
+      overflow-y: auto;
+       height: 97%;  
+       box-shadow: inset  0 0 0 2px rgb(192, 188, 188),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+  
+  }
     .centered-form {
-      width: 300px;
+      width: 250px;
       padding: 20px;
-      background-color: #f1f1f1;
+        margin-left: 5rem;
+        margin-top: 0.5rem;
+      background-color: #fefdfd;
+    }
+
+    .modal_container1::-webkit-scrollbar {
+      display: none;
     }
     .container4 {
       display: flex;
@@ -40,9 +69,10 @@
       justify-content: space-between;
     }
     .bottom-div {
-      margin-top: 32rem; 
+      margin-top: 18rem; 
       position: absolute;
-  left: 1rem;
+  left: 8rem;
+  margin-left: 8rem;
     }
     .div-element {
       margin-bottom: 20px; 
@@ -50,6 +80,60 @@
     .div-element1 {
       margin-bottom: 100px; 
     }
-    .date{
 
+     .input-box1 {
+      width: 500px; 
+    }
+
+    #no{
+      width: 15rem;
+    }
+    #yes{
+      width: 15rem;
+    }
+    #text{
+      margin-left: 1.5rem;
+    }
+    #modal-btn1{
+      padding: 0.4rem 1.2rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 0.3rem;
+    background-color: #212121;
+    color: #fff;
+    cursor: pointer;
+    transform: scale((0.9));
+    margin: 1rem;
+    margin-top: 0.25rem;
+    margin-left: 8rem;
+    }
+    #input-box1 {
+      width: 15rem; 
+    }
+    #class1{
+      width: 15rem;
+    }
+    #entry{
+      width: 15rem;
+    }
+    #close-btn1{
+      color: #fff;
+      background-color: red;
+      position: sticky;
+      left: 47rem;
+      bottom: 36.2rem;
+      padding: 0.3rem 0.6rem;
+      border: none;
+      cursor: pointer;
+      border-radius: 0.26rem;
+    }
+    #modal-btn1{
+      padding: 0.4rem 1.2rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 0.3rem;
+      background-color: #212121;
+      color: #fff;
+      cursor: pointer;
+      transform: scale((0.9));
     }
