@@ -26,7 +26,6 @@ function Mymodal({closeModal, children, handleSubmit}) {
               
 
             </div>
-            
           </div>
     </>,
     document.querySelector('.myPortalModalDiv')

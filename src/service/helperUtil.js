@@ -1,10 +1,13 @@
 import axios from 'axios';
 
-export const BASE_URL="http://10.248.1.198:8085/api/v1/";
+const BASE_URL="http://192.168.203.46:8085/api/v1/";
+// export const BASE_URL="http://10.248.1.198:8085/account/";
 
-export const myAxios=axios.create({
+ const myAxios=axios.create({
      baseURL:BASE_URL,
 });
+
+export default myAxios;
 
 // export const privateAxios = axios.create({
 //      baseURL: BASE_URL,
