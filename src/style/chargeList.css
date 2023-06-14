@@ -4,11 +4,12 @@
 }
 
 
-.find-container{
+.find-container {
     position: relative;
+    padding: 0 5%;
 }
 
-.btn-find{
+.btn-find {
     position: absolute;
     left: 4rem;
     top: 0rem;
@@ -16,20 +17,20 @@
 
 }
 
-.findButtonClass{
+.findButtonClass {
     margin: 0.6rem 0;
     display: inline;
 }
 
-#chargeHeadID{
-    margin: 0.865rem 0;
+#chargeHeadID {
+    padding-top: 2rem;
+    padding-bottom: 1rem;
 }
 
-.parentSearchInput{
+.parentSearchInput {
     /* position: relative; */
     display: flex;
-    justify-content: end;
-    align-items: end;
+    justify-content: space-between;
 }
 
 /* .ParentPagination{
@@ -37,27 +38,67 @@
     justify-content: start;
     align-items: start;
 } */
-.ParentPagination{
+.ParentPagination {
     display: block;
     position: relative;
 }
 
-#Pagi_input_id{
-    position: absolute;
-    left: 2rem;
+#Pagi_input_id {
+    
     width: 22%;
+    min-width: 100px;
     padding: 0.4rem;
     border-radius: 3.5px;
 }
 
-#searchInput{
-    position: absolute;
+#searchInput {
     right: 5rem;
     width: 22%;
+    min-width: 200px;
     padding: 0.4rem;
     border-radius: 3.5px;
+    flex-shrink: 0;
 }
 
-#searchDataID{
-    height: 2.5965rem;
+#searchDataID {
+    height: 2.4rem;
+    z-index: auto;
+    flex-shrink: 0;
+}
+
+.spacer {
+    flex-grow: 1;
+}
+
+@media (max-width: 600px) {
+    .parentSearchInput {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .find-container {
+        padding: 0 2%;
+    }
+
+    #chargeHeadID {
+        font-size: 28px;
+    }
+
+    .parentSearchInput {
+        height: 50px;
+    }
+
+    #searchInput {
+        height: 35px;
+        font-size: smaller;
+    }
+
+    #searchDataID {
+        height: 35px;
+        font-size: smaller;
+    }
+
+    .spacer {
+        display: none;
+    }
 }

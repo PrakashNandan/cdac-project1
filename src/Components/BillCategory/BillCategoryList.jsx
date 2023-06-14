@@ -99,7 +99,7 @@ function BillCategoryList() {
           </div> */}
             <div className="parentSearchInput">
                 <input type="number" className='userPerPageClass' id='Pagi_input_id' name='userPerPage' value={userPerPage} onChange={(e)=>{setUserPerPage(e.target.value)}} />
-
+                <div className="spacer"></div>
                 <input type="number" placeholder='search by ID' id='searchInput' value={inputId} onChange={(e) => setInputId(e.target.value)} /> 
                 <button className='btn btn-primary' id='searchDataID' onClick={fetchData}>Search</button>   
             </div>

@@ -89,7 +89,7 @@ function Login() {
     <>
     <section className='heading'>
       <h1>
-        <FaSignInAlt /> LogIn
+        <FaSignInAlt /> Log In
       </h1>
       <p>Please Log In</p>
     </section>
@@ -122,7 +122,7 @@ function Login() {
         </div>
         <div className='form-group'>
           <button type='submit' className='btn1 btn-block' onClick={handleClick}>
-            LogIn
+            Log In
           </button>
           
         </div>
