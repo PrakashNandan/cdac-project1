@@ -8,6 +8,7 @@ import {
 import "../style/Sidebar.css";
 import axios from "./axios.jsx";
 import "../style/Sidebar.css";
+import { useNavigate } from "react-router-dom";
 
 const TripleLevelDropdown = ({ setShowChargeList,
   setShowAddCharge,
@@ -37,6 +38,8 @@ const TripleLevelDropdown = ({ setShowChargeList,
   const [isDropdown15Open, setIsDropdown15Open] = useState(false);
   const [isDropdown16Open, setIsDropdown16Open] = useState(false);
   const [isDropdown12Open, setIsDropdown12Open] = useState(false);
+
+const navigate =useNavigate();
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -425,9 +428,10 @@ const TripleLevelDropdown = ({ setShowChargeList,
     setShowDeptList(false);
     setShowAddDept(false);
     setShowAddFinYear(false);
-    setShowFinYearList(false);
-  }
-
+    setShowFinYearList(false);  }
+const handleClick17 = ()=>{
+    navigate('/addbill')
+}
   const sidebarRef = useRef(null);
 
   useEffect(() => {
@@ -713,15 +717,30 @@ const TripleLevelDropdown = ({ setShowChargeList,
           </li>
           <li>
             <button className="sidebar-dropdown" onClick={toggleDropdown2}>
-              <span>Developers</span>
+              <span>Transactions</span>
               <FontAwesomeIcon
                 icon={isDropdown2Open ? faAngleDown : faAngleRight}
               />
             </button>
             {isDropdown2Open && (
               <ul className="sidebar-submenu">
-                <li>A</li>
-                <li>B</li>
+                <li>
+                <button
+                          className="sidebar-dropdown3"
+                          onClick={() => handleClick17()}
+                        >
+                         Bill Box
+                        </button>
+
+                </li>
+                <li>
+                <button
+                          className="sidebar-dropdown3"
+                          onClick={() => handleClick17()}
+                        >
+                         Bill Box List
+                        </button>
+                </li>
                 <li>C</li>
               </ul>
             )}
