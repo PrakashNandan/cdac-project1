@@ -57,198 +57,198 @@ const navigate =useNavigate();
 
   const toggleDropdown11 = () => {
     setIsDropdown11Open(!isDropdown11Open);
-setIsDropdown12Open(false);
-setIsDropdown13Open(false);
-setIsDropdown17Open(false);
-setIsDropdown18Open(false);
-setIsDropdown14Open(false);
-setIsDropdown15Open(false);
-setIsDropdown16Open(false);
+    setIsDropdown12Open(false);
+    setIsDropdown13Open(false);
+    setIsDropdown17Open(false);
+    setIsDropdown18Open(false);
+    setIsDropdown14Open(false);
+    setIsDropdown15Open(false);
+    setIsDropdown16Open(false);
   };
   const toggleDropdown12 = () => {
     setIsDropdown12Open(!isDropdown12Open);
-    
-setIsDropdown11Open(false);
-setIsDropdown13Open(false);
-setIsDropdown17Open(false);
-setIsDropdown18Open(false);
-setIsDropdown14Open(false);
-setIsDropdown15Open(false);
-setIsDropdown16Open(false);
+
+    setIsDropdown11Open(false);
+    setIsDropdown13Open(false);
+    setIsDropdown17Open(false);
+    setIsDropdown18Open(false);
+    setIsDropdown14Open(false);
+    setIsDropdown15Open(false);
+    setIsDropdown16Open(false);
   };
 
   const toggleDropdown13 = () => {
     setIsDropdown13Open(!isDropdown13Open);
-setIsDropdown11Open(false);
-setIsDropdown12Open(false);
-setIsDropdown17Open(false);
-setIsDropdown18Open(false);
-setIsDropdown14Open(false);
-setIsDropdown15Open(false);
-setIsDropdown16Open(false);
+    setIsDropdown11Open(false);
+    setIsDropdown12Open(false);
+    setIsDropdown17Open(false);
+    setIsDropdown18Open(false);
+    setIsDropdown14Open(false);
+    setIsDropdown15Open(false);
+    setIsDropdown16Open(false);
   };
 
   const toggleDropdown17 = () => {
     setIsDropdown17Open(!isDropdown17Open);
-setIsDropdown11Open(false);
-setIsDropdown12Open(false);
-setIsDropdown13Open(false);
-setIsDropdown18Open(false);
-setIsDropdown14Open(false);
-setIsDropdown15Open(false);
-setIsDropdown16Open(false);
+    setIsDropdown11Open(false);
+    setIsDropdown12Open(false);
+    setIsDropdown13Open(false);
+    setIsDropdown18Open(false);
+    setIsDropdown14Open(false);
+    setIsDropdown15Open(false);
+    setIsDropdown16Open(false);
   };
 
   const toggleDropdown18 = () => {
     setIsDropdown18Open(!isDropdown18Open);
-setIsDropdown11Open(false);
-setIsDropdown12Open(false);
-setIsDropdown13Open(false);
-setIsDropdown17Open(false);
-setIsDropdown14Open(false);
-setIsDropdown15Open(false);
-setIsDropdown16Open(false);
+    setIsDropdown11Open(false);
+    setIsDropdown12Open(false);
+    setIsDropdown13Open(false);
+    setIsDropdown17Open(false);
+    setIsDropdown14Open(false);
+    setIsDropdown15Open(false);
+    setIsDropdown16Open(false);
   };
   const toggleDropdown14 = () => {
     setIsDropdown14Open(!isDropdown14Open);
-setIsDropdown11Open(false);
-setIsDropdown12Open(false);
-setIsDropdown13Open(false);
-setIsDropdown17Open(false);
-setIsDropdown18Open(false);
-setIsDropdown15Open(false);
-setIsDropdown16Open(false);
+    setIsDropdown11Open(false);
+    setIsDropdown12Open(false);
+    setIsDropdown13Open(false);
+    setIsDropdown17Open(false);
+    setIsDropdown18Open(false);
+    setIsDropdown15Open(false);
+    setIsDropdown16Open(false);
   };
   const toggleDropdown15 = () => {
     setIsDropdown15Open(!isDropdown15Open);
-setIsDropdown11Open(false);
-setIsDropdown12Open(false);
-setIsDropdown13Open(false);
-setIsDropdown17Open(false);
-setIsDropdown18Open(false);
-setIsDropdown14Open(false);
-setIsDropdown16Open(false);
+    setIsDropdown11Open(false);
+    setIsDropdown12Open(false);
+    setIsDropdown13Open(false);
+    setIsDropdown17Open(false);
+    setIsDropdown18Open(false);
+    setIsDropdown14Open(false);
+    setIsDropdown16Open(false);
   };
   const toggleDropdown16 = () => {
-   setIsDropdown16Open(!isDropdown16Open);
-setIsDropdown11Open(false);
-setIsDropdown12Open(false);
-setIsDropdown13Open(false);
-setIsDropdown17Open(false);
-setIsDropdown18Open(false);
-setIsDropdown14Open(false);
-setIsDropdown15Open(false);
+    setIsDropdown16Open(!isDropdown16Open);
+    setIsDropdown11Open(false);
+    setIsDropdown12Open(false);
+    setIsDropdown13Open(false);
+    setIsDropdown17Open(false);
+    setIsDropdown18Open(false);
+    setIsDropdown14Open(false);
+    setIsDropdown15Open(false);
   };
 
   function handleClick1() {
-setShowChargeList(false);
-setShowAddCharge(true);
-setShowBillTypeList(false);
-setShowAddBillType(false);
-setShowAddBillCategory(false);
-setShowBillCategoryList(false);
-setShowAddFundingSource(false);
-setShowFundingSourceList(false);
-setShowAddPaymentType(false);
-setShowPaymentTypeList(false);
-setShowAddLedgerType(false);
-setShowLedgerTypeList(false);
-setShowDeptList(false);
-setShowAddDept(false);
-setShowAddFinYear(false);
-setShowFinYearList(false);
+    setShowChargeList(false);
+    setShowAddCharge(true);
+    setShowBillTypeList(false);
+    setShowAddBillType(false);
+    setShowAddBillCategory(false);
+    setShowBillCategoryList(false);
+    setShowAddFundingSource(false);
+    setShowFundingSourceList(false);
+    setShowAddPaymentType(false);
+    setShowPaymentTypeList(false);
+    setShowAddLedgerType(false);
+    setShowLedgerTypeList(false);
+    setShowDeptList(false);
+    setShowAddDept(false);
+    setShowAddFinYear(false);
+    setShowFinYearList(false);
 
 
   }
   function handleClick2() {
-setShowChargeList(true);
-setShowAddCharge(false);
-setShowBillTypeList(false);
-setShowAddBillType(false);
-setShowAddBillCategory(false);
-setShowBillCategoryList(false);
-setShowAddFundingSource(false);
-setShowFundingSourceList(false);
-setShowAddPaymentType(false);
-setShowPaymentTypeList(false);
-setShowAddLedgerType(false);
-setShowLedgerTypeList(false);
-setShowDeptList(false);
-setShowAddDept(false);
-setShowAddFinYear(false);
-setShowFinYearList(false);
+    setShowChargeList(true);
+    setShowAddCharge(false);
+    setShowBillTypeList(false);
+    setShowAddBillType(false);
+    setShowAddBillCategory(false);
+    setShowBillCategoryList(false);
+    setShowAddFundingSource(false);
+    setShowFundingSourceList(false);
+    setShowAddPaymentType(false);
+    setShowPaymentTypeList(false);
+    setShowAddLedgerType(false);
+    setShowLedgerTypeList(false);
+    setShowDeptList(false);
+    setShowAddDept(false);
+    setShowAddFinYear(false);
+    setShowFinYearList(false);
   }
   function handleClick3() {
-setShowChargeList(false);
-setShowAddCharge(false);
-setShowBillTypeList(false);
-setShowAddBillType(false);
-setShowAddBillCategory(true);
-setShowBillCategoryList(false);
-setShowAddFundingSource(false);
-setShowFundingSourceList(false);
-setShowAddPaymentType(false);
-setShowPaymentTypeList(false);
-setShowAddLedgerType(false);
-setShowLedgerTypeList(false);
-setShowDeptList(false);
-setShowAddDept(false);
-setShowAddFinYear(false);
-setShowFinYearList(false);
+    setShowChargeList(false);
+    setShowAddCharge(false);
+    setShowBillTypeList(false);
+    setShowAddBillType(false);
+    setShowAddBillCategory(true);
+    setShowBillCategoryList(false);
+    setShowAddFundingSource(false);
+    setShowFundingSourceList(false);
+    setShowAddPaymentType(false);
+    setShowPaymentTypeList(false);
+    setShowAddLedgerType(false);
+    setShowLedgerTypeList(false);
+    setShowDeptList(false);
+    setShowAddDept(false);
+    setShowAddFinYear(false);
+    setShowFinYearList(false);
   }
   function handleClick4() {
-setShowChargeList(false);
-setShowAddCharge(false);
-setShowBillTypeList(false);
-setShowAddBillType(false);
-setShowAddBillCategory(false);
-setShowBillCategoryList(true);
-setShowAddFundingSource(false);
-setShowFundingSourceList(false);
-setShowAddPaymentType(false);
-setShowPaymentTypeList(false);
-setShowAddLedgerType(false);
-setShowLedgerTypeList(false);
-setShowDeptList(false);
-setShowAddDept(false);
-setShowAddFinYear(false);
-setShowFinYearList(false);
+    setShowChargeList(false);
+    setShowAddCharge(false);
+    setShowBillTypeList(false);
+    setShowAddBillType(false);
+    setShowAddBillCategory(false);
+    setShowBillCategoryList(true);
+    setShowAddFundingSource(false);
+    setShowFundingSourceList(false);
+    setShowAddPaymentType(false);
+    setShowPaymentTypeList(false);
+    setShowAddLedgerType(false);
+    setShowLedgerTypeList(false);
+    setShowDeptList(false);
+    setShowAddDept(false);
+    setShowAddFinYear(false);
+    setShowFinYearList(false);
   }
   function handleClick5() {
-setShowChargeList(false);
-setShowAddCharge(false);
-setShowBillTypeList(false);
-setShowAddBillType(true);
-setShowAddBillCategory(false);
-setShowBillCategoryList(false);
-setShowAddFundingSource(false);
-setShowFundingSourceList(false);
-setShowAddPaymentType(false);
-setShowPaymentTypeList(false);
-setShowAddLedgerType(false);
-setShowLedgerTypeList(false);
-setShowDeptList(false);
-setShowAddDept(false);
-setShowAddFinYear(false);
-setShowFinYearList(false);
+    setShowChargeList(false);
+    setShowAddCharge(false);
+    setShowBillTypeList(false);
+    setShowAddBillType(true);
+    setShowAddBillCategory(false);
+    setShowBillCategoryList(false);
+    setShowAddFundingSource(false);
+    setShowFundingSourceList(false);
+    setShowAddPaymentType(false);
+    setShowPaymentTypeList(false);
+    setShowAddLedgerType(false);
+    setShowLedgerTypeList(false);
+    setShowDeptList(false);
+    setShowAddDept(false);
+    setShowAddFinYear(false);
+    setShowFinYearList(false);
   }
   function handleClick6() {
-setShowChargeList(false);
-setShowAddCharge(false);
-setShowBillTypeList(true);
-setShowAddBillType(false);
-setShowAddBillCategory(false);
-setShowBillCategoryList(false);
-setShowAddFundingSource(false);
-setShowFundingSourceList(false);
-setShowAddPaymentType(false);
-setShowPaymentTypeList(false);
-setShowAddLedgerType(false);
-setShowLedgerTypeList(false);
-setShowDeptList(false);
-setShowAddDept(false);
-setShowAddFinYear(false);
-setShowFinYearList(false);
+    setShowChargeList(false);
+    setShowAddCharge(false);
+    setShowBillTypeList(true);
+    setShowAddBillType(false);
+    setShowAddBillCategory(false);
+    setShowBillCategoryList(false);
+    setShowAddFundingSource(false);
+    setShowFundingSourceList(false);
+    setShowAddPaymentType(false);
+    setShowPaymentTypeList(false);
+    setShowAddLedgerType(false);
+    setShowLedgerTypeList(false);
+    setShowDeptList(false);
+    setShowAddDept(false);
+    setShowAddFinYear(false);
+    setShowFinYearList(false);
   }
   function handleClick7() {
     setShowChargeList(false);
@@ -269,22 +269,22 @@ setShowFinYearList(false);
     setShowFinYearList(false);
   }
   function handleClick8() {
-setShowChargeList(false);
-setShowAddCharge(false);
-setShowBillTypeList(false);
-setShowAddBillType(false);
-setShowAddBillCategory(false);
-setShowBillCategoryList(false);
-setShowAddFundingSource(false);
-setShowFundingSourceList(false);
-setShowAddPaymentType(false);
-setShowPaymentTypeList(false);
-setShowAddLedgerType(false);
-setShowLedgerTypeList(false);
-setShowDeptList(true);
-setShowAddDept(false);
-setShowAddFinYear(false);
-setShowFinYearList(false);
+    setShowChargeList(false);
+    setShowAddCharge(false);
+    setShowBillTypeList(false);
+    setShowAddBillType(false);
+    setShowAddBillCategory(false);
+    setShowBillCategoryList(false);
+    setShowAddFundingSource(false);
+    setShowFundingSourceList(false);
+    setShowAddPaymentType(false);
+    setShowPaymentTypeList(false);
+    setShowAddLedgerType(false);
+    setShowLedgerTypeList(false);
+    setShowDeptList(true);
+    setShowAddDept(false);
+    setShowAddFinYear(false);
+    setShowFinYearList(false);
   }
   function handleClick9() {
     setShowChargeList(false);
@@ -302,7 +302,8 @@ setShowFinYearList(false);
     setShowDeptList(false);
     setShowAddDept(false);
     setShowAddFinYear(true);
-    setShowFinYearList(false);  }
+    setShowFinYearList(false);
+  }
   function handleClick10() {
     setShowChargeList(false);
     setShowAddCharge(false);
@@ -319,7 +320,8 @@ setShowFinYearList(false);
     setShowDeptList(false);
     setShowAddDept(false);
     setShowAddFinYear(false);
-    setShowFinYearList(true);  }
+    setShowFinYearList(true);
+  }
   function handleClick11() {
     setShowChargeList(false);
     setShowAddCharge(false);
@@ -336,7 +338,8 @@ setShowFinYearList(false);
     setShowDeptList(false);
     setShowAddDept(false);
     setShowAddFinYear(false);
-    setShowFinYearList(false);  }
+    setShowFinYearList(false);
+  }
   function handleClick12() {
     setShowChargeList(false);
     setShowAddCharge(false);
@@ -353,7 +356,8 @@ setShowFinYearList(false);
     setShowDeptList(false);
     setShowAddDept(false);
     setShowAddFinYear(false);
-    setShowFinYearList(false);  }
+    setShowFinYearList(false);
+  }
   function handleClick13() {
     setShowChargeList(false);
     setShowAddCharge(false);
@@ -370,7 +374,8 @@ setShowFinYearList(false);
     setShowDeptList(false);
     setShowAddDept(false);
     setShowAddFinYear(false);
-    setShowFinYearList(false);  }
+    setShowFinYearList(false);
+  }
   function handleClick14() {
     setShowChargeList(false);
     setShowAddCharge(false);
@@ -387,7 +392,8 @@ setShowFinYearList(false);
     setShowDeptList(false);
     setShowAddDept(false);
     setShowAddFinYear(false);
-    setShowFinYearList(false);  }
+    setShowFinYearList(false);
+  }
   function handleClick15() {
     setShowChargeList(false);
     setShowAddCharge(false);
@@ -404,7 +410,8 @@ setShowFinYearList(false);
     setShowDeptList(false);
     setShowAddDept(false);
     setShowAddFinYear(false);
-    setShowFinYearList(false);  }
+    setShowFinYearList(false);
+  }
   function handleClick16() {
     setShowChargeList(false);
     setShowAddCharge(false);
@@ -443,7 +450,7 @@ const handleClick17 = ()=>{
 
   return (
     <div className={`sidebar ${isSidebarOpen ? "open" : ""}`} ref={sidebarRef}>
-      <div className="sidebar-header" onClick={toggleSidebar}>
+      <div className={` ${isSidebarOpen ? "header-open" : "sidebar-header"}`} onClick={toggleSidebar}>
         <FontAwesomeIcon icon={faBars} className="sidebar-toggle-icon" />
       </div>
       {isSidebarOpen && (
@@ -463,7 +470,7 @@ const handleClick17 = ()=>{
                     onClick={toggleDropdown11}
                   >
                     <span>Acc Charge</span>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<FontAwesomeIcon
+                    &nbsp;&nbsp;&nbsp;<FontAwesomeIcon
                       icon={isDropdown11Open ? faAngleDown : faAngleRight}
                     />
                   </button>
@@ -494,7 +501,7 @@ const handleClick17 = ()=>{
                     onClick={toggleDropdown12}
                   >
                     <span>Bill Category</span>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<FontAwesomeIcon
+                    &nbsp;&nbsp;&nbsp;<FontAwesomeIcon
                       icon={isDropdown12Open ? faAngleDown : faAngleRight}
                     />
                   </button>
@@ -525,7 +532,7 @@ const handleClick17 = ()=>{
                     onClick={toggleDropdown13}
                   >
                     <span>Bill Type</span>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<FontAwesomeIcon
+                    &nbsp;&nbsp;&nbsp;<FontAwesomeIcon
                       icon={isDropdown13Open ? faAngleDown : faAngleRight}
                     />
                   </button>
@@ -556,7 +563,7 @@ const handleClick17 = ()=>{
                     onClick={toggleDropdown14}
                   >
                     <span>Department</span>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<FontAwesomeIcon
+                    &nbsp;&nbsp;&nbsp;<FontAwesomeIcon
                       icon={isDropdown14Open ? faAngleDown : faAngleRight}
                     />
                   </button>
@@ -587,7 +594,7 @@ const handleClick17 = ()=>{
                     onClick={toggleDropdown15}
                   >
                     <span>FinancialYear</span>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<FontAwesomeIcon
+                    &nbsp;&nbsp;&nbsp;<FontAwesomeIcon
                       icon={isDropdown15Open ? faAngleDown : faAngleRight}
                     />
                   </button>
@@ -618,7 +625,7 @@ const handleClick17 = ()=>{
                     onClick={toggleDropdown16}
                   >
                     <span>FundingSource</span>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<FontAwesomeIcon
+                    &nbsp;&nbsp;&nbsp;<FontAwesomeIcon
                       icon={isDropdown16Open ? faAngleDown : faAngleRight}
                     />
                   </button>
@@ -649,7 +656,7 @@ const handleClick17 = ()=>{
                     onClick={toggleDropdown17}
                   >
                     <span>LedgerType</span>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<FontAwesomeIcon
+                    &nbsp;&nbsp;&nbsp;<FontAwesomeIcon
                       icon={isDropdown17Open ? faAngleDown : faAngleRight}
                     />
                   </button>
@@ -679,8 +686,8 @@ const handleClick17 = ()=>{
                     className="sidebar-dropdown2"
                     onClick={toggleDropdown18}
                   >
-                    <span>PaymentType&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<FontAwesomeIcon
+                    <span>PaymentType</span>
+                    &nbsp;&nbsp;&nbsp;<FontAwesomeIcon
                       icon={isDropdown18Open ? faAngleDown : faAngleRight}
                     />
                   </button>

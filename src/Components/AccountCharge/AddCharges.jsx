@@ -109,7 +109,7 @@ function Addcharges() {
 
   const mainModal = (
 
-    <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
+    <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange}>
 
       <button id='close-btn' onClick={closeModal}>close</button>
       <h2>Form</h2>
@@ -237,7 +237,7 @@ function Addcharges() {
   return (
     <>
 
-      <button className='modal-btn' onClick={() => setShowModal(true)}>Add charges</button>
+      <button className='modal-btn' id='addButton' onClick={() => setShowModal(true)}>Add Charges</button>
       {ShowModal && mainModal}
 
       <div className="user-list">

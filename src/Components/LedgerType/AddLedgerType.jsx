@@ -132,7 +132,7 @@ function AddLedgerType() {
   return (
    <>
 
-   <button className='modal-btn' onClick={()=>setShowModal(true)}>Add LedgerType</button>
+   <button className='modal-btn' id='addButton' onClick={()=>setShowModal(true)}>Add LedgerType</button>
    {ShowModal && mainModal}
 
    <div className="user-list">

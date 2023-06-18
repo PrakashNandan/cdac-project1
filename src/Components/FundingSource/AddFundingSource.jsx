@@ -130,7 +130,7 @@ function AddFundingSource() {
   return (
    <>
 
-   <button className='modal-btn' onClick={()=>setShowModal(true)}>Add Funding Source</button>
+   <button className='modal-btn' id='addButton' onClick={()=>setShowModal(true)}>Add Funding Source</button>
    {ShowModal && mainModal}
 
    <div className="user-list">

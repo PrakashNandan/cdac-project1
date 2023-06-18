@@ -14,7 +14,7 @@ function AddBillType() {
     const [ShowModal, setShowModal]=useState(false);
     const [currentPage, setCurrentPage]=useState(1);
     const [billTypePerPage, setBillTypePerPage] = useState(3);
-    const [isError, setIsError] =useState('');
+    const [isError, setIsError] = useState('');
 
     const [billType, setBillType] = useState({
         billTypeName: '',
@@ -141,7 +141,7 @@ function AddBillType() {
   return (
    <>
 
-   <button className='modal-btn' onClick={()=>setShowModal(true)}>Add Bill Type</button>
+   <button className='modal-btn' id='addButton' onClick={()=>setShowModal(true)}>Add Bill Type</button>
    {ShowModal && mainModal}
 
    <div className="user-list">
