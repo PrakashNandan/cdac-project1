@@ -3,7 +3,7 @@ import axios from '../../service/helperUtil'
 
 // Register user
 const register = async (userData) => {
-  const response = await axios.post('/account/register', userData)
+  const response = await axios.post('/auth/register', userData)
 
   if (response.data) {
     localStorage.setItem('user', JSON.stringify(response.data))
@@ -14,8 +14,17 @@ const register = async (userData) => {
 
 // Login user
 const login = async (userData) => {
-  const response = await axios.post('/login', userData)
+  const response = await axios.post('/auth/login', userData)
   console.log(response.data);
+  const token = response.data.accessToken ; 
+  localStorage.setItem("accessToken", token);
+  
+//    token = localStorage.getItem('token');
+// if (token) {
+//   alert("token identified")
+//   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+// }
+
 
   if (response.data) {
     localStorage.setItem('user', JSON.stringify(response.data))
@@ -23,6 +32,7 @@ const login = async (userData) => {
 
   return response.data
 }
+
 
 // Logout user
 const logout = () => {

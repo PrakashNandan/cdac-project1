@@ -7,6 +7,7 @@ import UserData from './UserData';
 import '../../style/UserData.css'
 import { ToastContainer, toast } from 'react-toastify'
 import Pagination from '../Pagination';
+import { privateAxios } from '../../service/helperUtil.js';
 // const API="https://jsonplaceholder.typicode.com"
 
 function Addcharges() {
@@ -57,7 +58,10 @@ function Addcharges() {
 
 
     try {
-      const res = await axios.post("/charge/save", user);
+      const res = await  privateAxios.get("/charge/", user)
+      .then( (Response)=>console.log(Response))
+      .catch( (err) => console.log(err))
+
       toast.success('Submit Successfully')
       setUsers([...users, user]);
       console.log(res);

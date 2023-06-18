@@ -38,11 +38,11 @@ function Login() {
 
        
 
-          // const handleClick = () => {
+          const handleClick = () => {
            
-          //   navigate('/loggedin');
+            navigate('/loggedin');
 
-          // };
+          };
 
       //*************************************** */
 
@@ -70,9 +70,10 @@ function Login() {
         e.preventDefault()
 
         const userData={
-            username,
-            password
+            username : formData.username,
+            password : formData.password
         }
+        console.log(userData)
 
         dispatch(login(userData));
 
