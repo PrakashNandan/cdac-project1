@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import Spinner from '../Components/Spinner'
 import UserDetail from '../Components/UserDetail'
+import LoginFormPage from './LoginFormPage'
+
 
 
 
@@ -84,11 +86,11 @@ function Login() {
         <h1>
           <FaSignInAlt /> Log In
         </h1>
-        <p>Please Log In</p>
+       
       </section>
 
       <section className='form'>
-        <form onSubmit={onSubmit}>
+        {/* <form onSubmit={onSubmit}>
 
           <div className='form-group'>
             <input
@@ -119,7 +121,14 @@ function Login() {
             </button>
 
           </div>
-        </form>
+        </form> */}
+
+        <LoginFormPage/>
+
+
+
+
+
       </section>
       <ToastContainer/>
     </>
