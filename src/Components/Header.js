@@ -3,6 +3,7 @@ import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout, reset } from '../features/auth/authSlice'
+import Logo from '../img/Logo.svg'
 
 function Header() {
 
@@ -19,7 +20,7 @@ function Header() {
   return (
     <header className='header'>
       <div className='logo'>
-        <Link to='/'><h3>HRMS Portal</h3> </Link>
+      <Link to='/'><img src={Logo} alt="Logo"></img></Link>
       </div>
       <ul>
         {user ? (

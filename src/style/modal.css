@@ -13,7 +13,6 @@
     bottom: 0;
     background-color: rgb(209, 209, 209);
     opacity: 0.4;
-
 }
 
 #modalParent {
@@ -22,26 +21,33 @@
 
 .modal_container {
     position: fixed;
-    top: 60%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50.5%);
-    background-color: rgba(255, 255, 255, 0.567);
-    /* max-width: 30rem; */
+    transform: translate(-50%, -50%);
+    background-color: white;
+    max-width: 30rem;
     padding: 2rem 2rem;
     border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
-    width: 60vw;
+    width: 50%;
+    min-width: 333px;
     max-height: 100vh;
     overflow-y: auto;
-     /* height: 100%;  */
+    z-index: 10;
+    /* height: 100%; */
 
 }
 
 .modal_container h2 {
     margin-bottom: 0.6rem;
+    padding-top: 30px;
+}
+
+#entryDate {
+    width: 100%;
 }
 
 .modal-btn {
@@ -61,6 +67,16 @@
     border: #212121;
     transform: scale(1);
     transition: all 0.1s;
+}
+
+#addButton {
+    margin-top: 60px;
+    margin-bottom:10px;
+}
+
+.user-list h3 {
+    padding: 0;
+    padding-bottom: 30px;
 }
 
 #close-btn {
@@ -107,4 +123,10 @@
     flex-wrap: wrap;
     width: 24%;
     margin-left: 15.4rem;
+}
+
+@media (max-width: 1200px) {
+    .modal_container {
+        width: 70%;
+    }
 }

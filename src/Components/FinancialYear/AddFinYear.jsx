@@ -181,7 +181,7 @@ function AddFinYear() {
   return (
    <>
 
-   <button className='modal-btn' onClick={()=>setShowModal(true)}>Add Financial Year</button>
+   <button className='modal-btn' id='addButton' onClick={()=>setShowModal(true)}>Add Financial Year</button>
    {ShowModal && mainModal}
 
    <div className="user-list">
