@@ -202,7 +202,13 @@ function Register() {
         </div>
       </form> */}
 
-      <RegisterForm/>
+      <RegisterForm username={username}
+      email={email}
+      mobileNo={mobileNo}
+      password={password}
+      onChange={onChange}
+      onSubmit={onSubmit}
+      />
 
     </section>
     <ToastContainer/>
