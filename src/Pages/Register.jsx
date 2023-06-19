@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { FaUser } from 'react-icons/fa'
 import { register, reset } from '../features/auth/authSlice'
-import { toast } from 'react-toastify'
+import { ToastContainer, toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import { signUp } from '../features/auth/user'
@@ -11,17 +11,18 @@ import RegisterForm from './RegisterForm'
 
 
 
+
 function Register() {
 
     const [formData, setFormData] = useState({
-        name: '',
+        username: '',
         // username:'',
         email: '',
-        mobile: '',
-        role:'',
+        mobileNo: '',
+        // role:'',
         password: '',
         // password2: '',
-        about:''
+        // about:''
       })
 
       const [error, setError]=useState({
@@ -30,7 +31,7 @@ function Register() {
       })
 
 
-      const { name,username, email, mobile,role, password, password2 } = formData
+      const { username, email, mobileNo, password} = formData
 
       const navigate = useNavigate()
       const dispatch = useDispatch()
@@ -39,9 +40,19 @@ function Register() {
         (state) => state.auth
       )
 
-      useEffect(()=>{
-        console.log(formData);
-      },[formData])
+      useEffect(() => {
+        if (isError) {
+          toast.error(message)
+        }
+    
+        if (isSuccess || user) {
+          navigate('/login')
+          toast.success("Register Successfully")
+
+        }
+    
+        dispatch(reset())
+      }, [user, isError, isSuccess, message])
     
 
 
@@ -59,36 +70,41 @@ function Register() {
         //data validate
 
         //call server api for sending data
-          signUp(formData).then((response)=>{ 
-          console.log(response)
-          console.log('success log')
-          toast.success('User is registered successfully !! user id' +response.id)
-          setFormData({
-            name:'',
-            email:'',
-            password:'',
-            about:'',
-          })
-        }).catch((error)=>{
-          console.log(error)
-          console.log("Error log")
-          //handle errors in proper way
-          setError({
-            errors:error,
-            isError:true
-          })
-        });
+        //   signUp(formData).then((response)=>{ 
+        //   console.log(response)
+        //   console.log('success log')
+        //   toast.success('User is registered successfully !! user id' +response.id)
+        //   setFormData({
+        //     Username:'',
+        //     email:'',
+        //     password:'',
+        //     mobileNo:'',
+        //   })
+        // }).catch((error)=>{
+        //   console.log(error)
+        //   console.log("Error log")
+        //   //handle errors in proper way
+        //   setError({
+        //     errors:error,
+        //     isError:true
+        //   })
+        // });
+
+        const userData = {
+          username,
+          email,
+          password,
+          mobileNo,
+        }
+
+        dispatch(register(userData));
   };
 
 
-
-
     
-    
-    // if(isLoading){
-    //     return <Spinner/>
-    // }
-
+    if(isLoading){
+        return <Spinner/>
+    }
 
 
   return (
@@ -100,20 +116,20 @@ function Register() {
       <p>Please create an account</p>
     </section>
 
-     <section className='form'>
-       {/* <form onSubmit={onSubmit}>
+    <section className='form'>
+      {/* <form onSubmit={onSubmit}>
         <div className='form-group'>
           <input
             type='text'
             className='form-control'
-            id='name'
-            name='name'
-            value={name}
-            placeholder='Enter your name'
+            id='username'
+            name='username'
+            value={username}
+            placeholder='Enter your username'
             onChange={onChange}
           />
         </div>
-         <div className='form-group'>
+        <div className='form-group'>
           <input
             type='text'
             className='form-control'
@@ -123,7 +139,7 @@ function Register() {
             placeholder='Enter your username'
             onChange={onChange}
           />
-        </div> 
+        </div>
         <div className='form-group'>
           <input
             type='email'
@@ -139,9 +155,9 @@ function Register() {
           <input
             type='number'
             className='form-control'
-            id='mobile'
-            name='mobile'
-            value={mobile}
+            id='mobileNo'
+            name='mobileNo'
+            value={mobileNo}
             placeholder='Enter your Mobile number'
             onChange={onChange}
           />
@@ -168,7 +184,7 @@ function Register() {
             onChange={onChange}
           />
         </div>
-         <div className='form-group'>
+        <div className='form-group'>
           <input
             type='password'
             className='form-control'
@@ -178,18 +194,18 @@ function Register() {
             placeholder='Confirm password'
             onChange={onChange}
           />
-        </div> 
+        </div>
         <div className='form-group'>
           <button type='submit' className='btn1 btn-block'>
             Submit
           </button>
         </div>
       </form> */}
+
       <RegisterForm/>
 
-
-
-    </section> 
+    </section>
+    <ToastContainer/>
   </>
   )
  }

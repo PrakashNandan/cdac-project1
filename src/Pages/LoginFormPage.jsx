@@ -10,7 +10,7 @@ import {
 }
 from 'mdb-react-ui-kit';
 
-function LoginFormPage() {
+function LoginFormPage({onChange, username, password, onSubmit}) {
   return (
     <MDBContainer fluid className="p-3 my-5">
 
@@ -23,8 +23,8 @@ function LoginFormPage() {
         <MDBCol col='4' md='6'>
 
 
-          <MDBInput wrapperClass='mb-4' label='Email address' id='formControlLg' type='email' size="lg"/>
-          <MDBInput wrapperClass='mb-4' label='Password' id='formControlLg' type='password' size="lg"/>
+          <MDBInput wrapperClass='mb-4' label='username' id='username' type='email' name='username' size="lg"  value={username} onChange={onChange} />
+          <MDBInput wrapperClass='mb-4' label='Password' id='password' type='password' name='password' size="lg" value={password} onChange={onChange}/>
 
 
           <div className="d-flex justify-content-between mx-4 mb-4">
@@ -32,7 +32,7 @@ function LoginFormPage() {
             <a href="!#">Forgot password?</a>
           </div>
 
-          <MDBBtn className="mb-4 w-100" size="lg">Sign in</MDBBtn>
+          <MDBBtn className="mb-4 w-100" size="lg" onClick={onSubmit}>Sign in</MDBBtn>
 
           <p className="small fw-bold mt-2 pt-1 mb-2">Don't have an account? <a href="#!" className="link-danger">Register</a></p>
 

@@ -30,15 +30,6 @@ function Login() {
     (state) => state.auth
   )
 
-  //****************************************/
-
-
-  // const handleClick = () => {
-  //   navigate('/loggedin');
-  // };
-
-  //****************************************/
-
   useEffect(() => {
     if (isError) {
       toast.error(message)
@@ -78,8 +69,7 @@ function Login() {
   }
 
 
-
-
+  
   return (
     <>
       <section className='heading'>
@@ -123,7 +113,7 @@ function Login() {
           </div>
         </form> */}
 
-        <LoginFormPage/>
+          <LoginFormPage onChange={onChange} username={username} password={password} onSubmit={onSubmit}/>
 
 
 
