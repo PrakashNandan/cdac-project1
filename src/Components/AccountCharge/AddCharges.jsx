@@ -65,7 +65,7 @@ function Addcharges() {
 
 
     try {
-      const res = await  privateAxios.post("/charge/", user)
+      const res = await  privateAxios.post("/charge/save", user)
       .then( (Response)=>console.log(Response))
       .catch( (err) => console.log(err))
 
