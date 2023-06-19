@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import { signUp } from '../features/auth/user'
 import Spinner from '../Components/Spinner'
+import RegisterForm from './RegisterForm'
 
 
 
@@ -51,7 +52,7 @@ function Register() {
         }
     
         dispatch(reset())
-      }, [user, isError, isSuccess, message, navigate, dispatch])
+      }, [user, isError, isSuccess, message])
     
 
 
@@ -105,16 +106,6 @@ function Register() {
         return <Spinner/>
     }
 
-    const handleShowToast =()=>{
-      if(isError){
-        toast.error("There is Error in Registration")
-      }
-      if(isSuccess){
-        toast.success("Registration Successfully");
-      }
-    }
-
-
 
   return (
     <>
@@ -126,7 +117,7 @@ function Register() {
     </section>
 
     <section className='form'>
-      <form onSubmit={onSubmit}>
+      {/* <form onSubmit={onSubmit}>
         <div className='form-group'>
           <input
             type='text'
@@ -138,7 +129,7 @@ function Register() {
             onChange={onChange}
           />
         </div>
-        {/* <div className='form-group'>
+        <div className='form-group'>
           <input
             type='text'
             className='form-control'
@@ -148,7 +139,7 @@ function Register() {
             placeholder='Enter your username'
             onChange={onChange}
           />
-        </div> */}
+        </div>
         <div className='form-group'>
           <input
             type='email'
@@ -171,7 +162,7 @@ function Register() {
             onChange={onChange}
           />
         </div>
-        {/* <div className='form-group'>
+        <div className='form-group'>
           <input
             type='text'
             className='form-control'
@@ -181,7 +172,7 @@ function Register() {
             placeholder='Enter your role'
             onChange={onChange}
           />
-        </div> */}
+        </div>
         <div className='form-group'>
           <input
             type='password'
@@ -193,7 +184,7 @@ function Register() {
             onChange={onChange}
           />
         </div>
-        {/* <div className='form-group'>
+        <div className='form-group'>
           <input
             type='password'
             className='form-control'
@@ -203,13 +194,22 @@ function Register() {
             placeholder='Confirm password'
             onChange={onChange}
           />
-        </div> */}
+        </div>
         <div className='form-group'>
-          <button type='submit' className='btn1 btn-block' onClick={handleShowToast}>
+          <button type='submit' className='btn1 btn-block'>
             Submit
           </button>
         </div>
-      </form>
+      </form> */}
+
+      <RegisterForm username={username}
+      email={email}
+      mobileNo={mobileNo}
+      password={password}
+      onChange={onChange}
+      onSubmit={onSubmit}
+      />
+
     </section>
     <ToastContainer/>
   </>

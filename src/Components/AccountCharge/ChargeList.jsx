@@ -3,6 +3,7 @@ import '../../style/chargeList.css'
 import axios from '../axios.jsx'
 import FindAllData from './FindAllData.jsx'
 import { ToastContainer, toast } from 'react-toastify'
+import { privateAxios } from '../../service/helperUtil'
 
 
 function ChargeList() {
@@ -14,17 +15,29 @@ function ChargeList() {
 
     useEffect(() => {
         handleFindALL();
-    }, [])
-
-
+    },[])
+   
+    // axios.interceptors.request.use(
+    //     (config) => {
+    //       const token = localStorage.getItem('token');
+    //       if (token) {
+    //         config.headers['Authorization'] = `Bearer ${token}`;
+    //       }
+    //       return config;
+    //     },
+    //     (error) => {
+    //       return Promise.reject(error);
+    //     }
+    //   );
 
 
     const handleFindALL = async () => {
 
         try {
 
-            const res = await axios.get("/charge/findAll");
-            setAllData(res.data);
+            const res = await privateAxios.get("/charge/findAll");
+            console.log(res.data);
+            setAllData(res.data.pageList.content);
             console.log(res.data);
 
 

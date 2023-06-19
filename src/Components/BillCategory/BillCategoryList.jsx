@@ -5,6 +5,7 @@ import FindAllData from '../AccountCharge/FindAllData.jsx'
 import {ToastContainer, toast} from 'react-toastify'
 import FindAllBillCategory from './FindAllBillCategory'
 import Pagination from '../Pagination'
+import { privateAxios } from '../../service/helperUtil'
 
 
 function BillCategoryList() {
@@ -27,7 +28,7 @@ function BillCategoryList() {
        
         try{
             
-            const res = await axios.get("/billCategory/findAll");
+            const res = await privateAxios.get("/billCategory/findAll");
             setAllData(res.data);
             console.log(res.data);
 

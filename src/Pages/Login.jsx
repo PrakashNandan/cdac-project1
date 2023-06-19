@@ -3,11 +3,13 @@ import { useState, useEffect } from 'react'
 import { FaSignInAlt } from 'react-icons/fa'
 import { FaUser } from 'react-icons/fa'
 import { login, logout, register, reset } from '../features/auth/authSlice'
-import { toast } from 'react-toastify'
+import { toast, ToastContainer } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import Spinner from '../Components/Spinner'
 import UserDetail from '../Components/UserDetail'
+import LoginFormPage from './LoginFormPage'
+
 
 
 
@@ -27,15 +29,6 @@ function Login() {
     (state) => state.auth
   )
 
-  //****************************************/
-
-
-  const handleClick = () => {
-    navigate('/loggedin');
-  };
-
-  //****************************************/
-
   useEffect(() => {
     if (isError) {
       toast.error(message)
@@ -43,10 +36,11 @@ function Login() {
 
     if (isSuccess || user) {
       navigate('/loggedin')
+      toast.success("You are successfully loggedin")
     }
 
-    dispatch(reset())
-  }, [user, isError, isSuccess, message, navigate, dispatch])
+
+  },[user, isError, isSuccess, message])
 
 
   const onChange = (e) => {
@@ -59,10 +53,11 @@ function Login() {
   const onSubmit = (e) => {
     e.preventDefault()
 
-    const userData = {
-      username,
-      password
-    }
+        const userData={
+            username : formData.username,
+            password : formData.password
+        }
+        console.log(userData)
 
     dispatch(login(userData));
 
@@ -73,19 +68,18 @@ function Login() {
   }
 
 
-
-
+  
   return (
     <>
       <section className='heading'>
         <h1>
           <FaSignInAlt /> Log In
         </h1>
-        <p>Please Log In</p>
+       
       </section>
 
       <section className='form'>
-        <form onSubmit={onSubmit}>
+        {/* <form onSubmit={onSubmit}>
 
           <div className='form-group'>
             <input
@@ -111,16 +105,26 @@ function Login() {
             />
           </div>
           <div className='form-group'>
-            <button type='submit' className='btn1 btn-block' onClick={handleClick}>
+            <button type='submit' className='btn1 btn-block'>
               Log In
             </button>
 
           </div>
-        </form>
+        </form> */}
+
+          <LoginFormPage onChange={onChange} username={username} password={password} onSubmit={onSubmit}/>
+
+
+
+
+
       </section>
+      <ToastContainer/>
     </>
   )
 
+  
+
 }
 
-export default Login
+export default Login;
