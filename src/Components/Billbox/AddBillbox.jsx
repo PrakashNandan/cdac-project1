@@ -158,22 +158,22 @@ function AddBillbox() {
                                     <select className="option2" value={selectedOption1} onChange={handleSelect1Change}>
 
                                         <option value="">BillType</option>
-                                            {select1Data.map(item => (
+                                            {/* {select1Data.map(item => (
                                             <option key={item.id} value={item.id}>
                                                 {item.name}
                                          </option>
-                                            ))}
+                                            ))} */}
                                     </select>
                                 </div>
 
                                 <div class="div-element">
                                     <select className="option11" value={selectedOption2} onChange={handleSelect2Change}>
                                     <option value="">BillCategory</option>
-                                            {select2Data.map(item => (
+                                            {/* {select2Data.map(item => (
                                             <option key={item.id} value={item.id}>
                                                 {item.name}
                                          </option>
-                                            ))}
+                                            ))} */}
                                         
                                     </select>
                                 </div>
@@ -183,11 +183,11 @@ function AddBillbox() {
                                     <select className="option33" id="input-box1" value={selectedOption3} onChange={handleSelect3Change}>
                 
                                         <option value="">Funding Source</option>
-                                            {select3Data.map(item => (
+                                            {/* {select3Data.map(item => (
                                             <option key={item.id} value={item.id}>
                                                 {item.name}
                                          </option>
-                                            ))}
+                                            ))} */}
                                         
                                         
                                     </select>

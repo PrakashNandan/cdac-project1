@@ -51,7 +51,7 @@ function Register() {
         }
     
         dispatch(reset())
-      }, [user, isError, isSuccess, message, navigate, dispatch])
+      }, [user, isError, isSuccess, message])
     
 
 
@@ -104,16 +104,6 @@ function Register() {
     if(isLoading){
         return <Spinner/>
     }
-
-    const handleShowToast =()=>{
-      if(isError){
-        toast.error("There is Error in Registration")
-      }
-      if(isSuccess){
-        toast.success("Registration Successfully");
-      }
-    }
-
 
 
   return (
@@ -205,7 +195,7 @@ function Register() {
           />
         </div> */}
         <div className='form-group'>
-          <button type='submit' className='btn1 btn-block' onClick={handleShowToast}>
+          <button type='submit' className='btn1 btn-block'>
             Submit
           </button>
         </div>

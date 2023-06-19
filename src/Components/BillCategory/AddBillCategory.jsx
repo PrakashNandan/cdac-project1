@@ -131,7 +131,7 @@ function AddBillCategory() {
   return (
     <>
 
-      <button className='modal-btn' onClick={() => setShowModal(true)}>Add billCategoryName</button>
+      <button className='modal-btn' id='addButton' onClick={() => setShowModal(true)}>Add billCategoryName</button>
       {ShowModal && mainModal}
 
       <div className="user-list">

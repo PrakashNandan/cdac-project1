@@ -5,6 +5,7 @@ import FindAllData from '../AccountCharge/FindAllData.jsx'
 import {ToastContainer, toast} from 'react-toastify'
 import FindAllBillCategory from './FindAllBillCategory'
 import Pagination from '../Pagination'
+import { privateAxios } from '../../service/helperUtil'
 
 
 function BillCategoryList() {
@@ -27,7 +28,7 @@ function BillCategoryList() {
        
         try{
             
-            const res = await axios.get("/billCategory/findAll");
+            const res = await privateAxios.get("/billCategory/findAll");
             setAllData(res.data);
             console.log(res.data);
 
@@ -99,7 +100,7 @@ function BillCategoryList() {
           </div> */}
             <div className="parentSearchInput">
                 <input type="number" className='userPerPageClass' id='Pagi_input_id' name='userPerPage' value={userPerPage} onChange={(e)=>{setUserPerPage(e.target.value)}} />
-
+                <div className="spacer"></div>
                 <input type="number" placeholder='search by ID' id='searchInput' value={inputId} onChange={(e) => setInputId(e.target.value)} /> 
                 <button className='btn btn-primary' id='searchDataID' onClick={fetchData}>Search</button>   
             </div>
