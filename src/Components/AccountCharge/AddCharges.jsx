@@ -119,14 +119,14 @@ function Addcharges() {
 
     <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange}>
 
-      <button id='close-btn' onClick={closeModal}>close</button>
+      {/* <button id='close-btn' onClick={closeModal}>&#x2716</button> */}
       <h2>Form</h2>
 
-      <form onSubmit={handleSubmit} className='form'>
+      {/* <form onSubmit={handleSubmit} className='form'> */}
 
-        <div >
+        {/* <div >
           {/* <label htmlFor="chargeName">Charge Name:</label> */}
-          <input
+          {/* <input
             type="text"
             name="chargeName"
             id="chargeName"
@@ -134,32 +134,32 @@ function Addcharges() {
             onChange={handleInputChange}
             placeholder="Enter chargeName"
             required
-          />
-        </div>
-        <div >
+          /> */}
+        {/* </div>
+        <div >  */}
           {/* <label htmlFor="chargeType">Charge Type:</label> */}
-          <input
+          {/* <input
             type="number"
             name="chargeType"
             id="chargeType"
             value={user.chargeType}
             onChange={handleInputChange}
-            placeholder="Enter chargeType"
-          // required
-          />
-        </div>
+            placeholder="Enter chargeType" */}
+          {/* // required */}
+          {/* /> */}
+        {/* </div>
         <div >
           {/* <label htmlFor="chargeRate">Charge Rate:</label> */}
-          <input
+          {/* <input
             type="number"
             name="chargeRate"
             id="chargeRate"
             value={user.chargeRate}
             onChange={handleInputChange}
-            placeholder="Enter chargeRate"
-          // required
-          />
-        </div>
+          //   placeholder="Enter chargeRate" */} 
+          {/* // // required */}
+          {/* // /> */}
+        {/* </div>
         <div>
           <label htmlFor="entryDate">Entry Date: &nbsp;</label>
           <input
@@ -168,13 +168,13 @@ function Addcharges() {
             id="entryDate"
             value={user.entryDate}
             onChange={handleInputChange}
-            placeholder="Enter entryDate"
-          // required
-          />
-        </div>
+            placeholder="Enter entryDate" */}
+          {/* // required */}
+          {/* /> */}
+        {/* </div>
         <div >
           {/* <label htmlFor="chargeAmount">charge Amount:</label> */}
-          <input
+          {/* <input
             type="number"
             name="chargeAmount"
             id="chargeAmount"
@@ -186,19 +186,19 @@ function Addcharges() {
         </div>
         <div >
           {/* <label htmlFor="chargeApplyOnBaseAmount">chargeApplyOnBaseAmount:</label> */}
-          <input
+          {/* <input
             type="number"
             name="chargeApplyOnBaseAmount"
             id="chargeApplyOnBaseAmount"
             value={user.chargeApplyOnBaseAmount}
             onChange={handleInputChange}
-            placeholder="Enter chargeApplyOnBaseAmount"
-          // required
-          />
-        </div>
+            placeholder="Enter chargeApplyOnBaseAmount" */}
+          {/* // required */}
+          {/* /> */} 
+        {/* </div>
         <div >
           {/* <label htmlFor="roundingType">Rounding Type:</label> */}
-          <input
+          {/* <input
             type="number"
             name="roundingType"
             id="roundingType"
@@ -207,8 +207,8 @@ function Addcharges() {
             placeholder="Enter roundingType"
           // required
           />
-        </div>
-        <div >
+        </div> */} 
+        {/* <div >
           <label htmlFor="hoaPostingRequired">hoaPostingRequired: &nbsp;</label>
           <input
             type="checkbox"
@@ -219,8 +219,8 @@ function Addcharges() {
             onChange={handleInputChange}
             placeholder="Enter hoaPostingRequired"
 
-          />
-        </div>
+          /> */}
+        {/* </div>
         <div >
           <label htmlFor="depositToGovt">is Deposit to Govt? &nbsp;</label>
           <input
@@ -232,21 +232,77 @@ function Addcharges() {
             placeholder="Enter depositToGovt"
 
           />
-        </div>
+        </div> */}
 
         {/* onClick={closeModal} */}
         
-        {isSubmitting ? (
-           <button class="modal-btn" type="button" disabled>
-           <span class="spinner-border" style={{margin:'0 0.3rem', height:'1.6rem', width:'1.5rem'}} role="status" aria-hidden="true"></span>
-           {/* <span class="sr-only">Loading...</span> */}
-           Submitting...
-         </button>
-              ) : (
-                <button className='modal-btn' type='submit' >Submit</button>
-         )}
-          
-      </form>
+        {/* {isSubmitting ? (
+          <button class="modal-btn" type="button" disabled>
+            <span class="spinner-border" style={{ margin: '0 0.3rem', height: '1.6rem', width: '1.5rem' }} role="status" aria-hidden="true"></span>
+            {/* <span class="sr-only">Loading...</span> */}
+            {/* Submitting...
+          </button>
+        ) : (
+          <button className='modal-btn' type='submit' >Submit</button>
+        )}
+
+      </form> */} 
+     <form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Enter charge Name</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter charge Name"/>
+    <small id="emailHelp" class="form-text text-muted">We'll never share your it with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Enter charge Type</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter charge type"/>
+    
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Enter charge Rate</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter charge Rate"/>
+    <div>
+          <label htmlFor="entryDate">Entry Date: &nbsp;</label>
+          <input
+            type="date"
+            name="entryDate"
+            id="entryDate"
+            value={user.entryDate}
+            onChange={handleInputChange}
+            placeholder="Enter entryDate" 
+            required 
+           /> 
+         </div> 
+    
+  </div>
+  
+  <div class="form-group">
+    <label for="exampleInputEmail1">Enter charge Amount</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter amount"/>
+    
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Enter Rounding Amount</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter RoundingAmount"/>
+    
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Enter charge Apply on base Amount</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter amount"/>
+    
+  </div>
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
+    <label class="form-check-label" for="exampleCheck1">Hoa Posting Required</label>
+  </div>
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
+    <label class="form-check-label" for="exampleCheck1">Is Deposit to Govt?</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
 
     </Mymodal>
   )
@@ -301,4 +357,4 @@ function Addcharges() {
   )
 }
 
-export default Addcharges;
+export default Addcharges
