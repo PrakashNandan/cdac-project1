@@ -251,7 +251,7 @@ function Addcharges() {
                   <th>roundingType</th>
                   <th>hoaPostingRequired</th>
                   <th>depositToGovt</th>
-                  <th>Actions</th>
+                  
                 </tr>
               </thead>
               <tbody>
