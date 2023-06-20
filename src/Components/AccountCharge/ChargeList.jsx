@@ -51,7 +51,7 @@ function ChargeList() {
         try {
 
             const res = await privateAxios.get("/charge/findAll");
-            setAllData(res.data.pageList.content)
+            setAllData(res.data.pageList.content);
 
 
         } catch (error) {
