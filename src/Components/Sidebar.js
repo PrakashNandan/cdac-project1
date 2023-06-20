@@ -5,7 +5,6 @@ import {
   faAngleDown,
   faAngleRight,
 } from "@fortawesome/free-solid-svg-icons";
-import "../style/Sidebar.css";
 import axios from "./axios.jsx";
 import "../style/Sidebar.css";
 import { useNavigate } from "react-router-dom";
@@ -432,6 +431,9 @@ const navigate =useNavigate();
 const handleClick17 = ()=>{
     navigate('/addbill')
 }
+const handleClick18 = ()=>{
+    navigate('/billboxList')
+}
   const sidebarRef = useRef(null);
 
   useEffect(() => {
@@ -454,25 +456,29 @@ const handleClick17 = ()=>{
         <FontAwesomeIcon icon={faBars} className="sidebar-toggle-icon" />
       </div>
       {isSidebarOpen && (
+        
         <ul className="sidebar-menu">
           <li>
-            <button className="sidebar-dropdown" onClick={toggleDropdown}>
-              <span>Admin</span>
-              <FontAwesomeIcon
-                icon={isDropdownOpen ? faAngleDown : faAngleRight}
-              />
+            <button className={`sidebar-dropdown ${isDropdownOpen ? "sidebar-dropdown-open" : ""}`} onClick={toggleDropdown}>
+             <div className="grid1">
+              <div className="gridX">Admin</div>
+              <div className={` ${isDropdownOpen ? "down":"up"}`}><FontAwesomeIcon
+                icon={faAngleRight}
+              /></div>
+              </div> 
             </button>
             {isDropdownOpen && (
-              <ul className="sidebar-submenu">
-                <li>
+              <div className="lists">
+              <ul className={"sidebar-submenu asdf"} >
+                <li >
                   <button
                     className="sidebar-dropdown2"
                     onClick={toggleDropdown11}
                   >
                     <span>Acc Charge</span>
-                    &nbsp;&nbsp;&nbsp;<FontAwesomeIcon
+                    <div className="arrow-icon"><FontAwesomeIcon
                       icon={isDropdown11Open ? faAngleDown : faAngleRight}
-                    />
+                    /></div>
                   </button>
                   {isDropdown11Open && (
                     <ul className="sidebar-submenu2">
@@ -501,9 +507,9 @@ const handleClick17 = ()=>{
                     onClick={toggleDropdown12}
                   >
                     <span>Bill Category</span>
-                    &nbsp;&nbsp;&nbsp;<FontAwesomeIcon
+                    <div className="arrow-icon"><FontAwesomeIcon
                       icon={isDropdown12Open ? faAngleDown : faAngleRight}
-                    />
+                    /></div>
                   </button>
                   {isDropdown12Open && (
                     <ul className="sidebar-submenu3">
@@ -532,9 +538,9 @@ const handleClick17 = ()=>{
                     onClick={toggleDropdown13}
                   >
                     <span>Bill Type</span>
-                    &nbsp;&nbsp;&nbsp;<FontAwesomeIcon
+                    <div className="arrow-icon"><FontAwesomeIcon
                       icon={isDropdown13Open ? faAngleDown : faAngleRight}
-                    />
+                    /></div>
                   </button>
                   {isDropdown13Open && (
                     <ul className="sidebar-submenu3">
@@ -563,9 +569,9 @@ const handleClick17 = ()=>{
                     onClick={toggleDropdown14}
                   >
                     <span>Department</span>
-                    &nbsp;&nbsp;&nbsp;<FontAwesomeIcon
+                    <div className="arrow-icon"><FontAwesomeIcon
                       icon={isDropdown14Open ? faAngleDown : faAngleRight}
-                    />
+                    /></div>
                   </button>
                   {isDropdown14Open && (
                     <ul className="sidebar-submenu3">
@@ -594,9 +600,9 @@ const handleClick17 = ()=>{
                     onClick={toggleDropdown15}
                   >
                     <span>FinancialYear</span>
-                    &nbsp;&nbsp;&nbsp;<FontAwesomeIcon
+                    <div className="arrow-icon"><FontAwesomeIcon
                       icon={isDropdown15Open ? faAngleDown : faAngleRight}
-                    />
+                    /></div>
                   </button>
                   {isDropdown15Open && (
                     <ul className="sidebar-submenu3">
@@ -625,9 +631,9 @@ const handleClick17 = ()=>{
                     onClick={toggleDropdown16}
                   >
                     <span>FundingSource</span>
-                    &nbsp;&nbsp;&nbsp;<FontAwesomeIcon
+                    <div className="arrow-icon"><FontAwesomeIcon
                       icon={isDropdown16Open ? faAngleDown : faAngleRight}
-                    />
+                    /></div>
                   </button>
                   {isDropdown16Open && (
                     <ul className="sidebar-submenu3">
@@ -656,9 +662,9 @@ const handleClick17 = ()=>{
                     onClick={toggleDropdown17}
                   >
                     <span>LedgerType</span>
-                    &nbsp;&nbsp;&nbsp;<FontAwesomeIcon
+                    <div className="arrow-icon"><FontAwesomeIcon
                       icon={isDropdown17Open ? faAngleDown : faAngleRight}
-                    />
+                    /></div>
                   </button>
                   {isDropdown17Open && (
                     <ul className="sidebar-submenu3">
@@ -687,9 +693,9 @@ const handleClick17 = ()=>{
                     onClick={toggleDropdown18}
                   >
                     <span>PaymentType</span>
-                    &nbsp;&nbsp;&nbsp;<FontAwesomeIcon
+                    <div className="arrow-icon"><FontAwesomeIcon
                       icon={isDropdown18Open ? faAngleDown : faAngleRight}
-                    />
+                    /></div>
                   </button>
                   {isDropdown18Open && (
                     <ul className="sidebar-submenu3">
@@ -713,14 +719,18 @@ const handleClick17 = ()=>{
                   )}
                 </li>
               </ul>
+              </div>
             )}
           </li>
           <li>
             <button className="sidebar-dropdown" onClick={toggleDropdown2}>
-              <span>Transactions</span>
-              <FontAwesomeIcon
-                icon={isDropdown2Open ? faAngleDown : faAngleRight}
-              />
+            <div className="grid2">
+              <div className="gridX">Transactions</div>
+              <div className={` ${isDropdown2Open ? "down":"up"}`}><FontAwesomeIcon
+                icon={faAngleRight}
+              /></div>
+              </div> 
+            
             </button>
             {isDropdown2Open && (
               <ul className="sidebar-submenu">
@@ -729,28 +739,31 @@ const handleClick17 = ()=>{
                           className="sidebar-dropdown3"
                           onClick={() => handleClick17()}
                         >
-                         Bill Box
+                        Add Bill Box
                         </button>
 
                 </li>
                 <li>
                 <button
                           className="sidebar-dropdown3"
-                          onClick={() => handleClick17()}
+                          onClick={() => handleClick18()}
                         >
                          Bill Box List
                         </button>
                 </li>
-                <li>C</li>
+                
               </ul>
             )}
           </li>
           <li>
             <button className="sidebar-dropdown" onClick={toggleDropdown3}>
-              <span>Employee</span>
-              <FontAwesomeIcon
-                icon={isDropdown3Open ? faAngleDown : faAngleRight}
-              />
+             
+               <div className="grid3">
+             <div className="gridX">Employee</div>
+             <div className={` ${isDropdown3Open ? "down":"up"}`}><FontAwesomeIcon
+                icon={faAngleRight}
+              /></div>
+              </div>
             </button>
             {isDropdown3Open && (
               <ul className="sidebar-submenu">
@@ -761,6 +774,7 @@ const handleClick17 = ()=>{
             )}
           </li>
         </ul>
+        
       )}
     </div>
   );
