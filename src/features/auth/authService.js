@@ -27,11 +27,11 @@ const login = async (userData) => {
 //   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 // }
 
-  if (response.config.data) {
-    localStorage.setItem('user', JSON.stringify(response.config.data))
+  if (response.data) {
+    localStorage.setItem('user', JSON.stringify(response.data))
   }
 
-  return response.config.data
+  return response.data
 }
 
 
