@@ -65,10 +65,8 @@ function Addcharges() {
 
 
     try {
-      const res = await  privateAxios.post("/charge/", user)
-      .then( (Response)=>console.log(Response))
-      .catch( (err) => console.log(err))
-
+      const res = await  privateAxios.post("/charge/save", user)
+    
       toast.success('Submit Successfully')
       setUsers([...users, user]);
       console.log(res);
@@ -101,13 +99,6 @@ function Addcharges() {
   }
 
 
-  const showToast = () => {
-    if (isError !== "") {
-      toast.error("Error !! form not submittd, pleae try again")
-    } else {
-      toast.success('Submit Successfully')
-    }
-  }
 
   const lastIndex = currentPage * userPerPage;
   const firstIndex = lastIndex - userPerPage;

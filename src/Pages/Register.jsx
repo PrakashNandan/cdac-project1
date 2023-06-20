@@ -46,7 +46,7 @@ function Register() {
         }
     
         if (isSuccess || user) {
-          navigate('/login')
+          navigate('/')
           toast.success("Register Successfully")
 
         }
@@ -202,7 +202,13 @@ function Register() {
         </div>
       </form> */}
 
-      <RegisterForm/>
+      <RegisterForm username={username}
+      email={email}
+      mobileNo={mobileNo}
+      password={password}
+      onChange={onChange}
+      onSubmit={onSubmit}
+      />
 
     </section>
     <ToastContainer/>

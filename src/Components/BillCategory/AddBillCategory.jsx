@@ -8,6 +8,7 @@ import '../../style/UserData.css'
 import { ToastContainer, toast } from 'react-toastify'
 import Pagination from '../Pagination.js';
 import BillData from './BillData.jsx';
+import { privateAxios } from '../../service/helperUtil.js';
 // const API="https://jsonplaceholder.typicode.com"
 
 function AddBillCategory() {
@@ -49,7 +50,7 @@ function AddBillCategory() {
 
 
     try {
-      const res = await axios.post("billCategory/save", billCategory);
+      const res = await privateAxios.post("billCategory/save", billCategory);
       toast.success('Submit Successfully')
       setAllBillcategory([...allBillCategory, billCategory]);
       console.log(res);
@@ -100,7 +101,7 @@ function AddBillCategory() {
     <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
 
       <button id='close-btn' onClick={closeModal}>close</button>
-      <h2>Form</h2>
+                   <h2>Form</h2>
 
       <form onSubmit={handleSubmit} className='form'>
 

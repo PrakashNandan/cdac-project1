@@ -43,12 +43,9 @@ function AddDept() {
 
       const  handleSubmit = async (event) => {
         
-        event.preventDefault();
-        
-        
+        event.preventDefault(); 
         console.log(dept);  
-        
-        
+ 
         try{
           const res = await axios.post("dept/save", dept);
           toast.success('Submit Successfully')
