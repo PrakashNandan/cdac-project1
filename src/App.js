@@ -20,6 +20,7 @@ import ErrorPage from './Components/ErrorPage';
 
 
 
+
 function App() {
   return (
     <div className="App">
@@ -35,6 +36,7 @@ function App() {
             <Route path='/register' element={<Register/>}/>
 
             <Route path='/loggedin' element={<UserDetail/>}/>
+           
             <Route path='/addbill' element={<AddBillbox/>}/>
             {/* <Route path='/loggedin' element={<BillboxList/>}/> */}
             <Route path='/form' element = {<AddAndDisplayUserPage/>}/>

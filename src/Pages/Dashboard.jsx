@@ -1,8 +1,10 @@
 import React from 'react'
-
+import Login from './Login'
 function Dashboard() {
   return (
-    <div>Dashboard</div>
+    <div>
+   <Login/>
+    </div>
   )
 }
 

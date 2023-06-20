@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 
+
 .modal_wrapper {
   position: fixed;
   left: 0;
@@ -19,31 +20,34 @@
 }
 
 .modal_container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  max-width: 30rem;
-  padding: 2rem 2rem;
-  border-radius: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 50%;
-  min-width: 333px;
-  max-height: 100vh;
-  overflow-y: auto;
-  z-index: 10;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    max-width: 30rem;
+    padding: 2rem 2rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    width: 50%;
+    min-width: 333px;
+    max-height: 100vh;
+    overflow-y: auto;
+    z-index: 10;
+    /* height: 100%; */
+
 }
 
 .modal_container h2 {
-  margin-bottom: 0.6rem;
-  padding-top: 30px;
+    margin-bottom: 0.6rem;
+    padding-top: 30px;
 }
 
 #entryDate {
-  width: 100%;
+    width: 100%;
 }
 
 .modal-btn {
@@ -87,15 +91,15 @@
 }
 
 #close-btn {
-  color: #fff;
-  background-color: red;
-  position: sticky;
-  left: 24.8rem;
-  bottom: 36.2rem;
-  padding: 0.3rem 0.6rem;
-  border: none;
-  cursor: pointer;
-  border-radius: 0.26rem;
+    color: #fff;
+    background-color: red;
+    position: sticky;
+    left: 24.8rem;
+    bottom: 36.2rem;
+    padding: 0.3rem 0.6rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.26rem;
 }
 
 #close-btn:hover {
