@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   MDBContainer,
   MDBCol,
@@ -34,7 +35,7 @@ function LoginFormPage({onChange, username, password, onSubmit}) {
 
           <MDBBtn className="mb-4 w-100" size="lg" onClick={onSubmit}>Sign in</MDBBtn>
 
-          <p className="small fw-bold mt-2 pt-1 mb-2">Don't have an account? <a href="#!" className="link-danger">Register</a></p>
+          <p className="small fw-bold mt-2 pt-1 mb-2">Don't have an account? <Link to='/register' className='link-success'><login>Register</login></Link></p>
 
          
 

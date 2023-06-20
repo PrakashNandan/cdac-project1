@@ -11,6 +11,8 @@ import "../style/Sidebar.css";
 import { useNavigate } from "react-router-dom";
 
 const TripleLevelDropdown = ({ setShowChargeList,
+  setShowHomepage , 
+  setShowDashboard,
   setShowAddCharge,
   setShowBillTypeList,
   setShowAddBillType,
@@ -139,8 +141,29 @@ const navigate =useNavigate();
     setIsDropdown14Open(false);
     setIsDropdown15Open(false);
   };
-
+function handleClick0() {
+  setShowHomepage(false);
+  setShowChargeList(false);
+  setShowDashboard(true);
+  setShowAddCharge(false);
+  setShowBillTypeList(false);
+    setShowAddBillType(false);
+    setShowAddBillCategory(false);
+    setShowBillCategoryList(false);
+    setShowAddFundingSource(false);
+    setShowFundingSourceList(false);
+    setShowAddPaymentType(false);
+    setShowPaymentTypeList(false);
+    setShowAddLedgerType(false);
+    setShowLedgerTypeList(false);
+    setShowDeptList(false);
+    setShowAddDept(false);
+    setShowAddFinYear(false);
+    setShowFinYearList(false);
+}
   function handleClick1() {
+    setShowHomepage(false);
+    setShowDashboard(false);
     setShowChargeList(false);
     setShowAddCharge(true);
     setShowBillTypeList(false);
@@ -161,6 +184,8 @@ const navigate =useNavigate();
 
   }
   function handleClick2() {
+    setShowHomepage(false);
+    setShowDashboard(false);
     setShowChargeList(true);
     setShowAddCharge(false);
     setShowBillTypeList(false);
@@ -179,6 +204,8 @@ const navigate =useNavigate();
     setShowFinYearList(false);
   }
   function handleClick3() {
+    setShowHomepage(false);
+    setShowDashboard(false);
     setShowChargeList(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
@@ -197,6 +224,8 @@ const navigate =useNavigate();
     setShowFinYearList(false);
   }
   function handleClick4() {
+    setShowHomepage(false);
+    setShowDashboard(false);
     setShowChargeList(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
@@ -215,6 +244,8 @@ const navigate =useNavigate();
     setShowFinYearList(false);
   }
   function handleClick5() {
+    setShowHomepage(false);
+    setShowDashboard(false);
     setShowChargeList(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
@@ -233,6 +264,8 @@ const navigate =useNavigate();
     setShowFinYearList(false);
   }
   function handleClick6() {
+    setShowHomepage(false);
+    setShowDashboard(false);
     setShowChargeList(false);
     setShowAddCharge(false);
     setShowBillTypeList(true);
@@ -251,6 +284,8 @@ const navigate =useNavigate();
     setShowFinYearList(false);
   }
   function handleClick7() {
+    setShowHomepage(false);
+    setShowDashboard(false);
     setShowChargeList(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
@@ -269,6 +304,8 @@ const navigate =useNavigate();
     setShowFinYearList(false);
   }
   function handleClick8() {
+    setShowDashboard(false);
+    setShowHomepage(false);
     setShowChargeList(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
@@ -287,6 +324,8 @@ const navigate =useNavigate();
     setShowFinYearList(false);
   }
   function handleClick9() {
+    setShowHomepage(false);
+    setShowDashboard(false);
     setShowChargeList(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
@@ -305,7 +344,9 @@ const navigate =useNavigate();
     setShowFinYearList(false);
   }
   function handleClick10() {
+    setShowHomepage(false);
     setShowChargeList(false);
+    setShowDashboard(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
     setShowAddBillType(false);
@@ -323,6 +364,8 @@ const navigate =useNavigate();
     setShowFinYearList(true);
   }
   function handleClick11() {
+    setShowHomepage(false);
+    setShowDashboard(false);
     setShowChargeList(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
@@ -341,6 +384,8 @@ const navigate =useNavigate();
     setShowFinYearList(false);
   }
   function handleClick12() {
+    setShowDashboard(false);
+    setShowHomepage(false);
     setShowChargeList(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
@@ -359,6 +404,8 @@ const navigate =useNavigate();
     setShowFinYearList(false);
   }
   function handleClick13() {
+    setShowHomepage(false);
+    setShowDashboard(false);
     setShowChargeList(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
@@ -378,6 +425,8 @@ const navigate =useNavigate();
   }
   function handleClick14() {
     setShowChargeList(false);
+    setShowHomepage(false);
+    setShowDashboard(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
     setShowAddBillType(false);
@@ -395,7 +444,9 @@ const navigate =useNavigate();
     setShowFinYearList(false);
   }
   function handleClick15() {
+    setShowHomepage(false);
     setShowChargeList(false);
+    setShowDashboard(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
     setShowAddBillType(false);
@@ -414,6 +465,8 @@ const navigate =useNavigate();
   }
   function handleClick16() {
     setShowChargeList(false);
+    setShowHomepage(false);
+    setShowDashboard(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
     setShowAddBillType(false);
@@ -451,10 +504,20 @@ const handleClick17 = ()=>{
   return (
     <div className={`sidebar ${isSidebarOpen ? "open" : ""}`} ref={sidebarRef}>
       <div className={` ${isSidebarOpen ? "header-open" : "sidebar-header"}`} onClick={toggleSidebar}>
+     
+        
         <FontAwesomeIcon icon={faBars} className="sidebar-toggle-icon" />
       </div>
       {isSidebarOpen && (
         <ul className="sidebar-menu">
+          <li>
+                        <button
+                          className="sidebar-dropdown"
+                          onClick={() => handleClick0()}
+                        >
+                        Dashboard
+                        </button>
+                      </li>
           <li>
             <button className="sidebar-dropdown" onClick={toggleDropdown}>
               <span>Admin</span>
