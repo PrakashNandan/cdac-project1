@@ -16,6 +16,7 @@ function Addcharges() {
   const [currentPage, setCurrentPage] = useState(1);
   const [userPerPage, setUserPerPage] = useState(3);
   const [isError, setIsError] = useState('');
+  const [isSubmitting, setIsSubmitting]=useState(false);
 
   const [user, setUser] = useState({
     chargeName: '',
@@ -48,18 +49,26 @@ function Addcharges() {
     setUser((prevUser) => ({ ...prevUser, [name]: inputValue }));
   };
 
+  const showSpinner=()=>{
+    <div class="spinner-border spinner-border-sm" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  }
+
 
   const handleSubmit = async (event) => {
 
     event.preventDefault();
-
+    setIsSubmitting(true);
 
     console.log(user);
 
 
     try {
       const res = await  privateAxios.post("/charge/save", user)
-    
+      .then( (Response)=>console.log(Response))
+      .catch( (err) => console.log(err))
+
       toast.success('Submit Successfully')
       setUsers([...users, user]);
       console.log(res);
@@ -69,6 +78,7 @@ function Addcharges() {
       console.log(error);
     }
 
+    setIsSubmitting(false);
     closeModal();
 
   };
@@ -100,7 +110,7 @@ function Addcharges() {
 
   const mainModal = (
 
-    <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
+    <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange}>
 
       <button id='close-btn' onClick={closeModal}>close</button>
       <h2>Form</h2>
@@ -216,9 +226,17 @@ function Addcharges() {
 
           />
         </div>
-
-        {/* onClick={closeModal} */}
-        <button className='modal-btn' type='submit' >Submit</button>
+        
+        {isSubmitting ? (
+           <button class="modal-btn" type="button" disabled>
+           <span class="spinner-border" style={{margin:'0 0.3rem', height:'1.6rem', width:'1.5rem'}} role="status" aria-hidden="true"></span>
+           
+           Submitting...
+         </button>
+              ) : (
+                <button className='modal-btn' type='submit' >Submit</button>
+         )}
+          
       </form>
 
     </Mymodal>
@@ -228,7 +246,7 @@ function Addcharges() {
   return (
     <>
 
-      <button className='modal-btn' onClick={() => setShowModal(true)}>Add charges</button>
+      <button className='modal-btn' id='addButton' onClick={() => setShowModal(true)}>Add Charges</button>
       {ShowModal && mainModal}
 
       <div className="user-list">
@@ -259,10 +277,13 @@ function Addcharges() {
               </tbody>
               {/* <Pagination totalUsers={users.length} userPerPage={userPerPage} setCurrentPage={setCurrentPage} currPage={currentPage}/> */}
             </table>
-            <Pagination totalUsers={users.length} userPerPage={userPerPage} setCurrentPage={setCurrentPage} currPage={currentPage} />
-          </div> : (
+            <Pagination totalUsers={users.length} userPerPage={userPerPage} setCurrentPage={setCurrentPage} setUserPerPage={setUserPerPage} currPage={currentPage} lastIndex={lastIndex} firstIndex={firstIndex}/>
+          </div> 
+          
+          
+          : (
             <p>No Charges added yet.</p>
-          )}
+            )}
       </div>
 
 

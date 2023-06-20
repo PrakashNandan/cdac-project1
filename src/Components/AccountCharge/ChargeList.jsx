@@ -15,6 +15,7 @@ function ChargeList() {
     const [showAllData, setShowAllData] = useState(true);
     const [pageSize, setPageSize]=useState(10);
     const [pageNumber, setPageNumber]=useState(1);
+    const [datafetching, setDataFetching]=useState(false);
 
     useEffect(() => {
         handleFindALL();
@@ -48,6 +49,8 @@ function ChargeList() {
 
     const handleFindALL = async () => {
 
+        setDataFetching(true);
+
         try {
 
             const res = await privateAxios.get("/charge/findAll");
@@ -59,6 +62,8 @@ function ChargeList() {
             console.log(error.message);
             showErrorToast();
         }
+
+        setDataFetching(false);
     }
 
  
@@ -96,13 +101,18 @@ function ChargeList() {
 
             <h2 id='chargeHeadID'>Charge List</h2>
 
-            
+            {datafetching ? (<div class="d-flex justify-content-center">
+                            <div class="spinner-border" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                             </div>):""
+            }
 
 
             <div className='find-container'>
                 {/* <div className='findButtonClass'><button className='btn-find btn btn-primary' onClick={()=>handleFindALL()}>FindAll</button></div> */}
                 <div className="parentSearchInput">
-                     <input type="number" className='userPerPageClass' id='Pagi_input_id' name='userPerPage' value={pageSize} onChange={(e) => { setPageSize(e.target.value) }} />
+                     {/* <input type="number" className='userPerPageClass' id='Pagi_input_id' name='userPerPage' value={pageSize} onChange={(e) => { setPageSize(e.target.value) }} /> */}
                     <div className="spacer"></div>
                     <input type="number" placeholder='search by ID' id='searchInput' value={inputId} onChange={(e) => setInputId(e.target.value)} />
                     <button className='btn btn-primary' id='searchDataID' onClick={fetchData}>Search</button>
@@ -132,9 +142,9 @@ function ChargeList() {
                         </tbody>
 
                     </table>
-                         <Pagination totalUsers={slicedAllData.length} userPerPage={pageSize} setCurrentPage={setPageNumber} currPage={pageNumber} />
 
                 </div>
+                         <Pagination totalUsers={allData.length} userPerPage={pageSize} setUserPerPage={setPageSize} setCurrentPage={setPageNumber} currPage={pageNumber} lastIndex={lastIndex} firstIndex={firstIndex}/>
             </div>
 
 
