@@ -1,11 +1,7 @@
 import axios from 'axios';
 
-<<<<<<< HEAD
-const BASE_URL="http://165.22.214.153:8085/api/v1";
-=======
 // const BASE_URL="http://165.22.214.153:8085/api/v1";
 const BASE_URL="http://192.168.137.1:8085/api/v1";
->>>>>>> 04d23a5e221e79a9d51bf9c199a7244a44b75204
 // export const BASE_URL="http://10.248.1.198:8085/account/";
 
 

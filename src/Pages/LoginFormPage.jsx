@@ -29,7 +29,7 @@ function LoginFormPage({onChange, username, password, onSubmit}) {
 
           <div className="d-flex justify-content-between mx-4 mb-4">
             <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Remember me' />
-            <a href="!#">Forgot password?</a>
+            <a href="!#" className="fw-bold link-danger">Forgot password?</a>
           </div>
 
           <MDBBtn className="mb-4 w-100" size="lg" onClick={onSubmit}>Sign in</MDBBtn>

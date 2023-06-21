@@ -39,7 +39,7 @@ const TripleLevelDropdown = ({ setShowChargeList,
   const [isDropdown16Open, setIsDropdown16Open] = useState(false);
   const [isDropdown12Open, setIsDropdown12Open] = useState(false);
 
-const navigate =useNavigate();
+  const navigate = useNavigate();
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -428,10 +428,11 @@ const navigate =useNavigate();
     setShowDeptList(false);
     setShowAddDept(false);
     setShowAddFinYear(false);
-    setShowFinYearList(false);  }
-const handleClick17 = ()=>{
+    setShowFinYearList(false);
+  }
+  const handleClick17 = () => {
     navigate('/addbill')
-}
+  }
   const sidebarRef = useRef(null);
 
   useEffect(() => {
@@ -470,7 +471,7 @@ const handleClick17 = ()=>{
                     onClick={toggleDropdown11}
                   >
                     <span>Acc Charge</span>
-                    &nbsp;&nbsp;&nbsp;<FontAwesomeIcon
+                    <FontAwesomeIcon
                       icon={isDropdown11Open ? faAngleDown : faAngleRight}
                     />
                   </button>
@@ -501,7 +502,7 @@ const handleClick17 = ()=>{
                     onClick={toggleDropdown12}
                   >
                     <span>Bill Category</span>
-                    &nbsp;&nbsp;&nbsp;<FontAwesomeIcon
+                    <FontAwesomeIcon
                       icon={isDropdown12Open ? faAngleDown : faAngleRight}
                     />
                   </button>
@@ -532,7 +533,7 @@ const handleClick17 = ()=>{
                     onClick={toggleDropdown13}
                   >
                     <span>Bill Type</span>
-                    &nbsp;&nbsp;&nbsp;<FontAwesomeIcon
+                    <FontAwesomeIcon
                       icon={isDropdown13Open ? faAngleDown : faAngleRight}
                     />
                   </button>
@@ -563,7 +564,7 @@ const handleClick17 = ()=>{
                     onClick={toggleDropdown14}
                   >
                     <span>Department</span>
-                    &nbsp;&nbsp;&nbsp;<FontAwesomeIcon
+                    <FontAwesomeIcon
                       icon={isDropdown14Open ? faAngleDown : faAngleRight}
                     />
                   </button>
@@ -594,7 +595,7 @@ const handleClick17 = ()=>{
                     onClick={toggleDropdown15}
                   >
                     <span>FinancialYear</span>
-                    &nbsp;&nbsp;&nbsp;<FontAwesomeIcon
+                    <FontAwesomeIcon
                       icon={isDropdown15Open ? faAngleDown : faAngleRight}
                     />
                   </button>
@@ -625,7 +626,7 @@ const handleClick17 = ()=>{
                     onClick={toggleDropdown16}
                   >
                     <span>FundingSource</span>
-                    &nbsp;&nbsp;&nbsp;<FontAwesomeIcon
+                    <FontAwesomeIcon
                       icon={isDropdown16Open ? faAngleDown : faAngleRight}
                     />
                   </button>
@@ -656,7 +657,7 @@ const handleClick17 = ()=>{
                     onClick={toggleDropdown17}
                   >
                     <span>LedgerType</span>
-                    &nbsp;&nbsp;&nbsp;<FontAwesomeIcon
+                    <FontAwesomeIcon
                       icon={isDropdown17Open ? faAngleDown : faAngleRight}
                     />
                   </button>
@@ -687,7 +688,7 @@ const handleClick17 = ()=>{
                     onClick={toggleDropdown18}
                   >
                     <span>PaymentType</span>
-                    &nbsp;&nbsp;&nbsp;<FontAwesomeIcon
+                    <FontAwesomeIcon
                       icon={isDropdown18Open ? faAngleDown : faAngleRight}
                     />
                   </button>
@@ -725,21 +726,21 @@ const handleClick17 = ()=>{
             {isDropdown2Open && (
               <ul className="sidebar-submenu">
                 <li>
-                <button
-                          className="sidebar-dropdown3"
-                          onClick={() => handleClick17()}
-                        >
-                         Bill Box
-                        </button>
+                  <button
+                    className="sidebar-dropdown3"
+                    onClick={() => handleClick17()}
+                  >
+                    Bill Box
+                  </button>
 
                 </li>
                 <li>
-                <button
-                          className="sidebar-dropdown3"
-                          onClick={() => handleClick17()}
-                        >
-                         Bill Box List
-                        </button>
+                  <button
+                    className="sidebar-dropdown3"
+                    onClick={() => handleClick17()}
+                  >
+                    Bill Box List
+                  </button>
                 </li>
                 <li>C</li>
               </ul>
