@@ -29,7 +29,7 @@ function BillCategoryList() {
         try{
             
             const res = await privateAxios.get("/billCategory/findAll");
-            setAllData(res.data);
+            setAllData(res.data.pageList.content);
             console.log(res.data);
 
 
@@ -40,13 +40,7 @@ function BillCategoryList() {
         }
     }
    
-    useEffect(()=>{
-        handleFindALL();
-    },[])
 
-    // findAll && handleFindALL();
-
-    
 
     const showErrorToast=()=>{
         toast.error("Something went wrong, check your connection !!")
@@ -61,9 +55,9 @@ function BillCategoryList() {
     const fetchData=async()=>{
         
         try{
-            const res = await axios.get(`/billCategory/find/${inputId}`)
-            setAllData([res.data]);
-            console.log([res.data]);
+            const res = await privateAxios.get(`/billCategory/find/${inputId}`)
+            setAllData([res.data.pageList.content]);
+            console.log([res]);
         }catch(error){
             setisError(error.message);
             console.log(error.message);

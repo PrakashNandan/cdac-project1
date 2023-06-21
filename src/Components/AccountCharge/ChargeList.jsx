@@ -4,6 +4,7 @@ import axios from '../axios.jsx'
 import FindAllData from './FindAllData.jsx'
 import { ToastContainer, toast } from 'react-toastify'
 import { privateAxios } from '../../service/helperUtil'
+import Pagination from '../Pagination'
 
 
 function ChargeList() {
@@ -12,10 +13,25 @@ function ChargeList() {
     const [isError, setisError] = useState('');
     const [inputId, setInputId] = useState('');
     const [showAllData, setShowAllData] = useState(true);
+    const [pageSize, setPageSize]=useState(10);
+    const [pageNumber, setPageNumber]=useState(1);
+    const [datafetching, setDataFetching]=useState(false);
 
     useEffect(() => {
         handleFindALL();
     },[])
+
+
+    // pagination work
+    if(pageSize<1){
+        setPageSize(10);
+    }
+
+    const lastIndex = pageNumber*pageSize;
+    const firstIndex = lastIndex - pageSize;
+    const slicedAllData=allData.slice(firstIndex, lastIndex);
+
+
    
     // axios.interceptors.request.use(
     //     (config) => {
@@ -33,12 +49,12 @@ function ChargeList() {
 
     const handleFindALL = async () => {
 
+        setDataFetching(true);
+
         try {
 
             const res = await privateAxios.get("/charge/findAll");
-            console.log(res.data);
             setAllData(res.data.pageList.content);
-            console.log(res.data);
 
 
         } catch (error) {
@@ -46,13 +62,12 @@ function ChargeList() {
             console.log(error.message);
             showErrorToast();
         }
+
+        setDataFetching(false);
     }
 
-    useEffect(() => {
-        handleFindALL();
-    }, [])
+ 
 
-    // findAll && handleFindALL();
 
 
 
@@ -64,16 +79,13 @@ function ChargeList() {
     }
 
 
-    // const findDataById = (id) => {
-    //     return data.find((item) => item.id === id);
-    // };
-
+    // for search by ID
     const fetchData = async () => {
 
         try {
-            const res = await axios.get(`/charge/find/${inputId}`)
-            setAllData([res.data]);
-            console.log([res.data]);
+            const res = await privateAxios.get(`/charge/find/${inputId}`)
+            setAllData([res.data.pageList.content]);
+            console.log([res.data.pageList.content]);
         } catch (error) {
             setisError(error.message);
             console.log(error.message);
@@ -83,22 +95,24 @@ function ChargeList() {
     }
 
 
-    // const findDataById = () => {
-    //     return allData.find((item) => item.id === inputId);
-    //   };
-
-
-
     return (
 
         <>
 
             <h2 id='chargeHeadID'>Charge List</h2>
 
+            {datafetching ? (<div class="d-flex justify-content-center">
+                            <div class="spinner-border" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                             </div>):""
+            }
+
 
             <div className='find-container'>
                 {/* <div className='findButtonClass'><button className='btn-find btn btn-primary' onClick={()=>handleFindALL()}>FindAll</button></div> */}
                 <div className="parentSearchInput">
+                     {/* <input type="number" className='userPerPageClass' id='Pagi_input_id' name='userPerPage' value={pageSize} onChange={(e) => { setPageSize(e.target.value) }} /> */}
                     <div className="spacer"></div>
                     <input type="number" placeholder='search by ID' id='searchInput' value={inputId} onChange={(e) => setInputId(e.target.value)} />
                     <button className='btn btn-primary' id='searchDataID' onClick={fetchData}>Search</button>
@@ -124,11 +138,13 @@ function ChargeList() {
                             </tr>
                         </thead>
                         <tbody>
-                            <FindAllData allData={allData} setAllData={setAllData} handleFindALL={handleFindALL} />
+                            <FindAllData allData={slicedAllData} setAllData={setAllData} handleFindALL={handleFindALL} />
                         </tbody>
 
                     </table>
+
                 </div>
+                         <Pagination totalUsers={allData.length} userPerPage={pageSize} setUserPerPage={setPageSize} setCurrentPage={setPageNumber} currPage={pageNumber} lastIndex={lastIndex} firstIndex={firstIndex}/>
             </div>
 
 

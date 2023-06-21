@@ -2,7 +2,7 @@ import axios from '../axios.jsx';
 import React, {useEffect, useState} from 'react'
 import {ToastContainer, toast} from 'react-toastify'
 import Mymodal from '../ShowModal.jsx';
-
+import { privateAxios } from '../../service/helperUtil.js';
 
 function FindAllData({allData,setAllData, handleFindALL}) {
 
@@ -29,7 +29,7 @@ function FindAllData({allData,setAllData, handleFindALL}) {
     if(conf){
 
         try{
-            const res = await axios.get(`/charge/delete/${id}`)
+            const res = await privateAxios.get(`/charge/delete/${id}`)
             toast.warn("The data has Deleted Successfully")
             setAllData(res.data);
             console.log(res);
@@ -56,8 +56,9 @@ function FindAllData({allData,setAllData, handleFindALL}) {
 
       }else{
         try{
-            const res = await axios.get(`/charge/find/${id}`);
-            setDataForUpdate(res.data);
+            const res = await privateAxios.get(`/charge/find/${id}`);
+            console.log(res.data.pageList.content + "hello prakash");
+            setDataForUpdate(res.data.pageList.content);
     
             }catch(error){
               console.log(error.message);
@@ -76,8 +77,8 @@ function FindAllData({allData,setAllData, handleFindALL}) {
   const handleSubmit=async(event)=>{
         event.preventDefault();
         try{
-          const res = await axios.put(`/charge/update/${uid}`, dataForUpdate );
-          console.log(res.data);
+          const res = await privateAxios.put(`/charge/update/${uid}`, dataForUpdate );
+          console.log(res.data.pageList.content);
           toast.success("updated Successfully")
         }catch(error){
           toast.error("Error !! Not updated");

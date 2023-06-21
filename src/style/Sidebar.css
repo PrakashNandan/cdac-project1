@@ -51,6 +51,11 @@ body::-webkit-scrollbar {
   margin-bottom: 6px;
   background: none;
   border: 0px;
+<<<<<<< HEAD
+=======
+  /* margin-top: 14px;
+  padding-top: 0; */
+>>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
   margin: 0;
   padding: 0;
 }
@@ -58,6 +63,7 @@ body::-webkit-scrollbar {
 .sidebar-dropdown,
 .sidebar-submenu-btn,
 .sidebar-subsubmenu-btn {
+<<<<<<< HEAD
   width: 100%;
   align-items: center;
   background: #f0f0f0;
@@ -73,11 +79,37 @@ body::-webkit-scrollbar {
   padding-left: 20px;
   overflow-wrap: break-word;
   text-decoration: none;
+=======
+  border: none;
+
+  width: 100%;
+  align-items: center;
+  background-color: #f0f0f0;
+  /* background: #dcdcdc; */
+  /* border: 2px solid #bababa; */
+  /* box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); */
+  /* box-sizing: border-box; */
+  /* color: #1A202C; */
+  display: inline-flex;
+  /* font-family: Inter, sans-serif; */
+  font-size: 1rem;
+  font-weight:650;
+  height: 56px;
+  line-height: 24px;
+  padding-left: 20px;
+  overflow-wrap: break-word;
+  text-decoration: none;
+  /* border-radius: 8px; */
+>>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
-  touch-action: manipulation;
+  /* touch-action: manipulation; */
   margin-left: 0;
+}
+.sidebar-dropdown:hover
+{
+  background: #dcdcdc;
 }
 
 .sidebar-dropdown span,
@@ -86,24 +118,96 @@ body::-webkit-scrollbar {
   margin-right: 10px;
 }
 
+<<<<<<< HEAD
 .fa-angle-right,
 .fa-angle-down {
   float: right;
   padding-right: 7%;
+=======
+.sidebar-submenu,
+.sidebar-subsubmenu,
+.sidebar-subsubsubmenu {
+  list-style: none;
+  padding-left: 0px;
+  margin: 0;
+
+  /* line-height: 1px; */
+}
+/* .sidebar-submenu{
+  height:0px;
+} */
+
+.lists {
+  /* height: 0px; */
+  animation-name: animate;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  position: relative;
+}
+.sidebar-submenu li {
+  /* position:absolute; */
+  width: 100%;
+  animation-name: animate2;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  
+  /* overflow: hidden; */
+  /* height:0px; */
+}
+.asdf{
+  /* position :absolute; */
+  top: 0;
+  bottom: 0;
+  /* height:0px; */
+}
+/* @keyframes animate {
+  from {
+    height: 0px;
+  }
+  to {
+    height: 350px;
+  }
+} */
+/* @keyframes animate2 {
+  from{
+overflow:hidden ; 
+height:0px;}
+  to{
+    overflow:visible;
+    height:5.2vh;
+ } 
+}*/
+.sidebar-subsubsubmenu li {
+  margin-bottom: 5px;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+>>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
 }
 
 .sidebar-dropdown2 {
   background-color: #747474;
   text-shadow: 0 0 8px #555555;
   align-items: center;
+<<<<<<< HEAD
   border-style: none;
   border-bottom: 2px solid #929292;
+=======
+  /* border-radius: 4px; */
+  border-style: none;
+  /* box-sizing: border-box; */
+>>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
   color: #fff;
   cursor: pointer;
   text-align: left;
   font-family: "Farfetch Basis", "Helvetica Neue", Arial, sans-serif;
+<<<<<<< HEAD
   font-size: 13px;
   font-weight: 600;
+=======
+  font-size: 16px;
+  font-weight: 500;
+>>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
   line-height: 1.5;
   max-width: none;
   min-height: 48px;
@@ -118,21 +222,64 @@ body::-webkit-scrollbar {
   -webkit-user-select: none;
   touch-action: manipulation;
   width: 100%;
+  border: none;
 }
+.arrow-icon{
+  position:absolute;
+  right:25px;
+}
+<<<<<<< HEAD
 
 .sidebar-dropdown3 {
   background-color: #525252;
+=======
+.button-31:hover,
+.button-31:focus {
+  opacity: 0.75;
+}
+.sidebar-dropdown:focus {
+  outline: none;
+}
+.sidebar-dropdown2:focus {
+  outline: none;
+}
+.sidebar-dropdown3:focus {
+  outline: none;
+}
+
+.sidebar-dropdown3 {
+  align-items: center;
+  background-color: #5e5e5e;
+  /* border-radius: 5px; */
+  /* box-shadow: transparent 0 0 0 3px, rgba(18, 18, 18, .1) 0 6px 20px; */
+  /* box-sizing: border-box; */
+>>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
   color: #ffffff;
   cursor: pointer;
   display: inline-flex;
   flex: 1 1 auto;
+<<<<<<< HEAD
   font-family: "Farfetch Basis", "Helvetica Neue", Arial, sans-serif;
   font-size: 14px;
   font-weight: 520;
+=======
+  /* font-family: "Farfetch Basis", "Helvetica Neue", Arial, sans-serif; */
+  font-size: 14px;
+  font-weight: 350;
+>>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
   justify-content: center;
   padding: 16px 0;
   line-height: 1;
   margin: 0;
+<<<<<<< HEAD
+=======
+  outline: none;
+  /* padding: 9px 20px 9px; */
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow 0.2s, -webkit-box-shadow 0.2s;
+  white-space: nowrap;
+>>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
   border: 0;
   border-bottom: 2px solid #747474;
   outline: none;
@@ -142,12 +289,20 @@ body::-webkit-scrollbar {
   -webkit-user-select: none;
   touch-action: manipulation;
   width: 100%;
+  border: none;
+  height: 39px;
 }
 
+<<<<<<< HEAD
 .sidebar-dropdown3:hover {
   background-color: #5f5f5f;
   color: #ffff;
 }
+=======
+/* .sidebar-dropdown3:hover {
+  box-shadow: #121212 0 0 0 1px, transparent 0 0 0 0;
+} */
+>>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
 
 @media (max-width: 400px) {
   .sidebar.open {
@@ -160,5 +315,60 @@ body::-webkit-scrollbar {
 
   .sidebar-dropdown3 {
     font-size: 13px;
+  }
+}
+.grid1 {
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 173px;
+  /* justify-content: left ; */
+}
+.grid2 {
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 120px;
+  /* justify-content: left ; */
+}
+.grid3 {
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 147px;
+  /* justify-content: left ; */
+}
+.grid-X {
+  /* width:220px; */
+  padding-left: 0px;
+  margin: 0;
+  padding: 0;
+  margin-left: 10px;
+  justify-self: start;
+}
+/* .arrow{
+  transition: transform 1s;
+} */
+.down {
+  animation-name: example;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+@keyframes example {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(90deg);
+  }
+}
+.up {
+  animation-name: exampl;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+@keyframes exampl {
+  from {
+    transform: rotate(90deg);
+  }
+  to {
+    transform: rotate(0deg);
   }
 }

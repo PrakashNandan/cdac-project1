@@ -12,6 +12,8 @@ import Sidebar from './Components/Sidebar';
 import AddAndDisplayUserPage from './Components/AddUser';
 import AddBillbox from './Components/Billbox/AddBillbox';
 import BillboxList from './Components/Billbox/BillboxList';
+import ErrorPage from './Components/ErrorPage';
+
 
 
 
@@ -34,9 +36,11 @@ function App() {
             <Route path='/register' element={<Register/>}/>
 
             <Route path='/loggedin' element={<UserDetail/>}/>
+           
             <Route path='/addbill' element={<AddBillbox/>}/>
             {/* <Route path='/loggedin' element={<BillboxList/>}/> */}
             <Route path='/form' element = {<AddAndDisplayUserPage/>}/>
+            <Route path='*' element = {<ErrorPage/>}/>
             
             
            

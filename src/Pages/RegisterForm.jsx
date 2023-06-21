@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { login } from '../features/auth/authSlice';
+import { useState } from 'react';
 import {
   MDBBtn,
   MDBContainer,
@@ -15,7 +16,21 @@ import {
 }
   from 'mdb-react-ui-kit';
 
+<<<<<<< HEAD
 function RegisterForm({ username, mobileNo, email, password, onChange, onSubmit }) {
+=======
+function RegisterForm({username,mobileNo,email,password,onChange,onSubmit}) {
+
+
+  const [showPassword, setShowPassword]= useState(false);
+
+   const handleTogglePassword=()=>{
+    setShowPassword(!showPassword)
+   }
+
+
+
+>>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
   return (
     <MDBContainer fluid>
 
@@ -49,11 +64,30 @@ function RegisterForm({ username, mobileNo, email, password, onChange, onSubmit 
                   onChange={onChange} />
               </div>
 
+<<<<<<< HEAD
               <div className="d-flex flex-row align-items-center mb-4">
                 <MDBIcon fas icon="key me-3" size='lg' />
                 <MDBInput label='password' id='form4' type='password' name='password'
                   value={password}
                   onChange={onChange} />
+=======
+              <div className="d-flex flex-row align-items-center mb-4 position-relative">
+                <MDBIcon fas icon="key me-3" size='lg'/>
+
+                <MDBInput label='password' id='form4' name='password'
+                      type={showPassword ? 'text' : 'password'} 
+                      value={password}
+                      onChange={onChange}
+                 />
+
+                <MDBIcon
+                    icon={showPassword ? 'eye-slash' : 'eye'}
+                    className="position-absolute end-0 top-50 translate-middle-y"
+                    onClick={handleTogglePassword}
+                    style={{ cursor: 'pointer', marginRight: '0.5rem', marginBottom:'1rem' }}
+                />
+
+>>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
               </div>
 
               {/* <div className='mb-4'>
@@ -70,7 +104,7 @@ function RegisterForm({ username, mobileNo, email, password, onChange, onSubmit 
             </MDBCol>
 
           </MDBRow>
-          <p className="small fw-bold mt-2 pt-1 mb-2">Already have an account? <Link to='/login' className='link-success'><login>login</login></Link></p>
+          <p className="small fw-bold mt-2 pt-1 mb-2">Already have an account? <Link to='/login' className='link-success'><login>Login</login></Link></p>
         </MDBCardBody>
       </MDBCard>
 

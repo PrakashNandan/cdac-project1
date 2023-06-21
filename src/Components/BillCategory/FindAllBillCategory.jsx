@@ -2,6 +2,7 @@ import axios from '../axios.jsx';
 import React, {useEffect, useState} from 'react'
 import {ToastContainer, toast} from 'react-toastify'
 import Mymodal from '../ShowModal.jsx';
+import { privateAxios } from '../../service/helperUtil.js';
 
 
 function FindAllBillCategory({allData,setAllData, handleFindALL}) {
@@ -29,7 +30,7 @@ function FindAllBillCategory({allData,setAllData, handleFindALL}) {
     if(conf){
 
         try{
-            const res = await axios.get(`/billCategory/delete/${id}`)
+            const res = await privateAxios.get(`/billCategory/delete/${id}`)
             toast.warn("The data has Deleted Successfully")
             setAllData(res.data);
             console.log(res);
@@ -56,7 +57,7 @@ function FindAllBillCategory({allData,setAllData, handleFindALL}) {
 
       }else{
         try{
-            const res = await axios.get(`/billCategory/find/${id}`);
+            const res = await privateAxios.get(`/billCategory/find/${id}`);
             setDataForUpdate(res.data);
     
             }catch(error){

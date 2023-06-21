@@ -101,13 +101,6 @@ function Addcharges() {
   }
 
 
-  const showToast = () => {
-    if (isError !== "") {
-      toast.error("Error !! form not submittd, pleae try again")
-    } else {
-      toast.success('Submit Successfully')
-    }
-  }
 
   const lastIndex = currentPage * userPerPage;
   const firstIndex = lastIndex - userPerPage;
@@ -233,13 +226,11 @@ function Addcharges() {
 
           />
         </div>
-
-        {/* onClick={closeModal} */}
         
         {isSubmitting ? (
            <button class="modal-btn" type="button" disabled>
            <span class="spinner-border" style={{margin:'0 0.3rem', height:'1.6rem', width:'1.5rem'}} role="status" aria-hidden="true"></span>
-           {/* <span class="sr-only">Loading...</span> */}
+           
            Submitting...
          </button>
               ) : (
@@ -278,7 +269,7 @@ function Addcharges() {
                   <th>roundingType</th>
                   <th>hoaPostingRequired</th>
                   <th>depositToGovt</th>
-                  <th>Actions</th>
+                  
                 </tr>
               </thead>
               <tbody>
@@ -286,10 +277,13 @@ function Addcharges() {
               </tbody>
               {/* <Pagination totalUsers={users.length} userPerPage={userPerPage} setCurrentPage={setCurrentPage} currPage={currentPage}/> */}
             </table>
-            <Pagination totalUsers={users.length} userPerPage={userPerPage} setCurrentPage={setCurrentPage} currPage={currentPage} />
-          </div> : (
+            <Pagination totalUsers={users.length} userPerPage={userPerPage} setCurrentPage={setCurrentPage} setUserPerPage={setUserPerPage} currPage={currentPage} lastIndex={lastIndex} firstIndex={firstIndex}/>
+          </div> 
+          
+          
+          : (
             <p>No Charges added yet.</p>
-          )}
+            )}
       </div>
 
 

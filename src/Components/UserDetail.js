@@ -17,7 +17,8 @@ import DeptList from "./Department/DeptList";
 import AddDept from "./Department/AddDept";
 import AddFinYear from "./FinancialYear/AddFinYear";
 import FinYearList from "./FinancialYear/FinYearList";
-
+import Db from "./Db";
+import Homepage from "./Homepage";
 function UserDetail() {
   // const
   const [showChargeList, setShowChargeList] = useState(false);
@@ -36,12 +37,14 @@ function UserDetail() {
   const [showLedgerTypeList,setShowLedgerTypeList]=useState(false);
   const [showAddPaymentType,setShowAddPaymentType]=useState(false);
   const [showPaymentTypeList,setShowPaymentTypeList]=useState(false);
-
-
+  const [ShowDashboard, setShowDashboard] = useState(false);
+  const [ShowHomepage, setShowHomepage] = useState(true);
 
   return (
     <div>
       <Sidebar
+        setShowHomepage= {setShowHomepage}
+        setShowDashboard= {setShowDashboard}
         setShowChargeList={setShowChargeList}
         setShowAddCharge={setShowAddCharge}
         setShowBillTypeList={setShowBillTypeList}
@@ -59,7 +62,10 @@ function UserDetail() {
         setShowAddFinYear={setShowAddFinYear}
         setShowFinYearList={setShowFinYearList}
       ></Sidebar>
-    
+  {(ShowHomepage)&&
+<Homepage></Homepage>}
+    {(ShowDashboard)&&
+<Db></Db>}
 {(showChargeList)&&
 <ChargeList></ChargeList>}
 

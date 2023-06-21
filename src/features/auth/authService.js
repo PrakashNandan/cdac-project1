@@ -15,23 +15,19 @@ const register = async (userData) => {
 // Login user
 const login = async (userData) => {
   const response = await axios.post('/auth/login', userData)
+  
   console.log(response);
   console.log(response.data+"hello");
 
   const token = response.data.accessToken ; 
   localStorage.setItem("accessToken", token);
   
-//    token = localStorage.getItem('token');
-// if (token) {
-//   alert("token identified")
-//   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-// }
 
-  if (response.config.data) {
-    localStorage.setItem('user', JSON.stringify(response.config.data))
+  if (response.data) {
+    localStorage.setItem('user', JSON.stringify(response.data))
   }
 
-  return response.config.data
+  return response.data
 }
 
 

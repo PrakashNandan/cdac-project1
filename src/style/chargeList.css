@@ -45,6 +45,13 @@
 
 #Pagi_input_id {
     
+    width: 7%;
+    /* min-width: 100px; */
+    padding: 0.1rem;
+    border-radius: 4.5px;
+}
+#Pagi_input_id_bill {
+    
     width: 22%;
     min-width: 100px;
     padding: 0.4rem;
@@ -59,8 +66,21 @@
     border-radius: 3.5px;
     flex-shrink: 0;
 }
+#searchInput_bill {
+    right: 5rem;
+    width: 22%;
+    min-width: 200px;
+    padding: 0.4rem;
+    border-radius: 3.5px;
+    flex-shrink: 0;
+}
 
 #searchDataID {
+    height: 2.4rem;
+    z-index: auto;
+    flex-shrink: 0;
+}
+#searchDataID_bill {
     height: 2.4rem;
     z-index: auto;
     flex-shrink: 0;

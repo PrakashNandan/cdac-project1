@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import Spinner from '../Components/Spinner'
 import UserDetail from '../Components/UserDetail'
 import LoginFormPage from './LoginFormPage'
+import '../style/login.css'
 
 
 
@@ -78,7 +79,7 @@ function Login() {
        
       </section>
 
-      <section className='form'>
+      <section className='form loginForm'>
         {/* <form onSubmit={onSubmit}>
 
           <div className='form-group'>
@@ -113,10 +114,6 @@ function Login() {
         </form> */}
 
           <LoginFormPage onChange={onChange} username={username} password={password} onSubmit={onSubmit}/>
-
-
-
-
 
       </section>
       <ToastContainer/>

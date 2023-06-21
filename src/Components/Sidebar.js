@@ -5,12 +5,13 @@ import {
   faAngleDown,
   faAngleRight,
 } from "@fortawesome/free-solid-svg-icons";
-import "../style/Sidebar.css";
 import axios from "./axios.jsx";
 import "../style/Sidebar.css";
 import { useNavigate } from "react-router-dom";
 
 const TripleLevelDropdown = ({ setShowChargeList,
+  setShowHomepage , 
+  setShowDashboard,
   setShowAddCharge,
   setShowBillTypeList,
   setShowAddBillType,
@@ -139,8 +140,29 @@ const TripleLevelDropdown = ({ setShowChargeList,
     setIsDropdown14Open(false);
     setIsDropdown15Open(false);
   };
-
+function handleClick0() {
+  setShowHomepage(false);
+  setShowChargeList(false);
+  setShowDashboard(true);
+  setShowAddCharge(false);
+  setShowBillTypeList(false);
+    setShowAddBillType(false);
+    setShowAddBillCategory(false);
+    setShowBillCategoryList(false);
+    setShowAddFundingSource(false);
+    setShowFundingSourceList(false);
+    setShowAddPaymentType(false);
+    setShowPaymentTypeList(false);
+    setShowAddLedgerType(false);
+    setShowLedgerTypeList(false);
+    setShowDeptList(false);
+    setShowAddDept(false);
+    setShowAddFinYear(false);
+    setShowFinYearList(false);
+}
   function handleClick1() {
+    setShowHomepage(false);
+    setShowDashboard(false);
     setShowChargeList(false);
     setShowAddCharge(true);
     setShowBillTypeList(false);
@@ -161,6 +183,8 @@ const TripleLevelDropdown = ({ setShowChargeList,
 
   }
   function handleClick2() {
+    setShowHomepage(false);
+    setShowDashboard(false);
     setShowChargeList(true);
     setShowAddCharge(false);
     setShowBillTypeList(false);
@@ -179,6 +203,8 @@ const TripleLevelDropdown = ({ setShowChargeList,
     setShowFinYearList(false);
   }
   function handleClick3() {
+    setShowHomepage(false);
+    setShowDashboard(false);
     setShowChargeList(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
@@ -197,6 +223,8 @@ const TripleLevelDropdown = ({ setShowChargeList,
     setShowFinYearList(false);
   }
   function handleClick4() {
+    setShowHomepage(false);
+    setShowDashboard(false);
     setShowChargeList(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
@@ -215,6 +243,8 @@ const TripleLevelDropdown = ({ setShowChargeList,
     setShowFinYearList(false);
   }
   function handleClick5() {
+    setShowHomepage(false);
+    setShowDashboard(false);
     setShowChargeList(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
@@ -233,6 +263,8 @@ const TripleLevelDropdown = ({ setShowChargeList,
     setShowFinYearList(false);
   }
   function handleClick6() {
+    setShowHomepage(false);
+    setShowDashboard(false);
     setShowChargeList(false);
     setShowAddCharge(false);
     setShowBillTypeList(true);
@@ -251,6 +283,8 @@ const TripleLevelDropdown = ({ setShowChargeList,
     setShowFinYearList(false);
   }
   function handleClick7() {
+    setShowHomepage(false);
+    setShowDashboard(false);
     setShowChargeList(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
@@ -269,6 +303,8 @@ const TripleLevelDropdown = ({ setShowChargeList,
     setShowFinYearList(false);
   }
   function handleClick8() {
+    setShowDashboard(false);
+    setShowHomepage(false);
     setShowChargeList(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
@@ -287,6 +323,8 @@ const TripleLevelDropdown = ({ setShowChargeList,
     setShowFinYearList(false);
   }
   function handleClick9() {
+    setShowHomepage(false);
+    setShowDashboard(false);
     setShowChargeList(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
@@ -305,7 +343,9 @@ const TripleLevelDropdown = ({ setShowChargeList,
     setShowFinYearList(false);
   }
   function handleClick10() {
+    setShowHomepage(false);
     setShowChargeList(false);
+    setShowDashboard(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
     setShowAddBillType(false);
@@ -323,6 +363,8 @@ const TripleLevelDropdown = ({ setShowChargeList,
     setShowFinYearList(true);
   }
   function handleClick11() {
+    setShowHomepage(false);
+    setShowDashboard(false);
     setShowChargeList(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
@@ -341,6 +383,8 @@ const TripleLevelDropdown = ({ setShowChargeList,
     setShowFinYearList(false);
   }
   function handleClick12() {
+    setShowDashboard(false);
+    setShowHomepage(false);
     setShowChargeList(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
@@ -359,6 +403,8 @@ const TripleLevelDropdown = ({ setShowChargeList,
     setShowFinYearList(false);
   }
   function handleClick13() {
+    setShowHomepage(false);
+    setShowDashboard(false);
     setShowChargeList(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
@@ -378,6 +424,8 @@ const TripleLevelDropdown = ({ setShowChargeList,
   }
   function handleClick14() {
     setShowChargeList(false);
+    setShowHomepage(false);
+    setShowDashboard(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
     setShowAddBillType(false);
@@ -395,7 +443,9 @@ const TripleLevelDropdown = ({ setShowChargeList,
     setShowFinYearList(false);
   }
   function handleClick15() {
+    setShowHomepage(false);
     setShowChargeList(false);
+    setShowDashboard(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
     setShowAddBillType(false);
@@ -414,6 +464,8 @@ const TripleLevelDropdown = ({ setShowChargeList,
   }
   function handleClick16() {
     setShowChargeList(false);
+    setShowHomepage(false);
+    setShowDashboard(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
     setShowAddBillType(false);
@@ -432,7 +484,14 @@ const TripleLevelDropdown = ({ setShowChargeList,
   }
   const handleClick17 = () => {
     navigate('/addbill')
+<<<<<<< HEAD
   }
+=======
+}
+const handleClick18 = ()=>{
+    navigate('/billboxList')
+}
+>>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
   const sidebarRef = useRef(null);
 
   useEffect(() => {
@@ -452,28 +511,46 @@ const TripleLevelDropdown = ({ setShowChargeList,
   return (
     <div className={`sidebar ${isSidebarOpen ? "open" : ""}`} ref={sidebarRef}>
       <div className={` ${isSidebarOpen ? "header-open" : "sidebar-header"}`} onClick={toggleSidebar}>
+     
+        
         <FontAwesomeIcon icon={faBars} className="sidebar-toggle-icon" />
       </div>
       {isSidebarOpen && (
+        
         <ul className="sidebar-menu">
           <li>
-            <button className="sidebar-dropdown" onClick={toggleDropdown}>
-              <span>Admin</span>
-              <FontAwesomeIcon
-                icon={isDropdownOpen ? faAngleDown : faAngleRight}
-              />
+                        <button
+                          className="sidebar-dropdown"
+                          onClick={() => handleClick0()}
+                        >
+                        Dashboard
+                        </button>
+                      </li>
+          <li>
+            <button className={`sidebar-dropdown ${isDropdownOpen ? "sidebar-dropdown-open" : ""}`} onClick={toggleDropdown}>
+             <div className="grid1">
+              <div className="gridX">Admin</div>
+              <div className={` ${isDropdownOpen ? "down":"up"}`}><FontAwesomeIcon
+                icon={faAngleRight}
+              /></div>
+              </div> 
             </button>
             {isDropdownOpen && (
-              <ul className="sidebar-submenu">
-                <li>
+              <div className="lists">
+              <ul className={"sidebar-submenu asdf"} >
+                <li >
                   <button
                     className="sidebar-dropdown2"
                     onClick={toggleDropdown11}
                   >
                     <span>Acc Charge</span>
+<<<<<<< HEAD
                     <FontAwesomeIcon
+=======
+                    <div className="arrow-icon"><FontAwesomeIcon
+>>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
                       icon={isDropdown11Open ? faAngleDown : faAngleRight}
-                    />
+                    /></div>
                   </button>
                   {isDropdown11Open && (
                     <ul className="sidebar-submenu2">
@@ -502,9 +579,13 @@ const TripleLevelDropdown = ({ setShowChargeList,
                     onClick={toggleDropdown12}
                   >
                     <span>Bill Category</span>
+<<<<<<< HEAD
                     <FontAwesomeIcon
+=======
+                    <div className="arrow-icon"><FontAwesomeIcon
+>>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
                       icon={isDropdown12Open ? faAngleDown : faAngleRight}
-                    />
+                    /></div>
                   </button>
                   {isDropdown12Open && (
                     <ul className="sidebar-submenu3">
@@ -533,9 +614,13 @@ const TripleLevelDropdown = ({ setShowChargeList,
                     onClick={toggleDropdown13}
                   >
                     <span>Bill Type</span>
+<<<<<<< HEAD
                     <FontAwesomeIcon
+=======
+                    <div className="arrow-icon"><FontAwesomeIcon
+>>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
                       icon={isDropdown13Open ? faAngleDown : faAngleRight}
-                    />
+                    /></div>
                   </button>
                   {isDropdown13Open && (
                     <ul className="sidebar-submenu3">
@@ -564,9 +649,13 @@ const TripleLevelDropdown = ({ setShowChargeList,
                     onClick={toggleDropdown14}
                   >
                     <span>Department</span>
+<<<<<<< HEAD
                     <FontAwesomeIcon
+=======
+                    <div className="arrow-icon"><FontAwesomeIcon
+>>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
                       icon={isDropdown14Open ? faAngleDown : faAngleRight}
-                    />
+                    /></div>
                   </button>
                   {isDropdown14Open && (
                     <ul className="sidebar-submenu3">
@@ -595,9 +684,13 @@ const TripleLevelDropdown = ({ setShowChargeList,
                     onClick={toggleDropdown15}
                   >
                     <span>FinancialYear</span>
+<<<<<<< HEAD
                     <FontAwesomeIcon
+=======
+                    <div className="arrow-icon"><FontAwesomeIcon
+>>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
                       icon={isDropdown15Open ? faAngleDown : faAngleRight}
-                    />
+                    /></div>
                   </button>
                   {isDropdown15Open && (
                     <ul className="sidebar-submenu3">
@@ -626,9 +719,13 @@ const TripleLevelDropdown = ({ setShowChargeList,
                     onClick={toggleDropdown16}
                   >
                     <span>FundingSource</span>
+<<<<<<< HEAD
                     <FontAwesomeIcon
+=======
+                    <div className="arrow-icon"><FontAwesomeIcon
+>>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
                       icon={isDropdown16Open ? faAngleDown : faAngleRight}
-                    />
+                    /></div>
                   </button>
                   {isDropdown16Open && (
                     <ul className="sidebar-submenu3">
@@ -657,9 +754,13 @@ const TripleLevelDropdown = ({ setShowChargeList,
                     onClick={toggleDropdown17}
                   >
                     <span>LedgerType</span>
+<<<<<<< HEAD
                     <FontAwesomeIcon
+=======
+                    <div className="arrow-icon"><FontAwesomeIcon
+>>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
                       icon={isDropdown17Open ? faAngleDown : faAngleRight}
-                    />
+                    /></div>
                   </button>
                   {isDropdown17Open && (
                     <ul className="sidebar-submenu3">
@@ -688,9 +789,13 @@ const TripleLevelDropdown = ({ setShowChargeList,
                     onClick={toggleDropdown18}
                   >
                     <span>PaymentType</span>
+<<<<<<< HEAD
                     <FontAwesomeIcon
+=======
+                    <div className="arrow-icon"><FontAwesomeIcon
+>>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
                       icon={isDropdown18Open ? faAngleDown : faAngleRight}
-                    />
+                    /></div>
                   </button>
                   {isDropdown18Open && (
                     <ul className="sidebar-submenu3">
@@ -714,18 +819,23 @@ const TripleLevelDropdown = ({ setShowChargeList,
                   )}
                 </li>
               </ul>
+              </div>
             )}
           </li>
           <li>
             <button className="sidebar-dropdown" onClick={toggleDropdown2}>
-              <span>Transactions</span>
-              <FontAwesomeIcon
-                icon={isDropdown2Open ? faAngleDown : faAngleRight}
-              />
+            <div className="grid2">
+              <div className="gridX">Transactions</div>
+              <div className={` ${isDropdown2Open ? "down":"up"}`}><FontAwesomeIcon
+                icon={faAngleRight}
+              /></div>
+              </div> 
+            
             </button>
             {isDropdown2Open && (
               <ul className="sidebar-submenu">
                 <li>
+<<<<<<< HEAD
                   <button
                     className="sidebar-dropdown3"
                     onClick={() => handleClick17()}
@@ -741,17 +851,37 @@ const TripleLevelDropdown = ({ setShowChargeList,
                   >
                     Bill Box List
                   </button>
+=======
+                <button
+                          className="sidebar-dropdown3"
+                          onClick={() => handleClick17()}
+                        >
+                        Add Bill Box
+                        </button>
+
                 </li>
-                <li>C</li>
+                <li>
+                <button
+                          className="sidebar-dropdown3"
+                          onClick={() => handleClick18()}
+                        >
+                         Bill Box List
+                        </button>
+>>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
+                </li>
+                
               </ul>
             )}
           </li>
           <li>
             <button className="sidebar-dropdown" onClick={toggleDropdown3}>
-              <span>Employee</span>
-              <FontAwesomeIcon
-                icon={isDropdown3Open ? faAngleDown : faAngleRight}
-              />
+             
+               <div className="grid3">
+             <div className="gridX">Employee</div>
+             <div className={` ${isDropdown3Open ? "down":"up"}`}><FontAwesomeIcon
+                icon={faAngleRight}
+              /></div>
+              </div>
             </button>
             {isDropdown3Open && (
               <ul className="sidebar-submenu">
@@ -762,6 +892,7 @@ const TripleLevelDropdown = ({ setShowChargeList,
             )}
           </li>
         </ul>
+        
       )}
     </div>
   );
