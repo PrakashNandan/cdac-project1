@@ -1,18 +1,18 @@
 import React, {useState} from 'react'
 import '../style/Pagination.css'
 
-function Pagination({totalUsers, userPerPage,setUserPerPage,setCurrentPage, currPage, lastIndex, firstIndex}) {
+function Pagination({totalUsers, pageSize,setPageSize,setPageNumber, pageNumber, lastIndex, firstIndex, totalElements, totalPages}) {
 
 
     const pages=[];
-    const totalPage = Math.ceil(totalUsers/userPerPage)
+   
 
-    for(let i=1;i<=totalPage;i++){
+    for(let i=1;i<=totalPages;i++){
         pages.push(i);
     }
 
     const handlePageChange = (newPageNumber) => {
-        setCurrentPage(newPageNumber);
+      setPageNumber(newPageNumber);
       };
 
 
@@ -30,24 +30,24 @@ function Pagination({totalUsers, userPerPage,setUserPerPage,setCurrentPage, curr
 
         }
                     <span>Rows :</span>
-                    <input type="number" className='userPerPageClass pagiInputClass' id='Pagi_input_id' name='userPerPage' value={userPerPage} onChange={(e) => {setUserPerPage(e.target.value) }} />
+                    <input type="number" className='userPerPageClass pagiInputClass' id='Pagi_input_id' name='userPerPage' value={pageSize} onChange={(e) => {setPageSize(e.target.value) }} />
                     <div className="spacer"></div>
-                    <span>{firstIndex+1}-{lastIndex} of {totalUsers}</span>
+                    <span>{firstIndex+1}-{lastIndex} of {totalElements}</span>
 
                     <button
                     className='btn btn-primary btn-sm pagiBtn '
-                    disabled={currPage === 1}
-                    onClick={() => handlePageChange(currPage - 1)}
+                    disabled={pageNumber === 1}
+                    onClick={() => handlePageChange(pageNumber - 1)}
                     >
                     Prev
                   </button>
                
-                    <span>Page : {currPage}</span>
+                    <span>Page : {pageNumber}</span>
 
                     <button
                     className='btn btn-primary btn-sm pagiBtn'
-                    disabled={currPage === totalPage}
-                    onClick={() => handlePageChange(currPage + 1)}
+                    disabled={pageNumber === totalPages}
+                    onClick={() => handlePageChange(pageNumber + 1)}
                     >
                     next
                   </button>
