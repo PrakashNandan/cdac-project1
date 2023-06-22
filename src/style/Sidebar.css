@@ -85,10 +85,37 @@ body::-webkit-scrollbar {
   -webkit-user-select: none;
   /* touch-action: manipulation; */
   margin-left: 0;
+  animation-name:shift-reset;
+  animation-duration: 0.4s;
+  animation-fill-mode: both;
 }
 .sidebar-dropdown:hover
 {
-  background: #dcdcdc;
+ 
+  animation-name:shift;
+  animation-duration: 0.4s;
+  animation-fill-mode: both;
+}
+@keyframes shift{
+  from{
+    background: #f0f0f0;
+    padding-left: 20px;;
+  }
+  to{
+    background: #dcdcdc;
+    padding-left:25px;
+  }
+}
+@keyframes shift-reset{
+  from{
+    
+    background: #dcdcdc;
+    padding-left:25px;
+  }
+  to{
+    background: #f0f0f0;
+    padding-left: 20px;
+  }
 }
 
 .sidebar-dropdown span,
@@ -259,36 +286,32 @@ height:0px;}
 }
 .grid1 {
   display: grid;
-  grid-template-columns: auto auto;
-  column-gap: 173px;
-  /* justify-content: left ; */
+  grid-template-columns: auto auto auto;
+  
+  
 }
 .grid2 {
   display: grid;
-  grid-template-columns: auto auto;
-  column-gap: 120px;
-  /* justify-content: left ; */
+  grid-template-columns: auto auto auto;
+ 
+ 
 }
 .grid3 {
   display: grid;
-  grid-template-columns: auto auto;
-  column-gap: 147px;
-  /* justify-content: left ; */
+  grid-template-columns: auto auto auto;
+  
+  
 }
-.grid-X {
-  /* width:220px; */
-  padding-left: 0px;
-  margin: 0;
-  padding: 0;
-  margin-left: 10px;
-  justify-self: start;
+
+.gridX {
+  margin-left: 20px;
 }
 /* .arrow{
   transition: transform 1s;
 } */
 .down {
   animation-name: example;
-  animation-duration: 0.5s;
+  animation-duration: 0.3s;
   animation-fill-mode: both;
 }
 @keyframes example {
@@ -312,3 +335,4 @@ height:0px;}
     transform: rotate(0deg);
   }
 }
+
