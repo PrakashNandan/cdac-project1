@@ -5,10 +5,11 @@ import FindAllData from './FindAllData.jsx'
 import { ToastContainer, toast } from 'react-toastify'
 import { privateAxios } from '../../service/helperUtil'
 import Pagination from '../Pagination'
-
+import Mymodal from '../ShowModal.jsx';
 
 function ChargeList() {
 
+    const [ShowModal, setShowModal] = useState(false);
     const [allData, setAllData] = useState([]);
     const [isError, setisError] = useState('');
     const [inputId, setInputId] = useState('');
@@ -16,6 +17,21 @@ function ChargeList() {
     const [pageSize, setPageSize]=useState(10);
     const [pageNumber, setPageNumber]=useState(1);
     const [datafetching, setDataFetching]=useState(false);
+    const [isSubmitting, setIsSubmitting]=useState(false);
+    const [user, setUser] = useState({
+        chargeName: '',
+        chargeType: '',
+        chargeRate: '',
+        entryDate: '',
+        chargeAmount: '',
+        chargeApplyOnBaseAmount: '',
+        roundingType: '',
+        hoaPostingRequired: false,
+        depositToGovt: false,
+      }, []);
+    
+      const [users, setUsers] = useState([]);
+
 
     useEffect(() => {
         handleFindALL();
@@ -93,6 +109,204 @@ function ChargeList() {
         }
 
     }
+    // if (userPerPage < 1) {
+    //     setUserPerPage(3);
+    //   }
+    
+      const closeModal = () => {
+        return setShowModal(false);
+      }
+    
+    
+      const handleInputChange = (event) => {
+        const { name, value, type, checked } = event.target;
+        const inputValue = type === 'checkbox' ? checked : value;
+        setUser((prevUser) => ({ ...prevUser, [name]: inputValue }));
+      };
+    
+      const showSpinner=()=>{
+        <div class="spinner-border spinner-border-sm" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      }
+    
+    
+      const handleSubmit = async (event) => {
+    
+        event.preventDefault();
+        setIsSubmitting(true);
+    
+        console.log(user);
+    
+    
+        try {
+          const res = await  privateAxios.post("/charge/save", user)
+          .then( (Response)=>console.log(Response))
+          .catch( (err) => console.log(err))
+    
+          toast.success('Submit Successfully')
+          setUsers([...users, user]);
+          console.log(res);
+    
+        } catch (error) {
+          toast.error("Form not Submitted !! , please try again")
+          console.log(error);
+        }
+    
+        setIsSubmitting(false);
+        closeModal();
+    
+      };
+    
+    
+      const postFormData = async (url) => {
+    
+        try {
+          const res = await axios.post(url, { user });
+          console.log(res);
+    
+        } catch (error) {
+        //   setIsError(error.message);
+          console.log(error.message);
+        }
+      }
+    
+    //   const handleUserPerPage = ({ e, target, value }) => {
+    //     return setUserPerPage(e.target.value)
+    //   }
+    
+    const mainModal = (
+
+    <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange}>
+
+      <button id='close-btn' onClick={closeModal}>close</button>
+      <h2>Form</h2>
+
+      <form onSubmit={handleSubmit} className='form'>
+
+        <div >
+          {/* <label htmlFor="chargeName">Charge Name:</label> */}
+          <input
+            type="text"
+            name="chargeName"
+            id="chargeName"
+            value={user.chargeName}
+            onChange={handleInputChange}
+            placeholder="Enter chargeName"
+            required
+          />
+        </div>
+        <div >
+          {/* <label htmlFor="chargeType">Charge Type:</label> */}
+          <input
+            type="number"
+            name="chargeType"
+            id="chargeType"
+            value={user.chargeType}
+            onChange={handleInputChange}
+            placeholder="Enter chargeType"
+          // required
+          />
+        </div>
+        <div >
+          {/* <label htmlFor="chargeRate">Charge Rate:</label> */}
+          <input
+            type="number"
+            name="chargeRate"
+            id="chargeRate"
+            value={user.chargeRate}
+            onChange={handleInputChange}
+            placeholder="Enter chargeRate"
+          // required
+          />
+        </div>
+        <div>
+          <label htmlFor="entryDate">Entry Date: &nbsp;</label>
+          <input
+            type="date"
+            name="entryDate"
+            id="entryDate"
+            value={user.entryDate}
+            onChange={handleInputChange}
+            placeholder="Enter entryDate"
+          // required
+          />
+        </div>
+        <div >
+          {/* <label htmlFor="chargeAmount">charge Amount:</label> */}
+          <input
+            type="number"
+            name="chargeAmount"
+            id="chargeAmount"
+            value={user.chargeAmount}
+            onChange={handleInputChange}
+            placeholder="Enter chargeAmount"
+          // required
+          />
+        </div>
+        <div >
+          {/* <label htmlFor="chargeApplyOnBaseAmount">chargeApplyOnBaseAmount:</label> */}
+          <input
+            type="number"
+            name="chargeApplyOnBaseAmount"
+            id="chargeApplyOnBaseAmount"
+            value={user.chargeApplyOnBaseAmount}
+            onChange={handleInputChange}
+            placeholder="Enter chargeApplyOnBaseAmount"
+          // required
+          />
+        </div>
+        <div >
+          {/* <label htmlFor="roundingType">Rounding Type:</label> */}
+          <input
+            type="number"
+            name="roundingType"
+            id="roundingType"
+            value={user.roundingType}
+            onChange={handleInputChange}
+            placeholder="Enter roundingType"
+          // required
+          />
+        </div>
+        <div >
+          <label htmlFor="hoaPostingRequired">hoaPostingRequired: &nbsp;</label>
+          <input
+            type="checkbox"
+            name="hoaPostingRequired"
+            id="hoaPostingRequired"
+
+            checked={user.hoaPostingRequired}
+            onChange={handleInputChange}
+            placeholder="Enter hoaPostingRequired"
+
+          />
+        </div>
+        <div >
+          <label htmlFor="depositToGovt">is Deposit to Govt? &nbsp;</label>
+          <input
+            type="checkbox"
+            name="depositToGovt"
+            id="depositToGovt"
+            checked={user.depositToGovt}
+            onChange={handleInputChange}
+            placeholder="Enter depositToGovt"
+
+          />
+        </div>
+        
+        {isSubmitting ? (
+           <button class="modal-btn" type="button" disabled>
+           <span class="spinner-border" style={{margin:'0 0.3rem', height:'1.6rem', width:'1.5rem'}} role="status" aria-hidden="true"></span>
+           
+           Submitting...
+         </button>
+              ) : (
+                <button className='modal-btn' type='submit' >Submit</button>
+         )}
+          
+      </form>
+
+    </Mymodal>)
 
 
     return (
@@ -112,6 +326,9 @@ function ChargeList() {
             <div className='find-container'>
                 {/* <div className='findButtonClass'><button className='btn-find btn btn-primary' onClick={()=>handleFindALL()}>FindAll</button></div> */}
                 <div className="parentSearchInput">
+                <button type="button" class="btn btn-primary"onClick={() => setShowModal(true)}>AddCharges</button>
+                {ShowModal && mainModal}
+
                      {/* <input type="number" className='userPerPageClass' id='Pagi_input_id' name='userPerPage' value={pageSize} onChange={(e) => { setPageSize(e.target.value) }} /> */}
                     <div className="spacer"></div>
                     <input type="number" placeholder='search by ID' id='searchInput' value={inputId} onChange={(e) => setInputId(e.target.value)} />
