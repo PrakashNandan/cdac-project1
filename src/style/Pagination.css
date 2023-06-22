@@ -1,11 +1,11 @@
 .pagination {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    /* justify-content: center; */
     margin-top: 1rem;
 }
 
-.pagination button {
+/* .pagination button {
     width: 40px;
     height: 40px;
     font-family: inherit;
@@ -17,14 +17,29 @@
     transition: all 0.3s ease;
     background: transparent;
     color: #030303;
-    /* border-color: #e0e0e0; */
+    
     border: 1.9px solid #e0e0e0;
-}
+} */
 
-.pagination button.active {
+/* .pagination button.active {
     font-weight: 900;
-    /* border-color: #101010; */
+  
     background: #bbb4de;;
     color: #101010;
     border: 1.9px solid #101010;
+} */
+
+.pagiBtn {
+    margin: 0 0.8rem;
+    /* padding: 0.9rem; */
+   
+}
+
+.pagination span{
+    margin-top: 0.1rem;
+    margin-right: 0.5rem;
+}
+
+.pagiInputClass{
+    width: 10%;
 }
