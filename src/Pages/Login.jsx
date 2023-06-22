@@ -9,7 +9,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import Spinner from '../Components/Spinner'
 import UserDetail from '../Components/UserDetail'
 import LoginFormPage from './LoginFormPage'
-import '../style/login.css'
 
 
 
@@ -73,9 +72,9 @@ function Login() {
   return (
     <>
       <section className='heading'>
-        <h1>
+        {/* <h1>
           <FaSignInAlt /> Log In
-        </h1>
+        </h1> */}
        
       </section>
 

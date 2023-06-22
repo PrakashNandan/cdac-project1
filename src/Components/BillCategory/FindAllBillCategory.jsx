@@ -160,7 +160,7 @@ function FindAllBillCategory({allData,setAllData, handleFindALL}) {
                     <td>{billCategoryName}</td>
                    
                     <td><button type="button" class="btn btn-danger btn-sm" onClick={()=>handleDeleteData(billCategoryId)}>Delete</button>
-                        <button type="button" class="btn m-2 btn-secondary btn-sm" onClick={()=>handleUpdateData(billCategoryId)}>Update</button>
+                        <button type="button" class="btn ml-2 btn-secondary btn-sm" onClick={()=>handleUpdateData(billCategoryId)}>Update</button>
                     </td>
                 </tr>
             )

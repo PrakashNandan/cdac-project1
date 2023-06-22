@@ -205,6 +205,14 @@ h3 {
   box-shadow: 0 0 0.3rem #3a3a3a;
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-moz-number-spin-box {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);

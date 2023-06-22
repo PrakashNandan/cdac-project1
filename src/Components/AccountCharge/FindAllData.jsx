@@ -269,8 +269,8 @@ function FindAllData({allData,setAllData, handleFindALL}) {
                     <td>{hoaPostingRequired===true ? "YES" : "NO" }</td>
                     <td>{depositToGovt===true ? "YES" : "NO"}</td>  
 
-                    <td><button type="button" class="btn btn-danger" onClick={()=>handleDeleteData(chargeId)}>Delete</button>
-                        <button type="button" class="btn m-1 btn-light" onClick={()=>handleUpdateData(chargeId)}>Update</button>
+                    <td><button type="button" class="btn btn-danger btn-sm" onClick={()=>handleDeleteData(chargeId)}>Delete</button>
+                        <button type="button" class="btn ml-2 btn-secondary btn-sm" onClick={()=>handleUpdateData(chargeId)}>Update</button>
                     </td>
                 </tr>
             )

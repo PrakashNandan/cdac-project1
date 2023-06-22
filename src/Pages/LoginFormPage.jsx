@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
+import { MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput } from 'mdb-react-ui-kit';
 
 function LoginFormPage({ onChange, username, password, onSubmit }) {
   const navigate = useNavigate();
@@ -12,44 +12,59 @@ function LoginFormPage({ onChange, username, password, onSubmit }) {
   };
 
   return (
-    <MDBContainer fluid className="p-3 my-5">
-      <MDBRow>
-        <MDBCol col='10' md='6'>
-          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" className="img-fluid" alt="Phone image" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <MDBContainer fluid className="py-5">
+      <MDBRow className="justify-content-center">
+        <h2 className="mb-5" style={{ paddingTop: '0' }}>
+          <MDBIcon icon="right-to-bracket" className="me-2" />
+          Login
+        </h2>
+        <MDBCol md="8" lg="6" xl="4">
+          <div className="mb-6">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" alt="Phone" className="img-fluid" />
+          </div>
         </MDBCol>
 
-<<<<<<< HEAD
-        <MDBCol col='4' md='6'>
-
-
-          <MDBInput wrapperClass='mb-4' label='username' id='username' type='email' name='username' size="lg"  value={username} onChange={onChange} />
-          <MDBInput wrapperClass='mb-4' label='Password' id='password' type='password' name='password' size="lg" value={password} onChange={onChange}/>
-
-
-          <div className="d-flex justify-content-between mx-4 mb-4">
-            <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Remember me' />
-            <a href="!#" className="fw-bold link-danger">Forgot password?</a>
-=======
-        <MDBCol col='4' md='6' style={{ marginTop: '0.56rem' }}>
+        <MDBCol md="8" lg="6" xl="4" className="my-auto">
           <MDBInput
-            wrapperClass='mb-4'
-            label='username'
-            id='username'
-            type='text'
-            name='username'
+            label="Username"
+            id="username"
+            type="text"
+            name="username"
             size="lg"
             value={username}
             onChange={onChange}
+            className="mb-4"
           />
+
           <div className="position-relative">
             <MDBInput
-              label='Password'
-              id='password'
+              label="Password"
+              id="password"
               type={showPassword ? 'text' : 'password'}
-              name='password'
+              name="password"
               size="lg"
               value={password}
               onChange={onChange}
+              className="mb-4"
             />
             <MDBIcon
               icon={showPassword ? 'eye-slash' : 'eye'}
@@ -57,13 +72,14 @@ function LoginFormPage({ onChange, username, password, onSubmit }) {
               onClick={handleTogglePassword}
               style={{ cursor: 'pointer', marginRight: '0.5rem' }}
             />
->>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
           </div>
 
-          <MDBBtn className="mb-4 w-100" size="lg" onClick={onSubmit}>Sign in</MDBBtn>
+          <MDBBtn className="mb-4 w-100" size="lg" onClick={onSubmit}>
+            Sign in
+          </MDBBtn>
 
-          <p className="small fw-bold mt-2 pt-1 mb-2">
-            Don't have an account? <Link to='/register' className='link-danger'>Register</Link>
+          <p className="text-center mb-2">
+            Don't have an account? <Link to="/register" className="text-decoration-none">Register</Link>
           </p>
         </MDBCol>
       </MDBRow>

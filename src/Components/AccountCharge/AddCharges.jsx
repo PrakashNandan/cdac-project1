@@ -8,6 +8,7 @@ import '../../style/UserData.css'
 import { ToastContainer, toast } from 'react-toastify'
 import Pagination from '../Pagination';
 import { privateAxios } from '../../service/helperUtil.js';
+import { MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
 // const API="https://jsonplaceholder.typicode.com"
 
 function Addcharges() {
@@ -16,7 +17,7 @@ function Addcharges() {
   const [currentPage, setCurrentPage] = useState(1);
   const [userPerPage, setUserPerPage] = useState(3);
   const [isError, setIsError] = useState('');
-  const [isSubmitting, setIsSubmitting]=useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [user, setUser] = useState({
     chargeName: '',
@@ -49,7 +50,7 @@ function Addcharges() {
     setUser((prevUser) => ({ ...prevUser, [name]: inputValue }));
   };
 
-  const showSpinner=()=>{
+  const showSpinner = () => {
     <div class="spinner-border spinner-border-sm" role="status">
       <span class="sr-only">Loading...</span>
     </div>
@@ -65,9 +66,9 @@ function Addcharges() {
 
 
     try {
-      const res = await  privateAxios.post("/charge/save", user)
-      .then( (Response)=>console.log(Response))
-      .catch( (err) => console.log(err))
+      const res = await privateAxios.post("/charge/save", user)
+        .then((Response) => console.log(Response))
+        .catch((err) => console.log(err))
 
       toast.success('Submit Successfully')
       setUsers([...users, user]);
@@ -119,91 +120,104 @@ function Addcharges() {
 
         <div >
           {/* <label htmlFor="chargeName">Charge Name:</label> */}
-          <input
+          <MDBInput
+            label="Charge Name"
             type="text"
             name="chargeName"
             id="chargeName"
             value={user.chargeName}
             onChange={handleInputChange}
             placeholder="Enter chargeName"
+            className="mb-1"
             required
           />
         </div>
         <div >
           {/* <label htmlFor="chargeType">Charge Type:</label> */}
-          <input
+          <MDBInput
+            label="Charge Type"
             type="number"
             name="chargeType"
             id="chargeType"
             value={user.chargeType}
             onChange={handleInputChange}
             placeholder="Enter chargeType"
+            className="mb-1"
           // required
           />
         </div>
         <div >
           {/* <label htmlFor="chargeRate">Charge Rate:</label> */}
-          <input
+          <MDBInput
+            label="Charge Rate"
             type="number"
             name="chargeRate"
             id="chargeRate"
             value={user.chargeRate}
             onChange={handleInputChange}
             placeholder="Enter chargeRate"
+            className="mb-1"
           // required
           />
         </div>
         <div>
-          <label htmlFor="entryDate">Entry Date: &nbsp;</label>
-          <input
+          <MDBInput
+            label="Entry Date"
             type="date"
             name="entryDate"
             id="entryDate"
             value={user.entryDate}
             onChange={handleInputChange}
             placeholder="Enter entryDate"
+            className="mb-1"
           // required
           />
         </div>
         <div >
           {/* <label htmlFor="chargeAmount">charge Amount:</label> */}
-          <input
+          <MDBInput
+            label="Charge Amount"
             type="number"
             name="chargeAmount"
             id="chargeAmount"
             value={user.chargeAmount}
             onChange={handleInputChange}
             placeholder="Enter chargeAmount"
+            className="mb-1"
           // required
           />
         </div>
         <div >
           {/* <label htmlFor="chargeApplyOnBaseAmount">chargeApplyOnBaseAmount:</label> */}
-          <input
+          <MDBInput
+            label="Charge Apply on Base Amount"
             type="number"
             name="chargeApplyOnBaseAmount"
             id="chargeApplyOnBaseAmount"
             value={user.chargeApplyOnBaseAmount}
             onChange={handleInputChange}
             placeholder="Enter chargeApplyOnBaseAmount"
+            className="mb-1"
           // required
           />
         </div>
         <div >
           {/* <label htmlFor="roundingType">Rounding Type:</label> */}
-          <input
+          <MDBInput
+            label="Rounding Type"
             type="number"
             name="roundingType"
             id="roundingType"
             value={user.roundingType}
             onChange={handleInputChange}
             placeholder="Enter roundingType"
+            className="mb-1"
           // required
           />
         </div>
         <div >
           <label htmlFor="hoaPostingRequired">hoaPostingRequired: &nbsp;</label>
-          <input
+          <MDBCheckbox
             type="checkbox"
             name="hoaPostingRequired"
             id="hoaPostingRequired"
@@ -216,7 +230,7 @@ function Addcharges() {
         </div>
         <div >
           <label htmlFor="depositToGovt">is Deposit to Govt? &nbsp;</label>
-          <input
+          <MDBCheckbox
             type="checkbox"
             name="depositToGovt"
             id="depositToGovt"
@@ -226,17 +240,17 @@ function Addcharges() {
 
           />
         </div>
-        
+
         {isSubmitting ? (
-           <button class="modal-btn" type="button" disabled>
-           <span class="spinner-border" style={{margin:'0 0.3rem', height:'1.6rem', width:'1.5rem'}} role="status" aria-hidden="true"></span>
-           
-           Submitting...
-         </button>
-              ) : (
-                <button className='modal-btn' type='submit' >Submit</button>
-         )}
-          
+          <button class="modal-btn" type="button" disabled>
+            <span class="spinner-border" style={{ margin: '0 0.3rem', height: '1.6rem', width: '1.5rem' }} role="status" aria-hidden="true"></span>
+
+            Submitting...
+          </button>
+        ) : (
+          <button className='modal-btn' type='submit' >Submit</button>
+        )}
+
       </form>
 
     </Mymodal>
@@ -269,7 +283,7 @@ function Addcharges() {
                   <th>roundingType</th>
                   <th>hoaPostingRequired</th>
                   <th>depositToGovt</th>
-                  
+
                 </tr>
               </thead>
               <tbody>
@@ -277,13 +291,13 @@ function Addcharges() {
               </tbody>
               {/* <Pagination totalUsers={users.length} userPerPage={userPerPage} setCurrentPage={setCurrentPage} currPage={currentPage}/> */}
             </table>
-            <Pagination totalUsers={users.length} userPerPage={userPerPage} setCurrentPage={setCurrentPage} setUserPerPage={setUserPerPage} currPage={currentPage} lastIndex={lastIndex} firstIndex={firstIndex}/>
-          </div> 
-          
-          
+            <Pagination totalUsers={users.length} userPerPage={userPerPage} setCurrentPage={setCurrentPage} setUserPerPage={setUserPerPage} currPage={currentPage} lastIndex={lastIndex} firstIndex={firstIndex} />
+          </div>
+
+
           : (
             <p>No Charges added yet.</p>
-            )}
+          )}
       </div>
 
 
@@ -296,3 +310,4 @@ function Addcharges() {
 }
 
 export default Addcharges;
+

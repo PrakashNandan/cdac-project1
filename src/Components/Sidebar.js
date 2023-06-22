@@ -484,14 +484,10 @@ function handleClick0() {
   }
   const handleClick17 = () => {
     navigate('/addbill')
-<<<<<<< HEAD
-  }
-=======
 }
 const handleClick18 = ()=>{
     navigate('/billboxList')
 }
->>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
   const sidebarRef = useRef(null);
 
   useEffect(() => {
@@ -544,11 +540,7 @@ const handleClick18 = ()=>{
                     onClick={toggleDropdown11}
                   >
                     <span>Acc Charge</span>
-<<<<<<< HEAD
-                    <FontAwesomeIcon
-=======
                     <div className="arrow-icon"><FontAwesomeIcon
->>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
                       icon={isDropdown11Open ? faAngleDown : faAngleRight}
                     /></div>
                   </button>
@@ -579,11 +571,7 @@ const handleClick18 = ()=>{
                     onClick={toggleDropdown12}
                   >
                     <span>Bill Category</span>
-<<<<<<< HEAD
-                    <FontAwesomeIcon
-=======
                     <div className="arrow-icon"><FontAwesomeIcon
->>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
                       icon={isDropdown12Open ? faAngleDown : faAngleRight}
                     /></div>
                   </button>
@@ -614,11 +602,7 @@ const handleClick18 = ()=>{
                     onClick={toggleDropdown13}
                   >
                     <span>Bill Type</span>
-<<<<<<< HEAD
-                    <FontAwesomeIcon
-=======
                     <div className="arrow-icon"><FontAwesomeIcon
->>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
                       icon={isDropdown13Open ? faAngleDown : faAngleRight}
                     /></div>
                   </button>
@@ -649,11 +633,7 @@ const handleClick18 = ()=>{
                     onClick={toggleDropdown14}
                   >
                     <span>Department</span>
-<<<<<<< HEAD
-                    <FontAwesomeIcon
-=======
                     <div className="arrow-icon"><FontAwesomeIcon
->>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
                       icon={isDropdown14Open ? faAngleDown : faAngleRight}
                     /></div>
                   </button>
@@ -684,11 +664,7 @@ const handleClick18 = ()=>{
                     onClick={toggleDropdown15}
                   >
                     <span>FinancialYear</span>
-<<<<<<< HEAD
-                    <FontAwesomeIcon
-=======
                     <div className="arrow-icon"><FontAwesomeIcon
->>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
                       icon={isDropdown15Open ? faAngleDown : faAngleRight}
                     /></div>
                   </button>
@@ -719,11 +695,7 @@ const handleClick18 = ()=>{
                     onClick={toggleDropdown16}
                   >
                     <span>FundingSource</span>
-<<<<<<< HEAD
-                    <FontAwesomeIcon
-=======
                     <div className="arrow-icon"><FontAwesomeIcon
->>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
                       icon={isDropdown16Open ? faAngleDown : faAngleRight}
                     /></div>
                   </button>
@@ -754,11 +726,7 @@ const handleClick18 = ()=>{
                     onClick={toggleDropdown17}
                   >
                     <span>LedgerType</span>
-<<<<<<< HEAD
-                    <FontAwesomeIcon
-=======
                     <div className="arrow-icon"><FontAwesomeIcon
->>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
                       icon={isDropdown17Open ? faAngleDown : faAngleRight}
                     /></div>
                   </button>
@@ -789,11 +757,7 @@ const handleClick18 = ()=>{
                     onClick={toggleDropdown18}
                   >
                     <span>PaymentType</span>
-<<<<<<< HEAD
-                    <FontAwesomeIcon
-=======
                     <div className="arrow-icon"><FontAwesomeIcon
->>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
                       icon={isDropdown18Open ? faAngleDown : faAngleRight}
                     /></div>
                   </button>
@@ -835,23 +799,6 @@ const handleClick18 = ()=>{
             {isDropdown2Open && (
               <ul className="sidebar-submenu">
                 <li>
-<<<<<<< HEAD
-                  <button
-                    className="sidebar-dropdown3"
-                    onClick={() => handleClick17()}
-                  >
-                    Bill Box
-                  </button>
-
-                </li>
-                <li>
-                  <button
-                    className="sidebar-dropdown3"
-                    onClick={() => handleClick17()}
-                  >
-                    Bill Box List
-                  </button>
-=======
                 <button
                           className="sidebar-dropdown3"
                           onClick={() => handleClick17()}
@@ -867,7 +814,6 @@ const handleClick18 = ()=>{
                         >
                          Bill Box List
                         </button>
->>>>>>> c89f0f07faca081fe9f7aac27002b83ec269e80f
                 </li>
                 
               </ul>

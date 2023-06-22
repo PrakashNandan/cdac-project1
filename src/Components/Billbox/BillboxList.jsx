@@ -80,7 +80,7 @@ function BillboxList() {
                 <button className='btn btn-primary' id='searchDataID' onClick={fetchData}>Search</button>   
             </div>
 
-            <div className='table-responsive-sm'>
+            <div className='table-responsive'>
                 <table className='table userTable'>
                     <thead>
                         <tr>
