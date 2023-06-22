@@ -44,11 +44,11 @@ function FindAllFundingSource({allData,setAllData, handleFindALL}) {
     }
   }
 
-  const handleUpdateData=async(id)=>{
+  const handleUpdateData=async(curData)=>{
       setShowModal(true);
       // setDataForUpdate((prevUser) => ({ ...prevUser, id: id }));
-      setUid(id);
-
+      setUid(curData.fundingSourceId);
+/*
       if(allData.length===1){
         console.log(allData[0]);
         const user1=allData[0];
@@ -65,6 +65,12 @@ function FindAllFundingSource({allData,setAllData, handleFindALL}) {
             }
     
       }
+*/
+
+      setDataForUpdate({
+        fundingSourceId:curData.fundingSourceId,
+        fundingSourceName:curData.fundingSourceName
+      })
       
   }
 
@@ -159,7 +165,7 @@ function FindAllFundingSource({allData,setAllData, handleFindALL}) {
                    
 
                     <td><button type="button" class="btn btn-danger" onClick={()=>handleDeleteData(fundingSourceId)}>Delete</button>
-                        <button type="button" class="btn m-1 btn-light" onClick={()=>handleUpdateData(fundingSourceId)}>Update</button>
+                        <button type="button" class="btn m-1 btn-light" onClick={()=>handleUpdateData(curData)}>Update</button>
                     </td>
                 </tr>
             )

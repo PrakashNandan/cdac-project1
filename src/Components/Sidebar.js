@@ -10,6 +10,7 @@ import "../style/Sidebar.css";
 import { useNavigate } from "react-router-dom";
 
 const TripleLevelDropdown = ({ setShowChargeList,
+  setShowBillbox ,
   setShowHomepage , 
   setShowDashboard,
   setShowAddCharge,
@@ -142,6 +143,7 @@ const navigate =useNavigate();
   };
 function handleClick0() {
   setShowHomepage(false);
+  setShowBillbox(false) ;
   setShowChargeList(false);
   setShowDashboard(true);
   setShowAddCharge(false);
@@ -165,6 +167,7 @@ function handleClick0() {
     setShowDashboard(false);
     setShowChargeList(false);
     setShowAddCharge(true);
+    setShowBillbox(false) ;
     setShowBillTypeList(false);
     setShowAddBillType(false);
     setShowAddBillCategory(false);
@@ -189,6 +192,7 @@ function handleClick0() {
     setShowAddCharge(false);
     setShowBillTypeList(false);
     setShowAddBillType(false);
+    setShowBillbox(false) ;
     setShowAddBillCategory(false);
     setShowBillCategoryList(false);
     setShowAddFundingSource(false);
@@ -208,6 +212,7 @@ function handleClick0() {
     setShowChargeList(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
+    setShowBillbox(false) ;
     setShowAddBillType(false);
     setShowAddBillCategory(true);
     setShowBillCategoryList(false);
@@ -228,6 +233,7 @@ function handleClick0() {
     setShowChargeList(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
+    setShowBillbox(false) ;
     setShowAddBillType(false);
     setShowAddBillCategory(false);
     setShowBillCategoryList(true);
@@ -249,6 +255,7 @@ function handleClick0() {
     setShowAddCharge(false);
     setShowBillTypeList(false);
     setShowAddBillType(true);
+    setShowBillbox(false) ;
     setShowAddBillCategory(false);
     setShowBillCategoryList(false);
     setShowAddFundingSource(false);
@@ -270,6 +277,7 @@ function handleClick0() {
     setShowBillTypeList(true);
     setShowAddBillType(false);
     setShowAddBillCategory(false);
+    setShowBillbox(false) ;
     setShowBillCategoryList(false);
     setShowAddFundingSource(false);
     setShowFundingSourceList(false);
@@ -293,6 +301,7 @@ function handleClick0() {
     setShowBillCategoryList(false);
     setShowAddFundingSource(false);
     setShowFundingSourceList(false);
+    setShowBillbox(false) ;
     setShowAddPaymentType(false);
     setShowPaymentTypeList(false);
     setShowAddLedgerType(false);
@@ -312,6 +321,7 @@ function handleClick0() {
     setShowAddBillCategory(false);
     setShowBillCategoryList(false);
     setShowAddFundingSource(false);
+    setShowBillbox(false) ;
     setShowFundingSourceList(false);
     setShowAddPaymentType(false);
     setShowPaymentTypeList(false);
@@ -334,6 +344,7 @@ function handleClick0() {
     setShowAddFundingSource(false);
     setShowFundingSourceList(false);
     setShowAddPaymentType(false);
+    setShowBillbox(false) ;
     setShowPaymentTypeList(false);
     setShowAddLedgerType(false);
     setShowLedgerTypeList(false);
@@ -354,6 +365,7 @@ function handleClick0() {
     setShowAddFundingSource(false);
     setShowFundingSourceList(false);
     setShowAddPaymentType(false);
+    setShowBillbox(false) ;
     setShowPaymentTypeList(false);
     setShowAddLedgerType(false);
     setShowLedgerTypeList(false);
@@ -374,6 +386,7 @@ function handleClick0() {
     setShowAddFundingSource(true);
     setShowFundingSourceList(false);
     setShowAddPaymentType(false);
+    setShowBillbox(false) ;
     setShowPaymentTypeList(false);
     setShowAddLedgerType(false);
     setShowLedgerTypeList(false);
@@ -386,6 +399,7 @@ function handleClick0() {
     setShowDashboard(false);
     setShowHomepage(false);
     setShowChargeList(false);
+    setShowBillbox(false) ;
     setShowAddCharge(false);
     setShowBillTypeList(false);
     setShowAddBillType(false);
@@ -406,6 +420,7 @@ function handleClick0() {
     setShowHomepage(false);
     setShowDashboard(false);
     setShowChargeList(false);
+    setShowBillbox(false) ;
     setShowAddCharge(false);
     setShowBillTypeList(false);
     setShowAddBillType(false);
@@ -437,6 +452,7 @@ function handleClick0() {
     setShowPaymentTypeList(false);
     setShowAddLedgerType(false);
     setShowLedgerTypeList(true);
+    setShowBillbox(false) ;
     setShowDeptList(false);
     setShowAddDept(false);
     setShowAddFinYear(false);
@@ -459,6 +475,7 @@ function handleClick0() {
     setShowLedgerTypeList(false);
     setShowDeptList(false);
     setShowAddDept(false);
+    setShowBillbox(false) ;
     setShowAddFinYear(false);
     setShowFinYearList(false);
   }
@@ -480,13 +497,30 @@ function handleClick0() {
     setShowDeptList(false);
     setShowAddDept(false);
     setShowAddFinYear(false);
+    setShowBillbox(false) ;
     setShowFinYearList(false);  }
-const handleClick17 = ()=>{
-    navigate('/addbill')
+function handleClick17 (){
+  setShowChargeList(false);
+  setShowBillbox(true);
+  setShowHomepage(false);
+  setShowDashboard(false);
+  setShowAddCharge(false);
+  setShowBillTypeList(false);
+  setShowAddBillType(false);
+  setShowAddBillCategory(false);
+  setShowBillCategoryList(false);
+  setShowAddFundingSource(false);
+  setShowFundingSourceList(false);
+  setShowAddPaymentType(false);
+  setShowPaymentTypeList(false);
+  setShowAddLedgerType(false);
+  setShowLedgerTypeList(false);
+  setShowDeptList(false);
+  setShowAddDept(false);
+  setShowAddFinYear(false);
+  setShowFinYearList(false);
 }
-const handleClick18 = ()=>{
-    navigate('/billboxList')
-}
+
   const sidebarRef = useRef(null);
 
   useEffect(() => {
@@ -812,7 +846,7 @@ const handleClick18 = ()=>{
                 <li>
                 <button
                           className="sidebar-dropdown3"
-                          onClick={() => handleClick18()}
+                          onClick={() => handleClick17()}
                         >
                          Bill Box List
                         </button>

@@ -19,6 +19,8 @@ import AddFinYear from "./FinancialYear/AddFinYear";
 import FinYearList from "./FinancialYear/FinYearList";
 import Db from "./Db";
 import Homepage from "./Homepage";
+import AddBillbox from "./Billbox/AddBillbox"
+import BillboxList from "./Billbox/BillboxList";
 function UserDetail() {
   // const
   const [showChargeList, setShowChargeList] = useState(false);
@@ -39,10 +41,11 @@ function UserDetail() {
   const [showPaymentTypeList,setShowPaymentTypeList]=useState(false);
   const [ShowDashboard, setShowDashboard] = useState(false);
   const [ShowHomepage, setShowHomepage] = useState(true);
-
+  const [ShowBillbox, setShowBillbox] = useState(false);
   return (
     <div>
       <Sidebar
+        setShowBillbox={setShowBillbox}
         setShowHomepage= {setShowHomepage}
         setShowDashboard= {setShowDashboard}
         setShowChargeList={setShowChargeList}
@@ -62,6 +65,8 @@ function UserDetail() {
         setShowAddFinYear={setShowAddFinYear}
         setShowFinYearList={setShowFinYearList}
       ></Sidebar>
+       {(ShowBillbox)&&
+<AddBillbox></AddBillbox>}
   {(ShowHomepage)&&
 <Homepage></Homepage>}
     {(ShowDashboard)&&
