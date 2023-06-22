@@ -40,8 +40,11 @@ body {
 }
 
 .userTable thead th {
+  white-space: normal;
   font-weight: 600;
   text-transform: uppercase;
+  vertical-align: middle;
+  border: 2px solid #3c4799;
 }
 
 .userTable tbody tr:nth-child(even) {
