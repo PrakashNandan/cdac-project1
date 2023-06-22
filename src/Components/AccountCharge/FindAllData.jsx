@@ -7,7 +7,18 @@ import { privateAxios } from '../../service/helperUtil.js';
 function FindAllData({allData,setAllData, handleFindALL}) {
 
   const [showModal, setShowModal] = useState(false);
-  const [dataForUpdate, setDataForUpdate] = useState([]);
+  const [dataForUpdate, setDataForUpdate] = useState({
+    chargeId:'',
+    chargeName: '',
+    chargeType: '',
+    chargeRate: '',
+    entryDate: '',
+    chargeAmount: '',
+    chargeApplyOnBaseAmount: '',
+    roundingType: '',
+    hoaPostingRequired: false,
+    depositToGovt: false,
+  });
   const [uid, setUid]= useState();
 
 
@@ -43,29 +54,56 @@ function FindAllData({allData,setAllData, handleFindALL}) {
         // handleFindALL();
     }
   }
+  const today = new Date();
+  const date = today.setDate(today.getDate()); 
+  const defaultValue = new Date(date).toISOString().split('T')[0] // yyyy-mm-dd
 
-  const handleUpdateData=async(id)=>{
+  const handleUpdateData=async(curData)=>{
+
       setShowModal(true);
       // setDataForUpdate((prevUser) => ({ ...prevUser, id: id }));
-      setUid(id);
+      setUid(curData.chargeId);
 
-      if(allData.length===1){
-        console.log(allData[0]);
-        const user1=allData[0];
-        setDataForUpdate(user1);
+      // if(allData.length===1){
+      //   console.log(allData[0]);
+      //   const user1=allData[0];
+      //   setDataForUpdate(user1);
 
-      }else{
-        try{
-            const res = await privateAxios.get(`/charge/find/${id}`);
-            console.log(res.data.pageList.content + "hello prakash");
-            setDataForUpdate(res.data.pageList.content);
+      // }else{
+      //   try{
+      //       const res = await privateAxios.get(`/charge/find/${id}`);
+      //       console.log(res.data.pageList.content + "hello prakash");
+      //       setDataForUpdate(res.data.pageList.content);
     
-            }catch(error){
-              console.log(error.message);
-              toast.error("NOT Found !!!")
-            }
+      //       }catch(error){
+      //         console.log(error.message);
+      //         toast.error("NOT Found !!!")
+      //       }
     
+      // }
+
+
+      
+      // const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
+      // console.log(date);
+
+
+
+      setDataForUpdate({
+        chargeId:curData.chargeId,
+    chargeName: curData.chargeName,
+    chargeType: curData.chargeType,
+    chargeRate: curData.chargeRate,
+    entryDate:defaultValue,
+    chargeAmount: curData.chargeAmount,
+    chargeApplyOnBaseAmount: curData.chargeApplyOnBaseAmount,
+    roundingType: curData.roundingType,
+    hoaPostingRequired: curData.hoaPostingRequired,
+    depositToGovt: curData.depositToGovt,
       }
+      )
+
+
       
   }
 
@@ -75,14 +113,15 @@ function FindAllData({allData,setAllData, handleFindALL}) {
   }
 
   const handleSubmit=async(event)=>{
+        
         event.preventDefault();
         try{
-          const res = await privateAxios.put(`/charge/update/${uid}`, dataForUpdate );
-          console.log(res.data.pageList.content);
+          const res = await privateAxios.put(`/charge/update/${uid}`, dataForUpdate ).then((res)=>console.log(res)).catch((err)=>console.log(err))
+          // console.log(res.data.pageList.content);
           toast.success("updated Successfully")
         }catch(error){
           toast.error("Error !! Not updated");
-          console.log(error.message);
+          console.log(error);
         }
         
         closeModal();
@@ -99,7 +138,7 @@ function FindAllData({allData,setAllData, handleFindALL}) {
 
   const mainModal =(
 
-    <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
+    <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange}  >
 
           <button id='close-btn' onClick={closeModal}>close</button>
           <h2>Form</h2>
@@ -115,7 +154,7 @@ function FindAllData({allData,setAllData, handleFindALL}) {
                 value={dataForUpdate.id}
                 onChange={handleInputChange}
                 placeholder="ID"
-                disabled
+                hidden
               />
           </div>
           <div >
@@ -160,6 +199,7 @@ function FindAllData({allData,setAllData, handleFindALL}) {
                 type="date"
                 name="entryDate"
                 id="entryDate"
+                defaultValue={defaultValue}
                 value={dataForUpdate.entryDate}
                 onChange={handleInputChange}
                 placeholder="Enter entryDate"
@@ -270,7 +310,7 @@ function FindAllData({allData,setAllData, handleFindALL}) {
                     <td>{depositToGovt===true ? "YES" : "NO"}</td>  
 
                     <td><button type="button" class="btn btn-danger" onClick={()=>handleDeleteData(chargeId)}>Delete</button>
-                        <button type="button" class="btn m-1 btn-light" onClick={()=>handleUpdateData(chargeId)}>Update</button>
+                        <button type="button" class="btn m-1 btn-light" onClick={()=>handleUpdateData(curData)}>Update</button>
                     </td>
                 </tr>
             )

@@ -5,7 +5,6 @@ const BASE_URL="http://165.22.214.153:8085/api/v1";
 // const BASE_URL="http://192.168.137.1:8085/api/v1";
 
 
-
  const myAxios=axios.create({
      baseURL:BASE_URL,
 });
