@@ -47,7 +47,7 @@ function Register() {
     
         if (isSuccess || user) {
           navigate('/')
-          toast.success("Register Successfully")
+          toast.success('Registered Sucessfully')
 
         }
     

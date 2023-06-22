@@ -3,8 +3,10 @@ import React, { useEffect, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import Pagination from '../Pagination';
 import Mymodal from './showModal_bill.jsx';
-import '../../style/form.css'
+import '../../style/modal2.css'
+import '../../style/formtemp.css'
 import BillboxData from './BillboxData.jsx';
+import BillboxList from './BillboxList.jsx';
 
 
 function AddBillbox() {
@@ -133,112 +135,146 @@ function AddBillbox() {
 
     const mainModal = (
 
-        <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
+       
+         <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
 
-            <button id='close-btn1' onClick={closeModal}>close</button>
+<button id='close-btn' onClick={closeModal}>close</button>
             
-            <h2 id="text">Form</h2>
-            <form class="centered-form">
-                
-                <div class="div-element">
-                    <div class="background-div">
-                        <div className="container4">
-
-                            {/* left part */}
-                            <div id="sidebar">
-
-                                <div class="div-element">
-                                    <input type="number" id="input-box1" value={billBox.billSlNo} placeholder="Bill Sl No" onChange={handleInputChange}/>
+            <div className="cont">
+  <form>
+    <div className="row">
+    <div className="col-half">
+    <div className="input-group input-group-icon">
+        <input type="string" id="input-box1" value={billBox.billSlNo} placeholder="Bill Sl No" onChange={handleInputChange}/>
                                 </div>
-
-
-                                <div class="div-element">
-
-                                    <select className="option2" value={selectedOption1} onChange={handleSelect1Change}>
-
-                                        <option value="">BillType</option>
-                                            {/* {select1Data.map(item => (
-                                            <option key={item.id} value={item.id}>
-                                                {item.name}
-                                         </option>
-                                            ))} */}
-                                    </select>
                                 </div>
+     <div className='col-half'>
+     <div className="invoice">
+     <input type="string" placeholder='Invoice no'  name='invoiceNo' value={billBox.invoiceNo} onChange={handleInputChange}/>
+     </div>  
+     </div>                         
+      <div className="input-group input-group-icon">
+        {/* <input type="text" placeholder="Full Name" /> */}
+        <div className="input-icon">
+        <i class="fa fa-columns" aria-hidden="true"></i>
+        </div>
+        <select>
+            <option id="op">Bill Type</option>
+            <option className="op1">Bill Type 2</option>
+          </select>
+      </div>
+      <div className="input-group input-group-icon">
+        
+        <div className="input-icon">
+        <i class="fa fa-money" aria-hidden="true"></i>        </div>
+        <select>
+            <option >Bill Category</option>
+            <option >Bill Category2</option>
+          </select>
+      </div>
+      <div className="input-group input-group-icon">
+        
+        <div className="input-icon">
+        <i className="fa fa-credit-card" />        </div>
+        <select>
+            <option>Funding Source</option>
+            <option>Funding Source2</option>
+          </select>
+      </div>
+    </div>
+    <div className="row">
+      <div className="col-half">
+        <h4>Invoice Date</h4>
+        <div className="input-group">
+        <input type="date" id = "class1" placeholder='Invoice date' name='invoiceDate' value={billBox.invoiceDate} onChange={handleInputChange} />
+        </div>
+      </div>
+      <div className="col-half">
+        <h4>Entry Date</h4>
+        <div className="input-group">
+        <input type="date" id="entry" placeholder='entry date' name='entryDate' value={billBox.entryDate} onChange={handleInputChange} />     </div>
+        
+      </div>
+    </div>
+    <div className="row">
+      <h4>Is Valid ?</h4>
+      <div className="input-group">
+        <input
+          id="payment-method-card"
+          type="radio"
+          name="payment-method"
+          defaultValue="card"
+          defaultChecked="true"
+        />
+        <label htmlFor="payment-method-card">
+          <span>
+            
+            YES
+          </span>
+        </label>
+        <input
+          id="payment-method-paypal"
+          type="radio"
+          name="payment-method"
+          defaultValue="paypal"
+        />
+        <label htmlFor="payment-method-paypal">
+          {" "}
+          <span>
+            
+           NO
+          </span>
+        </label>
+      </div>
+      <div className='col-half'>
+      <div className="input-group input-group-icon">
+        
+      <input type="number" id="yes"  placeholder='Bill Net Amount' value={billBox.billNetAmount}  name='billNetAmount' onChange={handleInputChange}/>
+        <div className="input-icon">
+        <i class="fa fa-inr" aria-hidden="true"></i>
+        </div>
+        </div>
+      </div>
+      <div className="col-half">
+        <div className="input-group input-group-icon">
+        <input type="number" id = "no" placeholder='Base Amount' name='baseAmount' value={billBox.baseAmount} onChange={handleInputChange}/>
+          <div className="input-icon">
+          <i class="fa fa-inr" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+      {/* <div className="col-half">
+        <div className="input-group">
+          <select>
+            <option>01 Jan</option>
+            <option>02 Jan</option>
+          </select>
+          <select>
+            <option>2015</option>
+            <option>2016</option>
+          </select>
+        </div>
+      </div> */}
+    </div>
+    <div className="row">
+      <h4>Remarks</h4>
+      {/* <div className="input-group">
+        <input id="terms" type="checkbox" />
+        <label htmlFor="terms">
+          I accept the terms and conditions for signing up to this service, and
+          hereby confirm I have read the privacy policy.
+        </label>
+      </div> */}
+         <div className="input-group input-group-icon">
+          <textarea id="w3review" name="w3review" rows="2" cols="100"/>
+          
+        </div>
+         
+    </div>
+    <button id='submitbtn' type='submit' onClick={handleSubmit} >Submit</button>
+  </form>
+</div>
 
-                                <div class="div-element">
-                                    <select className="option11" value={selectedOption2} onChange={handleSelect2Change}>
-                                    <option value="">BillCategory</option>
-                                            {/* {select2Data.map(item => (
-                                            <option key={item.id} value={item.id}>
-                                                {item.name}
-                                         </option>
-                                            ))} */}
-                                        
-                                    </select>
-                                </div>
-
-                                <div class="div-element">
-
-                                    <select className="option33" id="input-box1" value={selectedOption3} onChange={handleSelect3Change}>
-                
-                                        <option value="">Funding Source</option>
-                                            {/* {select3Data.map(item => (
-                                            <option key={item.id} value={item.id}>
-                                                {item.name}
-                                         </option>
-                                            ))} */}
-                                        
-                                        
-                                    </select>
-
-                                </div>
-
-                                <div class="div-element1">
-                                    <input type="number" id="yes"  placeholder='Bill Net Amount' value={billBox.billNetAmount}  name='billNetAmount' onChange={()=>handleInputChange}/>
-                                </div>
-
-                            </div>
-
-                            {/* right part */}
-                            <div id="page-wrap">
-                                <div class="div-element">
-                                    <input type="string" placeholder='Invoice no' id = "input-box" name='invoiceNo' value={billBox.invoiceNo} onChange={handleInputChange}/>
-
-                                </div>
-                                <div class="div-element">
-                                    <label htmlFor="date" class="date">Invoice Date</label>
-                                    <input type="date" id = "class1" placeholder='Invoice date' name='invoiceDate' value={billBox.invoiceDate} onChange={handleInputChange} />
-                                </div>
-                                <div class="div-element">
-                                    <label htmlFor="date" class="date">Entry Date</label>
-                                    <input type="date" id="entry" placeholder='entry date' name='entryDate' value={billBox.entryDate} onChange={handleInputChange} />
-
-                                </div>
-                                <div class="div-element">
-                                    <input type="number" id = "no" placeholder='Base Amount' name='baseAmount' value={billBox.baseAmount} onChange={handleInputChange}/>
-                                </div>
-
-                            </div>
-
-                           {/* bottom part */}
-                            <div class="bottom-div">
-                                <div class="div-element">
-                                    <p><b>Is Valid:</b></p>
-                                    <input type="radio" name="preferred" value='1' /> Yes<br />
-                                    <input type="radio" name="preferred" value='0' /> No<br />
-                                </div>
-                                <div class="div-element" >
-                                    <p><b>Remarks</b></p>
-                                    <textarea id="w3review" name="w3review" rows="4" cols="40" ></textarea>
-                                </div>
-                                <button id='modal-btn1' type='submit' >Submit</button>
-
-                                {/* value={billBox.remarks} onChange={handleInputChange} */}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
 
         </Mymodal>
     )
@@ -247,11 +283,11 @@ function AddBillbox() {
     return (
         <>
 
-            <button className='modal-btn' onClick={() => setShowModal(true)}>Add BillBox</button>
+            <button className='modal-btn1'  id='addButton' onClick={() => setShowModal(true)}>Add BillBox</button>
             {ShowModal && mainModal}
-
+              <BillboxList/>
             <div className="user-list">
-                <h3>BillBox List</h3>
+                
 
                 <input type="number" className='userPerPageClass' name='userPerPage' value={billPerPage} onChange={(e) => { setbillPerPage(e.target.value) }} />
 
