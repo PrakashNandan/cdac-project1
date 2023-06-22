@@ -1,97 +1,63 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Lexend+Deca:wght@100;200;300;400;500;600;700&family=Poppins:wght@300;400;600&display=swap');
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
   font-family: 'Poppins', sans-serif;
+  background-color: #f7f7f7;
+}
+
+.table-responsive {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 .userTable {
   margin-left: auto;
   margin-right: auto;
   border-radius: 5px;
-  box-shadow: 1px 1px 1px 1px #c6c6c6;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-collapse: collapse;
   overflow: hidden;
-  max-width: 30rem;
-  padding-left: 100px;
-}
-
-.userTable td{
-  /* background-color: #f9f9f9; */
-  font-size: 1rem;
-  padding: 5px;
-}
-
-thead {
-  font-size: 1.1rem;
-  font-weight: light;
-  background-color: #2F387B;
-  color: #fff;
-  white-space: nowrap;
-}
-
-td {
-  border: 1px solid #777777;
-  min-width: 13rem;
-}
-
-th {
-  font-weight: 600;
-}
-
-.table thead th {
-  border: 2px solid #414daa;
-  border-bottom: 0;
-}
-
-.table td {
-  vertical-align: middle;
-  border-top: 0;
-}
-.user-list .userPerPageClass {
-  display: flex;
-  flex-wrap: wrap;
-  width: 24%;
-  min-width: 200px;
-  margin-left: 15%;
-  margin-bottom: 10px;
-}
-
-.table-responsive {
-  padding: 2rem;
-  table-layout: auto;
   width: 100%;
 }
 
-@media (max-width: 600px) {
-  .table-responsive {
-    padding: 2rem 0;
-  }
-
-  th {
-    font-size: medium;
-    font-weight: 500;
-  }
-
-  .user-list .userPerPageClass {
-    margin-left: auto;
-    margin-right: auto;
-  }
+.userTable th,
+.userTable td {
+  padding: 10px;
+  text-align: center;
+  white-space: nowrap;
 }
 
+.userTable thead {
+  background-color: #2F387B;
+  color: #fff;
+}
 
+.userTable thead th {
+  font-weight: 600;
+  text-transform: uppercase;
+}
 
+.userTable tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
 
+.userTable tbody td {
+  border-bottom: 1px solid #ddd;
+}
 
+@media (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
 
-
-
-
-
-
-
-
-
-
+  .userTable {
+    font-size: 14px;
+  }
+}
