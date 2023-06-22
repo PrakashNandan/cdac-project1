@@ -1,0 +1,114 @@
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+  
+  
+  .modal_wrapper {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background-color: rgb(209, 209, 209);
+      opacity: 0.4;
+  
+  }
+  
+  #modalParent {
+      max-height: 70vh;
+  }
+  
+  .modal_container1 {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50.5%);
+      background-color: white;
+      max-width: 100rem;
+      padding: 2rem 2rem;
+      border-radius: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; 
+      align-items: center;
+      width: 45rem;
+      max-height: 100vh;
+      overflow-y: auto;
+     
+  
+  }
+  
+  .modal_container1::-webkit-scrollbar {
+      display: none;
+  }
+  .modal_container h2 {
+      margin-bottom: 0.6rem;
+  }
+  
+  .modal-btn1 {
+      padding: 0.4rem 1.2rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 0.3rem;
+      background-color: #212121;
+      color: #fff;
+      cursor: pointer;
+      transform: scale((0.9));
+      margin: 1rem;
+      z-index: 5rem;
+  }
+  
+  .modal-btn:hover {
+      background-color: #6d6d6d;
+      border: #212121;
+      transform: scale(1);
+      transition: all 0.1s;
+  }
+  
+  #close-btn {
+      color: #fff;
+      background-color: red;
+      position: sticky;
+      left: 24.8rem;
+      bottom: 36.2rem;
+      padding: 0.3rem 0.6rem;
+      border: none;
+      cursor: pointer;
+      border-radius: 0.26rem;
+  }
+  
+  #close-btn:hover {
+      background-color: rgb(211, 0, 0);
+  }
+  
+  .form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      /* align-items: center; */
+      width: 70%;
+      /* overflow-y: auto; */
+  }
+  
+  .form input {
+      padding: 0.28rem;
+  }
+  
+  .form label {
+      display: inline;
+      font-weight: bold;
+  }
+  
+  .form div {
+      margin-bottom: 0.5rem;
+      ;
+  }
+  
+  .user-list .userPerPageClass {
+      display: flex;
+      flex-wrap: wrap;
+      width: 24%;
+      margin-left: 15.4rem;
+  }
