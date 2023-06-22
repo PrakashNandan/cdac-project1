@@ -14,7 +14,11 @@ function Header() {
   const onLogout = () => {
     dispatch(logout())
     dispatch(reset())
-    navigate('/')
+    navigate('/');
+    
+    console.log("logout ho gya");
+   
+  
   }
 
   return (
