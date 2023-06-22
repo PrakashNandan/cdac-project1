@@ -43,12 +43,15 @@ function FindAllPaymentType({allData,setAllData, handleFindALL}) {
         // handleFindALL();
     }
   }
-
-  const handleUpdateData=async(id)=>{
+  const today = new Date();
+  const date = today.setDate(today.getDate()); 
+  const defaultValue = new Date(date).toISOString().split('T')[0] // yyyy-mm-dd
+  
+  const handleUpdateData=async(curData)=>{
       setShowModal(true);
       // setDataForUpdate((prevUser) => ({ ...prevUser, id: id }));
-      setUid(id);
-
+      setUid(curData.paymentTypeId);
+/*
       if(allData.length===1){
         console.log(allData[0]);
         const user1=allData[0];
@@ -65,6 +68,15 @@ function FindAllPaymentType({allData,setAllData, handleFindALL}) {
             }
     
       }
+  */
+
+      setDataForUpdate({
+        paymentTypeId:curData.paymentTypeId,
+        entryDate:  defaultValue ,
+        isValid:curData.isValid
+
+      })
+
       
   }
 
@@ -194,7 +206,7 @@ function FindAllPaymentType({allData,setAllData, handleFindALL}) {
                    
 
                     <td><button type="button" class="btn btn-danger" onClick={()=>handleDeleteData(paymentTypeId)}>Delete</button>
-                        <button type="button" class="btn m-1 btn-light" onClick={()=>handleUpdateData(paymentTypeId)}>Update</button>
+                        <button type="button" class="btn m-1 btn-light" onClick={()=>handleUpdateData(curData)}>Update</button>
                     </td>
                 </tr>
             )

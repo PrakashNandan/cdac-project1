@@ -91,15 +91,15 @@ function FindAllData({allData,setAllData, handleFindALL}) {
 
       setDataForUpdate({
         chargeId:curData.chargeId,
-    chargeName: curData.chargeName,
-    chargeType: curData.chargeType,
-    chargeRate: curData.chargeRate,
-    entryDate:defaultValue,
-    chargeAmount: curData.chargeAmount,
-    chargeApplyOnBaseAmount: curData.chargeApplyOnBaseAmount,
-    roundingType: curData.roundingType,
-    hoaPostingRequired: curData.hoaPostingRequired,
-    depositToGovt: curData.depositToGovt,
+        chargeName: curData.chargeName,
+        chargeType: curData.chargeType,
+        chargeRate: curData.chargeRate,
+        entryDate:defaultValue,
+        chargeAmount: curData.chargeAmount,
+        chargeApplyOnBaseAmount: curData.chargeApplyOnBaseAmount,
+        roundingType: curData.roundingType,
+        hoaPostingRequired: curData.hoaPostingRequired,
+        depositToGovt: curData.depositToGovt,
       }
       )
 

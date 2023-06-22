@@ -45,27 +45,36 @@ function FindAllBillCategory({allData,setAllData, handleFindALL}) {
     }
   }
 
-  const handleUpdateData=async(id)=>{
+  const handleUpdateData=async(curData)=>{
       setShowModal(true);
       // setDataForUpdate((prevUser) => ({ ...prevUser, id: id }));
-      setUid(id);
+      setUid(curData.billCategoryId);
 
-      if(allData.length===1){
-        console.log(allData[0]);
-        const user1=allData[0];
-        setDataForUpdate(user1);
+      // if(allData.length===1){
+      //   console.log(allData[0]);
+      //   const user1=allData[0];
+      //   setDataForUpdate(user1);
 
-      }else{
-        try{
-            const res = await privateAxios.get(`/billCategory/find/${id}`);
-            setDataForUpdate(res.data);
+      // }else{
+      //   try{
+      //       const res = await privateAxios.get(`/billCategory/find/${id}`);
+      //       setDataForUpdate(res.data);
     
-            }catch(error){
-              console.log(error.message);
-              toast.error("NOT Found !!!")
-            }
+      //       }catch(error){
+      //         console.log(error.message);
+      //         toast.error("NOT Found !!!")
+      //       }
     
-      }
+      // }
+
+  setDataForUpdate({
+      billCategoryId:curData.billCategoryId,
+      billCategoryName:curData.billCategoryName
+
+    })
+  
+
+
       
   }
 
@@ -160,7 +169,7 @@ function FindAllBillCategory({allData,setAllData, handleFindALL}) {
                     <td>{billCategoryName}</td>
                    
                     <td><button type="button" class="btn btn-danger btn-sm" onClick={()=>handleDeleteData(billCategoryId)}>Delete</button>
-                        <button type="button" class="btn ml-2 btn-secondary btn-sm" onClick={()=>handleUpdateData(billCategoryId)}>Update</button>
+                        <button type="button" class="btn ml-2 btn-secondary btn-sm" onClick={()=>handleUpdateData(curData)}>Update</button>
                     </td>
                 </tr>
             )

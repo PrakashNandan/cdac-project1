@@ -44,27 +44,44 @@ function FindAllBillType({allData,setAllData, handleFindALL}) {
     }
   }
 
-  const handleUpdateData=async(id)=>{
+  const today = new Date();
+  const date = today.setDate(today.getDate()); 
+  const defaultValue = new Date(date).toISOString().split('T')[0] // yyyy-mm-dd
+
+  const handleUpdateData=async(curData)=>{
       setShowModal(true);
       // setDataForUpdate((prevUser) => ({ ...prevUser, id: id }));
-      setUid(id);
+      setUid(curData.billTypeId);
 
-      if(allData.length===1){
-        console.log(allData[0]);
-        const user1=allData[0];
-        setDataForUpdate(user1);
+      // if(allData.length===1){
+      //   console.log(allData[0]);
+      //   const user1=allData[0];
+      //   setDataForUpdate(user1);
 
-      }else{
-        try{
-            const res = await axios.get(`/billType/find/${id}`);
-            setDataForUpdate(res.data);
+      // }else{
+      //   try{
+      //       const res = await axios.get(`/billType/find/${id}`);
+      //       setDataForUpdate(res.data);
     
-            }catch(error){
-              console.log(error.message);
-              toast.error("NOT Found !!!")
-            }
+      //       }catch(error){
+      //         console.log(error.message);
+      //         toast.error("NOT Found !!!")
+      //       }
     
-      }
+      // }
+
+
+
+    setDataForUpdate({
+      billTypeId:curData.billTypeId,
+      billTypeName:curData.billTypeName,
+      entryDate:defaultValue,
+    })
+
+
+
+
+
       
   }
 
@@ -181,7 +198,7 @@ function FindAllBillType({allData,setAllData, handleFindALL}) {
                    
 
                     <td><button type="button" class="btn btn-danger" onClick={()=>handleDeleteData(billTypeId)}>Delete</button>
-                        <button type="button" class="btn m-1 btn-light" onClick={()=>handleUpdateData(billTypeId)}>Update</button>
+                        <button type="button" class="btn m-1 btn-light" onClick={()=>handleUpdateData(curData)}>Update</button>
                     </td>
                 </tr>
             )
