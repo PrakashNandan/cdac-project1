@@ -7,10 +7,7 @@ import BillTypeData from './BillTypeData.jsx'
 import '../../style/UserData.css'
 import { ToastContainer, toast } from 'react-toastify'
 import Pagination from '../Pagination.js';
-<<<<<<< HEAD
-=======
 import { MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
->>>>>>> 837e01e87f8b4b4e14c7bb66eb47d8dc6081e645
 import { privateAxios } from '../../service/helperUtil.js'
 // const API="https://jsonplaceholder.typicode.com"
 
@@ -92,68 +89,11 @@ function AddBillType() {
   // }
 
 
-<<<<<<< HEAD
-    const handleInputChange = (event) => {
-        const { name, value, type, checked } = event.target;
-        const inputValue = type === 'checkbox' ? checked : value;
-        setBillType((prevBillType) => ({ ...prevBillType, [name]: inputValue }));
-    };
-
-
-      const  handleSubmit = async (event) => {
-        
-        event.preventDefault();
-        
-        
-        console.log(billType);  
-        
-        
-        try{
-          const res = await privateAxios.post("/billType/save", billType);
-          toast.success('Submit Successfully')
-          setBillTypes([...billTypes, billType]);
-          console.log(res);
-
-        }catch(error){
-          toast.error("Form not Submitted !! , please try again")
-          console.log(error);
-        }
-        closeModal();
-
-      };
-
-      
-      const postFormData=async(url)=>{
-
-          try{
-                  const res = await privateAxios.post(url,{billType});
-                  console.log(res);
-
-          }catch(error){
-            setIsError(error.message);
-            console.log(error.message);
-          }
-      }
-
-    // const handleBillTypePerPage=({e,target,value})=>{
-    //   return setBillTypePerPage(e.target.value)
-    // }
-
-
-    const showToast=()=>{
-      if(isError!=="")
-      {
-        toast.error("Error !! form not submittd, pleae try again")
-      }else{
-        toast.success('Submit Successfully')
-      }
-=======
   const showToast = () => {
     if (isError !== "") {
       toast.error("Error !! form not submittd, pleae try again")
     } else {
       toast.success('Submit Successfully')
->>>>>>> 837e01e87f8b4b4e14c7bb66eb47d8dc6081e645
     }
   }
 

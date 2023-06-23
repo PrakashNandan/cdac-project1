@@ -74,21 +74,8 @@ function BillTypeList() {
             }
         }).catch((err)=>console.log(err))
 
-<<<<<<< HEAD
-            const res = await privateAxios.get("/billType/findAll");
-            setAllData(res.data);
-            console.log(res.data);
-
-
-        } catch (error) {
-            setisError(error.message);
-            console.log(error.message);
-            showErrorToast();
-        }
-=======
     
        setDataFetching(false);
->>>>>>> 837e01e87f8b4b4e14c7bb66eb47d8dc6081e645
     }
 
 
