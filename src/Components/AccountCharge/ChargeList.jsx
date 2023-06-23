@@ -10,6 +10,7 @@ import Mymodal from '../ShowModal.jsx';
 import '../../style/modal.css'
 import UserData from './UserData';
 import '../../style/UserData.css'
+import { MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
 
 function ChargeList() {
 
@@ -223,128 +224,130 @@ function ChargeList() {
           <button id='close-btn' onClick={closeModal}>close</button>
           <h2>Form</h2>
     
-          <form onSubmit={handleSubmit} className='form'>
+          <form onSubmit={handleSubmit} className='modalForm' id='modalForm'>
     
-            <div >
-              {/* <label htmlFor="chargeName">Charge Name:</label> */}
-              <input
+            <div className="d-flex flex-row align-items-center mb-3 mt-3">
+              <MDBIcon fas icon="user-pen" size='lg' style={{marginRight: '5px'}} />
+              <MDBInput
+                label="Charge Name"
                 type="text"
                 name="chargeName"
                 id="chargeName"
                 value={user.chargeName}
                 onChange={handleInputChange}
-                placeholder="Enter chargeName"
                 required
               />
             </div>
-            <div >
-              {/* <label htmlFor="chargeType">Charge Type:</label> */}
-              <input
+    
+            <div className="d-flex flex-row align-items-center mb-3">
+              <MDBIcon fas icon="pen-to-square" size='lg' style={{marginRight: '10px'}}/>
+              <MDBInput
+                label="Charge Type"
                 type="number"
                 name="chargeType"
                 id="chargeType"
                 value={user.chargeType}
                 onChange={handleInputChange}
-                placeholder="Enter chargeType"
               // required
               />
             </div>
-            <div >
-              {/* <label htmlFor="chargeRate">Charge Rate:</label> */}
-              <input
+    
+            <div className="d-flex flex-row align-items-center mb-3">
+              <MDBIcon fas icon="pen-to-square" size='lg' style={{marginRight: '10px'}}/>
+              <MDBInput
+                label="Charge Rate"
                 type="number"
                 name="chargeRate"
                 id="chargeRate"
                 value={user.chargeRate}
                 onChange={handleInputChange}
-                placeholder="Enter chargeRate"
               // required
               />
             </div>
-            <div>
-              <label htmlFor="entryDate">Entry Date: &nbsp;</label>
-              <input
+    
+            <div className="d-flex flex-row align-items-center mb-3">
+              <MDBIcon fas icon="calendar" size='lg' style={{marginRight: '13px'}}/>
+              <MDBInput
+                label="Entry Date"
                 type="date"
                 name="entryDate"
                 id="entryDate"
                 value={user.entryDate}
                 onChange={handleInputChange}
-                placeholder="Enter entryDate"
               // required
               />
             </div>
-            <div >
-              {/* <label htmlFor="chargeAmount">charge Amount:</label> */}
-              <input
+    
+            <div className="d-flex flex-row align-items-center mb-3">
+              <MDBIcon fas icon="indian-rupee-sign" size='lg' style={{marginRight: '15px', marginLeft: '3px'}}/>
+              <MDBInput
+                label="Charge Amount"
                 type="number"
                 name="chargeAmount"
                 id="chargeAmount"
                 value={user.chargeAmount}
                 onChange={handleInputChange}
-                placeholder="Enter chargeAmount"
               // required
               />
             </div>
-            <div >
-              {/* <label htmlFor="chargeApplyOnBaseAmount">chargeApplyOnBaseAmount:</label> */}
-              <input
+    
+            <div className="d-flex flex-row align-items-center mb-3">
+              <MDBIcon fas icon="pen-to-square" size='lg' style={{marginRight: '10px'}}/>
+              <MDBInput
+                label="Charge Apply on Base Amt."
                 type="number"
                 name="chargeApplyOnBaseAmount"
                 id="chargeApplyOnBaseAmount"
                 value={user.chargeApplyOnBaseAmount}
                 onChange={handleInputChange}
-                placeholder="Enter chargeApplyOnBaseAmount"
               // required
               />
             </div>
-            <div >
-              {/* <label htmlFor="roundingType">Rounding Type:</label> */}
-              <input
+    
+            <div className="d-flex flex-row align-items-center mb-3">
+              <MDBIcon fas icon="pen-to-square" size='lg' style={{marginRight: '10px'}}/>
+              <MDBInput
+                label="Rounding Type"
                 type="number"
                 name="roundingType"
                 id="roundingType"
                 value={user.roundingType}
                 onChange={handleInputChange}
-                placeholder="Enter roundingType"
               // required
               />
             </div>
+    
             <div >
-              <label htmlFor="hoaPostingRequired">hoaPostingRequired: &nbsp;</label>
-              <input
+              <MDBCheckbox
+                label="Hoa Posting Required?"
                 type="checkbox"
                 name="hoaPostingRequired"
                 id="hoaPostingRequired"
-    
                 checked={user.hoaPostingRequired}
                 onChange={handleInputChange}
-                placeholder="Enter hoaPostingRequired"
     
               />
             </div>
             <div >
-              <label htmlFor="depositToGovt">is Deposit to Govt? &nbsp;</label>
-              <input
+              <MDBCheckbox
+                label="Deposit to Govt?"
                 type="checkbox"
                 name="depositToGovt"
                 id="depositToGovt"
                 checked={user.depositToGovt}
                 onChange={handleInputChange}
-                placeholder="Enter depositToGovt"
-    
               />
             </div>
-            
+    
             {isSubmitting ? (
-               <button class="modal-btn" type="button" disabled>
-               <span class="spinner-border" style={{margin:'0 0.3rem', height:'1.6rem', width:'1.5rem'}} role="status" aria-hidden="true"></span>
-               
-               Submitting...
-             </button>
-                  ) : (
-                    <button className='modal-btn' type='submit' >Submit</button>
-             )}
-              
+              <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} disabled>
+                <span class="spinner-border" style={{ margin: '0 0.3rem', height: '1.2rem', width: '1.2rem' }} role="status" aria-hidden="true"></span>
+                Submitting...
+              </MDBBtn>
+            ) : (
+              <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} >Submit</MDBBtn>
+            )}
+    
           </form>
     
         </Mymodal>

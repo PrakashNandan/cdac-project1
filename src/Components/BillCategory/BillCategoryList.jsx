@@ -11,6 +11,8 @@ import ShowModal from '../ShowModal.jsx'
 import Mymodal from '../ShowModal.jsx';
 import '../../style/modal.css'
 import BillData from './BillData.jsx';
+import { MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
+
 
 function BillCategoryList() {
 
@@ -20,6 +22,8 @@ function BillCategoryList() {
     // const [currentPage, setCurrentPage]=useState(1);
     // const [userPerPage, setUserPerPage] = useState(3);
     const [showAllData,setShowAllData]=useState(true);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
 
 
     const [pageSize, setPageSize]=useState(5);
@@ -178,35 +182,41 @@ function BillCategoryList() {
 
     const mainModal = (
 
+
+
         <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
     
           <button id='close-btn' onClick={closeModal}>close</button>
-                       <h2>Form</h2>
+          <h2>Form</h2>
     
           <form onSubmit={handleSubmit} className='form'>
-    
-            <div >
-              <label htmlFor="billCategoryName">Bill Category Name:</label>
-              <input
+            <div className="d-flex flex-row align-items-center mb-3 mt-3">
+              <MDBIcon fas icon="pen-to-square" size='lg' style={{ marginRight: '10px' }} />
+              <MDBInput
+                label="Bill Category Name"
                 type="text"
                 name="billCategoryName"
                 id="billCategoryName"
                 value={billCategory.billCategoryName}
                 onChange={handleInputChange}
-                placeholder="Enter billCategoryName"
                 required
               />
             </div>
     
     
-    
-    
-            {/* onClick={closeModal} */}
-            <button className='modal-btn' type='submit' >Submit</button>
+            {isSubmitting ? (
+              <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} disabled>
+                <span class="spinner-border" style={{ margin: '0 0.3rem', height: '1.2rem', width: '1.2rem' }} role="status" aria-hidden="true"></span>
+                Submitting...
+              </MDBBtn>
+            ) : (
+              <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} >Submit</MDBBtn>
+            )}
           </form>
     
         </Mymodal>
       )
+    
 
   return (
 
