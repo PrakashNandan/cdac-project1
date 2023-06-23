@@ -16,7 +16,7 @@ function Header() {
     dispatch(logout())
     dispatch(reset())
     navigate('/') 
-    // toast.success("Successfully Logged out");
+  
   }
 
   return (

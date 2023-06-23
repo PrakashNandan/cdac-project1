@@ -42,14 +42,13 @@ function BillTypeList() {
       },[]);
     
       const [billTypes, setBillTypes] = useState([]);
-      const closeModal = ()=>{
+      
 
     // useEffect(() => {
     //     handleFindALL();
     // }, [])
 
     const handleFindALL = async () => {
-
         const res =  privateAxios.get(`/billType/findAll?pageNumber=${pageNumber-1}&pageSize=${pageSize}`)
         .then((res)=>{
              //alert("inside then")
@@ -121,21 +120,21 @@ function BillTypeList() {
 
       };
 
-    const handleFindALL = async () => {
+    // const handleFindALL = async () => {
 
-        try {
+    //     try {
 
-            const res = await axios.get("/billType/findAll");
-            setAllData(res.data);
-            console.log(res.data);
+    //         const res = await axios.get("/billType/findAll");
+    //         setAllData(res.data);
+    //         console.log(res.data);
 
 
-        } catch (error) {
-            setisError(error.message);
-            console.log(error.message);
-            showErrorToast();
-        }
-    }
+    //     } catch (error) {
+    //         setisError(error.message);
+    //         console.log(error.message);
+    //         showErrorToast();
+    //     }
+    // }
 
 
      // pagination work

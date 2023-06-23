@@ -2,12 +2,7 @@ import axios from 'axios';
 
 // const BASE_URL="http://165.22.214.153:8085/api/v1";
 // const BASE_URL="http://10.248.1.198:8085/api/v1";
-<<<<<<< HEAD
  const BASE_URL="http://192.168.137.1:8085/api/v1";
-=======
-// const BASE_URL="http://10.248.1.75:8085/api/v1";
-const BASE_URL="http://192.168.137.1:8085/api/v1";
->>>>>>> 837e01e87f8b4b4e14c7bb66eb47d8dc6081e645
 
 
  const myAxios=axios.create({
