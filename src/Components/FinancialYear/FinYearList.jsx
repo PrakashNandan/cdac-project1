@@ -33,18 +33,36 @@ function FinYearList() {
 
     const handleFindALL = async () => {
 
-        try {
+        const res =  privateAxios.get(`/finYear/findAll?pageNumber=${pageNumber-1}&pageSize=${pageSize}`)
+        .then((res)=>{
+             //alert("inside then")
+            console.log(res);
+            const {pageNumber} = res.data.pageList;
+            
+            
+           
+            if(pageNumber!==''){
+            setIsAllData(true);
+            setAllData(res.data.pageList.content);
+            setTotalPages(res.data.pageList.totalPages);
+            setTotalElements(res.data.pageList.totalElements);
+             if(pageSize>res.data.pageList.content?.length){
+                setLastIndex(Math.max(((pageNumber+1)*res.data.pageList.content?.length), res.data.pageList.totalElements))
+             }
+             else{
+                 setLastIndex( (pageNumber+1)*pageSize);
+             }
+            // if(lastIndex){
+            setFirstIndex(((pageNumber+1)*pageSize) - pageSize);
+            // }
+            // setFirstIndex(((pageNumber-1)*pageSize)+1);
+            // setLastIndex(Math.min(firstIndex + pageSize-1, res.data.pageList.totalElements))
+            // setSlicedAllData(res.data.pageList.content.slice(firstIndex, lastIndex));
+            }
+        }).catch((err)=>console.log(err))
 
-            const res = await axios.get("finYear/findAll");
-            setAllData(res.data);
-            console.log(res.data);
-
-
-        } catch (error) {
-            setisError(error.message);
-            console.log(error.message);
-            showErrorToast();
-        }
+    
+       setDataFetching(false);
     }
 
 

@@ -33,8 +33,8 @@ const login = async (userData) => {
 
 // Logout user
 const logout = () => {
-  localStorage.removeItem('user')
-  localStorage.removeItem('accessToken');
+  localStorage.removeItem('user');
+  localStorage.removeItem('accessToken')
 }
 
 const authService = {
