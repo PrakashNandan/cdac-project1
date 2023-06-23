@@ -8,7 +8,9 @@ import FindAllFundingSource from './FindAllFundingSource'
 import { privateAxios } from '../../service/helperUtil'
 import Pagination from '../Pagination'
 
-
+import Mymodal from '../ShowModal.jsx';
+import '../../style/modal.css'
+import '../../style/UserData.css'
 
 
 function FundingSourceList() {
@@ -35,11 +37,51 @@ function FundingSourceList() {
     //     handleFindALL();
     // }, [])
 
-
+    const [ShowModal, setShowModal]=useState(false);
+    const [fundingSource, setFundingSource] = useState({
+        fundingSourceName : '',
+      },[] );
+      
+        const [allFundingSource, setAllFundingSource] = useState([]);
+        const closeModal = ()=>{
+            return setShowModal(false);
+        }
+    
+    
+        const handleInputChange = (event) => {
+            const { name, value } = event.target;
+            setFundingSource((prevFundingSource) => ({ ...prevFundingSource, [name]: value }));
+        };
+    
+    
+          const  handleSubmit = async (event) => {
+            
+            event.preventDefault();
+            
+            
+            console.log(fundingSource);  
+            
+            
+            try{
+              const res = await privateAxios.post("/fundSource/save", fundingSource);
+              toast.success('Submit Successfully')
+              setAllFundingSource([...allFundingSource, fundingSource]);
+              console.log(res);
+              handleFindALL();
+    
+            }catch(error){
+              toast.error("Form not Submitted !! , please try again")
+              console.log(error);
+            }
+    
+            closeModal();
+    
+          };
 
 
     const handleFindALL = async () => {
 
+        setDataFetching(true);        
         const res =  privateAxios.get(`/fundSource/findAll?pageNumber=${pageNumber-1}&pageSize=${pageSize}`)
         .then((res)=>{
              //alert("inside then")
@@ -132,7 +174,7 @@ function FundingSourceList() {
     const fetchData = async () => {
 
         try {
-            const res = await axios.get(`/fundSource/find/${inputId}`)
+            const res = await privateAxios.get(`/fundSource/find/${inputId}`)
             setAllData([res.data]);
             console.log([res.data]);
         } catch (error) {
@@ -148,7 +190,37 @@ function FundingSourceList() {
     //     return allData.find((item) => item.id === inputId);
     //   };
 
+    const mainModal =(
 
+        <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
+
+              <button id='close-btn' onClick={closeModal}>close</button>
+                <h2>Form</h2>
+
+              <form onSubmit={handleSubmit}  className='form'>
+
+              <div >
+                  {/* <label htmlFor="chargeName">Charge Name:</label> */}
+                  <input
+                    type="text"
+                    name="fundingSourceName"
+                    id="fundingSourceName"
+                    value={fundingSource.fundingSourceName}
+                    onChange={handleInputChange}
+                    placeholder="Enter fundingSourceName"
+                    required
+                  />
+              </div>
+     
+      
+        
+                        
+              {/* onClick={closeModal} */}
+                <button className='modal-btn' type='submit' >Submit</button>
+              </form>
+
+        </Mymodal>
+    )
 
     return (
 
@@ -159,8 +231,10 @@ function FundingSourceList() {
 
             <div className='find-container'>
                 {/* <div className='findButtonClass'><button className='btn-find btn btn-primary' onClick={()=>handleFindALL()}>FindAll</button></div> */}
-
+                
                 <div className="parentSearchInput">
+                    <div><button className='btn btn-primary' id='searchDataID' onClick={()=>setShowModal(true)}>Add Funding Source</button>
+   {ShowModal && mainModal}</div>
                     <div className="spacer"></div>
                     <input type="number" placeholder='search by ID' id='searchInput' value={inputId} onChange={(e) => setInputId(e.target.value)} />
                     <button className='btn btn-primary' id='searchDataID' onClick={fetchData}>Search</button>

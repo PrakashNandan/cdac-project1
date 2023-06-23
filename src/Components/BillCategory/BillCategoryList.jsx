@@ -7,6 +7,10 @@ import FindAllBillCategory from './FindAllBillCategory'
 import Pagination from '../Pagination'
 import { privateAxios } from '../../service/helperUtil'
 
+import ShowModal from '../ShowModal.jsx'
+import Mymodal from '../ShowModal.jsx';
+import '../../style/modal.css'
+import BillData from './BillData.jsx';
 
 function BillCategoryList() {
 
@@ -33,8 +37,79 @@ function BillCategoryList() {
     // useEffect(()=>{
     //     handleFindALL();
     // },[])
+    const [ShowModal, setShowModal] = useState(false);
+    const [billCategory, setBillCategory] = useState({
+        billCategoryName: '',
+      }, []);
+    
+      const [allBillCategory, setAllBillcategory] = useState([]);
+      const closeModal = () => {
+        return setShowModal(false);
+      }
+    
+    
+      const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setBillCategory((prevBillCategory) => ({ ...prevBillCategory, [name]: value }));
+      };
+    
+    
+      const handleSubmit = async (event) => {
+    
+        event.preventDefault();
+        console.log(billCategory);
+    
+    
+        try {
+          const res = await privateAxios.post("billCategory/save", billCategory);
+          toast.success('Submit Successfully')
+          setAllBillcategory([...allBillCategory, billCategory]);
+          console.log(res);
+    
+        } catch (error) {
+          toast.error("Form not Submitted !! , please try again")
+          console.log(error);
+        }
+    
+        closeModal();
+    
+      };
    
- 
+    const handleFindALL=async()=>{
+       
+        setDataFetching(true);        
+        const res =  privateAxios.get(`/billCategory/findAll?pageNumber=${pageNumber-1}&pageSize=${pageSize}`)
+        .then((res)=>{
+             //alert("inside then")
+            console.log(res);
+            const {pageNumber} = res.data.pageList;
+            
+            
+           
+            if(pageNumber!==''){
+            setIsAllData(true);
+            setAllData(res.data.pageList.content);
+            setTotalPages(res.data.pageList.totalPages);
+            setTotalElements(res.data.pageList.totalElements);
+             if(pageSize>res.data.pageList.content?.length){
+                setLastIndex(Math.max(((pageNumber+1)*res.data.pageList.content?.length), res.data.pageList.totalElements))
+             }
+             else{
+                 setLastIndex( (pageNumber+1)*pageSize);
+             }
+            // if(lastIndex){
+            setFirstIndex(((pageNumber+1)*pageSize) - pageSize);
+            // }
+            // setFirstIndex(((pageNumber-1)*pageSize)+1);
+            // setLastIndex(Math.min(firstIndex + pageSize-1, res.data.pageList.totalElements))
+            // setSlicedAllData(res.data.pageList.content.slice(firstIndex, lastIndex));
+            }
+        }).catch((err)=>console.log(err))
+
+    
+       setDataFetching(false);
+    }
+
      // pagination work
      if(pageSize<1){
         setPageSize(5);
@@ -80,51 +155,6 @@ function BillCategoryList() {
     },[isReady ,pageNumber ,pageSize])
 
 
-
-    const handleFindALL=async()=>{
-        const res =  privateAxios.get(`/billCategory/findAll?pageNumber=${pageNumber-1}&pageSize=${pageSize}`)
-        .then((res)=>{
-             //alert("inside then")
-            console.log(res);
-            const {pageNumber} = res.data.pageList;
-            
-            
-           
-            if(pageNumber!==''){
-            setIsAllData(true);
-            setAllData(res.data.pageList.content);
-            setTotalPages(res.data.pageList.totalPages);
-            setTotalElements(res.data.pageList.totalElements);
-             if(pageSize>res.data.pageList.content?.length){
-                setLastIndex(Math.max(((pageNumber+1)*res.data.pageList.content?.length), res.data.pageList.totalElements))
-             }
-             else{
-                 setLastIndex( (pageNumber+1)*pageSize);
-             }
-            // if(lastIndex){
-            setFirstIndex(((pageNumber+1)*pageSize) - pageSize);
-            // }
-            // setFirstIndex(((pageNumber-1)*pageSize)+1);
-            // setLastIndex(Math.min(firstIndex + pageSize-1, res.data.pageList.totalElements))
-            // setSlicedAllData(res.data.pageList.content.slice(firstIndex, lastIndex));
-            }
-        }).catch((err)=>console.log(err))
-
-    
-       setDataFetching(false);
-    }
-
-
-
-
-
-
-
-
-
-
-
-
    
 
 
@@ -163,7 +193,37 @@ function BillCategoryList() {
     // const firstIndex = lastIndex - userPerPage;
     // const slicedAllData=allData.slice(firstIndex, lastIndex);
 
+    const mainModal = (
 
+        <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
+    
+          <button id='close-btn' onClick={closeModal}>close</button>
+                       <h2>Form</h2>
+    
+          <form onSubmit={handleSubmit} className='form'>
+    
+            <div >
+              <label htmlFor="billCategoryName">Bill Category Name:</label>
+              <input
+                type="text"
+                name="billCategoryName"
+                id="billCategoryName"
+                value={billCategory.billCategoryName}
+                onChange={handleInputChange}
+                placeholder="Enter billCategoryName"
+                required
+              />
+            </div>
+    
+    
+    
+    
+            {/* onClick={closeModal} */}
+            <button className='modal-btn' type='submit' >Submit</button>
+          </form>
+    
+        </Mymodal>
+      )
 
   return (
 
@@ -179,8 +239,9 @@ function BillCategoryList() {
                   <input type="number" className='userPerPageClass' name='userPerPage' value={userPerPage} onChange={(e)=>{setUserPerPage(e.target.value)}} />
           </div> */}
             <div className="parentSearchInput">
-                {/* <input type="number" className='userPerPageClass' id='Pagi_input_id' name='userPerPage' value={pageSize} onChange={(e)=>{setPageSize(e.target.value)}} /> */}
-                <div className="spacer"></div>
+                <div><button className='btn btn-primary' id='searchDataID' onClick={() => setShowModal(true)}>Add billCategoryName</button>
+      {ShowModal && mainModal}</div><div className="spacer"></div>
+                
                 <input type="number" placeholder='search by ID' id='searchInput' value={inputId} onChange={(e) => setInputId(e.target.value)} /> 
                 <button className='btn btn-primary' id='searchDataID' onClick={fetchData}>Search</button>   
             </div>

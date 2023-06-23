@@ -7,6 +7,10 @@ import Pagination from '../Pagination'
 import { privateAxios } from '../../service/helperUtil'
 
 
+import Mymodal from '../ShowModal.jsx'
+import '../../style/modal.css'
+import BillTypeData from './BillTypeData.jsx'
+import '../../style/UserData.css'
 
 
 function BillTypeList() {
@@ -30,9 +34,51 @@ function BillTypeList() {
     // useEffect(() => {
     //     handleFindALL();
     // }, [])
+    const [ShowModal, setShowModal]=useState(false);
+    const [billType, setBillType] = useState({
+        billTypeName: '',
+        entryDate: ''
+ 
+      },[]);
+    
+      const [billTypes, setBillTypes] = useState([]);
+      const closeModal = ()=>{
+        return setShowModal(false);
+    }
+
+
+    const handleInputChange = (event) => {
+        const { name, value, type, checked } = event.target;
+        const inputValue = type === 'checkbox' ? checked : value;
+        setBillType((prevBillType) => ({ ...prevBillType, [name]: inputValue }));
+    };
+
+
+      const  handleSubmit = async (event) => {
+        
+        event.preventDefault();
+        
+        
+        console.log(billType);  
+        
+        
+        try{
+          const res = await axios.post("/billType/save", billType);
+          toast.success('Submit Successfully')
+          setBillTypes([...billTypes, billType]);
+          console.log(res);
+
+        }catch(error){
+          toast.error("Form not Submitted !! , please try again")
+          console.log(error);
+        }
+        closeModal();
+
+      };
 
     const handleFindALL = async () => {
 
+        setDataFetching(true);        
         const res =  privateAxios.get(`/billType/findAll?pageNumber=${pageNumber-1}&pageSize=${pageSize}`)
         .then((res)=>{
              //alert("inside then")
@@ -141,6 +187,45 @@ function BillTypeList() {
 
     }
 
+    const mainModal =(
+
+        <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
+
+              <button id='close-btn' onClick={closeModal}>close</button>
+              <h2>Form</h2>
+
+              <form onSubmit={handleSubmit}  className='form'>
+
+              <div >
+                  {/* <label htmlFor="chargeName">Charge Name:</label> */}
+                  <input
+                    type="text"
+                    name="billTypeName"
+                    id="billTypeName"
+                    value={billType.billTypeName}
+                    onChange={handleInputChange}
+                    placeholder="Enter Bill Type"
+                    required
+                  />
+              </div>
+              <div >
+                  <label htmlFor="entryDate">Entry Date: &nbsp;</label>
+                  <input
+                    type="date"
+                    name="entryDate"
+                    id="entryDate"
+                    value={billType.entryDate}
+                    onChange={handleInputChange}
+                    placeholder="Enter entryDate"
+                    // required
+                  />
+              </div>
+              {/* onClick={closeModal} */}
+                <button className='modal-btn' type='submit' >Submit</button>
+              </form>
+
+        </Mymodal>
+    )
 
 
     return (
@@ -153,7 +238,8 @@ function BillTypeList() {
                 {/* <div className='findButtonClass'><button className='btn-find btn btn-primary' onClick={()=>handleFindALL()}>FindAll</button></div> */}
 
                 <div className="parentSearchInput">
-                    <div className="spacer"></div>
+                <div><button className='btn btn-primary' id='searchDataID' onClick={()=>setShowModal(true)}>Add Bill Type</button>
+   {ShowModal && mainModal}</div><div className="spacer"></div>
                     <input type="number" placeholder='search by ID' id='searchInput' value={inputId} onChange={(e) => setInputId(e.target.value)} />
                     <button className='btn btn-primary' id='searchDataID' onClick={fetchData}>Search</button>
                 </div>

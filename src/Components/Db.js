@@ -6,11 +6,6 @@ function Db() {
       
   <div class="container-fluid">
     <div class="row">
-      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-        <div class="sidebar-sticky">
-         
-        </div>
-      </nav>
 <div className='gandu'>
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -41,7 +36,7 @@ function Db() {
         </div>
 
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-12 mb-5">
             <div class="card">
               <div class="card-header">
                 <h5 class="card-title">Recent Orders</h5>

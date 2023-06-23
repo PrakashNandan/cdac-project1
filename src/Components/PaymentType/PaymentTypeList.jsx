@@ -7,7 +7,10 @@ import { privateAxios } from '../../service/helperUtil'
 import Pagination from '../Pagination'
 
 
-
+import Mymodal from '../ShowModal.jsx'
+import '../../style/modal.css'
+import PaymentTypeData from './PaymentTypeData.jsx'
+import '../../style/UserData.css'
 
 function PaymentTypeList() {
 
@@ -31,10 +34,49 @@ function PaymentTypeList() {
     //     handleFindALL();
     // }, [])
 
+    const [ShowModal, setShowModal]=useState(false);
+    const [paymentType, setPaymentType] = useState({
+        paymentTypeName: '',
+        entryDate: '',
+        isValid:''
+        
+      },[]);
+      const [paymentTypes, setPaymentTypes] = useState([]);
+      const handleInputChange = (event) => {
+        const { name, value, type, checked } = event.target;
+        const inputValue = type === 'checkbox' ? checked : value;
+        setPaymentType((prevpaymentType) => ({ ...prevpaymentType, [name]: inputValue }));
+    };
+    const  handleSubmit = async (event) => {
+        
+        event.preventDefault();
+        
+        
+        console.log(paymentType);  
+        
+        
+        try{
+          const res = await privateAxios.post("/paymentType/save", paymentType);
+          toast.success('Submit Successfully')
+          setPaymentTypes([...paymentTypes, paymentType]);
+          console.log(res);
+          handleFindALL();
 
+        }catch(error){
+          toast.error("Form not Submitted !! , please try again")
+          console.log(error);
+        }
+        
+        closeModal();
+      };
+      const closeModal = ()=>{
+        return setShowModal(false);
+    }
 
 
     const handleFindALL = async () => {
+
+        setDataFetching(true);        
         const res =  privateAxios.get(`/paymentType/findAll?pageNumber=${pageNumber-1}&pageSize=${pageSize}`)
         .then((res)=>{
              //alert("inside then")
@@ -128,7 +170,7 @@ function PaymentTypeList() {
     const fetchData = async () => {
 
         try {
-            const res = await axios.get(`/paymentType/find/${inputId}`)
+            const res = await privateAxios.get(`/paymentType/find/${inputId}`)
             setAllData([res.data]);
             console.log([res.data]);
         } catch (error) {
@@ -143,7 +185,56 @@ function PaymentTypeList() {
     // const findDataById = () => {
     //     return allData.find((item) => item.id === inputId);
     //   };
+    const mainModal =(
 
+        <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
+
+              <button id='close-btn' onClick={closeModal}>close</button>
+              <h2>Form</h2>
+
+              <form onSubmit={handleSubmit}  className='form'>
+
+              <div >
+                  {/* <label htmlFor="chargeName">Charge Name:</label> */}
+                  <input
+                    type="text"
+                    name="paymentTypeName"
+                    id="paymentTypeName"
+                    value={paymentType.paymentTypeName}
+                    onChange={handleInputChange}
+                    placeholder="Enter payment Type"
+                    required
+                  />
+              </div>
+              <div >
+                  <label htmlFor="entryDate">Entry Date: &nbsp;</label>
+                  <input
+                    type="date"
+                    name="entryDate"
+                    id="entryDate"
+                    value={paymentType.entryDate}
+                    onChange={handleInputChange}
+                    placeholder="Enter entryDate"
+                    // required
+                  />
+              </div>
+              <div >
+                  <input
+                    type="number"
+                    name="isValid"
+                    id="isValid"
+                    value={paymentType.isValid}
+                    onChange={handleInputChange}
+                    placeholder="isValid"
+                    // required
+                  />
+              </div>
+              {/* onClick={closeModal} */}
+                <button className='modal-btn' type='submit' >Submit</button>
+              </form>
+
+        </Mymodal>
+    )
 
 
     return (
@@ -154,10 +245,11 @@ function PaymentTypeList() {
 
 
             <div className='find-container'>
-                {/* <div className='findButtonClass'><button className='btn-find btn btn-primary' onClick={()=>handleFindALL()}>FindAll</button></div> */}
-
+           
                 <div className="parentSearchInput">
-                    <div className="spacer"></div>
+                    <div > <button className='btn btn-primary' id='searchDataID' onClick={()=>setShowModal(true)}>Add payment Type</button>
+   {ShowModal && mainModal}</div>
+   <div className='spacer'></div>
                     <input type="number" placeholder='search by ID' id='searchInput' value={inputId} onChange={(e) => setInputId(e.target.value)} />
                     <button className='btn btn-primary' id='searchDataID' onClick={fetchData}>Search</button>
                 </div>
