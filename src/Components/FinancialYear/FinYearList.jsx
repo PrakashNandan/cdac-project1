@@ -7,6 +7,12 @@ import FindAllFinYear from './FindAllFinYear'
 import { privateAxios } from '../../service/helperUtil'
 import Pagination from '../Pagination'
 
+import ShowModal from '../ShowModal.jsx'
+import Mymodal from '../ShowModal.jsx';
+import '../../style/modal.css'
+import UserData from '../AccountCharge/UserData.jsx';
+import '../../style/UserData.css'
+import FinYearData from './FinYearData.jsx';
 
 function FinYearList() {
 
@@ -29,40 +35,63 @@ function FinYearList() {
     // useEffect(() => {
     //     handleFindALL();
     // }, [])
+    const [ShowModal, setShowModal]=useState(false);
+    const [finYear, setfinYear] = useState({
+        finYearStartDate : '',
+        finYearEndDate:'',
+        finYearName:'',
+        remarks:'',
+        entryDate:'',
+      },[] );
+      
+        const [allFinYear, setAllFinYear] = useState([]);
+        const closeModal = ()=>{
+            return setShowModal(false);
+        }
+    
+    
+        const handleInputChange = (event) => {
+            const { name, value } = event.target;
+            setfinYear((prevFinYear) => ({ ...prevFinYear, [name]: value }));
+        };
+    
+    
+          const  handleSubmit = async (event) => {
+            
+            event.preventDefault();
+                
+            console.log(finYear);  
+                 
+            try{
+              const res = await privateAxios.post("finYear/save", finYear);
+              toast.success('Submit Successfully')
+              setAllFinYear([...allFinYear, finYear]);
+              console.log(res);
+    
+            }catch(error){
+              toast.error("Form not Submitted !! , please try again")
+              console.log(error);
+            }
+    
+            closeModal();
+    
+          };
 
 
     const handleFindALL = async () => {
 
-        const res =  privateAxios.get(`/finYear/findAll?pageNumber=${pageNumber-1}&pageSize=${pageSize}`)
-        .then((res)=>{
-             //alert("inside then")
-            console.log(res);
-            const {pageNumber} = res.data.pageList;
-            
-            
-           
-            if(pageNumber!==''){
-            setIsAllData(true);
-            setAllData(res.data.pageList.content);
-            setTotalPages(res.data.pageList.totalPages);
-            setTotalElements(res.data.pageList.totalElements);
-             if(pageSize>res.data.pageList.content?.length){
-                setLastIndex(Math.max(((pageNumber+1)*res.data.pageList.content?.length), res.data.pageList.totalElements))
-             }
-             else{
-                 setLastIndex( (pageNumber+1)*pageSize);
-             }
-            // if(lastIndex){
-            setFirstIndex(((pageNumber+1)*pageSize) - pageSize);
-            // }
-            // setFirstIndex(((pageNumber-1)*pageSize)+1);
-            // setLastIndex(Math.min(firstIndex + pageSize-1, res.data.pageList.totalElements))
-            // setSlicedAllData(res.data.pageList.content.slice(firstIndex, lastIndex));
-            }
-        }).catch((err)=>console.log(err))
+        try {
 
-    
-       setDataFetching(false);
+            const res = await privateAxios.get("finYear/findAll");
+            setAllData(res.data.pageList.content);
+            console.log(res.data);
+
+
+        } catch (error) {
+            setisError(error.message);
+            console.log(error.message);
+            showErrorToast();
+        }
     }
 
 
@@ -131,7 +160,7 @@ function FinYearList() {
     const fetchData = async () => {
 
         try {
-            const res = await axios.get(`finYear/find/${inputId}`)
+            const res = await privateAxios.get(`finYear/find/${inputId}`)
             setAllData([res.data]);
             console.log([res.data]);
         } catch (error) {
@@ -142,7 +171,85 @@ function FinYearList() {
 
     }
 
+    const mainModal =(
 
+        <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
+
+              <button id='close-btn' onClick={closeModal}>close</button>
+                <h2>Form</h2>
+
+              <form onSubmit={handleSubmit}  className='form'>
+
+              <div >
+                  <label htmlFor="finYearStartDate">Financial Year Start Date :</label>
+                  <input
+                    type="date"
+                    name="finYearStartDate"
+                    id="finYearStartDate"
+                    value={finYear.finYearStartDate}
+                    onChange={handleInputChange}
+                    placeholder="Enter financial Year Start Date"
+                    required
+                  />
+              </div>
+              <div >
+                  <label htmlFor="finYearEndDate">Financial Year End Date:</label>
+                  <input
+                    type="date"
+                    name="finYearEndDate"
+                    id="finYearEndDate"
+                    value={finYear.finYearEndDate}
+                    onChange={handleInputChange}
+                    placeholder="Enter finYearEndDate"
+                    required
+                  />
+              </div>
+     
+              <div >
+                  <label htmlFor="finYearName">Financial Year Name :</label>
+                  <input
+                    type="text"
+                    name="finYearName"
+                    id="finYearName"
+                    value={finYear.finYearName}
+                    onChange={handleInputChange}
+                    placeholder="Enter finYearName"
+                    required
+                  />
+              </div>
+              <div >
+                  <label htmlFor="remarks">Remarks :</label>
+                  <input
+                    type="text"
+                    name="remarks"
+                    id="remarks"
+                    value={finYear.remarks}
+                    onChange={handleInputChange}
+                    placeholder="Enter remarks"
+                    required
+                  />
+              </div>
+              <div >
+                  <label htmlFor="entryDate">Entry Date: &nbsp;</label>
+                  <input
+                    type="date"
+                    name="entryDate"
+                    id="entryDate"
+                    value={finYear.entryDate}
+                    onChange={handleInputChange}
+                    placeholder="Enter entryDate "
+                    required
+                  />
+              </div>
+     
+  
+                        
+              {/* onClick={closeModal} */}
+                <button className='modal-btn' type='submit' >Submit</button>
+              </form>
+
+        </Mymodal>
+    )
 
     return (
 
@@ -153,8 +260,11 @@ function FinYearList() {
 
             <div className='find-container'>
                 {/* <div className='findButtonClass'><button className='btn-find btn btn-primary' onClick={()=>handleFindALL()}>FindAll</button></div> */}
-
+               
                 <div className="parentSearchInput">
+<div> <button className='btn btn-primary' id='searchDataID' onClick={()=>setShowModal(true)}>Add Financial Year</button>
+   {ShowModal && mainModal}</div>
+                
                     <div className="spacer"></div>
                     <input type="number" placeholder='search by ID' id='searchInput' value={inputId} onChange={(e) => setInputId(e.target.value)} />
                     <button className='btn btn-primary' id='searchDataID' onClick={fetchData}>Search</button>

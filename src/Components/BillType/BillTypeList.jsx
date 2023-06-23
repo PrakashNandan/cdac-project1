@@ -5,9 +5,12 @@ import FindAllBillType from './FindAllBillTypeData'
 import { ToastContainer, toast } from 'react-toastify'
 import Pagination from '../Pagination'
 import { privateAxios } from '../../service/helperUtil'
+
+
 import Mymodal from '../ShowModal.jsx'
-
-
+import '../../style/modal.css'
+import BillTypeData from './BillTypeData.jsx'
+import '../../style/UserData.css'
 
 
 function BillTypeList() {
@@ -27,11 +30,11 @@ function BillTypeList() {
     const [slicedAllData,setSlicedAllData]=useState([]);
     const [isAllData, setIsAllData]=useState(false);
      const [isReady , setIsready] =useState(false);
-     const [ShowModal, setShowModal]=useState(false);
-    const [currentPage, setCurrentPage]=useState(1);
-    const [billTypePerPage, setBillTypePerPage] = useState(3);
- 
 
+    // useEffect(() => {
+    //     handleFindALL();
+    // }, [])
+    const [ShowModal, setShowModal]=useState(false);
     const [billType, setBillType] = useState({
         billTypeName: '',
         entryDate: ''
@@ -39,64 +42,7 @@ function BillTypeList() {
       },[]);
     
       const [billTypes, setBillTypes] = useState([]);
-
-    // useEffect(() => {
-    //     handleFindALL();
-    // }, [])
-
-    const handleFindALL = async () => {
-
-        const res =  privateAxios.get(`/billType/findAll?pageNumber=${pageNumber-1}&pageSize=${pageSize}`)
-        .then((res)=>{
-             //alert("inside then")
-            console.log(res);
-            const {pageNumber} = res.data.pageList;
-            
-            
-           
-            if(pageNumber!==''){
-            setIsAllData(true);
-            setAllData(res.data.pageList.content);
-            setTotalPages(res.data.pageList.totalPages);
-            setTotalElements(res.data.pageList.totalElements);
-             if(pageSize>res.data.pageList.content?.length){
-                setLastIndex(Math.max(((pageNumber+1)*res.data.pageList.content?.length), res.data.pageList.totalElements))
-             }
-             else{
-                 setLastIndex( (pageNumber+1)*pageSize);
-             }
-            // if(lastIndex){
-            setFirstIndex(((pageNumber+1)*pageSize) - pageSize);
-            // }
-            // setFirstIndex(((pageNumber-1)*pageSize)+1);
-            // setLastIndex(Math.min(firstIndex + pageSize-1, res.data.pageList.totalElements))
-            // setSlicedAllData(res.data.pageList.content.slice(firstIndex, lastIndex));
-            }
-        }).catch((err)=>console.log(err))
-
-<<<<<<< HEAD
-            const res = await privateAxios.get("/billType/findAll");
-            setAllData(res.data);
-            console.log(res.data);
-
-
-        } catch (error) {
-            setisError(error.message);
-            console.log(error.message);
-            showErrorToast();
-        }
-=======
-    
-       setDataFetching(false);
->>>>>>> 837e01e87f8b4b4e14c7bb66eb47d8dc6081e645
-    }
-
-
-     // pagination work
-     if(pageSize<1){
-        setPageSize(5);
-    }
-    const closeModal = ()=>{
+      const closeModal = ()=>{
         return setShowModal(false);
     }
 
@@ -117,7 +63,7 @@ function BillTypeList() {
         
         
         try{
-          const res = await privateAxios.post("/billType/save", billType);
+          const res = await axios.post("/billType/save", billType);
           toast.success('Submit Successfully')
           setBillTypes([...billTypes, billType]);
           console.log(res);
@@ -130,18 +76,27 @@ function BillTypeList() {
 
       };
 
-      
-      const postFormData=async(url)=>{
+    const handleFindALL = async () => {
 
-          try{
-                  const res = await privateAxios.post(url,{billType});
-                  console.log(res);
+        try {
 
-          }catch(error){
+            const res = await axios.get("/billType/findAll");
+            setAllData(res.data);
+            console.log(res.data);
+
+
+        } catch (error) {
             setisError(error.message);
             console.log(error.message);
-          }
-      }
+            showErrorToast();
+        }
+    }
+
+
+     // pagination work
+     if(pageSize<1){
+        setPageSize(5);
+    }
 
     useEffect(()=>{
         if(isReady){
@@ -212,15 +167,8 @@ function BillTypeList() {
         }
 
     }
-    const showToast=()=>{
-        if(isError!=="")
-        {
-          toast.error("Error !! form not submittd, pleae try again")
-        }else{
-          toast.success('Submit Successfully')
-        }
-      }
-      const mainModal =(
+
+    const mainModal =(
 
         <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
 
@@ -261,8 +209,6 @@ function BillTypeList() {
     )
 
 
-
-
     return (
 
         <>
@@ -273,10 +219,8 @@ function BillTypeList() {
                 {/* <div className='findButtonClass'><button className='btn-find btn btn-primary' onClick={()=>handleFindALL()}>FindAll</button></div> */}
 
                 <div className="parentSearchInput">
-                <button className='modal-btn' id='addButton' onClick={()=>setShowModal(true)}>Add Bill Type</button>
-                  {ShowModal && mainModal}
-
-                    {/* <div className="spacer"></div> */}
+                <div><button className='btn btn-primary' id='searchDataID' onClick={()=>setShowModal(true)}>Add Bill Type</button>
+   {ShowModal && mainModal}</div><div className="spacer"></div>
                     <input type="number" placeholder='search by ID' id='searchInput' value={inputId} onChange={(e) => setInputId(e.target.value)} />
                     <button className='btn btn-primary' id='searchDataID' onClick={fetchData}>Search</button>
                 </div>
