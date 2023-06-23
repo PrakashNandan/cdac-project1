@@ -9,6 +9,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import Pagination from '../Pagination.js';
 import BillData from './BillData.jsx';
 import { privateAxios } from '../../service/helperUtil.js';
+import { MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
 // const API="https://jsonplaceholder.typicode.com"
 
 function AddBillCategory() {
@@ -17,6 +18,7 @@ function AddBillCategory() {
   const [currentPage, setCurrentPage] = useState(1);
   const [userPerPage, setUserPerPage] = useState(3);
   const [isError, setIsError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [billCategory, setBillCategory] = useState({
     billCategoryName: '',
@@ -44,6 +46,7 @@ function AddBillCategory() {
   const handleSubmit = async (event) => {
 
     event.preventDefault();
+    setIsSubmitting(true);
 
 
     console.log(billCategory);
@@ -60,6 +63,7 @@ function AddBillCategory() {
       console.log(error);
     }
 
+    setIsSubmitting(false);
     closeModal();
 
   };
@@ -98,31 +102,36 @@ function AddBillCategory() {
 
   const mainModal = (
 
+
+
     <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
 
       <button id='close-btn' onClick={closeModal}>close</button>
-                   <h2>Form</h2>
+      <h2>Form</h2>
 
       <form onSubmit={handleSubmit} className='form'>
-
-        <div >
-          <label htmlFor="billCategoryName">Bill Category Name:</label>
-          <input
+        <div className="d-flex flex-row align-items-center mb-3 mt-3">
+          <MDBIcon fas icon="pen-to-square" size='lg' style={{ marginRight: '10px' }} />
+          <MDBInput
+            label="Bill Category Name"
             type="text"
             name="billCategoryName"
             id="billCategoryName"
             value={billCategory.billCategoryName}
             onChange={handleInputChange}
-            placeholder="Enter billCategoryName"
             required
           />
         </div>
 
 
-
-
-        {/* onClick={closeModal} */}
-        <button className='modal-btn' type='submit' >Submit</button>
+        {isSubmitting ? (
+          <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} disabled>
+            <span class="spinner-border" style={{ margin: '0 0.3rem', height: '1.2rem', width: '1.2rem' }} role="status" aria-hidden="true"></span>
+            Submitting...
+          </MDBBtn>
+        ) : (
+          <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} >Submit</MDBBtn>
+        )}
       </form>
 
     </Mymodal>

@@ -25,17 +25,19 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  max-width: 30rem;
+  max-width: 33rem;
   padding: 2rem 2rem;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
-  width: 50%;
-  min-width: 333px;
+  width: 60%;
   max-height: 100vh;
   overflow-y: auto;
+  margin-bottom: 0.6rem;
+  padding-top: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 10;
   /* height: 100%; */
 
@@ -43,11 +45,11 @@
 
 .modal_container h2 {
   margin-bottom: 0.6rem;
-  padding-top: 30px;
+  padding-top: 20px;
 }
 
-#entryDate {
-  width: 100%;
+.modalForm {
+  min-width: 300px;
 }
 
 .modal-btn {
@@ -88,8 +90,11 @@
 }
 
 .user-list h3 {
-  padding: 0;
-  padding-bottom: 30px;
+  padding: 20px 0;
+}
+
+.user-list {
+  padding: 0 5%;
 }
 
 #close-btn {
@@ -98,35 +103,14 @@
   position: sticky;
   left: 24.8rem;
   bottom: 36.2rem;
-  padding: 0.3rem 0.6rem;
+  padding: 0.3rem 0.8rem;
   border: none;
   cursor: pointer;
-  border-radius: 0.26rem;
+  border-radius: 1rem;
 }
 
 #close-btn:hover {
   background-color: rgb(211, 0, 0);
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-}
-
-.form input {
-  padding: 0.28rem;
-  width: 100%;
-}
-
-.form label {
-  display: inline;
-  font-weight: bold;
-}
-
-.form div {
-  margin-bottom: 0.5rem;
 }
 
 .user-list .userPerPageClass {
@@ -139,5 +123,11 @@
 @media (max-width: 1200px) {
   .modal_container {
     width: 70%;
+  }
+}
+
+@media (max-width: 450px) {
+  .modalForm {
+    min-width: 200px;
   }
 }

@@ -519,7 +519,7 @@ const handleClick18 = ()=>{
                           className="sidebar-dropdown"
                           onClick={() => handleClick0()}
                         >
-                         <i class="fa fa-home" aria-hidden="true" style={{paddingRight:'22px'}}></i> 
+                         <i class="fa fa-home" aria-hidden="true" style={{paddingRight:'20px'}}></i> 
                         Dashboard
                         </button>
                       </li>

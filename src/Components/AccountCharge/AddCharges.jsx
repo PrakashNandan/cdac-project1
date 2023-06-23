@@ -116,10 +116,10 @@ function Addcharges() {
       <button id='close-btn' onClick={closeModal}>close</button>
       <h2>Form</h2>
 
-      <form onSubmit={handleSubmit} className='form'>
+      <form onSubmit={handleSubmit} className='modalForm' id='modalForm'>
 
-        <div >
-          {/* <label htmlFor="chargeName">Charge Name:</label> */}
+        <div className="d-flex flex-row align-items-center mb-3 mt-3">
+          <MDBIcon fas icon="user-pen" size='lg' style={{marginRight: '5px'}} />
           <MDBInput
             label="Charge Name"
             type="text"
@@ -127,13 +127,12 @@ function Addcharges() {
             id="chargeName"
             value={user.chargeName}
             onChange={handleInputChange}
-            placeholder="Enter chargeName"
-            className="mb-1"
             required
           />
         </div>
-        <div >
-          {/* <label htmlFor="chargeType">Charge Type:</label> */}
+
+        <div className="d-flex flex-row align-items-center mb-3">
+          <MDBIcon fas icon="pen-to-square" size='lg' style={{marginRight: '10px'}}/>
           <MDBInput
             label="Charge Type"
             type="number"
@@ -141,13 +140,12 @@ function Addcharges() {
             id="chargeType"
             value={user.chargeType}
             onChange={handleInputChange}
-            placeholder="Enter chargeType"
-            className="mb-1"
           // required
           />
         </div>
-        <div >
-          {/* <label htmlFor="chargeRate">Charge Rate:</label> */}
+
+        <div className="d-flex flex-row align-items-center mb-3">
+          <MDBIcon fas icon="pen-to-square" size='lg' style={{marginRight: '10px'}}/>
           <MDBInput
             label="Charge Rate"
             type="number"
@@ -155,12 +153,12 @@ function Addcharges() {
             id="chargeRate"
             value={user.chargeRate}
             onChange={handleInputChange}
-            placeholder="Enter chargeRate"
-            className="mb-1"
           // required
           />
         </div>
-        <div>
+
+        <div className="d-flex flex-row align-items-center mb-3">
+          <MDBIcon fas icon="calendar" size='lg' style={{marginRight: '13px'}}/>
           <MDBInput
             label="Entry Date"
             type="date"
@@ -168,13 +166,12 @@ function Addcharges() {
             id="entryDate"
             value={user.entryDate}
             onChange={handleInputChange}
-            placeholder="Enter entryDate"
-            className="mb-1"
           // required
           />
         </div>
-        <div >
-          {/* <label htmlFor="chargeAmount">charge Amount:</label> */}
+
+        <div className="d-flex flex-row align-items-center mb-3">
+          <MDBIcon fas icon="indian-rupee-sign" size='lg' style={{marginRight: '15px', marginLeft: '3px'}}/>
           <MDBInput
             label="Charge Amount"
             type="number"
@@ -182,27 +179,25 @@ function Addcharges() {
             id="chargeAmount"
             value={user.chargeAmount}
             onChange={handleInputChange}
-            placeholder="Enter chargeAmount"
-            className="mb-1"
           // required
           />
         </div>
-        <div >
-          {/* <label htmlFor="chargeApplyOnBaseAmount">chargeApplyOnBaseAmount:</label> */}
+
+        <div className="d-flex flex-row align-items-center mb-3">
+          <MDBIcon fas icon="pen-to-square" size='lg' style={{marginRight: '10px'}}/>
           <MDBInput
-            label="Charge Apply on Base Amount"
+            label="Charge Apply on Base Amt."
             type="number"
             name="chargeApplyOnBaseAmount"
             id="chargeApplyOnBaseAmount"
             value={user.chargeApplyOnBaseAmount}
             onChange={handleInputChange}
-            placeholder="Enter chargeApplyOnBaseAmount"
-            className="mb-1"
           // required
           />
         </div>
-        <div >
-          {/* <label htmlFor="roundingType">Rounding Type:</label> */}
+
+        <div className="d-flex flex-row align-items-center mb-3">
+          <MDBIcon fas icon="pen-to-square" size='lg' style={{marginRight: '10px'}}/>
           <MDBInput
             label="Rounding Type"
             type="number"
@@ -210,45 +205,39 @@ function Addcharges() {
             id="roundingType"
             value={user.roundingType}
             onChange={handleInputChange}
-            placeholder="Enter roundingType"
-            className="mb-1"
           // required
           />
         </div>
+
         <div >
-          <label htmlFor="hoaPostingRequired">hoaPostingRequired: &nbsp;</label>
           <MDBCheckbox
+            label="Hoa Posting Required?"
             type="checkbox"
             name="hoaPostingRequired"
             id="hoaPostingRequired"
-
             checked={user.hoaPostingRequired}
             onChange={handleInputChange}
-            placeholder="Enter hoaPostingRequired"
 
           />
         </div>
         <div >
-          <label htmlFor="depositToGovt">is Deposit to Govt? &nbsp;</label>
           <MDBCheckbox
+            label="Deposit to Govt?"
             type="checkbox"
             name="depositToGovt"
             id="depositToGovt"
             checked={user.depositToGovt}
             onChange={handleInputChange}
-            placeholder="Enter depositToGovt"
-
           />
         </div>
 
         {isSubmitting ? (
-          <button class="modal-btn" type="button" disabled>
-            <span class="spinner-border" style={{ margin: '0 0.3rem', height: '1.6rem', width: '1.5rem' }} role="status" aria-hidden="true"></span>
-
+          <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} disabled>
+            <span class="spinner-border" style={{ margin: '0 0.3rem', height: '1.2rem', width: '1.2rem' }} role="status" aria-hidden="true"></span>
             Submitting...
-          </button>
+          </MDBBtn>
         ) : (
-          <button className='modal-btn' type='submit' >Submit</button>
+          <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} >Submit</MDBBtn>
         )}
 
       </form>
@@ -293,18 +282,12 @@ function Addcharges() {
             </table>
             <Pagination totalUsers={users.length} userPerPage={userPerPage} setCurrentPage={setCurrentPage} setUserPerPage={setUserPerPage} currPage={currentPage} lastIndex={lastIndex} firstIndex={firstIndex} />
           </div>
-
-
-          : (
-            <p>No Charges added yet.</p>
-          )}
+          : (<p>No Charges added yet.</p>)
+        }
       </div>
-
-
       <ToastContainer />
 
     </>
-
 
   )
 }
