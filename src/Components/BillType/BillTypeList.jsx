@@ -5,6 +5,7 @@ import FindAllBillType from './FindAllBillTypeData'
 import { ToastContainer, toast } from 'react-toastify'
 import Pagination from '../Pagination'
 import { privateAxios } from '../../service/helperUtil'
+import Mymodal from '../ShowModal.jsx'
 
 
 
@@ -26,6 +27,18 @@ function BillTypeList() {
     const [slicedAllData,setSlicedAllData]=useState([]);
     const [isAllData, setIsAllData]=useState(false);
      const [isReady , setIsready] =useState(false);
+     const [ShowModal, setShowModal]=useState(false);
+    const [currentPage, setCurrentPage]=useState(1);
+    const [billTypePerPage, setBillTypePerPage] = useState(3);
+ 
+
+    const [billType, setBillType] = useState({
+        billTypeName: '',
+        entryDate: ''
+ 
+      },[]);
+    
+      const [billTypes, setBillTypes] = useState([]);
 
     // useEffect(() => {
     //     handleFindALL();
@@ -35,7 +48,7 @@ function BillTypeList() {
 
         try {
 
-            const res = await axios.get("/billType/findAll");
+            const res = await privateAxios.get("/billType/findAll");
             setAllData(res.data);
             console.log(res.data);
 
@@ -52,6 +65,52 @@ function BillTypeList() {
      if(pageSize<1){
         setPageSize(5);
     }
+    const closeModal = ()=>{
+        return setShowModal(false);
+    }
+
+
+    const handleInputChange = (event) => {
+        const { name, value, type, checked } = event.target;
+        const inputValue = type === 'checkbox' ? checked : value;
+        setBillType((prevBillType) => ({ ...prevBillType, [name]: inputValue }));
+    };
+
+
+      const  handleSubmit = async (event) => {
+        
+        event.preventDefault();
+        
+        
+        console.log(billType);  
+        
+        
+        try{
+          const res = await privateAxios.post("/billType/save", billType);
+          toast.success('Submit Successfully')
+          setBillTypes([...billTypes, billType]);
+          console.log(res);
+
+        }catch(error){
+          toast.error("Form not Submitted !! , please try again")
+          console.log(error);
+        }
+        closeModal();
+
+      };
+
+      
+      const postFormData=async(url)=>{
+
+          try{
+                  const res = await privateAxios.post(url,{billType});
+                  console.log(res);
+
+          }catch(error){
+            setisError(error.message);
+            console.log(error.message);
+          }
+      }
 
     useEffect(()=>{
         if(isReady){
@@ -122,6 +181,54 @@ function BillTypeList() {
         }
 
     }
+    const showToast=()=>{
+        if(isError!=="")
+        {
+          toast.error("Error !! form not submittd, pleae try again")
+        }else{
+          toast.success('Submit Successfully')
+        }
+      }
+      const mainModal =(
+
+        <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
+
+              <button id='close-btn' onClick={closeModal}>close</button>
+              <h2>Form</h2>
+
+              <form onSubmit={handleSubmit}  className='form'>
+
+              <div >
+                  {/* <label htmlFor="chargeName">Charge Name:</label> */}
+                  <input
+                    type="text"
+                    name="billTypeName"
+                    id="billTypeName"
+                    value={billType.billTypeName}
+                    onChange={handleInputChange}
+                    placeholder="Enter Bill Type"
+                    required
+                  />
+              </div>
+              <div >
+                  <label htmlFor="entryDate">Entry Date: &nbsp;</label>
+                  <input
+                    type="date"
+                    name="entryDate"
+                    id="entryDate"
+                    value={billType.entryDate}
+                    onChange={handleInputChange}
+                    placeholder="Enter entryDate"
+                    // required
+                  />
+              </div>
+              {/* onClick={closeModal} */}
+                <button className='modal-btn' type='submit' >Submit</button>
+              </form>
+
+        </Mymodal>
+    )
+
 
 
 
@@ -135,7 +242,10 @@ function BillTypeList() {
                 {/* <div className='findButtonClass'><button className='btn-find btn btn-primary' onClick={()=>handleFindALL()}>FindAll</button></div> */}
 
                 <div className="parentSearchInput">
-                    <div className="spacer"></div>
+                <button className='modal-btn' id='addButton' onClick={()=>setShowModal(true)}>Add Bill Type</button>
+                  {ShowModal && mainModal}
+
+                    {/* <div className="spacer"></div> */}
                     <input type="number" placeholder='search by ID' id='searchInput' value={inputId} onChange={(e) => setInputId(e.target.value)} />
                     <button className='btn btn-primary' id='searchDataID' onClick={fetchData}>Search</button>
                 </div>

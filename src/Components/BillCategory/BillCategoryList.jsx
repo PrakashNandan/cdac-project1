@@ -6,7 +6,7 @@ import {ToastContainer, toast} from 'react-toastify'
 import FindAllBillCategory from './FindAllBillCategory'
 import Pagination from '../Pagination'
 import { privateAxios } from '../../service/helperUtil'
-
+import Mymodal from '../ShowModal.jsx';
 
 function BillCategoryList() {
 
@@ -28,6 +28,12 @@ function BillCategoryList() {
     const [slicedAllData,setSlicedAllData]=useState([]);
     const [isAllData, setIsAllData]=useState(false);
     const [isReady , setIsready] =useState(false);
+    const [ShowModal, setShowModal] = useState(false);
+    const [billCategory, setBillCategory] = useState({
+        billCategoryName: '',
+      }, []);
+    
+      const [allBillCategory, setAllBillcategory] = useState([]);
     
 
     // useEffect(()=>{
@@ -104,6 +110,41 @@ function BillCategoryList() {
     const showErrorNotFoundToast=()=>{
         toast.error("Not Found!!")
     }
+    const closeModal = () => {
+        return setShowModal(false);
+      }
+    
+    
+      const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setBillCategory((prevBillCategory) => ({ ...prevBillCategory, [name]: value }));
+      };
+    
+    
+      const handleSubmit = async (event) => {
+    
+        event.preventDefault();
+    
+    
+        console.log(billCategory);
+    
+    
+        try {
+          const res = await privateAxios.post("billCategory/save", billCategory);
+          toast.success('Submit Successfully')
+          setAllBillcategory([...allBillCategory, billCategory]);
+          console.log(res);
+    
+        } catch (error) {
+          toast.error("Form not Submitted !! , please try again")
+          console.log(error);
+        }
+    
+        closeModal();
+    
+      };
+    
+    
 
 
 
@@ -121,6 +162,13 @@ function BillCategoryList() {
         } 
     
     }
+    const showToast = () => {
+        if (isError !== "") {
+          toast.error("Error !! form not submittd, pleae try again")
+        } else {
+          toast.success('Submit Successfully')
+        }
+      }
 
 
     // const findDataById = () => {
@@ -132,6 +180,37 @@ function BillCategoryList() {
     // const lastIndex = currentPage*userPerPage;
     // const firstIndex = lastIndex - userPerPage;
     // const slicedAllData=allData.slice(firstIndex, lastIndex);
+    const mainModal = (
+
+        <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
+    
+          <button id='close-btn' onClick={closeModal}>close</button>
+                       <h2>Form</h2>
+    
+          <form onSubmit={handleSubmit} className='form'>
+    
+            <div >
+              <label htmlFor="billCategoryName">Bill Category Name:</label>
+              <input
+                type="text"
+                name="billCategoryName"
+                id="billCategoryName"
+                value={billCategory.billCategoryName}
+                onChange={handleInputChange}
+                placeholder="Enter billCategoryName"
+                required
+              />
+            </div>
+    
+    
+    
+    
+            {/* onClick={closeModal} */}
+            <button className='modal-btn' type='submit' >Submit</button>
+          </form>
+    
+        </Mymodal>
+      )
 
 
 
@@ -148,6 +227,9 @@ function BillCategoryList() {
             {/* <div className='ParentPagination'>
                   <input type="number" className='userPerPageClass' name='userPerPage' value={userPerPage} onChange={(e)=>{setUserPerPage(e.target.value)}} />
           </div> */}
+          <button className='modal-btn' id='addButton' onClick={() => setShowModal(true)}>Add billCategoryName</button>
+      {ShowModal && mainModal}
+
             <div className="parentSearchInput">
                 <input type="number" className='userPerPageClass' id='Pagi_input_id' name='userPerPage' value={pageSize} onChange={(e)=>{setPageSize(e.target.value)}} />
                 <div className="spacer"></div>
