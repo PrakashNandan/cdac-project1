@@ -6,6 +6,7 @@ import FundingSourceData from './FundingSourceData.jsx';
 import '../../style/UserData.css'
 import {ToastContainer, toast} from 'react-toastify'
 import Pagination from '../Pagination.js';
+import { privateAxios } from '../../service/helperUtil.js';
 // const API="https://jsonplaceholder.typicode.com"
 
 function AddFundingSource() {
@@ -47,7 +48,7 @@ function AddFundingSource() {
         
         
         try{
-          const res = await axios.post("/fundSource/save", fundingSource);
+          const res = await privateAxios.post("/fundSource/save", fundingSource);
           toast.success('Submit Successfully')
           setAllFundingSource([...allFundingSource, fundingSource]);
           console.log(res);

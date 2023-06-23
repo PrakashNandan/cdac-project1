@@ -7,6 +7,7 @@ import PaymentTypeData from './PaymentTypeData.jsx'
 import '../../style/UserData.css'
 import {ToastContainer, toast} from 'react-toastify'
 import Pagination from '../Pagination.js';
+import { privateAxios } from '../../service/helperUtil.js'
 // const API="https://jsonplaceholder.typicode.com"
 
 function AddPaymentType() {
@@ -52,7 +53,7 @@ function AddPaymentType() {
         
         
         try{
-          const res = await axios.post("/paymentType/save", paymentType);
+          const res = await privateAxios.post("/paymentType/save", paymentType);
           toast.success('Submit Successfully')
           setPaymentTypes([...paymentTypes, paymentType]);
           console.log(res);

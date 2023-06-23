@@ -87,8 +87,8 @@ function FindAllBillCategory({allData,setAllData, handleFindALL}) {
         event.preventDefault();
         console.log(dataForUpdate);
         try{
-          const res = await axios.put(`/billCategory/update/${uid}`, dataForUpdate );
-          console.log(res.data);
+          const res = await privateAxios.put(`/billCategory/update/${uid}`, dataForUpdate );
+          console.log(res);
           toast.success("updated Successfully")
           handleFindALL();
         }catch(error){

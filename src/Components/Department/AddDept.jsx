@@ -8,6 +8,7 @@ import '../../style/UserData.css'
 import {ToastContainer, toast} from 'react-toastify'
 import Pagination from '../Pagination.js';
 import DeptData from './DeptData.jsx';
+import { privateAxios } from '../../service/helperUtil.js';
 // const API="https://jsonplaceholder.typicode.com"
 
 function AddDept() {
@@ -47,7 +48,7 @@ function AddDept() {
         console.log(dept);  
  
         try{
-          const res = await axios.post("dept/save", dept);
+          const res = await privateAxios.post("dept/save", dept);
           toast.success('Submit Successfully')
           setAllDept([...allDept, dept]);
           console.log(res);

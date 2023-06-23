@@ -8,6 +8,7 @@ import '../../style/UserData.css'
 import {ToastContainer, toast} from 'react-toastify'
 import Pagination from '../Pagination.js';
 import FinYearData from './FinYearData.jsx';
+import { privateAxios } from '../../service/helperUtil.js';
 // const API="https://jsonplaceholder.typicode.com"
 
 function AddFinYear() {
@@ -50,7 +51,7 @@ function AddFinYear() {
         console.log(finYear);  
              
         try{
-          const res = await axios.post("finYear/save", finYear);
+          const res = await privateAxios.post("finYear/save", finYear);
           toast.success('Submit Successfully')
           setAllFinYear([...allFinYear, finYear]);
           console.log(res);

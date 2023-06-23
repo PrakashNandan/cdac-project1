@@ -44,6 +44,7 @@ function FindAllData({allData,setAllData, handleFindALL}) {
             toast.warn("The data has Deleted Successfully")
             setAllData(res.data);
             console.log(res);
+            // runUseEffect();
             handleFindALL();
 
         }catch(error){
@@ -112,7 +113,7 @@ function FindAllData({allData,setAllData, handleFindALL}) {
     
   }
 
-  const handleSubmit=async(event)=>{
+  const handleUpdateSubmit=async(event)=>{
         
         event.preventDefault();
         try{
@@ -125,6 +126,7 @@ function FindAllData({allData,setAllData, handleFindALL}) {
         }
         
         closeModal();
+        // runUseEffect();
         handleFindALL();
   }
 
@@ -138,12 +140,12 @@ function FindAllData({allData,setAllData, handleFindALL}) {
 
   const mainModal =(
 
-    <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange}  >
+    <Mymodal closeModal={closeModal} handleSubmit={handleUpdateSubmit} handleInputChange={handleInputChange}  >
 
           <button id='close-btn' onClick={closeModal}>close</button>
           <h2>Form</h2>
 
-          <form onSubmit={handleSubmit}  className='form'>
+          <form onSubmit={handleUpdateSubmit}  className='form'>
 
           <div >
               {/* <label htmlFor="chargeName">Charge Name:</label> */}

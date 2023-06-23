@@ -51,9 +51,9 @@ function AddBillCategory() {
 
     try {
       const res = await privateAxios.post("billCategory/save", billCategory);
+      console.log(res);
       toast.success('Submit Successfully')
       setAllBillcategory([...allBillCategory, billCategory]);
-      console.log(res);
 
     } catch (error) {
       toast.error("Form not Submitted !! , please try again")

@@ -8,6 +8,7 @@ import '../../style/UserData.css'
 import {ToastContainer, toast} from 'react-toastify'
 import Pagination from '../Pagination.js';
 import LidgerTypeData from './LedgerTypeData.jsx';
+import { privateAxios } from '../../service/helperUtil.js';
 // const API="https://jsonplaceholder.typicode.com"
 
 function AddLedgerType() {
@@ -49,7 +50,7 @@ function AddLedgerType() {
         
         
         try{
-          const res = await axios.post("/ledgerType/save", ledgerType);
+          const res = await privateAxios.post("/ledgerType/save", ledgerType);
           toast.success('Submit Successfully')
           setAllLedgerType([...allLedgerType, ledgerType]);
           console.log(res);

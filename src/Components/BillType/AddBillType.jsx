@@ -7,6 +7,7 @@ import BillTypeData from './BillTypeData.jsx'
 import '../../style/UserData.css'
 import {ToastContainer, toast} from 'react-toastify'
 import Pagination from '../Pagination.js';
+import { privateAxios } from '../../service/helperUtil.js'
 // const API="https://jsonplaceholder.typicode.com"
 
 function AddBillType() {
@@ -50,16 +51,27 @@ function AddBillType() {
         console.log(billType);  
         
         
-        try{
-          const res = await axios.post("/billType/save", billType);
-          toast.success('Submit Successfully')
-          setBillTypes([...billTypes, billType]);
-          console.log(res);
-
-        }catch(error){
-          toast.error("Form not Submitted !! , please try again")
+        // try{
+          const res = await privateAxios.post("/billType/save", billType).
+          then((res)=>{
+            console.log(res);
+            toast.success('Submit Successfully')
+            setBillTypes([...billTypes, billType]);
+            
+          }).catch((error)=>{
+            toast.error("Form not Submitted !! , please try again")
           console.log(error);
-        }
+          })
+
+
+          // toast.success('Submit Successfully')
+          // setBillTypes([...billTypes, billType]);
+          // console.log(res);
+
+        // }catch(error){
+        //   toast.error("Form not Submitted !! , please try again")
+        //   console.log(error);
+        // }
         closeModal();
 
       };

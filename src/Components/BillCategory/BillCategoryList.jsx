@@ -34,22 +34,7 @@ function BillCategoryList() {
     //     handleFindALL();
     // },[])
    
-    const handleFindALL=async()=>{
-       
-        try{
-            
-            const res = await privateAxios.get("/billCategory/findAll");
-            setAllData(res.data.pageList.content);
-            console.log(res.data);
-
-
-        }catch(error){
-            setisError(error.message);
-            console.log(error.message);
-            showErrorToast();
-        }
-    }
-
+ 
      // pagination work
      if(pageSize<1){
         setPageSize(5);
@@ -93,6 +78,51 @@ function BillCategoryList() {
     }
 
     },[isReady ,pageNumber ,pageSize])
+
+
+
+    const handleFindALL=async()=>{
+        const res =  privateAxios.get(`/billCategory/findAll?pageNumber=${pageNumber-1}&pageSize=${pageSize}`)
+        .then((res)=>{
+             //alert("inside then")
+            console.log(res);
+            const {pageNumber} = res.data.pageList;
+            
+            
+           
+            if(pageNumber!==''){
+            setIsAllData(true);
+            setAllData(res.data.pageList.content);
+            setTotalPages(res.data.pageList.totalPages);
+            setTotalElements(res.data.pageList.totalElements);
+             if(pageSize>res.data.pageList.content?.length){
+                setLastIndex(Math.max(((pageNumber+1)*res.data.pageList.content?.length), res.data.pageList.totalElements))
+             }
+             else{
+                 setLastIndex( (pageNumber+1)*pageSize);
+             }
+            // if(lastIndex){
+            setFirstIndex(((pageNumber+1)*pageSize) - pageSize);
+            // }
+            // setFirstIndex(((pageNumber-1)*pageSize)+1);
+            // setLastIndex(Math.min(firstIndex + pageSize-1, res.data.pageList.totalElements))
+            // setSlicedAllData(res.data.pageList.content.slice(firstIndex, lastIndex));
+            }
+        }).catch((err)=>console.log(err))
+
+    
+       setDataFetching(false);
+    }
+
+
+
+
+
+
+
+
+
+
 
 
    
@@ -149,7 +179,7 @@ function BillCategoryList() {
                   <input type="number" className='userPerPageClass' name='userPerPage' value={userPerPage} onChange={(e)=>{setUserPerPage(e.target.value)}} />
           </div> */}
             <div className="parentSearchInput">
-                <input type="number" className='userPerPageClass' id='Pagi_input_id' name='userPerPage' value={pageSize} onChange={(e)=>{setPageSize(e.target.value)}} />
+                {/* <input type="number" className='userPerPageClass' id='Pagi_input_id' name='userPerPage' value={pageSize} onChange={(e)=>{setPageSize(e.target.value)}} /> */}
                 <div className="spacer"></div>
                 <input type="number" placeholder='search by ID' id='searchInput' value={inputId} onChange={(e) => setInputId(e.target.value)} /> 
                 <button className='btn btn-primary' id='searchDataID' onClick={fetchData}>Search</button>   
