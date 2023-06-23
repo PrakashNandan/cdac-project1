@@ -51,7 +51,7 @@ function AddFinYear() {
         console.log(finYear);  
              
         try{
-          const res = await privateAxios.post("finYear/save", finYear);
+          const res = await privateAxios.post("/finYear/save", finYear);
           toast.success('Submit Successfully')
           setAllFinYear([...allFinYear, finYear]);
           console.log(res);

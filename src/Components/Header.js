@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout, reset } from '../features/auth/authSlice'
 import Logo from '../img/Logo.svg'
+import { ToastContainer, toast } from 'react-toastify'
 
 function Header() {
 
@@ -15,9 +16,11 @@ function Header() {
     dispatch(logout())
     dispatch(reset())
     navigate('/')
+    toast.success("You are successfully LoggedOut")
   }
 
   return (
+    <>
     <header className='header'>
       <div className='logo'>
       <Link to='/'><img src={Logo} alt="Logo"></img></Link>
@@ -45,6 +48,8 @@ function Header() {
         )}
       </ul>
     </header>
+    <ToastContainer/>
+    </>
   )
 }
 

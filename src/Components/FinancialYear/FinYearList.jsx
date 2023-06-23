@@ -131,7 +131,7 @@ function FinYearList() {
     const fetchData = async () => {
 
         try {
-            const res = await axios.get(`finYear/find/${inputId}`)
+            const res = await axios.get(`/finYear/find/${inputId}`)
             setAllData([res.data]);
             console.log([res.data]);
         } catch (error) {

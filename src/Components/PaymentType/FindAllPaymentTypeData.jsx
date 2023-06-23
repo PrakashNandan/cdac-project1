@@ -73,6 +73,7 @@ function FindAllPaymentType({allData,setAllData, handleFindALL}) {
 
       setDataForUpdate({
         paymentTypeId:curData.paymentTypeId,
+        paymentTypeName:curData.paymentTypeName,
         entryDate:  defaultValue ,
         isValid:curData.isValid
 

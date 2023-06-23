@@ -145,7 +145,7 @@ function DeptList() {
 
         <>
 
-            <h2 id='chargeHeadID'>Departemnt List</h2>
+            <h2 id='chargeHeadID'>Departement List</h2>
 
 
             <div className='find-container'>

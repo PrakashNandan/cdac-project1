@@ -36,7 +36,7 @@ function Login() {
       toast.error(message)
     }
 
-    if (isSuccess || user) {
+    if (isSuccess && user) {
       navigate('/loggedin')
       toast.success("You are successfully loggedin")
     }

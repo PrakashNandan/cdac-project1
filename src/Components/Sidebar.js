@@ -687,7 +687,7 @@ function handleClick17 (){
                           className="sidebar-dropdown3"
                           onClick={() => handleClick8()}
                         >
-                          Departments
+                          Departments List
                         </button>
                       </li>
                     </ul>

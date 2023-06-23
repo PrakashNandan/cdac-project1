@@ -31,10 +31,18 @@ function FindAllBillType({allData,setAllData, handleFindALL}) {
 
         try{
             const res = await privateAxios.get(`/billType/delete/${id}`)
-            toast.warn("The data has Deleted Successfully")
-            setAllData([res.data]);
-            console.log(res);
-            handleFindALL();
+            .then((res)=>{
+              setAllData([res.data]);
+              toast.warn("The data has Deleted Successfully")
+              console.log(res);
+              handleFindALL();
+            }).catch((err)=>{console.log(err)})
+
+
+            // setAllData([res.data]);
+            // toast.warn("The data has Deleted Successfully")
+            // console.log(res);
+            // handleFindALL();
 
         }catch(error){
             toast.error("Error in deletion")
