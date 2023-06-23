@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { logout, reset } from '../features/auth/authSlice'
 import Logo from '../img/Logo.svg'
 
+
 function Header() {
 
   const dispatch = useDispatch();
@@ -15,9 +16,11 @@ function Header() {
     dispatch(logout())
     dispatch(reset())
     navigate('/') 
+    // toast.success("Successfully Logged out");
   }
 
   return (
+ 
     <header className='header'>
       <div className='logo'>
       <Link to='/'><img src={Logo} alt="Logo"></img></Link>
@@ -45,6 +48,7 @@ function Header() {
         )}
       </ul>
     </header>
+     
   )
 }
 
