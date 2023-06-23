@@ -2,6 +2,7 @@ import axios from '../axios.jsx';
 import React, {useEffect, useState} from 'react'
 import {ToastContainer, toast} from 'react-toastify'
 import Mymodal from '../ShowModal.jsx';
+import { privateAxios } from '../../service/helperUtil.js';
 
 
 function FindAllDept({allData,setAllData, handleFindALL}) {
@@ -29,7 +30,7 @@ function FindAllDept({allData,setAllData, handleFindALL}) {
     if(conf){
 
         try{
-            const res = await axios.get(`dept/delete/${id}`)
+            const res = await privateAxios.get(`dept/delete/${id}`)
             toast.warn("The data has Deleted Successfully")
             setAllData([res.data]);
             console.log(res);
@@ -44,27 +45,37 @@ function FindAllDept({allData,setAllData, handleFindALL}) {
     }
   }
 
-  const handleUpdateData=async(id)=>{
+  const handleUpdateData=async(curData)=>{
       setShowModal(true);
       // setDataForUpdate((prevUser) => ({ ...prevUser, id: id }));
-      setUid(id);
+      setUid(curData.deptId);
 
-      if(allData.length===1){
-        console.log(allData[0]);
-        const dept1=allData[0];
-        setDataForUpdate(dept1);
+      // if(allData.length===1){
+      //   console.log(allData[0]);
+      //   const dept1=allData[0];
+      //   setDataForUpdate(dept1);
 
-      }else{
-        try{
-            const res = await axios.get(`dept/find/${id}`);
-            setDataForUpdate(res.data);
+      // }else{
+      //   try{
+      //       const res = await axios.get(`dept/find/${id}`);
+      //       setDataForUpdate(res.data);
     
-            }catch(error){
-              console.log(error.message);
-              toast.error("NOT Found !!!")
-            }
+      //       }catch(error){
+      //         console.log(error.message);
+      //         toast.error("NOT Found !!!")
+      //       }
     
-      }
+      // }
+
+
+      setDataForUpdate({
+        deptId:curData.deptId,
+        deptName:curData.deptName,
+        deptCode:curData.deptCode,
+        
+      })
+
+
       
   }
 
@@ -76,7 +87,7 @@ function FindAllDept({allData,setAllData, handleFindALL}) {
   const handleSubmit=async(event)=>{
         event.preventDefault();
         try{
-          const res = await axios.put(`dept/update/${uid}`, dataForUpdate );
+          const res = await privateAxios.put(`dept/update/${uid}`, dataForUpdate );
           console.log(res.data);
           toast.success("updated Successfully")
         }catch(error){
@@ -171,7 +182,7 @@ function FindAllDept({allData,setAllData, handleFindALL}) {
                    
 
                     <td><button type="button" class="btn btn-danger" onClick={()=>handleDeleteData(deptId)}>Delete</button>
-                        <button type="button" class="btn m-1 btn-light" onClick={()=>handleUpdateData(deptId)}>Update</button>
+                        <button type="button" class="btn m-1 btn-light" onClick={()=>handleUpdateData(curData)}>Update</button>
                     </td>
                 </tr>
             )

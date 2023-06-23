@@ -4,6 +4,8 @@ import axios from '../axios.jsx'
 import FindAllData from '../AccountCharge/FindAllData.jsx'
 import { ToastContainer, toast } from 'react-toastify'
 import FindAllFinYear from './FindAllFinYear'
+import { privateAxios } from '../../service/helperUtil'
+import Pagination from '../Pagination'
 
 
 function FinYearList() {
@@ -13,32 +15,106 @@ function FinYearList() {
     const [inputId, setInputId] = useState('');
     const [showAllData, setShowAllData] = useState(true);
 
-    useEffect(() => {
-        handleFindALL();
-    }, [])
+    const [pageSize, setPageSize]=useState(5);
+    const [pageNumber, setPageNumber]=useState(1);
+    const [datafetching, setDataFetching]=useState(false);
+    const [totalElements, setTotalElements]=useState();
+    const [totalPages, setTotalPages]=useState();
+    const [lastIndex, setLastIndex]=useState();
+    const [firstIndex,setFirstIndex]=useState();
+    const [slicedAllData,setSlicedAllData]=useState([]);
+    const [isAllData, setIsAllData]=useState(false);
+     const [isReady , setIsready] =useState(false);
+
+    // useEffect(() => {
+    //     handleFindALL();
+    // }, [])
 
 
     const handleFindALL = async () => {
 
-        try {
+        const res =  privateAxios.get(`/finYear/findAll?pageNumber=${pageNumber-1}&pageSize=${pageSize}`)
+        .then((res)=>{
+             //alert("inside then")
+            console.log(res);
+            const {pageNumber} = res.data.pageList;
+            
+            
+           
+            if(pageNumber!==''){
+            setIsAllData(true);
+            setAllData(res.data.pageList.content);
+            setTotalPages(res.data.pageList.totalPages);
+            setTotalElements(res.data.pageList.totalElements);
+             if(pageSize>res.data.pageList.content?.length){
+                setLastIndex(Math.max(((pageNumber+1)*res.data.pageList.content?.length), res.data.pageList.totalElements))
+             }
+             else{
+                 setLastIndex( (pageNumber+1)*pageSize);
+             }
+            // if(lastIndex){
+            setFirstIndex(((pageNumber+1)*pageSize) - pageSize);
+            // }
+            // setFirstIndex(((pageNumber-1)*pageSize)+1);
+            // setLastIndex(Math.min(firstIndex + pageSize-1, res.data.pageList.totalElements))
+            // setSlicedAllData(res.data.pageList.content.slice(firstIndex, lastIndex));
+            }
+        }).catch((err)=>console.log(err))
 
-            const res = await axios.get("finYear/findAll");
-            setAllData(res.data);
-            console.log(res.data);
-
-
-        } catch (error) {
-            setisError(error.message);
-            console.log(error.message);
-            showErrorToast();
-        }
+    
+       setDataFetching(false);
     }
 
-    useEffect(() => {
-        handleFindALL();
-    }, [])
 
-    // findAll && handleFindALL();
+    
+     // pagination work
+     if(pageSize<1){
+        setPageSize(5);
+    }
+
+    useEffect(()=>{
+        if(isReady){
+        setDataFetching(true);        
+        const res =  privateAxios.get(`/finYear/findAll?pageNumber=${pageNumber-1}&pageSize=${pageSize}`)
+        .then((res)=>{
+             //alert("inside then")
+            console.log(res);
+            const {pageNumber} = res.data.pageList;
+            
+            
+           
+            if(pageNumber!==''){
+            setIsAllData(true);
+            setAllData(res.data.pageList.content);
+            setTotalPages(res.data.pageList.totalPages);
+            setTotalElements(res.data.pageList.totalElements);
+             if(pageSize>res.data.pageList.content?.length){
+                setLastIndex(Math.max(((pageNumber+1)*res.data.pageList.content?.length), res.data.pageList.totalElements))
+             }
+             else{
+                 setLastIndex( (pageNumber+1)*pageSize);
+             }
+            // if(lastIndex){
+            setFirstIndex(((pageNumber+1)*pageSize) - pageSize);
+            // }
+            // setFirstIndex(((pageNumber-1)*pageSize)+1);
+            // setLastIndex(Math.min(firstIndex + pageSize-1, res.data.pageList.totalElements))
+            // setSlicedAllData(res.data.pageList.content.slice(firstIndex, lastIndex));
+            }
+        }).catch((err)=>console.log(err))
+
+    
+       setDataFetching(false);
+    }else{
+        setIsready(true)
+    }
+
+    },[isReady ,pageNumber ,pageSize])
+
+
+
+
+ 
 
 
 
@@ -65,11 +141,6 @@ function FinYearList() {
         }
 
     }
-
-
-    // const findDataById = () => {
-    //     return allData.find((item) => item.id === inputId);
-    //   };
 
 
 
@@ -112,6 +183,7 @@ function FinYearList() {
 
                     </table>
                 </div>
+                { isAllData && <Pagination totalUsers={allData.length} pageSize={pageSize} setPageSize={setPageSize} setPageNumber={setPageNumber} pageNumber={pageNumber} lastIndex={lastIndex} firstIndex={firstIndex} totalPages={totalPages} totalElements={totalElements} />}
             </div>
 
 

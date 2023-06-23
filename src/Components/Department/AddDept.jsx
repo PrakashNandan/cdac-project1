@@ -9,6 +9,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import Pagination from '../Pagination.js';
 import DeptData from './DeptData.jsx';
 import { MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
+import { privateAxios } from '../../service/helperUtil.js';
 // const API="https://jsonplaceholder.typicode.com"
 
 function AddDept() {
