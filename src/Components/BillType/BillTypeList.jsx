@@ -46,8 +46,35 @@ function BillTypeList() {
 
     const handleFindALL = async () => {
 
-        try {
+        const res =  privateAxios.get(`/billType/findAll?pageNumber=${pageNumber-1}&pageSize=${pageSize}`)
+        .then((res)=>{
+             //alert("inside then")
+            console.log(res);
+            const {pageNumber} = res.data.pageList;
+            
+            
+           
+            if(pageNumber!==''){
+            setIsAllData(true);
+            setAllData(res.data.pageList.content);
+            setTotalPages(res.data.pageList.totalPages);
+            setTotalElements(res.data.pageList.totalElements);
+             if(pageSize>res.data.pageList.content?.length){
+                setLastIndex(Math.max(((pageNumber+1)*res.data.pageList.content?.length), res.data.pageList.totalElements))
+             }
+             else{
+                 setLastIndex( (pageNumber+1)*pageSize);
+             }
+            // if(lastIndex){
+            setFirstIndex(((pageNumber+1)*pageSize) - pageSize);
+            // }
+            // setFirstIndex(((pageNumber-1)*pageSize)+1);
+            // setLastIndex(Math.min(firstIndex + pageSize-1, res.data.pageList.totalElements))
+            // setSlicedAllData(res.data.pageList.content.slice(firstIndex, lastIndex));
+            }
+        }).catch((err)=>console.log(err))
 
+<<<<<<< HEAD
             const res = await privateAxios.get("/billType/findAll");
             setAllData(res.data);
             console.log(res.data);
@@ -58,6 +85,10 @@ function BillTypeList() {
             console.log(error.message);
             showErrorToast();
         }
+=======
+    
+       setDataFetching(false);
+>>>>>>> 837e01e87f8b4b4e14c7bb66eb47d8dc6081e645
     }
 
 

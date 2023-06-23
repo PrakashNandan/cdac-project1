@@ -2,6 +2,7 @@ import axios from '../axios.jsx';
 import React, {useEffect, useState} from 'react'
 import {ToastContainer, toast} from 'react-toastify'
 import Mymodal from '../ShowModal.jsx';
+import { privateAxios } from '../../service/helperUtil.js';
 
 
 function FindAllDept({allData,setAllData, handleFindALL}) {
@@ -29,7 +30,7 @@ function FindAllDept({allData,setAllData, handleFindALL}) {
     if(conf){
 
         try{
-            const res = await axios.get(`dept/delete/${id}`)
+            const res = await privateAxios.get(`dept/delete/${id}`)
             toast.warn("The data has Deleted Successfully")
             setAllData([res.data]);
             console.log(res);
@@ -86,7 +87,7 @@ function FindAllDept({allData,setAllData, handleFindALL}) {
   const handleSubmit=async(event)=>{
         event.preventDefault();
         try{
-          const res = await axios.put(`dept/update/${uid}`, dataForUpdate );
+          const res = await privateAxios.put(`dept/update/${uid}`, dataForUpdate );
           console.log(res.data);
           toast.success("updated Successfully")
         }catch(error){

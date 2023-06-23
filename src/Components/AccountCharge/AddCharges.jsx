@@ -8,6 +8,7 @@ import '../../style/UserData.css'
 import { ToastContainer, toast } from 'react-toastify'
 import Pagination from '../Pagination';
 import { privateAxios } from '../../service/helperUtil.js';
+import { MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
 // const API="https://jsonplaceholder.typicode.com"
 
 function Addcharges() {
@@ -16,7 +17,7 @@ function Addcharges() {
   const [currentPage, setCurrentPage] = useState(1);
   const [userPerPage, setUserPerPage] = useState(3);
   const [isError, setIsError] = useState('');
-  const [isSubmitting, setIsSubmitting]=useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [user, setUser] = useState({
     chargeName: '',
@@ -49,7 +50,7 @@ function Addcharges() {
     setUser((prevUser) => ({ ...prevUser, [name]: inputValue }));
   };
 
-  const showSpinner=()=>{
+  const showSpinner = () => {
     <div class="spinner-border spinner-border-sm" role="status">
       <span class="sr-only">Loading...</span>
     </div>
@@ -65,9 +66,9 @@ function Addcharges() {
 
 
     try {
-      const res = await  privateAxios.post("/charge/save", user)
-      .then( (Response)=>console.log(Response))
-      .catch( (err) => console.log(err))
+      const res = await privateAxios.post("/charge/save", user)
+        .then((Response) => console.log(Response))
+        .catch((err) => console.log(err))
 
       toast.success('Submit Successfully')
       setUsers([...users, user]);
@@ -115,128 +116,130 @@ function Addcharges() {
       <button id='close-btn' onClick={closeModal}>close</button>
       <h2>Form</h2>
 
-      <form onSubmit={handleSubmit} className='form'>
+      <form onSubmit={handleSubmit} className='modalForm' id='modalForm'>
 
-        <div >
-          {/* <label htmlFor="chargeName">Charge Name:</label> */}
-          <input
+        <div className="d-flex flex-row align-items-center mb-3 mt-3">
+          <MDBIcon fas icon="user-pen" size='lg' style={{marginRight: '5px'}} />
+          <MDBInput
+            label="Charge Name"
             type="text"
             name="chargeName"
             id="chargeName"
             value={user.chargeName}
             onChange={handleInputChange}
-            placeholder="Enter chargeName"
             required
           />
         </div>
-        <div >
-          {/* <label htmlFor="chargeType">Charge Type:</label> */}
-          <input
+
+        <div className="d-flex flex-row align-items-center mb-3">
+          <MDBIcon fas icon="pen-to-square" size='lg' style={{marginRight: '10px'}}/>
+          <MDBInput
+            label="Charge Type"
             type="number"
             name="chargeType"
             id="chargeType"
             value={user.chargeType}
             onChange={handleInputChange}
-            placeholder="Enter chargeType"
           // required
           />
         </div>
-        <div >
-          {/* <label htmlFor="chargeRate">Charge Rate:</label> */}
-          <input
+
+        <div className="d-flex flex-row align-items-center mb-3">
+          <MDBIcon fas icon="pen-to-square" size='lg' style={{marginRight: '10px'}}/>
+          <MDBInput
+            label="Charge Rate"
             type="number"
             name="chargeRate"
             id="chargeRate"
             value={user.chargeRate}
             onChange={handleInputChange}
-            placeholder="Enter chargeRate"
           // required
           />
         </div>
-        <div>
-          <label htmlFor="entryDate">Entry Date: &nbsp;</label>
-          <input
+
+        <div className="d-flex flex-row align-items-center mb-3">
+          <MDBIcon fas icon="calendar" size='lg' style={{marginRight: '13px'}}/>
+          <MDBInput
+            label="Entry Date"
             type="date"
             name="entryDate"
             id="entryDate"
             value={user.entryDate}
             onChange={handleInputChange}
-            placeholder="Enter entryDate"
           // required
           />
         </div>
-        <div >
-          {/* <label htmlFor="chargeAmount">charge Amount:</label> */}
-          <input
+
+        <div className="d-flex flex-row align-items-center mb-3">
+          <MDBIcon fas icon="indian-rupee-sign" size='lg' style={{marginRight: '15px', marginLeft: '3px'}}/>
+          <MDBInput
+            label="Charge Amount"
             type="number"
             name="chargeAmount"
             id="chargeAmount"
             value={user.chargeAmount}
             onChange={handleInputChange}
-            placeholder="Enter chargeAmount"
           // required
           />
         </div>
-        <div >
-          {/* <label htmlFor="chargeApplyOnBaseAmount">chargeApplyOnBaseAmount:</label> */}
-          <input
+
+        <div className="d-flex flex-row align-items-center mb-3">
+          <MDBIcon fas icon="pen-to-square" size='lg' style={{marginRight: '10px'}}/>
+          <MDBInput
+            label="Charge Apply on Base Amt."
             type="number"
             name="chargeApplyOnBaseAmount"
             id="chargeApplyOnBaseAmount"
             value={user.chargeApplyOnBaseAmount}
             onChange={handleInputChange}
-            placeholder="Enter chargeApplyOnBaseAmount"
           // required
           />
         </div>
-        <div >
-          {/* <label htmlFor="roundingType">Rounding Type:</label> */}
-          <input
+
+        <div className="d-flex flex-row align-items-center mb-3">
+          <MDBIcon fas icon="pen-to-square" size='lg' style={{marginRight: '10px'}}/>
+          <MDBInput
+            label="Rounding Type"
             type="number"
             name="roundingType"
             id="roundingType"
             value={user.roundingType}
             onChange={handleInputChange}
-            placeholder="Enter roundingType"
           // required
           />
         </div>
+
         <div >
-          <label htmlFor="hoaPostingRequired">hoaPostingRequired: &nbsp;</label>
-          <input
+          <MDBCheckbox
+            label="Hoa Posting Required?"
             type="checkbox"
             name="hoaPostingRequired"
             id="hoaPostingRequired"
-
             checked={user.hoaPostingRequired}
             onChange={handleInputChange}
-            placeholder="Enter hoaPostingRequired"
 
           />
         </div>
         <div >
-          <label htmlFor="depositToGovt">is Deposit to Govt? &nbsp;</label>
-          <input
+          <MDBCheckbox
+            label="Deposit to Govt?"
             type="checkbox"
             name="depositToGovt"
             id="depositToGovt"
             checked={user.depositToGovt}
             onChange={handleInputChange}
-            placeholder="Enter depositToGovt"
-
           />
         </div>
-        
+
         {isSubmitting ? (
-           <button class="modal-btn" type="button" disabled>
-           <span class="spinner-border" style={{margin:'0 0.3rem', height:'1.6rem', width:'1.5rem'}} role="status" aria-hidden="true"></span>
-           
-           Submitting...
-         </button>
-              ) : (
-                <button className='modal-btn' type='submit' >Submit</button>
-         )}
-          
+          <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} disabled>
+            <span class="spinner-border" style={{ margin: '0 0.3rem', height: '1.2rem', width: '1.2rem' }} role="status" aria-hidden="true"></span>
+            Submitting...
+          </MDBBtn>
+        ) : (
+          <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} >Submit</MDBBtn>
+        )}
+
       </form>
 
     </Mymodal>
@@ -269,7 +272,7 @@ function Addcharges() {
                   <th>roundingType</th>
                   <th>hoaPostingRequired</th>
                   <th>depositToGovt</th>
-                  
+
                 </tr>
               </thead>
               <tbody>
@@ -277,22 +280,17 @@ function Addcharges() {
               </tbody>
               {/* <Pagination totalUsers={users.length} userPerPage={userPerPage} setCurrentPage={setCurrentPage} currPage={currentPage}/> */}
             </table>
-            <Pagination totalUsers={users.length} userPerPage={userPerPage} setCurrentPage={setCurrentPage} setUserPerPage={setUserPerPage} currPage={currentPage} lastIndex={lastIndex} firstIndex={firstIndex}/>
-          </div> 
-          
-          
-          : (
-            <p>No Charges added yet.</p>
-            )}
+            <Pagination totalUsers={users.length} userPerPage={userPerPage} setCurrentPage={setCurrentPage} setUserPerPage={setUserPerPage} currPage={currentPage} lastIndex={lastIndex} firstIndex={firstIndex} />
+          </div>
+          : (<p>No Charges added yet.</p>)
+        }
       </div>
-
-
       <ToastContainer />
 
     </>
-
 
   )
 }
 
 export default Addcharges;
+

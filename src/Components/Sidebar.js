@@ -10,8 +10,8 @@ import "../style/Sidebar.css";
 import { useNavigate } from "react-router-dom";
 
 const TripleLevelDropdown = ({ setShowChargeList,
-  setShowBillbox ,
-  setShowHomepage , 
+  setShowBillbox,
+  setShowHomepage,
   setShowDashboard,
   setShowAddCharge,
   setShowBillTypeList,
@@ -41,7 +41,7 @@ const TripleLevelDropdown = ({ setShowChargeList,
   const [isDropdown16Open, setIsDropdown16Open] = useState(false);
   const [isDropdown12Open, setIsDropdown12Open] = useState(false);
 
-const navigate =useNavigate();
+  const navigate = useNavigate();
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -141,13 +141,13 @@ const navigate =useNavigate();
     setIsDropdown14Open(false);
     setIsDropdown15Open(false);
   };
-function handleClick0() {
-  setShowHomepage(false);
-  setShowBillbox(false) ;
-  setShowChargeList(false);
-  setShowDashboard(true);
-  setShowAddCharge(false);
-  setShowBillTypeList(false);
+  function handleClick0() {
+    setShowHomepage(false);
+    setShowBillbox(false);
+    setShowChargeList(false);
+    setShowDashboard(true);
+    setShowAddCharge(false);
+    setShowBillTypeList(false);
     setShowAddBillType(false);
     setShowAddBillCategory(false);
     setShowBillCategoryList(false);
@@ -161,13 +161,13 @@ function handleClick0() {
     setShowAddDept(false);
     setShowAddFinYear(false);
     setShowFinYearList(false);
-}
+  }
   function handleClick1() {
     setShowHomepage(false);
     setShowDashboard(false);
     setShowChargeList(false);
     setShowAddCharge(true);
-    setShowBillbox(false) ;
+    setShowBillbox(false);
     setShowBillTypeList(false);
     setShowAddBillType(false);
     setShowAddBillCategory(false);
@@ -192,7 +192,7 @@ function handleClick0() {
     setShowAddCharge(false);
     setShowBillTypeList(false);
     setShowAddBillType(false);
-    setShowBillbox(false) ;
+    setShowBillbox(false);
     setShowAddBillCategory(false);
     setShowBillCategoryList(false);
     setShowAddFundingSource(false);
@@ -212,7 +212,7 @@ function handleClick0() {
     setShowChargeList(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
-    setShowBillbox(false) ;
+    setShowBillbox(false);
     setShowAddBillType(false);
     setShowAddBillCategory(true);
     setShowBillCategoryList(false);
@@ -233,7 +233,7 @@ function handleClick0() {
     setShowChargeList(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
-    setShowBillbox(false) ;
+    setShowBillbox(false);
     setShowAddBillType(false);
     setShowAddBillCategory(false);
     setShowBillCategoryList(true);
@@ -255,7 +255,7 @@ function handleClick0() {
     setShowAddCharge(false);
     setShowBillTypeList(false);
     setShowAddBillType(true);
-    setShowBillbox(false) ;
+    setShowBillbox(false);
     setShowAddBillCategory(false);
     setShowBillCategoryList(false);
     setShowAddFundingSource(false);
@@ -277,7 +277,7 @@ function handleClick0() {
     setShowBillTypeList(true);
     setShowAddBillType(false);
     setShowAddBillCategory(false);
-    setShowBillbox(false) ;
+    setShowBillbox(false);
     setShowBillCategoryList(false);
     setShowAddFundingSource(false);
     setShowFundingSourceList(false);
@@ -301,7 +301,7 @@ function handleClick0() {
     setShowBillCategoryList(false);
     setShowAddFundingSource(false);
     setShowFundingSourceList(false);
-    setShowBillbox(false) ;
+    setShowBillbox(false);
     setShowAddPaymentType(false);
     setShowPaymentTypeList(false);
     setShowAddLedgerType(false);
@@ -321,7 +321,7 @@ function handleClick0() {
     setShowAddBillCategory(false);
     setShowBillCategoryList(false);
     setShowAddFundingSource(false);
-    setShowBillbox(false) ;
+    setShowBillbox(false);
     setShowFundingSourceList(false);
     setShowAddPaymentType(false);
     setShowPaymentTypeList(false);
@@ -344,7 +344,7 @@ function handleClick0() {
     setShowAddFundingSource(false);
     setShowFundingSourceList(false);
     setShowAddPaymentType(false);
-    setShowBillbox(false) ;
+    setShowBillbox(false);
     setShowPaymentTypeList(false);
     setShowAddLedgerType(false);
     setShowLedgerTypeList(false);
@@ -365,7 +365,7 @@ function handleClick0() {
     setShowAddFundingSource(false);
     setShowFundingSourceList(false);
     setShowAddPaymentType(false);
-    setShowBillbox(false) ;
+    setShowBillbox(false);
     setShowPaymentTypeList(false);
     setShowAddLedgerType(false);
     setShowLedgerTypeList(false);
@@ -386,7 +386,7 @@ function handleClick0() {
     setShowAddFundingSource(true);
     setShowFundingSourceList(false);
     setShowAddPaymentType(false);
-    setShowBillbox(false) ;
+    setShowBillbox(false);
     setShowPaymentTypeList(false);
     setShowAddLedgerType(false);
     setShowLedgerTypeList(false);
@@ -399,7 +399,7 @@ function handleClick0() {
     setShowDashboard(false);
     setShowHomepage(false);
     setShowChargeList(false);
-    setShowBillbox(false) ;
+    setShowBillbox(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
     setShowAddBillType(false);
@@ -420,7 +420,7 @@ function handleClick0() {
     setShowHomepage(false);
     setShowDashboard(false);
     setShowChargeList(false);
-    setShowBillbox(false) ;
+    setShowBillbox(false);
     setShowAddCharge(false);
     setShowBillTypeList(false);
     setShowAddBillType(false);
@@ -452,7 +452,7 @@ function handleClick0() {
     setShowPaymentTypeList(false);
     setShowAddLedgerType(false);
     setShowLedgerTypeList(true);
-    setShowBillbox(false) ;
+    setShowBillbox(false);
     setShowDeptList(false);
     setShowAddDept(false);
     setShowAddFinYear(false);
@@ -475,7 +475,7 @@ function handleClick0() {
     setShowLedgerTypeList(false);
     setShowDeptList(false);
     setShowAddDept(false);
-    setShowBillbox(false) ;
+    setShowBillbox(false);
     setShowAddFinYear(false);
     setShowFinYearList(false);
   }
@@ -497,29 +497,31 @@ function handleClick0() {
     setShowDeptList(false);
     setShowAddDept(false);
     setShowAddFinYear(false);
-    setShowBillbox(false) ;
-    setShowFinYearList(false);  }
-function handleClick17 (){
-  setShowChargeList(false);
-  setShowBillbox(true);
-  setShowHomepage(false);
-  setShowDashboard(false);
-  setShowAddCharge(false);
-  setShowBillTypeList(false);
-  setShowAddBillType(false);
-  setShowAddBillCategory(false);
-  setShowBillCategoryList(false);
-  setShowAddFundingSource(false);
-  setShowFundingSourceList(false);
-  setShowAddPaymentType(false);
-  setShowPaymentTypeList(false);
-  setShowAddLedgerType(false);
-  setShowLedgerTypeList(false);
-  setShowDeptList(false);
-  setShowAddDept(false);
-  setShowAddFinYear(false);
-  setShowFinYearList(false);
-}
+    setShowBillbox(false);
+    setShowFinYearList(false);
+  }
+
+  function handleClick17() {
+    setShowChargeList(false);
+    setShowBillbox(true);
+    setShowHomepage(false);
+    setShowDashboard(false);
+    setShowAddCharge(false);
+    setShowBillTypeList(false);
+    setShowAddBillType(false);
+    setShowAddBillCategory(false);
+    setShowBillCategoryList(false);
+    setShowAddFundingSource(false);
+    setShowFundingSourceList(false);
+    setShowAddPaymentType(false);
+    setShowPaymentTypeList(false);
+    setShowAddLedgerType(false);
+    setShowLedgerTypeList(false);
+    setShowDeptList(false);
+    setShowAddDept(false);
+    setShowAddFinYear(false);
+    setShowFinYearList(false);
+  }
 
   const sidebarRef = useRef(null);
 
@@ -540,330 +542,330 @@ function handleClick17 (){
   return (
     <div className={`sidebar ${isSidebarOpen ? "open" : ""}`} ref={sidebarRef}>
       <div className={` ${isSidebarOpen ? "header-open" : "sidebar-header"}`} onClick={toggleSidebar}>
-     
-        
+
+
         <FontAwesomeIcon icon={faBars} className="sidebar-toggle-icon" />
       </div>
       {isSidebarOpen && (
-        
+
         <ul className="sidebar-menu">
           <li>
-                        <button
-                          className="sidebar-dropdown"
-                          onClick={() => handleClick0()}
-                        >
-                         <i class="fa fa-home" aria-hidden="true" style={{paddingRight:'22px'}}></i> 
-                        Dashboard
-                        </button>
-                      </li>
+            <button
+              className="sidebar-dropdown"
+              onClick={() => handleClick0()}
+            >
+              <i class="fa fa-home" aria-hidden="true" style={{ paddingRight: '20px' }}></i>
+              Dashboard
+            </button>
+          </li>
           <li>
             <button className={`sidebar-dropdown ${isDropdownOpen ? "sidebar-dropdown-open" : ""}`} onClick={toggleDropdown}>
-             <div className="grid1">
-              <div className="icn" ><i class="fa fa-user" aria-hidden="true"></i></div>
-              <div className="gridX">Admin</div>
-              <div className={` ${isDropdownOpen ? "down":"up"}`} style={{marginLeft:'145px'}}><FontAwesomeIcon
-                icon={faAngleRight}
-              /></div>
-              </div> 
+              <div className="grid1">
+                <div className="icn" ><i class="fa fa-user" aria-hidden="true"></i></div>
+                <div className="gridX">Admin</div>
+                <div className={` ${isDropdownOpen ? "down" : "up"}`} style={{ marginLeft: '145px' }}><FontAwesomeIcon
+                  icon={faAngleRight}
+                /></div>
+              </div>
             </button>
             {isDropdownOpen && (
               <div className="lists">
-              <ul className={"sidebar-submenu asdf"} >
-                <li >
-                  <button
-                    className="sidebar-dropdown2"
-                    onClick={toggleDropdown11}
-                  >
-                    <span>Acc Charge</span>
-                    <div className="arrow-icon"><FontAwesomeIcon
-                      icon={isDropdown11Open ? faAngleDown : faAngleRight}
-                    /></div>
-                  </button>
-                  {isDropdown11Open && (
-                    <ul className="sidebar-submenu2">
-                      <li>
-                        <button
-                          className="sidebar-dropdown3"
-                          onClick={() => handleClick1()}
-                        >
-                          AddCharge
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          className="sidebar-dropdown3"
-                          onClick={() => handleClick2()}
-                        >
-                          ChargeList
-                        </button>
-                      </li>
-                    </ul>
-                  )}
-                </li>
-                <li>
-                  <button
-                    className="sidebar-dropdown2"
-                    onClick={toggleDropdown12}
-                  >
-                    <span>Bill Category</span>
-                    <div className="arrow-icon"><FontAwesomeIcon
-                      icon={isDropdown12Open ? faAngleDown : faAngleRight}
-                    /></div>
-                  </button>
-                  {isDropdown12Open && (
-                    <ul className="sidebar-submenu3">
-                      <li>
-                        <button
-                          className="sidebar-dropdown3"
-                          onClick={() => handleClick3()}
-                        >
-                          Add Bill-Category
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          className="sidebar-dropdown3"
-                          onClick={() => handleClick4()}
-                        >
-                          Bill Category List
-                        </button>
-                      </li>
-                    </ul>
-                  )}
-                </li>
-                <li>
-                  <button
-                    className="sidebar-dropdown2"
-                    onClick={toggleDropdown13}
-                  >
-                    <span>Bill Type</span>
-                    <div className="arrow-icon"><FontAwesomeIcon
-                      icon={isDropdown13Open ? faAngleDown : faAngleRight}
-                    /></div>
-                  </button>
-                  {isDropdown13Open && (
-                    <ul className="sidebar-submenu3">
-                      <li>
-                        <button
-                          className="sidebar-dropdown3"
-                          onClick={() => handleClick5()}
-                        >
-                          Add Bill Type
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          className="sidebar-dropdown3"
-                          onClick={() => handleClick6()}
-                        >
-                          Bill Types
-                        </button>
-                      </li>
-                    </ul>
-                  )}
-                </li>
-                <li>
-                  <button
-                    className="sidebar-dropdown2"
-                    onClick={toggleDropdown14}
-                  >
-                    <span>Department</span>
-                    <div className="arrow-icon"><FontAwesomeIcon
-                      icon={isDropdown14Open ? faAngleDown : faAngleRight}
-                    /></div>
-                  </button>
-                  {isDropdown14Open && (
-                    <ul className="sidebar-submenu3">
-                      <li>
-                        <button
-                          className="sidebar-dropdown3"
-                          onClick={() => handleClick7()}
-                        >
-                          Add Department
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          className="sidebar-dropdown3"
-                          onClick={() => handleClick8()}
-                        >
-                          Departments
-                        </button>
-                      </li>
-                    </ul>
-                  )}
-                </li>
-                <li>
-                  <button
-                    className="sidebar-dropdown2"
-                    onClick={toggleDropdown15}
-                  >
-                    <span>FinancialYear</span>
-                    <div className="arrow-icon"><FontAwesomeIcon
-                      icon={isDropdown15Open ? faAngleDown : faAngleRight}
-                    /></div>
-                  </button>
-                  {isDropdown15Open && (
-                    <ul className="sidebar-submenu3">
-                      <li>
-                        <button
-                          className="sidebar-dropdown3"
-                          onClick={() => handleClick9()}
-                        >
-                          Add FinancialYear
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          className="sidebar-dropdown3"
-                          onClick={() => handleClick10()}
-                        >
-                          Financial Year List
-                        </button>
-                      </li>
-                    </ul>
-                  )}
-                </li>
-                <li>
-                  <button
-                    className="sidebar-dropdown2"
-                    onClick={toggleDropdown16}
-                  >
-                    <span>FundingSource</span>
-                    <div className="arrow-icon"><FontAwesomeIcon
-                      icon={isDropdown16Open ? faAngleDown : faAngleRight}
-                    /></div>
-                  </button>
-                  {isDropdown16Open && (
-                    <ul className="sidebar-submenu3">
-                      <li>
-                        <button
-                          className="sidebar-dropdown3"
-                          onClick={() => handleClick11()}
-                        >
-                          Add FundingSource
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          className="sidebar-dropdown3"
-                          onClick={() => handleClick12()}
-                        >
-                          Funding Sources
-                        </button>
-                      </li>
-                    </ul>
-                  )}
-                </li>
-                <li>
-                  <button
-                    className="sidebar-dropdown2"
-                    onClick={toggleDropdown17}
-                  >
-                    <span>LedgerType</span>
-                    <div className="arrow-icon"><FontAwesomeIcon
-                      icon={isDropdown17Open ? faAngleDown : faAngleRight}
-                    /></div>
-                  </button>
-                  {isDropdown17Open && (
-                    <ul className="sidebar-submenu3">
-                      <li>
-                        <button
-                          className="sidebar-dropdown3"
-                          onClick={() => handleClick13()}
-                        >
-                          Add LedgerType
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          className="sidebar-dropdown3"
-                          onClick={() => handleClick14()}
-                        >
-                          Ledger Types
-                        </button>
-                      </li>
-                    </ul>
-                  )}
-                </li>
-                <li>
-                  <button
-                    className="sidebar-dropdown2"
-                    onClick={toggleDropdown18}
-                  >
-                    <span>PaymentType</span>
-                    <div className="arrow-icon"><FontAwesomeIcon
-                      icon={isDropdown18Open ? faAngleDown : faAngleRight}
-                    /></div>
-                  </button>
-                  {isDropdown18Open && (
-                    <ul className="sidebar-submenu3">
-                      <li>
-                        <button
-                          className="sidebar-dropdown3"
-                          onClick={() => handleClick15()}
-                        >
-                          Add PaymentType
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          className="sidebar-dropdown3"
-                          onClick={() => handleClick16()}
-                        >
-                          PaymentType List
-                        </button>
-                      </li>
-                    </ul>
-                  )}
-                </li>
-              </ul>
+                <ul className={"sidebar-submenu asdf"} >
+                  <li >
+                    <button
+                      className="sidebar-dropdown2"
+                      onClick={toggleDropdown11}
+                    >
+                      <span>Acc Charge</span>
+                      <div className="arrow-icon"><FontAwesomeIcon
+                        icon={isDropdown11Open ? faAngleDown : faAngleRight}
+                      /></div>
+                    </button>
+                    {isDropdown11Open && (
+                      <ul className="sidebar-submenu2">
+                        <li>
+                          <button
+                            className="sidebar-dropdown3"
+                            onClick={() => handleClick1()}
+                          >
+                            AddCharge
+                          </button>
+                        </li>
+                        <li>
+                          <button
+                            className="sidebar-dropdown3"
+                            onClick={() => handleClick2()}
+                          >
+                            ChargeList
+                          </button>
+                        </li>
+                      </ul>
+                    )}
+                  </li>
+                  <li>
+                    <button
+                      className="sidebar-dropdown2"
+                      onClick={toggleDropdown12}
+                    >
+                      <span>Bill Category</span>
+                      <div className="arrow-icon"><FontAwesomeIcon
+                        icon={isDropdown12Open ? faAngleDown : faAngleRight}
+                      /></div>
+                    </button>
+                    {isDropdown12Open && (
+                      <ul className="sidebar-submenu3">
+                        <li>
+                          <button
+                            className="sidebar-dropdown3"
+                            onClick={() => handleClick3()}
+                          >
+                            Add Bill-Category
+                          </button>
+                        </li>
+                        <li>
+                          <button
+                            className="sidebar-dropdown3"
+                            onClick={() => handleClick4()}
+                          >
+                            Bill Category List
+                          </button>
+                        </li>
+                      </ul>
+                    )}
+                  </li>
+                  <li>
+                    <button
+                      className="sidebar-dropdown2"
+                      onClick={toggleDropdown13}
+                    >
+                      <span>Bill Type</span>
+                      <div className="arrow-icon"><FontAwesomeIcon
+                        icon={isDropdown13Open ? faAngleDown : faAngleRight}
+                      /></div>
+                    </button>
+                    {isDropdown13Open && (
+                      <ul className="sidebar-submenu3">
+                        <li>
+                          <button
+                            className="sidebar-dropdown3"
+                            onClick={() => handleClick5()}
+                          >
+                            Add Bill Type
+                          </button>
+                        </li>
+                        <li>
+                          <button
+                            className="sidebar-dropdown3"
+                            onClick={() => handleClick6()}
+                          >
+                            Bill Types
+                          </button>
+                        </li>
+                      </ul>
+                    )}
+                  </li>
+                  <li>
+                    <button
+                      className="sidebar-dropdown2"
+                      onClick={toggleDropdown14}
+                    >
+                      <span>Department</span>
+                      <div className="arrow-icon"><FontAwesomeIcon
+                        icon={isDropdown14Open ? faAngleDown : faAngleRight}
+                      /></div>
+                    </button>
+                    {isDropdown14Open && (
+                      <ul className="sidebar-submenu3">
+                        <li>
+                          <button
+                            className="sidebar-dropdown3"
+                            onClick={() => handleClick7()}
+                          >
+                            Add Department
+                          </button>
+                        </li>
+                        <li>
+                          <button
+                            className="sidebar-dropdown3"
+                            onClick={() => handleClick8()}
+                          >
+                            Departments
+                          </button>
+                        </li>
+                      </ul>
+                    )}
+                  </li>
+                  <li>
+                    <button
+                      className="sidebar-dropdown2"
+                      onClick={toggleDropdown15}
+                    >
+                      <span>FinancialYear</span>
+                      <div className="arrow-icon"><FontAwesomeIcon
+                        icon={isDropdown15Open ? faAngleDown : faAngleRight}
+                      /></div>
+                    </button>
+                    {isDropdown15Open && (
+                      <ul className="sidebar-submenu3">
+                        <li>
+                          <button
+                            className="sidebar-dropdown3"
+                            onClick={() => handleClick9()}
+                          >
+                            Add FinancialYear
+                          </button>
+                        </li>
+                        <li>
+                          <button
+                            className="sidebar-dropdown3"
+                            onClick={() => handleClick10()}
+                          >
+                            Financial Year List
+                          </button>
+                        </li>
+                      </ul>
+                    )}
+                  </li>
+                  <li>
+                    <button
+                      className="sidebar-dropdown2"
+                      onClick={toggleDropdown16}
+                    >
+                      <span>FundingSource</span>
+                      <div className="arrow-icon"><FontAwesomeIcon
+                        icon={isDropdown16Open ? faAngleDown : faAngleRight}
+                      /></div>
+                    </button>
+                    {isDropdown16Open && (
+                      <ul className="sidebar-submenu3">
+                        <li>
+                          <button
+                            className="sidebar-dropdown3"
+                            onClick={() => handleClick11()}
+                          >
+                            Add FundingSource
+                          </button>
+                        </li>
+                        <li>
+                          <button
+                            className="sidebar-dropdown3"
+                            onClick={() => handleClick12()}
+                          >
+                            Funding Sources
+                          </button>
+                        </li>
+                      </ul>
+                    )}
+                  </li>
+                  <li>
+                    <button
+                      className="sidebar-dropdown2"
+                      onClick={toggleDropdown17}
+                    >
+                      <span>LedgerType</span>
+                      <div className="arrow-icon"><FontAwesomeIcon
+                        icon={isDropdown17Open ? faAngleDown : faAngleRight}
+                      /></div>
+                    </button>
+                    {isDropdown17Open && (
+                      <ul className="sidebar-submenu3">
+                        <li>
+                          <button
+                            className="sidebar-dropdown3"
+                            onClick={() => handleClick13()}
+                          >
+                            Add LedgerType
+                          </button>
+                        </li>
+                        <li>
+                          <button
+                            className="sidebar-dropdown3"
+                            onClick={() => handleClick14()}
+                          >
+                            Ledger Types
+                          </button>
+                        </li>
+                      </ul>
+                    )}
+                  </li>
+                  <li>
+                    <button
+                      className="sidebar-dropdown2"
+                      onClick={toggleDropdown18}
+                    >
+                      <span>PaymentType</span>
+                      <div className="arrow-icon"><FontAwesomeIcon
+                        icon={isDropdown18Open ? faAngleDown : faAngleRight}
+                      /></div>
+                    </button>
+                    {isDropdown18Open && (
+                      <ul className="sidebar-submenu3">
+                        <li>
+                          <button
+                            className="sidebar-dropdown3"
+                            onClick={() => handleClick15()}
+                          >
+                            Add PaymentType
+                          </button>
+                        </li>
+                        <li>
+                          <button
+                            className="sidebar-dropdown3"
+                            onClick={() => handleClick16()}
+                          >
+                            PaymentType List
+                          </button>
+                        </li>
+                      </ul>
+                    )}
+                  </li>
+                </ul>
               </div>
             )}
           </li>
           <li>
             <button className="sidebar-dropdown" onClick={toggleDropdown2}>
-            <div className="grid2">
-            <div className="icn" ><i class="fa fa-exchange" aria-hidden="true"></i></div>
-              <div className="gridX">Transactions</div>
-              <div className={` ${isDropdown2Open ? "down":"up"}`} style={{marginLeft:'89px'}}><FontAwesomeIcon
-                icon={faAngleRight}
-              /></div>
-              </div> 
-            
+              <div className="grid2">
+                <div className="icn" ><i class="fa fa-exchange" aria-hidden="true"></i></div>
+                <div className="gridX">Transactions</div>
+                <div className={` ${isDropdown2Open ? "down" : "up"}`} style={{ marginLeft: '89px' }}><FontAwesomeIcon
+                  icon={faAngleRight}
+                /></div>
+              </div>
+
             </button>
             {isDropdown2Open && (
               <ul className="sidebar-submenu">
                 <li>
-                <button
-                          className="sidebar-dropdown3"
-                          onClick={() => handleClick17()}
-                        >
-                        Add Bill Box
-                        </button>
+                  <button
+                    className="sidebar-dropdown3"
+                    onClick={() => handleClick17()}
+                  >
+                    Add Bill Box
+                  </button>
 
                 </li>
                 <li>
-                <button
-                          className="sidebar-dropdown3"
-                          onClick={() => handleClick17()}
-                        >
-                         Bill Box List
-                        </button>
+                  <button
+                    className="sidebar-dropdown3"
+                    onClick={() => handleClick17()}
+                  >
+                    Bill Box List
+                  </button>
                 </li>
-                
+
               </ul>
             )}
           </li>
           <li>
             <button className="sidebar-dropdown" onClick={toggleDropdown3}>
-             
-               <div className="grid3">
-               <div className="icn" ><i class="fa fa-users" aria-hidden="true"></i></div>
-             <div className="gridX">Employee</div>
-             <div className={` ${isDropdown3Open ? "down":"up"}`} style={{marginLeft:'111px'}}><FontAwesomeIcon
-                icon={faAngleRight}
-              /></div>
+
+              <div className="grid3">
+                <div className="icn" ><i class="fa fa-users" aria-hidden="true"></i></div>
+                <div className="gridX">Employee</div>
+                <div className={` ${isDropdown3Open ? "down" : "up"}`} style={{ marginLeft: '111px' }}><FontAwesomeIcon
+                  icon={faAngleRight}
+                /></div>
               </div>
             </button>
             {isDropdown3Open && (
@@ -875,7 +877,7 @@ function handleClick17 (){
             )}
           </li>
         </ul>
-        
+
       )}
     </div>
   );

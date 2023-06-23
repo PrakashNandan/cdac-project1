@@ -49,17 +49,18 @@ function ChargeList() {
     // let slicedAllData=allData.slice(firstIndex, lastIndex);
 
 
+
     useEffect(()=>{
+        setDataFetching(true);  
         if(isReady){
-        setDataFetching(true);        
+        console.log(datafetching);    
         const res =  privateAxios.get(`/charge/findAll?pageNumber=${pageNumber-1}&pageSize=${pageSize}`)
         .then((res)=>{
              //alert("inside then")
             console.log(res);
             const {pageNumber} = res.data.pageList;
             
-            
-           
+
             if(pageNumber!==''){
             setIsAllData(true);
             setAllData(res.data.pageList.content);
@@ -81,10 +82,11 @@ function ChargeList() {
         }).catch((err)=>console.log(err))
 
     
-       setDataFetching(false);
+       
     }else{
         setIsready(true)
     }
+    setDataFetching(false);
 
     },[isReady ,pageNumber ,pageSize])
 
@@ -115,34 +117,38 @@ function ChargeList() {
         alert("handleFindAll called")
         setDataFetching(true);
 
-        try {
-
-            const res = await privateAxios.get(`/charge/findAll?pageNumber=${pageNumber-1}&pageSize=${pageSize}`)
-            // .then((res)=>console.log(res)).catch((err)=>console.log(err));
-            if(res){
+            const res =  privateAxios.get(`/charge/findAll?pageNumber=${pageNumber-1}&pageSize=${pageSize}`)
+            .then((res)=>{
+                 //alert("inside then")
                 console.log(res);
+                const {pageNumber} = res.data.pageList;
+                            
+                if(pageNumber!==''){
+                setIsAllData(true);
                 setAllData(res.data.pageList.content);
                 setTotalPages(res.data.pageList.totalPages);
                 setTotalElements(res.data.pageList.totalElements);
-                setLastIndex( (pageNumber)*pageSize);
-                
-                    setFirstIndex(lastIndex - pageSize);
-                
-            // setFirstIndex(((pageNumber-1)*pageSize)+1);
-            // setLastIndex(Math.min(firstIndex + pageSize-1, res.data.pageList.totalElements))
-            setSlicedAllData(res.data.pageList.content.slice(firstIndex, lastIndex));
-            }
-
-
-            
-        } catch (error) {
-            setisError(error.message);
-            console.log(error.message);
-            showErrorToast();
-        }
+                 if(pageSize>res.data.pageList.content?.length){
+                    setLastIndex(Math.max(((pageNumber+1)*res.data.pageList.content?.length), res.data.pageList.totalElements))
+                 }
+                 else{
+                     setLastIndex( (pageNumber+1)*pageSize);
+                 }
+                // if(lastIndex){
+                setFirstIndex(((pageNumber+1)*pageSize) - pageSize);
+                // }
+                // setFirstIndex(((pageNumber-1)*pageSize)+1);
+                // setLastIndex(Math.min(firstIndex + pageSize-1, res.data.pageList.totalElements))
+                // setSlicedAllData(res.data.pageList.content.slice(firstIndex, lastIndex));
+                }
+            }).catch((err)=>console.log(err))
+    
 
         setDataFetching(false);
     }
+
+
+  
 
  
 
@@ -409,15 +415,15 @@ function ChargeList() {
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>ChargeName</th>
-                                <th>ChargeType</th>
-                                <th>ChargeRate</th>
-                                <th>entryDate</th>
-                                <th>chargeAmount</th>
-                                <th>chargeApplyOnBaseAmount</th>
-                                <th>roundingType</th>
-                                <th>hoaPostingRequired</th>
-                                <th>isDepositToGovt</th>
+                                <th>Charge Name</th>
+                                <th>Charge Type</th>
+                                <th>Charge Rate</th>
+                                <th>Entry Date</th>
+                                <th>Charge Amount</th>
+                                <th>Charge Apply On Base Amount</th>
+                                <th>Rounding Type</th>
+                                <th>How Posting Required</th>
+                                <th>Is Deposit To Govt</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -428,7 +434,7 @@ function ChargeList() {
                     </table>
 
                 </div>
-                      { isAllData && <Pagination totalUsers={allData.length} pageSize={pageSize} setPageSize={setPageSize} setPageNumber={setPageNumber} pageNumber={pageNumber} lastIndex={lastIndex} firstIndex={firstIndex} totalPages={totalPages} totalElements={totalElements} />}
+                      { isAllData && <Pagination totalUsers={allData.length} pageSize={pageSize} setPageSize={setPageSize} setPageNumber={setPageNumber} pageNumber={pageNumber} lastIndex={lastIndex} firstIndex={firstIndex} totalPages={totalPages} totalElements={totalElements}  />}
             </div>
 
 
