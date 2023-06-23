@@ -1,21 +1,13 @@
 import React, { useState } from "react";
 import Sidebar from "./Sidebar";
 import AddAndDisplayUserPage from "./AddUser";
-import Addcharges from "./AccountCharge/AddCharges";
 import ChargeList from "./AccountCharge/ChargeList";
 import BillTypeList from "./BillType/BillTypeList";
-import AddBillType from "./BillType/AddBillType";
-import AddBillCategory from "./BillCategory/AddBillCategory";
 import BillCategoryList from "./BillCategory/BillCategoryList";
-import AddFundingSource from "./FundingSource/AddFundingSource";
 import FundingSourceList from "./FundingSource/FundingSourceList";
-import AddPaymentType from "./PaymentType/AddPaymentType";
 import PaymentTypeList from "./PaymentType/PaymentTypeList";
-import AddLedgerType from "./LedgerType/AddLedgerType";
 import LedgerTypeList from "./LedgerType/LedgerTypeList";
 import DeptList from "./Department/DeptList";
-import AddDept from "./Department/AddDept";
-import AddFinYear from "./FinancialYear/AddFinYear";
 import FinYearList from "./FinancialYear/FinYearList";
 import Db from "./Db";
 import Homepage from "./Homepage";
@@ -74,47 +66,38 @@ function UserDetail() {
 {(showChargeList)&&
 <ChargeList></ChargeList>}
 
-{(showAddCharge)&&
-<Addcharges></Addcharges>}
 
-{(showAddBillType)&&
-<AddBillType></AddBillType>}
+
+
 
 {(showBillTypeList)&&
 <BillTypeList></BillTypeList>}
 
-{(showAddBillCategory)&&
-<AddBillCategory/>}
+
 
 {(showBillCategoryList)&&
 <BillCategoryList></BillCategoryList>}
 
-{(showAddDept)&&
-<AddDept></AddDept>}
+
 
 {(showDeptList)&&
 <DeptList></DeptList>}
 
-{(showAddFinYear)&&
-<AddFinYear></AddFinYear>}
+
 
 {(showFinYearList)&&
 <FinYearList></FinYearList>}
 
-{(showAddFundingSource)&&
-<AddFundingSource></AddFundingSource>}
+
 
 {(showFundingSourceList)&&
 <FundingSourceList></FundingSourceList>}
 
-{(showAddLedgerType)&&
-<AddLedgerType></AddLedgerType>}
 
 {(showLedgerTypeList)&&
 <LedgerTypeList></LedgerTypeList>}
 
-{(showAddPaymentType)&&
-<AddPaymentType></AddPaymentType>}
+
 
 {(showPaymentTypeList)&&
 <PaymentTypeList></PaymentTypeList>}

@@ -6,7 +6,11 @@ import {ToastContainer, toast} from 'react-toastify'
 import FindAllBillCategory from './FindAllBillCategory'
 import Pagination from '../Pagination'
 import { privateAxios } from '../../service/helperUtil'
+
+import ShowModal from '../ShowModal.jsx'
 import Mymodal from '../ShowModal.jsx';
+import '../../style/modal.css'
+import BillData from './BillData.jsx';
 
 function BillCategoryList() {
 
@@ -28,19 +32,67 @@ function BillCategoryList() {
     const [slicedAllData,setSlicedAllData]=useState([]);
     const [isAllData, setIsAllData]=useState(false);
     const [isReady , setIsready] =useState(false);
+    
+
+    // useEffect(()=>{
+    //     handleFindALL();
+    // },[])
     const [ShowModal, setShowModal] = useState(false);
     const [billCategory, setBillCategory] = useState({
         billCategoryName: '',
       }, []);
     
       const [allBillCategory, setAllBillcategory] = useState([]);
+      const closeModal = () => {
+        return setShowModal(false);
+      }
     
-
-    // useEffect(()=>{
-    //     handleFindALL();
-    // },[])
+    
+      const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setBillCategory((prevBillCategory) => ({ ...prevBillCategory, [name]: value }));
+      };
+    
+    
+      const handleSubmit = async (event) => {
+    
+        event.preventDefault();
+    
+    
+        console.log(billCategory);
+    
+    
+        try {
+          const res = await privateAxios.post("billCategory/save", billCategory);
+          toast.success('Submit Successfully')
+          setAllBillcategory([...allBillCategory, billCategory]);
+          console.log(res);
+    
+        } catch (error) {
+          toast.error("Form not Submitted !! , please try again")
+          console.log(error);
+        }
+    
+        closeModal();
+    
+      };
    
- 
+    const handleFindALL=async()=>{
+       
+        try{
+            
+            const res = await privateAxios.get("/billCategory/findAll");
+            setAllData(res.data.pageList.content);
+            console.log(res.data);
+
+
+        }catch(error){
+            setisError(error.message);
+            console.log(error.message);
+            showErrorToast();
+        }
+    }
+
      // pagination work
      if(pageSize<1){
         setPageSize(5);
@@ -86,39 +138,7 @@ function BillCategoryList() {
     },[isReady ,pageNumber ,pageSize])
 
 
-
-    const handleFindALL=async()=>{
-        const res =  privateAxios.get(`/billCategory/findAll?pageNumber=${pageNumber-1}&pageSize=${pageSize}`)
-        .then((res)=>{
-             //alert("inside then")
-            console.log(res);
-            const {pageNumber} = res.data.pageList;
-            
-            
-           
-            if(pageNumber!==''){
-            setIsAllData(true);
-            setAllData(res.data.pageList.content);
-            setTotalPages(res.data.pageList.totalPages);
-            setTotalElements(res.data.pageList.totalElements);
-             if(pageSize>res.data.pageList.content?.length){
-                setLastIndex(Math.max(((pageNumber+1)*res.data.pageList.content?.length), res.data.pageList.totalElements))
-             }
-             else{
-                 setLastIndex( (pageNumber+1)*pageSize);
-             }
-            // if(lastIndex){
-            setFirstIndex(((pageNumber+1)*pageSize) - pageSize);
-            // }
-            // setFirstIndex(((pageNumber-1)*pageSize)+1);
-            // setLastIndex(Math.min(firstIndex + pageSize-1, res.data.pageList.totalElements))
-            // setSlicedAllData(res.data.pageList.content.slice(firstIndex, lastIndex));
-            }
-        }).catch((err)=>console.log(err))
-
-    
-       setDataFetching(false);
-    }
+   
 
 
     const showErrorToast=()=>{
@@ -127,41 +147,6 @@ function BillCategoryList() {
     const showErrorNotFoundToast=()=>{
         toast.error("Not Found!!")
     }
-    const closeModal = () => {
-        return setShowModal(false);
-      }
-    
-    
-      const handleInputChange = (event) => {
-        const { name, value } = event.target;
-        setBillCategory((prevBillCategory) => ({ ...prevBillCategory, [name]: value }));
-      };
-    
-    
-      const handleSubmit = async (event) => {
-    
-        event.preventDefault();
-    
-    
-        console.log(billCategory);
-    
-    
-        try {
-          const res = await privateAxios.post("billCategory/save", billCategory);
-          toast.success('Submit Successfully')
-          setAllBillcategory([...allBillCategory, billCategory]);
-          console.log(res);
-    
-        } catch (error) {
-          toast.error("Form not Submitted !! , please try again")
-          console.log(error);
-        }
-    
-        closeModal();
-    
-      };
-    
-    
 
 
 
@@ -179,13 +164,6 @@ function BillCategoryList() {
         } 
     
     }
-    const showToast = () => {
-        if (isError !== "") {
-          toast.error("Error !! form not submittd, pleae try again")
-        } else {
-          toast.success('Submit Successfully')
-        }
-      }
 
 
     // const findDataById = () => {
@@ -197,6 +175,7 @@ function BillCategoryList() {
     // const lastIndex = currentPage*userPerPage;
     // const firstIndex = lastIndex - userPerPage;
     // const slicedAllData=allData.slice(firstIndex, lastIndex);
+
     const mainModal = (
 
         <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
@@ -229,8 +208,6 @@ function BillCategoryList() {
         </Mymodal>
       )
 
-
-
   return (
 
     <>
@@ -244,12 +221,10 @@ function BillCategoryList() {
             {/* <div className='ParentPagination'>
                   <input type="number" className='userPerPageClass' name='userPerPage' value={userPerPage} onChange={(e)=>{setUserPerPage(e.target.value)}} />
           </div> */}
-          <button className='modal-btn' id='addButton' onClick={() => setShowModal(true)}>Add billCategoryName</button>
-      {ShowModal && mainModal}
-
             <div className="parentSearchInput">
-                {/* <input type="number" className='userPerPageClass' id='Pagi_input_id' name='userPerPage' value={pageSize} onChange={(e)=>{setPageSize(e.target.value)}} /> */}
-                <div className="spacer"></div>
+                <div><button className='btn btn-primary' id='searchDataID' onClick={() => setShowModal(true)}>Add billCategoryName</button>
+      {ShowModal && mainModal}</div><div className="spacer"></div>
+                
                 <input type="number" placeholder='search by ID' id='searchInput' value={inputId} onChange={(e) => setInputId(e.target.value)} /> 
                 <button className='btn btn-primary' id='searchDataID' onClick={fetchData}>Search</button>   
             </div>
