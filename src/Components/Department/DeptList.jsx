@@ -6,6 +6,14 @@ import FindAllDept from './FindAllDept'
 import { privateAxios } from '../../service/helperUtil'
 import Pagination from '../Pagination'
 
+import ShowModal from '../ShowModal.jsx'
+import Mymodal from '../ShowModal.jsx';
+import '../../style/modal.css'
+import UserData from '../AccountCharge/UserData.jsx';
+import '../../style/UserData.css'
+import DeptData from './DeptData.jsx';
+import { MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
+
 
 function DeptList() {
 
@@ -24,9 +32,55 @@ function DeptList() {
     const [slicedAllData,setSlicedAllData]=useState([]);
     const [isAllData, setIsAllData]=useState(false);
      const [isReady , setIsready] =useState(false);
+     const [isSubmitting, setIsSubmitting] = useState(false);
 
 
 
+     const [ShowModal, setShowModal]=useState(false);
+     const [dept, setDept] = useState({
+         deptName : '',
+         deptCode:'',
+       },[] );
+       const [allDept, setAllDept] = useState([]);
+       const closeModal = ()=>{
+           return setShowModal(false);
+       }
+   
+   
+       const handleInputChange = (event) => {
+           const { name, value } = event.target;
+           setDept((prevDept) => ({ ...prevDept, [name]: value }));
+       };
+   
+   
+         const  handleSubmit = async (event) => {
+           
+           event.preventDefault(); 
+           console.log(dept);  
+    
+           try{
+             const res = await privateAxios.post("dept/save", dept);
+             toast.success('Submit Successfully')
+             setAllDept([...allDept, dept]);
+             console.log(res);
+             handleFindALL();
+   
+           }catch(error){
+             toast.error("Form not Submitted !! , please try again")
+             console.log(error);
+           }
+           closeModal();
+   
+         };
+         
+   const showToast=()=>{
+       if(isError!=="")
+       {
+         toast.error("Error !! form not submittd, pleae try again")
+       }else{
+         toast.success('Submit Successfully')
+       }
+     }
     // useEffect(() => {
     //     handleFindALL();
     // }, [])
@@ -34,6 +88,7 @@ function DeptList() {
 
     const handleFindALL = async () => {
 
+        setDataFetching(true);        
         const res =  privateAxios.get(`/dept/findAll?pageNumber=${pageNumber-1}&pageSize=${pageSize}`)
         .then((res)=>{
              //alert("inside then")
@@ -61,9 +116,9 @@ function DeptList() {
             // setSlicedAllData(res.data.pageList.content.slice(firstIndex, lastIndex));
             }
         }).catch((err)=>console.log(err))
+
+    
        setDataFetching(false);
-
-
     }
 
     
@@ -136,20 +191,69 @@ function DeptList() {
 
     }
 
+    const mainModal = (
 
-
+        <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
+    
+          <button id='close-btn' onClick={closeModal}>close</button>
+          <h2>Form</h2>
+    
+          <form onSubmit={handleSubmit} className='form'>
+    
+            <div className="d-flex flex-row align-items-center mb-3 mt-3">
+              <MDBIcon fas icon="pen-to-square" size='lg' style={{ marginRight: '10px' }} />
+              <MDBInput
+                label="Department Name"
+                type="text"
+                name="deptName"
+                id="deptName"
+                value={dept.deptName}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+    
+            <div className="d-flex flex-row align-items-center mb-3">
+              <MDBIcon fas icon="pen-to-square" size='lg' style={{ marginRight: '13px' }} />
+              <MDBInput
+                label="Department Code"
+                type="text"
+                name="deptCode"
+                id="deptCode"
+                value={dept.deptCode}
+                onChange={handleInputChange}
+              // required
+              />
+            </div>
+    
+            {isSubmitting ? (
+              <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} disabled>
+                <span class="spinner-border" style={{ margin: '0 0.3rem', height: '1.2rem', width: '1.2rem' }} role="status" aria-hidden="true"></span>
+                Submitting...
+              </MDBBtn>
+            ) : (
+              <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} >Submit</MDBBtn>
+            )}
+    
+          </form>
+    
+        </Mymodal>
+      )
 
     return (
 
         <>
 
-            <h2 id='chargeHeadID'>Departemnt List</h2>
+            <h2 id='chargeHeadID'>Departement List</h2>
 
 
             <div className='find-container'>
                 {/* <div className='findButtonClass'><button className='btn-find btn btn-primary' onClick={()=>handleFindALL()}>FindAll</button></div> */}
-
+               
                 <div className="parentSearchInput">
+                    <div> <button className='btn btn-primary' id='searchDataID' onClick={()=>setShowModal(true)}>Add Department</button>
+   {ShowModal && mainModal}</div>
+                
                     <div className="spacer"></div>
                     <input type="number" placeholder='search by ID' id='searchInput' value={inputId} onChange={(e) => setInputId(e.target.value)} />
                     <button className='btn btn-primary' id='searchDataID' onClick={fetchData}>Search</button>

@@ -4,7 +4,7 @@ const API = axios.create({
     // baseURL:"http://10.248.1.75:8085/api/v1"
     // baseURL:"http://10.248.1.198:8085/api/v1"
     // baseURL:"http://165.22.214.153:8085/api/v1"
-    //baseURL:"http://192.168.38.46:8085/api/v1/"
+    //baseURL:"http://192.168.38.46:8085/api/v1"
     // baseURL:"http://192.168.137.1:8085/api/v1"
     baseURL:"http://192.168.137.1:8085/api/v1"
 })

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import Pagination from '../Pagination';
 import Mymodal from './showModal_bill.jsx';
-import '../../style/modal.css'
+import '../../style/modal2.css'
 import '../../style/formtemp.css'
 import BillboxData from './BillboxData.jsx';
 import BillboxList from './BillboxList.jsx';
@@ -141,10 +141,10 @@ function AddBillbox() {
       <button id='close-btn-bb' onClick={closeModal}>close</button>
 
       <div className="cont">
-        <form>
+        <form className = "modalForm">
           <div className="row">
             <div className="col-half">
-              <div className="input-group input-group-icon">
+              <div className="invoice">
                 <input type="string" id="input-box1" value={billBox.billSlNo} placeholder="Bill Sl No" onChange={handleInputChange} />
               </div>
             </div>
@@ -182,11 +182,11 @@ function AddBillbox() {
               </select>
             </div>
           </div>
-          <div className="row">
+          <div className="row1">
             <div className="col-half">
               <h4>Invoice Date</h4>
               <div className="input-group">
-                <input type="date" id="class1" placeholder='Invoice date' name='invoiceDate' value={billBox.invoiceDate} onChange={handleInputChange} />
+                <input type="date" id="entry" placeholder='Invoice date' name='invoiceDate' value={billBox.invoiceDate} onChange={handleInputChange} />
               </div>
             </div>
             <div className="col-half">
@@ -283,7 +283,7 @@ function AddBillbox() {
 
       <button className='modal-btn' id='addButton' onClick={() => setShowModal(true)}>Add BillBox</button>
       {ShowModal && mainModal}
-      <BillboxList />
+     
       <div className="user-list">
 
 

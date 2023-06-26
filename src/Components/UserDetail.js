@@ -1,26 +1,19 @@
 import React, { useState } from "react";
 import Sidebar from "./Sidebar";
 import AddAndDisplayUserPage from "./AddUser";
-import Addcharges from "./AccountCharge/AddCharges";
 import ChargeList from "./AccountCharge/ChargeList";
 import BillTypeList from "./BillType/BillTypeList";
-import AddBillType from "./BillType/AddBillType";
-import AddBillCategory from "./BillCategory/AddBillCategory";
 import BillCategoryList from "./BillCategory/BillCategoryList";
-import AddFundingSource from "./FundingSource/AddFundingSource";
 import FundingSourceList from "./FundingSource/FundingSourceList";
-import AddPaymentType from "./PaymentType/AddPaymentType";
 import PaymentTypeList from "./PaymentType/PaymentTypeList";
-import AddLedgerType from "./LedgerType/AddLedgerType";
 import LedgerTypeList from "./LedgerType/LedgerTypeList";
 import DeptList from "./Department/DeptList";
-import AddDept from "./Department/AddDept";
-import AddFinYear from "./FinancialYear/AddFinYear";
 import FinYearList from "./FinancialYear/FinYearList";
 import Db from "./Db";
 import Homepage from "./Homepage";
 import AddBillbox from "./Billbox/AddBillbox"
 import BillboxList from "./Billbox/BillboxList";
+import Employeedetails from "./Employee/Employeedetails";
 function UserDetail() {
   // const
   const [showChargeList, setShowChargeList] = useState(false);
@@ -42,10 +35,12 @@ function UserDetail() {
   const [ShowDashboard, setShowDashboard] = useState(false);
   const [ShowHomepage, setShowHomepage] = useState(true);
   const [ShowBillbox, setShowBillbox] = useState(false);
+  const [ShowEmployee, setShowEmployee] = useState(false);
   return (
     <div>
       <Sidebar
         setShowBillbox={setShowBillbox}
+        setShowEmployee={setShowEmployee}
         setShowHomepage= {setShowHomepage}
         setShowDashboard= {setShowDashboard}
         setShowChargeList={setShowChargeList}
@@ -65,8 +60,10 @@ function UserDetail() {
         setShowAddFinYear={setShowAddFinYear}
         setShowFinYearList={setShowFinYearList}
       ></Sidebar>
+      {(ShowEmployee)&&
+<Employeedetails></Employeedetails>}
        {(ShowBillbox)&&
-<AddBillbox></AddBillbox>}
+<BillboxList></BillboxList>}
   {(ShowHomepage)&&
 <Homepage></Homepage>}
     {(ShowDashboard)&&
@@ -74,47 +71,38 @@ function UserDetail() {
 {(showChargeList)&&
 <ChargeList></ChargeList>}
 
-{(showAddCharge)&&
-<Addcharges></Addcharges>}
 
-{(showAddBillType)&&
-<AddBillType></AddBillType>}
+
+
 
 {(showBillTypeList)&&
 <BillTypeList></BillTypeList>}
 
-{(showAddBillCategory)&&
-<AddBillCategory/>}
+
 
 {(showBillCategoryList)&&
 <BillCategoryList></BillCategoryList>}
 
-{(showAddDept)&&
-<AddDept></AddDept>}
+
 
 {(showDeptList)&&
 <DeptList></DeptList>}
 
-{(showAddFinYear)&&
-<AddFinYear></AddFinYear>}
+
 
 {(showFinYearList)&&
 <FinYearList></FinYearList>}
 
-{(showAddFundingSource)&&
-<AddFundingSource></AddFundingSource>}
+
 
 {(showFundingSourceList)&&
 <FundingSourceList></FundingSourceList>}
 
-{(showAddLedgerType)&&
-<AddLedgerType></AddLedgerType>}
 
 {(showLedgerTypeList)&&
 <LedgerTypeList></LedgerTypeList>}
 
-{(showAddPaymentType)&&
-<AddPaymentType></AddPaymentType>}
+
 
 {(showPaymentTypeList)&&
 <PaymentTypeList></PaymentTypeList>}

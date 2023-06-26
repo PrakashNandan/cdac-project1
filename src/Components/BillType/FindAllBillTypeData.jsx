@@ -32,10 +32,18 @@ function FindAllBillType({allData,setAllData, handleFindALL}) {
 
         try{
             const res = await privateAxios.get(`/billType/delete/${id}`)
-            toast.warn("The data has Deleted Successfully")
-            setAllData([res.data]);
-            console.log(res);
-            handleFindALL();
+            .then((res)=>{
+              setAllData([res.data]);
+              toast.warn("The data has Deleted Successfully")
+              console.log(res);
+              handleFindALL();
+            }).catch((err)=>{console.log(err)})
+
+
+            // setAllData([res.data]);
+            // toast.warn("The data has Deleted Successfully")
+            // console.log(res);
+            // handleFindALL();
 
         }catch(error){
             toast.error("Error in deletion")
@@ -121,7 +129,8 @@ function FindAllBillType({allData,setAllData, handleFindALL}) {
     <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
 
           <button id='close-btn' onClick={closeModal}>close</button>
-          <h2>Form</h2>
+          {/* <h2>Form</h2> */}
+          <h4 style={{color:'black', marginBottom:'1rem'}}> <strong>Update ID : {dataForUpdate.billTypeId}</strong> </h4>
 
           <form onSubmit={handleSubmit} className='form'>
 

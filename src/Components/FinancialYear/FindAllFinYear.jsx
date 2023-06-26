@@ -122,7 +122,9 @@ function FindAllFinYear({ allData, setAllData, handleFindALL }) {
     <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
 
       <button id='close-btn' onClick={closeModal}>close</button>
-      <h2>Form</h2>
+      {/* <h2>Form</h2> */}
+      <h4 style={{color:'black', marginBottom:'1rem'}}> <strong>Update ID : {dataForUpdate.finYearId}</strong> </h4>
+      
 
       <form onSubmit={handleSubmit} className='form'>
 

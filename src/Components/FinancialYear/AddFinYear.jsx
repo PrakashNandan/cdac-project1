@@ -92,9 +92,9 @@ function AddFinYear() {
     }
   }
 
-  const lastIndex = currentPage * userPerPage;
-  const firstIndex = lastIndex - userPerPage;
-  const slicedfinYear = allFinYear.slice(firstIndex, lastIndex);
+  // const lastIndex = currentPage * userPerPage;
+  // const firstIndex = lastIndex - userPerPage;
+  // const slicedfinYear = allFinYear.slice(firstIndex, lastIndex);
 
 
 

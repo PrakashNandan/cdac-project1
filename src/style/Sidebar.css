@@ -73,7 +73,7 @@ body::-webkit-scrollbar {
   display: inline-flex;
   /* font-family: Inter, sans-serif; */
   font-size: 1rem;
-  font-weight: 650;
+  font-weight: 620;
   height: 56px;
   line-height: 24px;
   padding-left: 20px;
@@ -284,6 +284,10 @@ height:0px;}
   width: 100%;
   border: none;
   height: 39px;
+}
+
+.sidebar-dropdown3:hover {
+  background-color: #515151;
 }
 
 /* .sidebar-dropdown3:hover {

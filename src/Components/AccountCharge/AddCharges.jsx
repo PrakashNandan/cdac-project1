@@ -263,15 +263,15 @@ function Addcharges() {
               <thead>
                 <tr>
                   {/* <th>ID</th> */}
-                  <th>ChargeName</th>
-                  <th>ChargeType</th>
-                  <th>ChargeRate</th>
-                  <th>entryDate</th>
-                  <th>chargeAmount</th>
-                  <th>chargeApplyOnBaseAmount</th>
-                  <th>roundingType</th>
-                  <th>hoaPostingRequired</th>
-                  <th>depositToGovt</th>
+                  <th>Charge Name</th>
+                  <th>Charge Type</th>
+                  <th>Charge Rate</th>
+                  <th>Entry Date</th>
+                  <th>Charge Amount</th>
+                  <th>Charge Apply On Base Amount</th>
+                  <th>Rounding Type</th>
+                  <th>Hoa Posting Required</th>
+                  <th>Deposit To Govt</th>
 
                 </tr>
               </thead>
