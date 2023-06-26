@@ -106,12 +106,14 @@ function FindAllLedgerType({allData,setAllData, handleFindALL}) {
     <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
 
           <button id='close-btn' onClick={closeModal}>close</button>
-          <h2>Form</h2>
+          {/* <h2>Form</h2> */}
+          <h4 style={{color:'black', marginBottom:'1rem'}}> <strong>Update ID : {dataForUpdate.ledgerTypeId}</strong> </h4>
+
 
           <form onSubmit={handleSubmit}  className='form'>
 
           <div >
-              <label htmlFor="ledgerTypeId">ledgerType Id:</label>
+              {/* <label htmlFor="ledgerTypeId">ledgerType Id:</label> */}
               <input
                 type="number"
                 name="ledgerTypeId"
@@ -119,7 +121,7 @@ function FindAllLedgerType({allData,setAllData, handleFindALL}) {
                 value={dataForUpdate.ledgerTypeId}
                 onChange={handleInputChange}
                 placeholder="ledgerTypeId"
-                disabled
+                hidden
               />
           </div>
           <div >

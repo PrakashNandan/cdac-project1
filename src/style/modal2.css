@@ -1,0 +1,133 @@
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    
+    .modal_wrapper {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background-color: rgb(209, 209, 209);
+      opacity: 0.4;
+    }
+    
+    #modalParent {
+      max-height: 70vh;
+    }
+    
+    .modal_container1 {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      max-width: 60rem;
+      padding: 2rem 2rem;
+      border-radius: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+      max-height: 100vh;
+      overflow-y: auto;
+      margin-bottom: 0.6rem;
+      padding-top: 30px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+      /* height: 100%; */
+    
+    }
+    
+    .modal_container1 h2 {
+      margin-bottom: 0.6rem;
+      padding-top: 20px;
+    }
+    
+    .modalForm {
+      min-width: 300px;
+    }
+    
+    .modal-btn {
+      padding: 0.4rem 1.2rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 0.3rem;
+      background-color: #212121;
+      color: #fff;
+      cursor: pointer;
+      margin: 1rem;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      /* Ensure text is above pseudo-element */
+    }
+    
+    .modal-btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background-color: #6d6d6d;
+      transition: left 0.3s ease-in-out;
+      z-index: -1;
+      /* Place behind the button */
+    }
+    
+    .modal-btn:hover::before {
+      left: 0;
+    }
+    
+    #addButton {
+      margin-top: 60px;
+      margin-bottom: 10px;
+    }
+    
+    .user-list h3 {
+      padding: 20px 0;
+    }
+    
+    .user-list {
+      padding: 0 5%;
+    }
+    
+    #close-btn {
+      color: #fff;
+      background-color: red;
+      position: sticky;
+      left: 24.8rem;
+      bottom: 36.2rem;
+      padding: 0.3rem 0.8rem;
+      border: none;
+      cursor: pointer;
+      border-radius: 1rem;
+    }
+    
+    #close-btn:hover {
+      background-color: rgb(211, 0, 0);
+    }
+    
+    .user-list .userPerPageClass {
+      display: flex;
+      flex-wrap: wrap;
+      width: 24%;
+      margin-left: 15.4rem;
+    }
+    
+    @media (max-width: 1200px) {
+      .modal_container1 {
+        width: 70%;
+      }
+    }
+    
+    @media (max-width: 450px) {
+      .modalForm {
+        min-width: 200px;
+      }
+    }

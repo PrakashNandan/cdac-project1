@@ -18,6 +18,20 @@ select {
   transition: 0.35s ease-in-out;
   transition: all 0.35s ease-in-out;
 }
+#entry {
+  position:  relative;
+  
+  
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  #entry {
+    position: static;
+  }
+}
+
 input:focus {
   outline: 0;
   border-color: #166cbe;
@@ -50,10 +64,9 @@ input[type="radio"] + label i {
   padding-right: 0.4em;
 }
 input[type="radio"]:checked + label,
-input:checked + label:before
- {
-    background-image: linear-gradient(#42a1ec, #166cbe);
-    color: #fff;
+input:checked + label:before {
+  background-image: linear-gradient(#42a1ec, #166cbe);
+  color: #fff;
   border-color: #166cbe;
 }
 input[type="checkbox"] {
@@ -106,39 +119,51 @@ select:active {
 .input-group select option {
   background-color: #2887df;
   color: #fff;
-  
 }
-#op{
-    height:20px;
+#op {
+  height: 20px;
 }
 .input-group {
   margin-bottom: 1em;
-  zoom: 1;
+  margin-top: 20px;
 }
+
 .invoice input {
   height: 5.3vh;
 }
+
 .input-group:before,
 .input-group:after {
   content: "";
   display: table;
 }
+
 .input-group:after {
   clear: both;
 }
+
+@media only screen and (max-width: 590px) {
+  .invoice input {
+    height: 4vh;
+  }
+}
+
 .input-group-icon {
   position: relative;
 }
+
 .input-group-icon input {
   padding-left: 4.4em;
 }
+
 .input-group-icon select {
   padding-left: 4.4em;
   width: 35vw;
   height: 6vh;
   padding-bottom: 0px;
-  padding-top: 0px;
+  padding-top: 5px;
 }
+
 .input-group-icon .input-icon {
   position: absolute;
   top: -4px;
@@ -149,6 +174,7 @@ select:active {
   text-align: center;
   pointer-events: none;
 }
+
 .input-group-icon .input-icon:after {
   position: absolute;
   top: 0.3em;
@@ -159,6 +185,7 @@ select:active {
   content: "";
   height: 5vh;
 }
+
 .input-group-icon .input-icon i {
   -webkit-transition: 0.35s ease-in-out;
   -moz-transition: 0.35s ease-in-out;
@@ -166,183 +193,187 @@ select:active {
   transition: 0.35s ease-in-out;
   transition: all 0.35s ease-in-out;
 }
+
+@media only screen and (max-width: 590px) {
+  .input-group-icon input,
+  .input-group-icon select {
+    width: 100%;
+    padding-left: 3.2em;
+  }
+  
+  .input-group-icon .input-icon:after {
+    left: 2.8em;
+  }
+}
 .cont {
   max-width: 35rem;
-  padding: 1em 3em 2em 3em;
-  margin: 0em auto;
+  padding: 1em;
+  margin: 0 auto;
   background-color: #ffffff;
   border-radius: 4.2px;
-  width: 35rem;
-  margin-top: -2.6rem;
-  margin-left: 5rem;
+  width: 90%;
+  margin-top: -1.8rem;
   position: relative;
-  height : 100vh ;
+  height: 100vh;
   overflow-y: auto;
+  min-width: 300px;
 }
+
+@media (max-width: 450px) {
+  .cont {
+    min-width: 200px;
+  }
+}
+
+@media only screen and (min-width: 806px) {
+  .cont {
+    padding: 1em 3em 2em 3em;
+    width: 35rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .cont {
+    max-width: 50rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media only screen and (min-width: 1080px) {
+  .cont {
+    max-width: 60rem;
+  }
+}
+
+
+
+
+
+
 .cont::-webkit-scrollbar {
   display: none;
 }
-.row {
- 
-  margin-left: -3.7rem;
-}
-.row:before,
-.row:after {
-  content: "";
-  display: table;
-}
-.row:after {
-  clear: both;
-}
+
+  .row {
+    margin-left: -1rem;
+    margin-right: -1rem;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .row:before,
+  .row:after {
+    content: "";
+    display: table;
+  }
+  
+  .row:after {
+    clear: both;
+  }
+  
+  @media only screen and (max-width: 340px) {
+    .row {
+      margin-left: -1.6rem;
+      margin-right: -1.6rem;
+    }
+  }
+  
+  @media only screen and (max-width: 240px) {
+    .row {
+      margin-left: -2rem;
+      margin-right: -2rem;
+    }
+  }
+  
+  @media only screen and (max-width: 240px) {
+    .row {
+      margin-left: -2.4rem;
+      margin-right: -2.4rem;
+    }
+  }
+  
+
+
 .col-half {
-  padding-right: 10px;
+  padding-right: 1rem;
   float: left;
-  width: 50%;
+  width: 100%;
   margin-top: 2vh;
 }
+
 .col-half:last-of-type {
   padding-right: 0;
 }
+
 .col-third {
-  padding-right: 10px;
+  padding-right: 1rem;
   float: left;
-  width: 33.33333333%;
+  width: 100%;
 }
+
 .col-third:last-of-type {
   padding-right: 0;
 }
-@media only screen and (max-width: 540px) {
+
+@media only screen and (min-width: 640px) {
   .col-half {
-    width: 100%;
-    padding-right: 0;
+    width: 50%;
+    padding-right: 1rem;
   }
-}
-#submitbtn {
-  background-image: linear-gradient(#42a1ec, #166cbe);
-  border: 1px solid #166cbe;
-  border-radius: 4px;
-  box-sizing: border-box;
-  color: #ffffff;
-  cursor: pointer;
-  direction: ltr;
-  display: block;
-  font-family: "SF Pro Text", "SF Pro Icons", "AOS Icons", "Helvetica Neue",
-    Helvetica, Arial, sans-serif;
-  font-size: 17px;
-  font-weight: 400;
-  letter-spacing: -0.022em;
-  line-height: 1.47059;
-  min-width: 30px;
-  overflow: visible;
-  padding: 4px 15px;
-  text-align: center;
-  user-select: none;
-  /* -webkit-user-select: none; */
-  touch-action: manipulation;
-  white-space: nowrap;
-  margin-left: 10vw;
-  width: 9vw;
-  height: 6vh;
+
+  .col-third {
+    width: 33.33333333%;
+    padding-right: 1rem;
+  }
 }
 
-.button-15:disabled {
-  cursor: default;
-  opacity: 0.3;
+@media only screen and (min-width: 900px) {
+  .col-half {
+    width: 50%;
+    padding-right: 1rem;
+  }
+
+  .col-third {
+    width: 33.33333333%;
+    padding-right: 1rem;
+  }
+
+  .col-third:last-of-type {
+    padding-right: 1rem;
+  }
 }
 
-.button-15:hover {
-  background-image: linear-gradient(#51a9ee, #147bcd);
-  border-color: #1482d0;
-  text-decoration: none;
+@media only screen and (min-width: 1080px) {
+  .col-half {
+    width: 50%;
+    padding-right: 10px;
+  }
+
+  .col-third {
+    width: 33.33333333%;
+    padding-right: 10px;
+  }
+
+  .col-third:last-of-type {
+    padding-right: 10px;
+  }
 }
 
-.button-15:active {
-  background-image: linear-gradient(#3d94d9, #0067b9);
-  border-color: #006dbc;
-  outline: none;
-}
 
-.button-15:focus {
-  box-shadow: rgba(131, 192, 253, 0.5) 0 0 0 3px;
-  outline: none;
-}
-@media only screen and (max-width: 1080px) {
-  .cont {
-    max-width: 44vw;
 
-    margin-left: 28vw;
-  }
-  .input-group-icon select {
-    width: 40vw;
-  }
-  #submitbtn{
-    margin-left:10vw;
-  width:10vw;
-  }
-}
-@media only screen and (max-width: 900px) {
-  .cont {
-    max-width: 50vw;
 
-    margin-left: 25vw;
-  }
-  .input-group-icon select {
-    width: 45vw;
-  }
-  #submitbtn{
-    margin-left:10vw;
-  width:14vw;
-  }
-}
-@media only screen and (max-width: 775px) {
-  .cont {
-    max-width: 60vw;
 
-    margin-left: 20vw;
-  }
-  .input-group-icon select {
-    width: 50vw;
-  }
-  #submitbtn{
-    margin-left:10vw;
-  width:18vw;
-  }
-}
-@media only screen and (max-width: 650px) {
-  .cont {
-    max-width: 65vw;
-
-    margin-left: 17.5vw;
-  }
   .input-group-icon select {
     width: 55vw;
   }
-}
-@media only screen and (max-width: 590px) {
-  .cont {
-    max-width: 75vw;
+  #submitbtn {
+    align-items: center;
+    margin-left: 4.8rem;
+    width: 20vw;
+  }
 
-    margin-left: 12.5vw;
-  }
-  .input-group-icon select {
-    width: 62vw;
-  }
-  #submitbtn{
-    margin-left:15vw;
-  width:18vw;
-  }
-}
-@media only screen and (max-width: 590px) {
-  .input-group-icon input {
-    padding-left: 4.4em;
-    margin-bottom: -19px;
-    /* padding-bottom: 0px; */
-  }
-  .invoice input {
-    height: 5.3vh;
-    margin-bottom: 2vw;
-  }
-}
-.op1{
-    height: 4rem ;
-}
+
+ 

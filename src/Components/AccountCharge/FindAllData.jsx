@@ -143,7 +143,8 @@ function FindAllData({allData,setAllData, handleFindALL}) {
     <Mymodal closeModal={closeModal} handleSubmit={handleUpdateSubmit} handleInputChange={handleInputChange}  >
 
           <button id='close-btn' onClick={closeModal}>close</button>
-          <h2>Form</h2>
+          {/* <h2>Form</h2> */}
+          <h4 style={{color:'black', marginBottom:'1rem'}}> <strong>Update ID : {dataForUpdate.chargeId}</strong> </h4>
 
           <form onSubmit={handleUpdateSubmit}  className='form'>
 
@@ -153,7 +154,7 @@ function FindAllData({allData,setAllData, handleFindALL}) {
                 type="number"
                 name="id"
                 id="id"
-                value={dataForUpdate.id}
+                value={dataForUpdate.chargeId}
                 onChange={handleInputChange}
                 placeholder="ID"
                 hidden

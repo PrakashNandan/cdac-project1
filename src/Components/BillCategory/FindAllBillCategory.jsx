@@ -109,12 +109,13 @@ function FindAllBillCategory({allData,setAllData, handleFindALL}) {
     <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
 
           <button id='close-btn' onClick={closeModal}>close</button>
-          <h2>Form</h2>
+          {/* <h2>Form</h2> */}
+          <h4 style={{color:'black', marginBottom:'1rem'}}> <strong>Update ID : {dataForUpdate.billCategoryId}</strong> </h4>
 
           <form onSubmit={handleSubmit}  className='form'>
 
           <div >
-              <label htmlFor="billCategoryId">Bill Category ID:</label>
+              {/* <label htmlFor="billCategoryId">Bill Category ID:</label> */}
               <input
                 type="number"
                 name="billCategoryId"
@@ -122,7 +123,7 @@ function FindAllBillCategory({allData,setAllData, handleFindALL}) {
                 value={dataForUpdate.billCategoryId}
                 onChange={handleInputChange}
                 placeholder="billCategoryId"
-                disabled
+                hidden
               />
           </div>
           <div >

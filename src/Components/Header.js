@@ -2,9 +2,11 @@ import React from 'react'
 import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
+import { ToastContainer , toast } from 'react-toastify'
 import { logout, reset } from '../features/auth/authSlice'
 import Logo from '../img/Logo.svg'
-import { ToastContainer, toast } from 'react-toastify'
+
+
 
 function Header() {
 
@@ -15,12 +17,12 @@ function Header() {
   const onLogout = () => {
     dispatch(logout())
     dispatch(reset())
-    navigate('/')
-    toast.success("You are successfully LoggedOut")
+    navigate('/') 
+    toast.success("Successfully Logged out");
   }
 
   return (
-    <>
+ <>
     <header className='header'>
       <div className='logo'>
       <Link to='/'><img src={Logo} alt="Logo"></img></Link>
