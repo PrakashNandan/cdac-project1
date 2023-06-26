@@ -13,6 +13,7 @@ import Db from "./Db";
 import Homepage from "./Homepage";
 import AddBillbox from "./Billbox/AddBillbox"
 import BillboxList from "./Billbox/BillboxList";
+import Employeedetails from "./Employee/Employeedetails";
 function UserDetail() {
   // const
   const [showChargeList, setShowChargeList] = useState(false);
@@ -34,10 +35,12 @@ function UserDetail() {
   const [ShowDashboard, setShowDashboard] = useState(false);
   const [ShowHomepage, setShowHomepage] = useState(true);
   const [ShowBillbox, setShowBillbox] = useState(false);
+  const [ShowEmployee, setShowEmployee] = useState(false);
   return (
     <div>
       <Sidebar
         setShowBillbox={setShowBillbox}
+        setShowEmployee={setShowEmployee}
         setShowHomepage= {setShowHomepage}
         setShowDashboard= {setShowDashboard}
         setShowChargeList={setShowChargeList}
@@ -57,8 +60,10 @@ function UserDetail() {
         setShowAddFinYear={setShowAddFinYear}
         setShowFinYearList={setShowFinYearList}
       ></Sidebar>
+      {(ShowEmployee)&&
+<Employeedetails></Employeedetails>}
        {(ShowBillbox)&&
-<AddBillbox></AddBillbox>}
+<BillboxList></BillboxList>}
   {(ShowHomepage)&&
 <Homepage></Homepage>}
     {(ShowDashboard)&&

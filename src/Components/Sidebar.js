@@ -10,6 +10,7 @@ import "../style/Sidebar.css";
 import { useNavigate } from "react-router-dom";
 
 const TripleLevelDropdown = ({ setShowChargeList,
+  setShowEmployee , 
   setShowBillbox ,
   setShowHomepage , 
   setShowDashboard,
@@ -69,6 +70,7 @@ function handleClick0() {
   setIsDropdownOpen(false);
     setIsDropdown2Open(false);
     setIsDropdown3Open(false);
+    setShowEmployee(false) ;
 
   setShowHomepage(false);
   setShowBillbox(false) ;
@@ -108,6 +110,7 @@ function handleClick0() {
     setShowAddLedgerType(false);
     setShowLedgerTypeList(false);
     setShowDeptList(false);
+    setShowEmployee(false) ;
     setShowAddDept(false);
     setShowAddFinYear(false);
     setShowFinYearList(false);
@@ -130,6 +133,7 @@ function handleClick0() {
     setShowAddLedgerType(false);
     setShowLedgerTypeList(false);
     setShowDeptList(false);
+    setShowEmployee(false) ;
     setShowAddDept(false);
     setShowAddFinYear(false);
     setShowFinYearList(false);
@@ -153,6 +157,7 @@ function handleClick0() {
     setShowLedgerTypeList(false);
     setShowDeptList(false);
     setShowAddDept(false);
+    setShowEmployee(false) ;
     setShowAddFinYear(false);
     setShowFinYearList(false);
   }
@@ -175,6 +180,7 @@ function handleClick0() {
     setShowLedgerTypeList(false);
     setShowDeptList(true);
     setShowAddDept(false);
+    setShowEmployee(false) ;
     setShowAddFinYear(false);
     setShowFinYearList(false);
   }
@@ -198,6 +204,7 @@ function handleClick0() {
     setShowDeptList(false);
     setShowAddDept(false);
     setShowAddFinYear(false);
+    setShowEmployee(false) ;
     setShowFinYearList(true);
   }
   
@@ -214,6 +221,7 @@ function handleClick0() {
     setShowAddFundingSource(false);
     setShowFundingSourceList(true);
     setShowAddPaymentType(false);
+    setShowEmployee(false) ;
     setShowPaymentTypeList(false);
     setShowAddLedgerType(false);
     setShowLedgerTypeList(false);
@@ -239,6 +247,7 @@ function handleClick0() {
     setShowAddLedgerType(false);
     setShowLedgerTypeList(true);
     setShowBillbox(false) ;
+     setShowEmployee(false) ;
     setShowDeptList(false);
     setShowAddDept(false);
     setShowAddFinYear(false);
@@ -264,6 +273,7 @@ function handleClick0() {
     setShowAddDept(false);
     setShowAddFinYear(false);
     setShowBillbox(false) ;
+    setShowEmployee(false) ;
     setShowFinYearList(false);  }
 
 function handleClick17 (){
@@ -286,8 +296,30 @@ function handleClick17 (){
   setShowAddDept(false);
   setShowAddFinYear(false);
   setShowFinYearList(false);
+  setShowEmployee(false) ;
 }
-
+function handleClick18 (){
+  setShowChargeList(false);
+  setShowEmployee(true) ;
+  setShowBillbox(false);
+  setShowHomepage(false);
+  setShowDashboard(false);
+  setShowAddCharge(false);
+  setShowBillTypeList(false);
+  setShowAddBillType(false);
+  setShowAddBillCategory(false);
+  setShowBillCategoryList(false);
+  setShowAddFundingSource(false);
+  setShowFundingSourceList(false);
+  setShowAddPaymentType(false);
+  setShowPaymentTypeList(false);
+  setShowAddLedgerType(false);
+  setShowLedgerTypeList(false);
+  setShowDeptList(false);
+  setShowAddDept(false);
+  setShowAddFinYear(false);
+  setShowFinYearList(false);
+}
   const sidebarRef = useRef(null);
 
   useEffect(() => {
@@ -585,7 +617,7 @@ function handleClick17 (){
             </button>
             {isDropdown2Open && (
               <ul className="sidebar-submenu">
-                <li>
+                {/* <li>
                 <button
                           className="sidebar-dropdown3"
                           onClick={() => handleClick17()}
@@ -593,13 +625,13 @@ function handleClick17 (){
                         Add Bill Box
                         </button>
 
-                </li>
+                </li> */}
                 <li>
                 <button
                           className="sidebar-dropdown3"
                           onClick={() => handleClick17()}
                         >
-                         Bill Box List
+                         Bill Box 
                         </button>
                 </li>
                 
@@ -619,9 +651,15 @@ function handleClick17 (){
             </button>
             {isDropdown3Open && (
               <ul className="sidebar-submenu">
-                <li>A</li>
-                <li>B</li>
-                <li>C</li>
+                <li>
+                <button
+                          className="sidebar-dropdown3"
+                          onClick={() => handleClick18()}
+                        >
+                      Employee Details
+                        </button>
+
+                </li>
               </ul>
             )}
           </li>
