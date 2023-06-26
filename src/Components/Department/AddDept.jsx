@@ -164,7 +164,7 @@ function AddDept() {
                 <tr>
                   {/* <th>ID</th> */}
                   <th>Department Name</th>
-                  <th>Department code</th>
+                  <th>Department Code</th>
 
                 </tr>
               </thead>

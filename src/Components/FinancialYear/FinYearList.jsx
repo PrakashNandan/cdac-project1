@@ -166,12 +166,12 @@ function FinYearList() {
                     <table className='table userTable'>
                         <thead>
                             <tr>
-                                <th>FinYear ID</th>
-                                <th>finYearStartDate</th>
-                                <th>finYearEndDate</th>
-                                <th>finYearName</th>
-                                <th>remarks</th>
-                                <th>entryDate</th>
+                                <th>Financial Year ID</th>
+                                <th>Financial Year Start Date</th>
+                                <th>Financial Year End Date</th>
+                                <th>Financial Year Name</th>
+                                <th>Remarks</th>
+                                <th>Entry Date</th>
                                 <th>Action</th>
 
 

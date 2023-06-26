@@ -180,7 +180,7 @@ function AddPaymentType() {
               <thead>
                 <tr>
                   {/* <th>ID</th> */}
-                  <th>PaymentType Name</th>
+                  <th>Payment Type Name</th>
                   <th>Entry Date</th>
                   <th>Is Valid</th>
 

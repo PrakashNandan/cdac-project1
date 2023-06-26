@@ -86,8 +86,6 @@ function FundingSourceList() {
              //alert("inside then")
             console.log(res);
             const {pageNumber} = res.data.pageList;
-            
-            
            
             if(pageNumber!==''){
             setIsAllData(true);

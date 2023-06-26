@@ -150,7 +150,7 @@ function AddFundingSource() {
               <thead>
                 <tr>
                   {/* <th>ID</th> */}
-                  <th>FundingSource Name</th>
+                  <th>Funding Source Name</th>
 
                 </tr>
               </thead>

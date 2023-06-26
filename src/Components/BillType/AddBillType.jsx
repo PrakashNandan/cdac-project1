@@ -155,7 +155,6 @@ function AddBillType() {
 
   return (
     <>
-
       <button className='modal-btn' id='addButton' onClick={() => setShowModal(true)}>Add Bill Type</button>
       {ShowModal && mainModal}
 
@@ -170,8 +169,8 @@ function AddBillType() {
               <thead>
                 <tr>
                   {/* <th>ID</th> */}
-                  <th>BillTypeName</th>
-                  <th>entryDate</th>
+                  <th>Bill Type Name</th>
+                  <th>Entry Date</th>
 
                 </tr>
               </thead>

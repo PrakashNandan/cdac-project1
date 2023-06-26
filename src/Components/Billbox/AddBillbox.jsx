@@ -136,9 +136,9 @@ function AddBillbox() {
   const mainModal = (
 
 
-    <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
+    <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange}>
 
-      <button id='close-btn' onClick={closeModal}>close</button>
+      <button id='close-btn-bb' onClick={closeModal}>close</button>
 
       <div className="cont">
         <form>
@@ -295,16 +295,16 @@ function AddBillbox() {
               <thead>
                 <tr>
                   {/* <th>ID</th> */}
-                  <th>billSlNo</th>
-                  <th>BillType</th>
-                  <th>BillCategory</th>
-                  <th>FundingSource</th>
-                  <th>invoiceNo</th>
-                  <th>invoiceDate</th>
-                  <th>entryDate</th>
-                  <th>baseAmount</th>
-                  <th>billNetAmount</th>
-                  <th>valid</th>
+                  <th>Bill No</th>
+                  <th>Bill Type</th>
+                  <th>Bill Category</th>
+                  <th>Funding Source</th>
+                  <th>Invoice No</th>
+                  <th>Invoice Date</th>
+                  <th>Entry Date</th>
+                  <th>Base Amount</th>
+                  <th>Bill Net Amount</th>
+                  <th>Valid</th>
                 </tr>
               </thead>
               <tbody>

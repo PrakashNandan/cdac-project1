@@ -178,8 +178,8 @@ function BillCategoryList() {
                 <table className='table userTable'>
                     <thead>
                         <tr>
-                            <th>BillCategotyID</th> 
-                            <th>billCategoryName</th>
+                            <th>Bill Categoty ID</th> 
+                            <th>Bill Category Name</th>
                             <th>Action</th>
                            
                         </tr>

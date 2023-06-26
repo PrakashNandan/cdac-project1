@@ -164,9 +164,9 @@ function BillTypeList() {
                     <table className='table userTable'>
                         <thead>
                             <tr>
-                                <th>BillType ID</th>
-                                <th>BillType</th>
-                                <th>EntryDate</th>
+                                <th>Bill Type ID</th>
+                                <th>Bill Type</th>
+                                <th>Entry Date</th>
                                 <th>Action</th>
                             </tr>
                         </thead>

@@ -155,7 +155,7 @@ function AddBillCategory() {
               <thead>
                 <tr>
                   {/* <th>ID</th> */}
-                  <th>billCategoryName</th>
+                  <th>Bill Category Name</th>
 
                 </tr>
               </thead>

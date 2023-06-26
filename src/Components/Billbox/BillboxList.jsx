@@ -86,17 +86,17 @@ function BillboxList() {
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>billSlNo</th>
-                                <th>BillType</th>
-                                <th>BillCategory</th>
-                                <th>FundingSource</th>
-                                <th>invoiceNo</th>
-                                <th>invoiceDate</th>
-                                <th>entryDate</th>
-                                <th>baseAmount</th>
-                                <th>billNetAmount</th>
-                                <th>valid</th>
-                                <th>remarks</th>
+                                <th>Bill No</th>
+                                <th>Bill Type</th>
+                                <th>Bill Category</th>
+                                <th>Funding Source</th>
+                                <th>Invoice No</th>
+                                <th>Invoice Date</th>
+                                <th>Entry Date</th>
+                                <th>Base Amount</th>
+                                <th>Bill Net Amount</th>
+                                <th>Valid</th>
+                                <th>Remarks</th>
                                 <th>Actions</th>
                                 <th>Download</th>
                             </tr>

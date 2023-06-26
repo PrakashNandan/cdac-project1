@@ -554,16 +554,16 @@ const TripleLevelDropdown = ({ setShowChargeList,
               className="sidebar-dropdown"
               onClick={() => handleClick0()}
             >
-              <i class="fa fa-home" aria-hidden="true" style={{ paddingRight: '20px' }}></i>
+              <i class="fa fa-home" aria-hidden="true" style={{ paddingRight: '15px' }}></i>
               Dashboard
             </button>
           </li>
           <li>
             <button className={`sidebar-dropdown ${isDropdownOpen ? "sidebar-dropdown-open" : ""}`} onClick={toggleDropdown}>
               <div className="grid1">
-                <div className="icn" ><i class="fa fa-user" aria-hidden="true"></i></div>
+                <div className="icn" style={{ paddingRight: '6px' }} ><i class="fa fa-user" aria-hidden="true"></i></div>
                 <div className="gridX">Admin</div>
-                <div className={` ${isDropdownOpen ? "down" : "up"}`} style={{ marginLeft: '145px' }}><FontAwesomeIcon
+                <div className={` ${isDropdownOpen ? "down" : "up"} arrow-icon1`} ><FontAwesomeIcon
                   icon={faAngleRight}
                 /></div>
               </div>
@@ -826,9 +826,9 @@ const TripleLevelDropdown = ({ setShowChargeList,
           <li>
             <button className="sidebar-dropdown" onClick={toggleDropdown2}>
               <div className="grid2">
-                <div className="icn" ><i class="fa fa-exchange" aria-hidden="true"></i></div>
+                <div className="icn" style={{ paddingRight: '4px' }} ><i class="fa fa-exchange" aria-hidden="true"></i></div>
                 <div className="gridX">Transactions</div>
-                <div className={` ${isDropdown2Open ? "down" : "up"}`} style={{ marginLeft: '89px' }}><FontAwesomeIcon
+                <div className={` ${isDropdown2Open ? "down" : "up"} arrow-icon1`}><FontAwesomeIcon
                   icon={faAngleRight}
                 /></div>
               </div>
@@ -861,9 +861,9 @@ const TripleLevelDropdown = ({ setShowChargeList,
             <button className="sidebar-dropdown" onClick={toggleDropdown3}>
 
               <div className="grid3">
-                <div className="icn" ><i class="fa fa-users" aria-hidden="true"></i></div>
+                <div className="icn"><i class="fa fa-users" aria-hidden="true"></i></div>
                 <div className="gridX">Employee</div>
-                <div className={` ${isDropdown3Open ? "down" : "up"}`} style={{ marginLeft: '111px' }}><FontAwesomeIcon
+                <div className={` ${isDropdown3Open ? "down" : "up"} arrow-icon1`}><FontAwesomeIcon
                   icon={faAngleRight}
                 /></div>
               </div>

@@ -152,8 +152,7 @@ function AddLedgerType() {
               <thead>
                 <tr>
                   {/* <th>ID</th> */}
-                  <th>LidgerTypeName</th>
-
+                  <th>Lidger Type Name</th>
                 </tr>
               </thead>
               <tbody>
