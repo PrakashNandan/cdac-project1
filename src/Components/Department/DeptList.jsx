@@ -12,6 +12,7 @@ import '../../style/modal.css'
 import UserData from '../AccountCharge/UserData.jsx';
 import '../../style/UserData.css'
 import DeptData from './DeptData.jsx';
+import { MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
 
 
 function DeptList() {
@@ -31,6 +32,8 @@ function DeptList() {
     const [slicedAllData,setSlicedAllData]=useState([]);
     const [isAllData, setIsAllData]=useState(false);
      const [isReady , setIsready] =useState(false);
+     const [isSubmitting, setIsSubmitting] = useState(false);
+
 
 
      const [ShowModal, setShowModal]=useState(false);
@@ -190,50 +193,54 @@ function DeptList() {
 
     }
 
-    const mainModal =(
+    const mainModal = (
 
         <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
-
-              <button id='close-btn' onClick={closeModal}>close</button>
-                <h2>Form</h2>
-
-              <form onSubmit={handleSubmit}  className='form'>
-
-              <div >
-                  <label htmlFor="deptName">Department Name:</label>
-                  <input
-                    type="text"
-                    name="deptName"
-                    id="deptName"
-                    value={dept.deptName}
-                    onChange={handleInputChange}
-                    placeholder="Enter deptName"
-                    required
-                  />
-              </div>
-              <div >
-                  <label htmlFor="deptCode">Department code:</label>
-                  <input
-                    type="text"
-                    name="deptCode"
-                    id="deptCode"
-                    value={dept.deptCode}
-                    onChange={handleInputChange}
-                    placeholder="Enter deptCode"
-                    required
-                  />
-              </div>
-     
-      
-        
-                        
-              {/* onClick={closeModal} */}
-                <button className='modal-btn' type='submit' >Submit</button>
-              </form>
-
+    
+          <button id='close-btn' onClick={closeModal}>close</button>
+          <h2>Form</h2>
+    
+          <form onSubmit={handleSubmit} className='form'>
+    
+            <div className="d-flex flex-row align-items-center mb-3 mt-3">
+              <MDBIcon fas icon="pen-to-square" size='lg' style={{ marginRight: '10px' }} />
+              <MDBInput
+                label="Department Name"
+                type="text"
+                name="deptName"
+                id="deptName"
+                value={dept.deptName}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+    
+            <div className="d-flex flex-row align-items-center mb-3">
+              <MDBIcon fas icon="pen-to-square" size='lg' style={{ marginRight: '13px' }} />
+              <MDBInput
+                label="Department Code"
+                type="text"
+                name="deptCode"
+                id="deptCode"
+                value={dept.deptCode}
+                onChange={handleInputChange}
+              // required
+              />
+            </div>
+    
+            {isSubmitting ? (
+              <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} disabled>
+                <span class="spinner-border" style={{ margin: '0 0.3rem', height: '1.2rem', width: '1.2rem' }} role="status" aria-hidden="true"></span>
+                Submitting...
+              </MDBBtn>
+            ) : (
+              <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} >Submit</MDBBtn>
+            )}
+    
+          </form>
+    
         </Mymodal>
-    )
-
+      )
 
     return (
 

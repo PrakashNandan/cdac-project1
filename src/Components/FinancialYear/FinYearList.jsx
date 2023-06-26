@@ -13,6 +13,8 @@ import '../../style/modal.css'
 import UserData from '../AccountCharge/UserData.jsx';
 import '../../style/UserData.css'
 import FinYearData from './FinYearData.jsx';
+import { MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
+
 
 function FinYearList() {
 
@@ -31,6 +33,8 @@ function FinYearList() {
     const [slicedAllData,setSlicedAllData]=useState([]);
     const [isAllData, setIsAllData]=useState(false);
      const [isReady , setIsready] =useState(false);
+     const [isSubmitting, setIsSubmitting] = useState(false);
+
 
     // useEffect(() => {
     //     handleFindALL();
@@ -191,86 +195,94 @@ function FinYearList() {
 
     }
 
-    const mainModal =(
+    const mainModal = (
 
         <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
-
-              <button id='close-btn' onClick={closeModal}>close</button>
-                <h2>Form</h2>
-
-              <form onSubmit={handleSubmit}  className='form'>
-
-              <div >
-                  <label htmlFor="finYearStartDate">Financial Year Start Date :</label>
-                  <input
-                    type="date"
-                    name="finYearStartDate"
-                    id="finYearStartDate"
-                    value={finYear.finYearStartDate}
-                    onChange={handleInputChange}
-                    placeholder="Enter financial Year Start Date"
-                    required
-                  />
-              </div>
-              <div >
-                  <label htmlFor="finYearEndDate">Financial Year End Date:</label>
-                  <input
-                    type="date"
-                    name="finYearEndDate"
-                    id="finYearEndDate"
-                    value={finYear.finYearEndDate}
-                    onChange={handleInputChange}
-                    placeholder="Enter finYearEndDate"
-                    required
-                  />
-              </div>
-     
-              <div >
-                  <label htmlFor="finYearName">Financial Year Name :</label>
-                  <input
-                    type="text"
-                    name="finYearName"
-                    id="finYearName"
-                    value={finYear.finYearName}
-                    onChange={handleInputChange}
-                    placeholder="Enter finYearName"
-                    required
-                  />
-              </div>
-              <div >
-                  <label htmlFor="remarks">Remarks :</label>
-                  <input
-                    type="text"
-                    name="remarks"
-                    id="remarks"
-                    value={finYear.remarks}
-                    onChange={handleInputChange}
-                    placeholder="Enter remarks"
-                    required
-                  />
-              </div>
-              <div >
-                  <label htmlFor="entryDate">Entry Date: &nbsp;</label>
-                  <input
-                    type="date"
-                    name="entryDate"
-                    id="entryDate"
-                    value={finYear.entryDate}
-                    onChange={handleInputChange}
-                    placeholder="Enter entryDate "
-                    required
-                  />
-              </div>
-     
-  
-                        
-              {/* onClick={closeModal} */}
-                <button className='modal-btn' type='submit' >Submit</button>
-              </form>
-
+    
+          <button id='close-btn' onClick={closeModal}>close</button>
+          <h2>Form</h2>
+    
+          <form onSubmit={handleSubmit} className='form'>
+    
+            <div className="d-flex flex-row align-items-center mb-3 mt-3">
+              <MDBIcon fas icon="calendar" size='lg' style={{ marginRight: '10px' }} />
+              <MDBInput
+                label="Financial Year Start Date"
+                type="date"
+                name="finYearStartDate"
+                id="finYearStartDate"
+                value={finYear.finYearStartDate}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+    
+            <div className="d-flex flex-row align-items-center mb-3">
+              <MDBIcon fas icon="calendar" size='lg' style={{ marginRight: '13px' }} />
+              <MDBInput
+                label="Financial Year End Date"
+                type="date"
+                name="finYearEndDate"
+                id="finYearEndDate"
+                value={finYear.finYearEndDate}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+    
+            <div className="d-flex flex-row align-items-center mb-3">
+              <MDBIcon fas icon="pen-to-square" size='lg' style={{ marginRight: '13px' }} />
+              <MDBInput
+                label="Financial Year Name"
+                type="text"
+                name="finYearName"
+                id="finYearName"
+                value={finYear.finYearName}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+    
+            <div className="d-flex flex-row align-items-center mb-3">
+              <MDBIcon fas icon="pen-to-square" size='lg' style={{ marginRight: '13px' }} />
+              <MDBInput
+                label="Remarks"
+                type="text"
+                name="remarks"
+                id="remarks"
+                value={finYear.remarks}
+                onChange={handleInputChange}
+              // required
+              />
+            </div>
+    
+            <div className="d-flex flex-row align-items-center mb-3">
+              <MDBIcon fas icon="calendar" size='lg' style={{ marginRight: '13px' }} />
+              <MDBInput
+                label="Entry Date"
+                type="date"
+                name="entryDate"
+                id="entryDate"
+                value={finYear.entryDate}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+    
+    
+            {isSubmitting ? (
+              <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} disabled>
+                <span class="spinner-border" style={{ margin: '0 0.3rem', height: '1.2rem', width: '1.2rem' }} role="status" aria-hidden="true"></span>
+                Submitting...
+              </MDBBtn>
+            ) : (
+              <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} >Submit</MDBBtn>
+            )}
+    
+          </form>
+    
         </Mymodal>
-    )
-
+      )
     return (
 
         <>

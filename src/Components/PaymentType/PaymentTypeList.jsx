@@ -11,6 +11,8 @@ import Mymodal from '../ShowModal.jsx'
 import '../../style/modal.css'
 import PaymentTypeData from './PaymentTypeData.jsx'
 import '../../style/UserData.css'
+import { MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
+
 
 function PaymentTypeList() {
 
@@ -29,6 +31,8 @@ function PaymentTypeList() {
     const [slicedAllData,setSlicedAllData]=useState([]);
     const [isAllData, setIsAllData]=useState(false);
      const [isReady , setIsready] =useState(false);
+     const [isSubmitting, setIsSubmitting] = useState(false);
+
 
     // useEffect(() => {
     //     handleFindALL();
@@ -185,56 +189,67 @@ function PaymentTypeList() {
     // const findDataById = () => {
     //     return allData.find((item) => item.id === inputId);
     //   };
-    const mainModal =(
+    const mainModal = (
 
         <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
-
-              <button id='close-btn' onClick={closeModal}>close</button>
-              <h2>Form</h2>
-
-              <form onSubmit={handleSubmit}  className='form'>
-
-              <div >
-                  {/* <label htmlFor="chargeName">Charge Name:</label> */}
-                  <input
-                    type="text"
-                    name="paymentTypeName"
-                    id="paymentTypeName"
-                    value={paymentType.paymentTypeName}
-                    onChange={handleInputChange}
-                    placeholder="Enter payment Type"
-                    required
-                  />
-              </div>
-              <div >
-                  <label htmlFor="entryDate">Entry Date: &nbsp;</label>
-                  <input
-                    type="date"
-                    name="entryDate"
-                    id="entryDate"
-                    value={paymentType.entryDate}
-                    onChange={handleInputChange}
-                    placeholder="Enter entryDate"
-                    // required
-                  />
-              </div>
-              <div >
-                  <input
-                    type="number"
-                    name="isValid"
-                    id="isValid"
-                    value={paymentType.isValid}
-                    onChange={handleInputChange}
-                    placeholder="isValid"
-                    // required
-                  />
-              </div>
-              {/* onClick={closeModal} */}
-                <button className='modal-btn' type='submit' >Submit</button>
-              </form>
-
+    
+          <button id='close-btn' onClick={closeModal}>close</button>
+          <h2>Form</h2>
+    
+          <form onSubmit={handleSubmit} className='form'>
+    
+            <div className="d-flex flex-row align-items-center mb-3 mt-3">
+              <MDBIcon fas icon="pen-to-square" size='lg' style={{ marginRight: '10px' }} />
+              <MDBInput
+                label="Payment Type"
+                type="text"
+                name="paymentTypeName"
+                id="paymentTypeName"
+                value={paymentType.paymentTypeName}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+    
+            <div className="d-flex flex-row align-items-center mb-3">
+              <MDBIcon fas icon="calendar" size='lg' style={{ marginRight: '13px' }} />
+              <MDBInput
+                label="Entry Date"
+                type="date"
+                name="entryDate"
+                id="entryDate"
+                value={paymentType.entryDate}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+    
+            <div className="d-flex flex-row align-items-center mb-3">
+              <MDBIcon fas icon="pen-to-square" size='lg' style={{ marginRight: '13px' }} />
+              <MDBInput
+                label="Is Valid?"
+                type="number"
+                name="isValid"
+                id="isValid"
+                value={paymentType.isValid}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+    
+            {isSubmitting ? (
+              <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} disabled>
+                <span class="spinner-border" style={{ margin: '0 0.3rem', height: '1.2rem', width: '1.2rem' }} role="status" aria-hidden="true"></span>
+                Submitting...
+              </MDBBtn>
+            ) : (
+              <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} >Submit</MDBBtn>
+            )}
+    
+          </form>
+    
         </Mymodal>
-    )
+      )
 
 
     return (
