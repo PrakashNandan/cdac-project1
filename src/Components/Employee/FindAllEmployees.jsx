@@ -105,6 +105,7 @@ function FindAllEmployees({allData,setAllData, handleFindALL}) {
         event.preventDefault();
         setIsSubmitting(true);
         try{
+        console.log(dataForUpdate);
           const res = await privateAxios.put(`/charge/updateUser/${uid}`, dataForUpdate );
           console.log(res.data);
           toast.success("updated Successfully")
@@ -135,7 +136,7 @@ function FindAllEmployees({allData,setAllData, handleFindALL}) {
 
           <form onSubmit={handleSubmit} className='form'>
 
-          <div className="d-flex flex-row align-items-center mb-3 mt-3">
+          {/* <div className="d-flex flex-row align-items-center mb-3 mt-3">
           <MDBIcon fas icon="address-card" size='lg' style={{ marginRight: '5px' }} />
           <MDBInput
             label="User ID"
@@ -146,7 +147,7 @@ function FindAllEmployees({allData,setAllData, handleFindALL}) {
             onChange={handleInputChange}
             disabled
           />
-        </div>
+        </div> */}
 
         <div className="d-flex flex-row align-items-center mb-3">
           <MDBIcon fas icon="pen-to-square" size='lg' style={{ marginRight: '10px' }} />

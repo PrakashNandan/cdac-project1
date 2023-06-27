@@ -15,8 +15,9 @@ import { MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } 
 import FindAllEmployees from './FindAllEmployees'
 
 function Employeedetails() {
-      const navigate = useNavigate();
+      
       const [allData, setAllData] = useState([]);
+      const [roleList, setRoleList] = useState([]);
       const [isError, setisError] = useState('');
       const [inputId, setInputId] = useState('');
       const [showAllData, setShowAllData] = useState(true);
@@ -41,15 +42,10 @@ function Employeedetails() {
       // let firstIndex = lastIndex - pageSize;
       // let slicedAllData=allData.slice(firstIndex, lastIndex);
       const [user, setUser] = useState({
-          chargeName: '',
-          chargeType: '',
-          chargeRate: '',
-          entryDate: '',
-          chargeAmount: '',
-          chargeApplyOnBaseAmount: '',
-          roundingType: '',
-          hoaPostingRequired: false,
-          depositToGovt: false,
+          userName: '',
+          email: '',
+          mobile: '',
+        //   role:''
         }, []);
       
         const [users, setUsers] = useState([]);
@@ -59,9 +55,9 @@ function Employeedetails() {
       
       
         const handleInputChange = (event) => {
-          const { name, value, type, checked } = event.target;
-          const inputValue = type === 'checkbox' ? checked : value;
-          setUser((prevUser) => ({ ...prevUser, [name]: inputValue }));
+          const { name, value} = event.target;
+          
+          setUser((prevUser) => ({ ...prevUser, [name]: value }));
         };
         const handleSubmit = async (event) => {
   
@@ -72,7 +68,8 @@ function Employeedetails() {
       
       
           try {
-            const res = await  privateAxios.post("/charge/save", user)
+            console.log(user);
+            const res = await  privateAxios.post("/charge/newUser", user)
             .then( (Response)=>console.log(Response))
             .catch( (err) => console.log(err))
       
@@ -87,6 +84,7 @@ function Employeedetails() {
       
           setIsSubmitting(false);
           closeModal();
+          handleFindALL();
       
         };
       
@@ -105,6 +103,7 @@ function Employeedetails() {
               if(pageNumber!==''){
               setIsAllData(true);
               setAllData(res.data.pageList.content);
+              setRoleList(res.data.roleList);
               setTotalPages(res.data.pageList.totalPages);
               setTotalElements(res.data.pageList.totalElements);
                if(pageSize>res.data.pageList.content?.length){
@@ -151,7 +150,16 @@ function Employeedetails() {
       //       return Promise.reject(error);
       //     }
       //   );
-  
+  function handleSelect(event){
+   console.log(event.target);
+     const {name, value} = event.target;
+     setUser((prevUser)=>({...prevUser, [name]:value}))
+
+  }
+  useEffect(()=>{
+    console.log(roleList);
+
+  },[roleList])
   
       const handleFindALL = async () => {
           alert("handleFindAll called")
@@ -220,21 +228,21 @@ function Employeedetails() {
           console.log(slicedAllData +" sliced data");
       })
       
-      const mainModal =(
-
+      const mainModal  =(
         <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
-    <button id='close-btn' onClick={closeModal}>close</button>
+
+<button id='close-btn' onClick={closeModal}>close</button>
     <i class="far fa-address-card fa-6x" size='lg'></i>   <h2>Add Employee</h2>
 <form onSubmit={handleSubmit} className='modalForm' id='modalForm'>
     
     <div className="d-flex flex-row align-items-center mb-3 mt-3">
       <MDBIcon fas icon="user-pen" size='lg' style={{marginRight: '5px'}} />
       <MDBInput
-        label="Username"
+        label="User name"
         type="text"
-        name="chargeName"
-        id="chargeName"
-        value={user.chargeName}
+        name="userName"
+        id="userName"
+        value={user.userName}
         onChange={handleInputChange}
         required
       />
@@ -244,10 +252,10 @@ function Employeedetails() {
       <MDBIcon   class="fas fa-mobile fa-lg" size='lg' style={{marginRight: '10px'}}/>
       <MDBInput
         label="Mobile No"
-        type="number"
-        name="chargeType"
-        id="chargeType"
-        value={user.chargeType}
+        type="string"
+        name="mobile"
+        id="mobile"
+        value={user.mobile}
         onChange={handleInputChange}
       // required
       />
@@ -258,92 +266,36 @@ function Employeedetails() {
       <MDBInput
         label="Email Id"
         type="email"
-        name="chargeRate"
-        id="chargeRate"
-        value={user.chargeRate}
+        name="email"
+        id="email"
+        value={user.email}
         onChange={handleInputChange}
       // required
       />
     </div>
 
-    {/* <div className="d-flex flex-row align-items-center mb-3">
-      <MDBIcon fas icon="calendar" size='lg' style={{marginRight: '13px'}}/>
-      <MDBInput
-        label="Entry Date"
-        type="date"
-        name="entryDate"
-        id="entryDate"
-        value={user.entryDate}
-        onChange={handleInputChange}
-      // required
-      />
-    </div> */}
+ 
 
-    {/* <div className="d-flex flex-row align-items-center mb-3">
-      <MDBIcon fas icon="indian-rupee-sign" size='lg' style={{marginRight: '15px', marginLeft: '3px'}}/>
-      <MDBInput
-        label="Charge Amount"
-        type="number"
-        name="chargeAmount"
-        id="chargeAmount"
-        value={user.chargeAmount}
-        onChange={handleInputChange}
-      // required
-      />
-    </div> */}
 
     <div className="d-flex flex-row align-items-center mb-3">
       <MDBIcon fas icon="pen-to-square" size='lg' style={{marginRight: '10px'}}/>
-      <select className="form-select custom-select-width" style={{ height: '40px' }}>
+      <select className="form-select custom-select-width" style={{ height: '40px' }} name='role' value={user.role} onChange={handleSelect}>
                       <option disabled>Role List</option>
-                      <option>Role 1</option>
-                      <option>Role 2</option>
-                      <option>Role 3</option>
+                      {roleList.map((role)=>(
+                        // console.log(role);
+                        // const { id, roleName } = role;
+                        // console.log(roleName+"prakash");
+                        <option key={role.id} value={role.roleName}>{role.roleName}</option>
+                      ))}
+                      
+                      
                     </select>
-        {/* label="Charge Apply on Base Amt."
-        type="number"
-        name="chargeApplyOnBaseAmount"
-        id="chargeApplyOnBaseAmount"
-        value={user.chargeApplyOnBaseAmount}
-        onChange={handleInputChange}
-      // required
-      /> */}
+      
     </div>
 
-    {/* <div className="d-flex flex-row align-items-center mb-3">
-      <MDBIcon fas icon="pen-to-square" size='lg' style={{marginRight: '10px'}}/>
-      <MDBInput
-        label="Rounding Type"
-        type="number"
-        name="roundingType"
-        id="roundingType"
-        value={user.roundingType}
-        onChange={handleInputChange}
-      // required
-      />
-    </div> */}
+   
 
-    {/* <div >
-      <MDBCheckbox
-        label="Hoa Posting Required?"
-        type="checkbox"
-        name="hoaPostingRequired"
-        id="hoaPostingRequired"
-        checked={user.hoaPostingRequired}
-        onChange={handleInputChange}
 
-      />
-    </div>
-    <div >
-      <MDBCheckbox
-        label="Deposit to Govt?"
-        type="checkbox"
-        name="depositToGovt"
-        id="depositToGovt"
-        checked={user.depositToGovt}
-        onChange={handleInputChange}
-      />
-    </div> */}
 
     {isSubmitting ? (
       <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} disabled>
@@ -355,9 +307,11 @@ function Employeedetails() {
     )}
 
   </form>
-             
-        </Mymodal>
-    )
+
+  </Mymodal>
+
+
+      )
 
     return (
 
@@ -376,8 +330,9 @@ function Employeedetails() {
             <div className='find-container'>
                 {/* <div className='findButtonClass'><button className='btn-find btn btn-primary' onClick={()=>handleFindALL()}>FindAll</button></div> */}
                 <div className="parentSearchInput">
-                    <div> <button className='btn btn-primary' id='searchDataID' onClick={() => setShowModal(true) }>Add Employee</button>
- {ShowModal && mainModal}     </div>
+                    <div> <button className='btn btn-primary' id='searchDataID'  onClick={()=>setShowModal(true)}>Add Employee</button>
+      </div>{ShowModal && mainModal}
+
                      {/* <input type="number" className='userPerPageClass' id='Pagi_input_id' name='userPerPage' value={pageSize} onChange={(e) => { setPageSize(e.target.value) }} /> */}
                     <div className="spacer"></div>
                     <input type="number" placeholder='search by ID' id='searchInput' value={inputId} onChange={(e) => setInputId(e.target.value)} />
