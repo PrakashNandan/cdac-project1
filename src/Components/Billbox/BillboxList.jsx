@@ -44,7 +44,7 @@ function BillboxList() {
     billNetAmount: '',
     valid: '',
     remarks: '',
-
+    
   }, []);
 
   const [billBoxes, setBillBoxes] = useState([]);
