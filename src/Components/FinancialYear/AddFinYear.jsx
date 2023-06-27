@@ -108,7 +108,7 @@ function AddFinYear() {
       <form onSubmit={handleSubmit} className='form'>
 
         <div className="d-flex flex-row align-items-center mb-3 mt-3">
-          <MDBIcon fas icon="calendar" size='lg' style={{ marginRight: '10px' }} />
+          <MDBIcon fas icon="calendar" size='lg' style={{ marginRight: '13px' }} />
           <MDBInput
             label="Financial Year Start Date"
             type="date"
@@ -134,7 +134,7 @@ function AddFinYear() {
         </div>
 
         <div className="d-flex flex-row align-items-center mb-3">
-          <MDBIcon fas icon="pen-to-square" size='lg' style={{ marginRight: '13px' }} />
+          <MDBIcon fas icon="pen-to-square" size='lg' style={{ marginRight: '10px' }} />
           <MDBInput
             label="Financial Year Name"
             type="text"
@@ -147,7 +147,7 @@ function AddFinYear() {
         </div>
 
         <div className="d-flex flex-row align-items-center mb-3">
-          <MDBIcon fas icon="pen-to-square" size='lg' style={{ marginRight: '13px' }} />
+          <MDBIcon fas icon="pen-to-square" size='lg' style={{ marginRight: '10px' }} />
           <MDBInput
             label="Remarks"
             type="text"
