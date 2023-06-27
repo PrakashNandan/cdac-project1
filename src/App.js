@@ -22,6 +22,8 @@ import ErrorPage from './Components/ErrorPage';
 
 
 function App() {
+
+  const token =localStorage.getItem('accessToken');
   return (
     <div className="App">
 
@@ -31,7 +33,7 @@ function App() {
          
            
           <Routes>
-            <Route path='/' element={<Dashboard/>}/>
+            <Route path='/' element={token? <UserDetail/>:<Dashboard/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/register' element={<Register/>}/>
 
