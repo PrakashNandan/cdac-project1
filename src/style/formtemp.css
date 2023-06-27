@@ -1,3 +1,42 @@
+.modal_container_bb {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  max-width: 35rem;
+  padding: 2rem 2rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  max-height: 100vh;
+  overflow-y: auto;
+  margin-bottom: 0.6rem;
+  padding-top: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  /* height: 100%; */
+}
+
+#close-btn-bb {
+  color: #fff;
+  background-color: red;
+  position: sticky;
+  left: 32rem;
+  bottom: 36.2rem;
+  padding: 0.3rem 0.8rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+
+#close-btn-bb:hover {
+  background-color: rgb(211, 0, 0);
+}
+
 h4 {
   color: #166cbe;
 }
@@ -361,7 +400,6 @@ select:active {
     padding-right: 10px;
   }
 }
-
 
 
 

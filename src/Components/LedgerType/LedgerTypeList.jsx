@@ -252,10 +252,9 @@ function LedgerTypeList() {
                     <table className='table userTable'>
                         <thead>
                             <tr>
-                                <th>ledgerTypeId</th>
-                                <th>ledgerTypeName</th>
+                                <th>Ledger Type ID</th>
+                                <th>Ledger Type Name</th>
                                 <th>Actions</th>
-
                             </tr>
                         </thead>
                         <tbody>

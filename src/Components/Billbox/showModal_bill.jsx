@@ -12,19 +12,16 @@ function Mymodal({closeModal, children, handleSubmit}) {
     };
   },[]);
 
-  
-
 
   return ReactDOM.createPortal(
     <>
 
           <div className="modal_wrapper"  onClick={closeModal}></div>
           <div id='modalParent'>
-            <div className="modal_container1">
+            <div className="modal_container_bb">
               
               {children}
               
-
             </div>
           </div>
     </>,

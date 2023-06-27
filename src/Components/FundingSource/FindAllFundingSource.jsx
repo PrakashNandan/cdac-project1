@@ -3,14 +3,14 @@ import React, {useEffect, useState} from 'react'
 import {ToastContainer, toast} from 'react-toastify'
 import Mymodal from '../ShowModal.jsx';
 import { privateAxios } from '../../service/helperUtil.js';
-
+import { MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
 
 function FindAllFundingSource({allData,setAllData, handleFindALL}) {
 
   const [showModal, setShowModal] = useState(false);
   const [dataForUpdate, setDataForUpdate] = useState([]);
   const [uid, setUid]= useState();
-
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
 //  useEffect(async()=>{
 //     try{
@@ -82,6 +82,7 @@ function FindAllFundingSource({allData,setAllData, handleFindALL}) {
 
   const handleSubmit=async(event)=>{
         event.preventDefault();
+        setIsSubmitting(true);
         try{
           const res = await privateAxios.put(`/fundSource/update/${uid}`, dataForUpdate );
           console.log(res.data);
@@ -90,7 +91,7 @@ function FindAllFundingSource({allData,setAllData, handleFindALL}) {
           toast.error("Error !! Not updated");
           console.log(error.message);
         }
-        
+        setIsSubmitting(false);
         closeModal();
         handleFindALL();
   }
@@ -109,39 +110,44 @@ function FindAllFundingSource({allData,setAllData, handleFindALL}) {
           <h4 style={{color:'black', marginBottom:'1rem'}}> <strong>Update ID : {dataForUpdate.fundingSourceId}</strong> </h4>
 
 
-          <form onSubmit={handleSubmit}  className='form'>
+          <form onSubmit={handleSubmit} className='form'>
 
-          <div >
-              {/* <label htmlFor="chargeName">Charge Name:</label> */}
-              <input
-                type="number"
-                name="fundingSourceId"
-                id="fundingSourceId"
-                value={dataForUpdate.fundingSourceId}
-                onChange={handleInputChange}
-                placeholder="fundingSourceId"
-                hidden
-              />
-          </div>
-          <div >
-              {/* <label htmlFor="chargeName">Charge Name:</label> */}
-              <input
-                type="text"
-                name="fundingSourceName"
-                id="fundingSourceName"
-                value={dataForUpdate.fundingSourceName}
-                onChange={handleInputChange}
-                placeholder="Enter fundingSourceName"
-                required
-              />
-          </div>
-     
-       
-        
-                    
-          {/* onClick={closeModal} */}
-            <button className='modal-btn' type='submit'>Submit</button>
-          </form>
+          <div className="d-flex flex-row align-items-center mb-3 mt-3">
+          <MDBIcon fas icon="address-card" size='lg' style={{ marginRight: '5px' }} />
+          <MDBInput
+            label="Funding Source ID"
+            type="number"
+            name="fundingSourceId"
+            id="fundingSourceId"
+            value={dataForUpdate.fundingSourceId}
+            onChange={handleInputChange}
+            disabled
+          />
+        </div>
+
+        <div className="d-flex flex-row align-items-center mb-3">
+          <MDBIcon fas icon="pen-to-square" size='lg' style={{ marginRight: '10px' }} />
+          <MDBInput
+            label="Funding Source Name"
+            type="text"
+            name="fundingSourceName"
+            id="fundingSourceName"
+            value={dataForUpdate.fundingSourceName}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+
+        {isSubmitting ? (
+          <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} disabled>
+            <span class="spinner-border" style={{ margin: '0 0.3rem', height: '1.2rem', width: '1.2rem' }} role="status" aria-hidden="true"></span>
+            Updating...
+          </MDBBtn>
+        ) : (
+          <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} >Update</MDBBtn>
+        )}
+
+      </form>
 
     </Mymodal>
 )

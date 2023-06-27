@@ -347,23 +347,23 @@ function handleClick18 (){
         
         <ul className="sidebar-menu">
           <li>
-                        <button
-                          className="sidebar-dropdown"
-                          onClick={() => handleClick0()}
-                        >
-                         <i class="fa fa-home" aria-hidden="true" style={{paddingRight:'22px'}}></i> 
-                        Dashboard
-                        </button>
-                      </li>
+            <button
+              className="sidebar-dropdown"
+              onClick={() => handleClick0()}
+            >
+              <i class="fa fa-home" aria-hidden="true" style={{ paddingRight: '15px' }}></i>
+              Dashboard
+            </button>
+          </li>
           <li>
             <button className={`sidebar-dropdown ${isDropdownOpen ? "sidebar-dropdown-open" : ""}`} onClick={toggleDropdown}>
-             <div className="grid1">
-              <div className="icn" ><i class="fa fa-user" aria-hidden="true"></i></div>
-              <div className="gridX">Admin</div>
-              <div className={` ${isDropdownOpen ? "down":"up"}`} style={{marginLeft:'145px'}}><FontAwesomeIcon
-                icon={faAngleRight}
-              /></div>
-              </div> 
+              <div className="grid1">
+                <div className="icn" style={{ paddingRight: '6px' }} ><i class="fa fa-user" aria-hidden="true"></i></div>
+                <div className="gridX">Admin</div>
+                <div className={` ${isDropdownOpen ? "down" : "up"} arrow-icon1`} ><FontAwesomeIcon
+                  icon={faAngleRight}
+                /></div>
+              </div>
             </button>
             {isDropdownOpen && (
               <div className="lists">
@@ -606,14 +606,14 @@ function handleClick18 (){
           </li>
           <li>
             <button className="sidebar-dropdown" onClick={toggleDropdown2}>
-            <div className="grid2">
-            <div className="icn" ><i class="fa fa-exchange" aria-hidden="true"></i></div>
-              <div className="gridX">Transactions</div>
-              <div className={` ${isDropdown2Open ? "down":"up"}`} style={{marginLeft:'89px'}}><FontAwesomeIcon
-                icon={faAngleRight}
-              /></div>
-              </div> 
-            
+              <div className="grid2">
+                <div className="icn" style={{ paddingRight: '4px' }} ><i class="fa fa-exchange" aria-hidden="true"></i></div>
+                <div className="gridX">Transactions</div>
+                <div className={` ${isDropdown2Open ? "down" : "up"} arrow-icon1`}><FontAwesomeIcon
+                  icon={faAngleRight}
+                /></div>
+              </div>
+
             </button>
             {isDropdown2Open && (
               <ul className="sidebar-submenu">
@@ -640,13 +640,13 @@ function handleClick18 (){
           </li>
           <li>
             <button className="sidebar-dropdown" onClick={toggleDropdown3}>
-             
-               <div className="grid3">
-               <div className="icn" ><i class="fa fa-users" aria-hidden="true"></i></div>
-             <div className="gridX">Employee</div>
-             <div className={` ${isDropdown3Open ? "down":"up"}`} style={{marginLeft:'111px'}}><FontAwesomeIcon
-                icon={faAngleRight}
-              /></div>
+
+              <div className="grid3">
+                <div className="icn"><i class="fa fa-users" aria-hidden="true"></i></div>
+                <div className="gridX">Employee</div>
+                <div className={` ${isDropdown3Open ? "down" : "up"} arrow-icon1`}><FontAwesomeIcon
+                  icon={faAngleRight}
+                /></div>
               </div>
             </button>
             {isDropdown3Open && (

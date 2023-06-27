@@ -135,8 +135,6 @@ function DeptList() {
              //alert("inside then")
             console.log(res);
             const {pageNumber} = res.data.pageList;
-            
-            
            
             if(pageNumber!==''){
             setIsAllData(true);
@@ -269,7 +267,7 @@ function DeptList() {
                             <tr>
                                 <th>Department ID</th>
                                 <th>Department Name</th>
-                                <th>Department code</th>
+                                <th>Department Code</th>
                                 <th>Action</th>
 
 

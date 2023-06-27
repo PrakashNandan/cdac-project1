@@ -20,7 +20,6 @@ function PaymentTypeList() {
     const [isError, setisError] = useState('');
     const [inputId, setInputId] = useState('');
     const [showAllData, setShowAllData] = useState(true);
-
     const [pageSize, setPageSize]=useState(5);
     const [pageNumber, setPageNumber]=useState(1);
     const [datafetching, setDataFetching]=useState(false);
@@ -149,7 +148,6 @@ function PaymentTypeList() {
             }
         }).catch((err)=>console.log(err))
 
-    
        setDataFetching(false);
     }else{
         setIsready(true)
@@ -253,12 +251,8 @@ function PaymentTypeList() {
 
 
     return (
-
         <>
-
             <h2 id='chargeHeadID'>Payment Types</h2>
-
-
             <div className='find-container'>
            
                 <div className="parentSearchInput">
@@ -269,18 +263,15 @@ function PaymentTypeList() {
                     <button className='btn btn-primary' id='searchDataID' onClick={fetchData}>Search</button>
                 </div>
 
-
-
                 <div className='table-responsive'>
                     <table className='table userTable'>
                         <thead>
                             <tr>
-                                <th>PaymentType ID</th>
-                                <th>PaymentType</th>
-                                <th>EntryDate</th>
+                                <th>Payment Type ID</th>
+                                <th>Payment Type</th>
+                                <th>Entry Date</th>
                                 <th>Is Valid</th>
                                 <th>Action</th>
-
                             </tr>
                         </thead>
                         <tbody>
@@ -291,11 +282,8 @@ function PaymentTypeList() {
                 </div>
                 { isAllData && <Pagination totalUsers={allData.length} pageSize={pageSize} setPageSize={setPageSize} setPageNumber={setPageNumber} pageNumber={pageNumber} lastIndex={lastIndex} firstIndex={firstIndex} totalPages={totalPages} totalElements={totalElements} />}
             </div>
-
-
             <ToastContainer />
         </>
-
     )
 }
 

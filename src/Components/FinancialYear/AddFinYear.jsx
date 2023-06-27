@@ -205,11 +205,11 @@ function AddFinYear() {
               <thead>
                 <tr>
                   {/* <th>ID</th> */}
-                  <th>FY start Date</th>
-                  <th>FY End Date</th>
-                  <th>FY Name</th>
-                  <th>remarks</th>
-                  <th>entry Date</th>
+                  <th>Financial Year Start Date</th>
+                  <th>Financial Year End Date</th>
+                  <th>Financial Year Name</th>
+                  <th>Remarks</th>
+                  <th>Entry Date</th>
 
                 </tr>
               </thead>
