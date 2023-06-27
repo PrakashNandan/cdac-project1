@@ -202,8 +202,8 @@ function BillboxList() {
 
         <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
     
-          {/* <button id='close-btn' onClick={closeModal}>close</button> */}
-    
+          <button id='close-btn' onClick={closeModal}>close</button>
+          <h1>Bill Box Form</h1> 
           <div className="cont">
             <form className = "modalForm1">
               <div className="row">
@@ -286,8 +286,9 @@ function BillboxList() {
 
                 </div>
               </div>
+             
               <div className="row1">
-                <div className="col-half">
+                <div className="col-half1">
                   <h4>Invoice Date</h4>
                   <div className="input-group">
                     <input type="date" id="entry" placeholder='Invoice date' name='invoiceDate' value={billBox.invoiceDate} onChange={handleInputChange} />
@@ -299,7 +300,9 @@ function BillboxList() {
                     <input type="date" id="entry" placeholder='entry date' name='entryDate' value={billBox.entryDate} onChange={handleInputChange} />     </div>
     
                 </div> */}
+
               </div>
+             
               <div className="row">
                 <h4>Is Valid ?</h4>
                 <div className="input-group">
