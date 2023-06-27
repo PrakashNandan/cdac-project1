@@ -7,6 +7,7 @@ import Mymodal from './showModal_bill.jsx';
 import '../../style/modal2.css'
 import '../../style/formtemp.css'
 import '../../style/chargeList.css'
+import { privateAxios } from '../../service/helperUtil'
 
 function BillboxList() {
 
@@ -23,9 +24,7 @@ function BillboxList() {
   const [select1Data, setSelect1Data] = useState([]);
   const [select2Data, setSelect2Data] = useState([]);
   const [select3Data, setSelect3Data] = useState([]);
-  const [selectedOption1, setSelectedOption1] = useState('');
-  const [selectedOption2, setSelectedOption2] = useState('');
-  const [selectedOption3, setSelectedOption3] = useState('');
+
 
     useEffect(() => {
         handleFindALL();
@@ -33,15 +32,15 @@ function BillboxList() {
 
    
   const [billBox, setBillBox] = useState({
-    billSlNo: '',
+    // billSlNo: '',
     BillType: '',
-    BillCategory: '',
-    FundingSource: '',
+    Department: '',
+    PaymentType: '',
     invoiceNo: "",
     invoiceDate: '',
-    entryDate: '',
-    baseAmount: '',
-    billNetAmount: '',
+    // entryDate: '',
+    amount: '',
+    // billNetAmount: '',
     valid: '',
     remarks: '',
 
@@ -57,18 +56,34 @@ function BillboxList() {
   }, []);
 
   const fetchDataForSelect1 = async () => {
-    try {
-      const response = await axios.get('select1-api-endpoint');
-      setSelect1Data(response.data);
-    } catch (error) {
-      console.error('Error fetching data for Select 1:', error);
-    }
+    // try {
+    //   const response = await privateAxios.get('/billType/findAll');
+    //   console.log(response)
+    //   setSelect1Data(response.data.pageList.content);
+    // } catch (error) {
+    //   console.error('Error fetching data for Select 1:', error);
+    // }
+
+    await privateAxios.get('/charge/getBillBoxDetail')
+    .then((response)=>{
+      console.log(response)
+      setSelect1Data(response.data.billTypeList);
+      
+    })
+    .catch((err)=>{console.log(err)})
+
+    // console.log("select1Data --> " + select1Data);
   };
+
+  useEffect(() => {
+    console.log("select1Data --> " + select1Data);
+  }, [select1Data]);
 
   const fetchDataForSelect2 = async () => {
     try {
-      const response = await axios.get('select2-api-endpoint');
-      setSelect2Data(response.data);
+      const response = await privateAxios.get('/charge/getBillBoxDetail');
+      console.log(response)
+      setSelect2Data(response.data.departmentList);
     } catch (error) {
       console.error('Error fetching data for Select 2:', error);
     }
@@ -76,27 +91,14 @@ function BillboxList() {
 
   const fetchDataForSelect3 = async () => {
     try {
-      const response = await axios.get('select3-api-endpoint');
-      setSelect3Data(response.data);
+      const response = await privateAxios.get('/charge/getBillBoxDetail');
+      console.log(response)
+      setSelect3Data(response.data.paymentType);
     } catch (error) {
       console.error('Error fetching data for Select 3:', error);
     }
   };
 
-  const handleSelect1Change = event => {
-    const selectedValue = event.target.value;
-    setSelectedOption1(selectedValue);
-  };
-
-  const handleSelect2Change = event => {
-    const selectedValue = event.target.value;
-    setSelectedOption2(selectedValue);
-  };
-
-  const handleSelect3Change = event => {
-    const selectedValue = event.target.value;
-    setSelectedOption3(selectedValue);
-  }
 
 
   if (billPerPage < 1) {
@@ -112,6 +114,11 @@ function BillboxList() {
     const { name, value, type, checked } = event.target;
     const inputValue = type === 'checkbox' ? checked : value;
     setBillBox((prevBillBox) => ({ ...prevBillBox, [name]: inputValue }));
+  };
+
+  const handleTextAreaChange = (event) => {
+    const { value } = event.target;
+    setBillBox({ remarks: value });
   };
 
 
@@ -184,6 +191,12 @@ function BillboxList() {
 
     }
 
+
+    // useEffect(()=>{
+    //       privateAxios.get("/charge/getBillBoxDetail").then((res)=>console.log(res)).catch((err)=>console.log("error from billbox" + err))
+    // })
+
+
     const mainModal = (
 
 
@@ -195,9 +208,9 @@ function BillboxList() {
             <form className = "modalForm">
               <div className="row">
                 <div className="col-half">
-                  <div className="invoice">
+                  {/* <div className="invoice">
                     <input type="string" id="input-box1" value={billBox.billSlNo} placeholder="Bill Sl No" onChange={handleInputChange} />
-                  </div>
+                  </div> */}
                 </div>
                 <div className='col-half'>
                   <div className="invoice">
@@ -209,28 +222,68 @@ function BillboxList() {
                   <div className="input-icon">
                     <i class="fa fa-columns" aria-hidden="true"></i>
                   </div>
-                  <select>
+
+
+                  {/* <select >
                     <option id="op">Bill Type</option>
                     <option className="op1">Bill Type 2</option>
+                  </select> */}
+
+
+                  <select name='BillType' value={billBox.BillType} onChange={handleInputChange}>
+                    <option id="op" >Bill Type</option>
+                    {select1Data.map((option) => (
+                      <option key={option.id} value={option.name}>
+                        {option.name}
+                      </option>
+                    ))}
                   </select>
+
+
+
                 </div>
                 <div className="input-group input-group-icon">
     
                   <div className="input-icon">
                     <i class="fa fa-money" aria-hidden="true"></i>        </div>
-                  <select>
+
+                  {/* <select>
                     <option >Bill Category</option>
                     <option >Bill Category2</option>
-                  </select>
+                  </select> */} 
+
+              <select name='Department' value={billBox.Department} onChange={handleInputChange}>
+                <option>DepartmentList</option>
+                {select2Data.map((option) => (
+                  <option key={option.id} value={option.name}>
+                    {option.name}
+                  </option>
+                ))}
+              </select>
+
+
+
+
                 </div>
                 <div className="input-group input-group-icon">
     
                   <div className="input-icon">
                     <i className="fa fa-credit-card" />        </div>
-                  <select>
+                  {/* <select >
                     <option>Funding Source</option>
                     <option>Funding Source2</option>
-                  </select>
+                  </select> */}
+
+                <select name='PaymentType' value={billBox.PaymentType} onChange={handleInputChange}>
+                  <option>paymentType</option>
+                  {select3Data.map((option) => (
+                    <option key={option.id} value={option.name}>
+                      {option.name}
+                    </option>
+                  ))}
+                </select>
+
+
                 </div>
               </div>
               <div className="row1">
@@ -240,12 +293,12 @@ function BillboxList() {
                     <input type="date" id="entry" placeholder='Invoice date' name='invoiceDate' value={billBox.invoiceDate} onChange={handleInputChange} />
                   </div>
                 </div>
-                <div className="col-half">
+                {/* <div className="col-half">
                   <h4>Entry Date</h4>
                   <div className="input-group">
                     <input type="date" id="entry" placeholder='entry date' name='entryDate' value={billBox.entryDate} onChange={handleInputChange} />     </div>
     
-                </div>
+                </div> */}
               </div>
               <div className="row">
                 <h4>Is Valid ?</h4>
@@ -253,9 +306,11 @@ function BillboxList() {
                   <input
                     id="payment-method-card"
                     type="radio"
-                    name="payment-method"
+                    name="valid"
                     defaultValue="card"
                     defaultChecked="true"
+                    value={billBox.valid}
+                    onChange={handleInputChange}
                   />
                   <label htmlFor="payment-method-card">
                     <span>
@@ -265,8 +320,8 @@ function BillboxList() {
                   <input
                     id="payment-method-paypal"
                     type="radio"
-                    name="payment-method"
-                    defaultValue="paypal"
+                    name="valid"
+                    // defaultValue="paypal"
                   />
                   <label htmlFor="payment-method-paypal">
                     {" "}
@@ -278,20 +333,20 @@ function BillboxList() {
                 <div className='col-half'>
                   <div className="input-group input-group-icon">
     
-                    <input type="number" id="yes" placeholder='Bill Net Amount' value={billBox.billNetAmount} name='billNetAmount' onChange={handleInputChange} />
+                    <input type="number" id="yes" placeholder='Bill Net Amount' value={billBox.amount} name='amount' onChange={handleInputChange} />
                     <div className="input-icon">
                       <i class="fa fa-inr" aria-hidden="true"></i>
                     </div>
                   </div>
                 </div>
-                <div className="col-half">
+                {/* <div className="col-half">
                   <div className="input-group input-group-icon">
                     <input type="number" id="no" placeholder='Base Amount' name='baseAmount' value={billBox.baseAmount} onChange={handleInputChange} />
                     <div className="input-icon">
                       <i class="fa fa-inr" aria-hidden="true"></i>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 {/* <div className="col-half">
             <div className="input-group">
               <select>
@@ -315,7 +370,7 @@ function BillboxList() {
             </label>
           </div> */}
                 <div className="input-group input-group-icon">
-                  <textarea id="w3review" name="w3review" rows="2" cols="100" />
+                  <textarea id="w3review" name="remark" value={billBox.remarks} onChange={handleTextAreaChange} rows="2" cols="100"  />
     
                 </div>
     
@@ -354,13 +409,13 @@ function BillboxList() {
                                 <th>ID</th>
                                 <th>Bill No</th>
                                 <th>Bill Type</th>
-                                <th>Bill Category</th>
+                                <th>Department</th>
                                 <th>Funding Source</th>
                                 <th>Invoice No</th>
                                 <th>Invoice Date</th>
-                                <th>Entry Date</th>
-                                <th>Base Amount</th>
-                                <th>Bill Net Amount</th>
+                                {/* <th>Entry Date</th> */}
+                                {/* <th>Base Amount</th> */}
+                                <th>Amount</th>
                                 <th>Valid</th>
                                 <th>Remarks</th>
                                 <th>Actions</th>
