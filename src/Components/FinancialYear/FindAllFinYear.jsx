@@ -142,7 +142,7 @@ function FindAllFinYear({ allData, setAllData, handleFindALL }) {
         </div>
 
         <div className="d-flex flex-row align-items-center mb-3">
-          <MDBIcon fas icon="calendar" size='lg' style={{ marginRight: '10px' }} />
+          <MDBIcon fas icon="calendar" size='lg' style={{ marginRight: '13px' }} />
           <MDBInput
             label="Financial Year Start Date"
             type="date"
@@ -168,7 +168,7 @@ function FindAllFinYear({ allData, setAllData, handleFindALL }) {
         </div>
 
         <div className="d-flex flex-row align-items-center mb-3">
-          <MDBIcon fas icon="pen-to-square" size='lg' style={{ marginRight: '13px' }} />
+          <MDBIcon fas icon="pen-to-square" size='lg' style={{ marginRight: '10px' }} />
           <MDBInput
             label="Financial Year Name"
             type="text"
@@ -181,7 +181,7 @@ function FindAllFinYear({ allData, setAllData, handleFindALL }) {
         </div>
 
         <div className="d-flex flex-row align-items-center mb-3">
-          <MDBIcon fas icon="pen-to-square" size='lg' style={{ marginRight: '13px' }} />
+          <MDBIcon fas icon="pen-to-square" size='lg' style={{ marginRight: '10px' }} />
           <MDBInput
             label="Remarks"
             type="text"

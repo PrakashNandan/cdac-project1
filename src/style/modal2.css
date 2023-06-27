@@ -21,18 +21,18 @@
     
     .modal_container1 {
       position: fixed;
-      top: 50%;
+      top: 48%;
       left: 50%;
       transform: translate(-50%, -50%);
       background-color: white;
-      max-width: 60rem;
+      max-width: 50rem;
       padding: 2rem 2rem;
       border-radius: 1rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      width: 50%;
+      width: 42%;
       max-height: 100vh;
       overflow-y: auto;
       margin-bottom: 0.6rem;
