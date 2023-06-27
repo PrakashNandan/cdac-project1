@@ -9,8 +9,10 @@ import { useNavigate } from 'react-router-dom'
 import Mymodal from '../ShowModal.jsx';
 import '../../style/modal.css'
 
+
 import '../../style/UserData.css'
 import { MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
+import FindAllEmployees from './FindAllEmployees'
 
 function Employeedetails() {
       const navigate = useNavigate();
@@ -92,7 +94,7 @@ function Employeedetails() {
       useEffect(()=>{
           if(isReady){
           setDataFetching(true);        
-          const res =  privateAxios.get(`/charge/findAll?pageNumber=${pageNumber-1}&pageSize=${pageSize}`)
+          const res =  privateAxios.get(`/charge/getUserList?pageNumber=${pageNumber-1}&pageSize=${pageSize}`)
           .then((res)=>{
                //alert("inside then")
               console.log(res);
@@ -157,7 +159,7 @@ function Employeedetails() {
   
           try {
   
-              const res = await privateAxios.get(`/charge/findAll?pageNumber=${pageNumber-1}&pageSize=${pageSize}`)
+              const res = await privateAxios.get(`/charge/getUserList?pageNumber=${pageNumber-1}&pageSize=${pageSize}`)
               // .then((res)=>console.log(res)).catch((err)=>console.log(err));
               if(res){
                   console.log(res);
@@ -252,14 +254,16 @@ function Employeedetails() {
                         <thead>
                             <tr>
                                 
+                                <th>Employee ID</th>
                                 <th>Employee UserName</th>
                                 <th>Email</th>
                                 <th>Mobile No</th>
+                                <th>Actions</th>
                                
                             </tr>
                         </thead>
                         <tbody>
-                            
+                        <FindAllEmployees allData={allData} setAllData={setAllData} handleFindALL={handleFindALL} />
                         </tbody>
 
                     </table>
