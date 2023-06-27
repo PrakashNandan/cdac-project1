@@ -1,25 +1,4 @@
-.modal_container_bb {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  max-width: 35rem;
-  padding: 2rem 2rem;
-  border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 60%;
-  max-height: 100vh;
-  overflow-y: auto;
-  margin-bottom: 0.6rem;
-  padding-top: 30px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  /* height: 100%; */
-}
+
 
 #close-btn-bb {
   color: #fff;
@@ -170,6 +149,11 @@ select:active {
 .invoice input {
   height: 5.3vh;
 }
+.invoice{
+  width:100%;
+  padding: 0;
+
+}
 
 .input-group:before,
 .input-group:after {
@@ -251,11 +235,16 @@ select:active {
   background-color: #ffffff;
   border-radius: 4.2px;
   width: 90%;
-  margin-top: -1.8rem;
+  margin-top: 0px;
   position: relative;
   height: 100vh;
   overflow-y: auto;
   min-width: 300px;
+}
+.cont h1{
+  /* margin-left:auto;
+  margin-right:auto; */
+  text-align: center;
 }
 
 @media (max-width: 450px) {
