@@ -9,8 +9,9 @@ import { useNavigate } from 'react-router-dom'
 import Mymodal from '../ShowModal.jsx';
 import '../../style/modal.css'
 
+
 import '../../style/UserData.css'
-import { MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
+import { MDBContainer, MDBCol,MDBRow,  MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
 
 function Employeedetails() {
       const navigate = useNavigate();
@@ -218,7 +219,144 @@ function Employeedetails() {
           console.log(slicedAllData +" sliced data");
       })
       
-  
+      const mainModal =(
+
+        <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
+    <button id='close-btn' onClick={closeModal}>close</button>
+    <i class="far fa-address-card fa-6x" size='lg'></i>   <h2>Add Employee</h2>
+<form onSubmit={handleSubmit} className='modalForm' id='modalForm'>
+    
+    <div className="d-flex flex-row align-items-center mb-3 mt-3">
+      <MDBIcon fas icon="user-pen" size='lg' style={{marginRight: '5px'}} />
+      <MDBInput
+        label="Username"
+        type="text"
+        name="chargeName"
+        id="chargeName"
+        value={user.chargeName}
+        onChange={handleInputChange}
+        required
+      />
+    </div>
+
+    <div className="d-flex flex-row align-items-center mb-3">
+      <MDBIcon   class="fas fa-mobile fa-lg" size='lg' style={{marginRight: '10px'}}/>
+      <MDBInput
+        label="Mobile No"
+        type="number"
+        name="chargeType"
+        id="chargeType"
+        value={user.chargeType}
+        onChange={handleInputChange}
+      // required
+      />
+    </div>
+
+    <div className="d-flex flex-row align-items-center mb-3">
+      <MDBIcon  class="far fa-envelope fa-lg" size='lg' style={{marginRight: '10px'}}/>
+      <MDBInput
+        label="Email Id"
+        type="email"
+        name="chargeRate"
+        id="chargeRate"
+        value={user.chargeRate}
+        onChange={handleInputChange}
+      // required
+      />
+    </div>
+
+    {/* <div className="d-flex flex-row align-items-center mb-3">
+      <MDBIcon fas icon="calendar" size='lg' style={{marginRight: '13px'}}/>
+      <MDBInput
+        label="Entry Date"
+        type="date"
+        name="entryDate"
+        id="entryDate"
+        value={user.entryDate}
+        onChange={handleInputChange}
+      // required
+      />
+    </div> */}
+
+    {/* <div className="d-flex flex-row align-items-center mb-3">
+      <MDBIcon fas icon="indian-rupee-sign" size='lg' style={{marginRight: '15px', marginLeft: '3px'}}/>
+      <MDBInput
+        label="Charge Amount"
+        type="number"
+        name="chargeAmount"
+        id="chargeAmount"
+        value={user.chargeAmount}
+        onChange={handleInputChange}
+      // required
+      />
+    </div> */}
+
+    <div className="d-flex flex-row align-items-center mb-3">
+      <MDBIcon fas icon="pen-to-square" size='lg' style={{marginRight: '10px'}}/>
+      <select className="form-select custom-select-width" style={{ height: '40px' }}>
+                      <option disabled>Role List</option>
+                      <option>Role 1</option>
+                      <option>Role 2</option>
+                      <option>Role 3</option>
+                    </select>
+        {/* label="Charge Apply on Base Amt."
+        type="number"
+        name="chargeApplyOnBaseAmount"
+        id="chargeApplyOnBaseAmount"
+        value={user.chargeApplyOnBaseAmount}
+        onChange={handleInputChange}
+      // required
+      /> */}
+    </div>
+
+    {/* <div className="d-flex flex-row align-items-center mb-3">
+      <MDBIcon fas icon="pen-to-square" size='lg' style={{marginRight: '10px'}}/>
+      <MDBInput
+        label="Rounding Type"
+        type="number"
+        name="roundingType"
+        id="roundingType"
+        value={user.roundingType}
+        onChange={handleInputChange}
+      // required
+      />
+    </div> */}
+
+    {/* <div >
+      <MDBCheckbox
+        label="Hoa Posting Required?"
+        type="checkbox"
+        name="hoaPostingRequired"
+        id="hoaPostingRequired"
+        checked={user.hoaPostingRequired}
+        onChange={handleInputChange}
+
+      />
+    </div>
+    <div >
+      <MDBCheckbox
+        label="Deposit to Govt?"
+        type="checkbox"
+        name="depositToGovt"
+        id="depositToGovt"
+        checked={user.depositToGovt}
+        onChange={handleInputChange}
+      />
+    </div> */}
+
+    {isSubmitting ? (
+      <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} disabled>
+        <span class="spinner-border" style={{ margin: '0 0.3rem', height: '1.2rem', width: '1.2rem' }} role="status" aria-hidden="true"></span>
+        Submitting...
+      </MDBBtn>
+    ) : (
+      <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} >Submit</MDBBtn>
+    )}
+
+  </form>
+             
+        </Mymodal>
+    )
 
     return (
 
@@ -237,8 +375,8 @@ function Employeedetails() {
             <div className='find-container'>
                 {/* <div className='findButtonClass'><button className='btn-find btn btn-primary' onClick={()=>handleFindALL()}>FindAll</button></div> */}
                 <div className="parentSearchInput">
-                    <div> <button className='btn btn-primary' id='searchDataID' onClick={() => navigate('/register') }>Add Employee</button>
-      </div>
+                    <div> <button className='btn btn-primary' id='searchDataID' onClick={() => setShowModal(true) }>Add Employee</button>
+ {ShowModal && mainModal}     </div>
                      {/* <input type="number" className='userPerPageClass' id='Pagi_input_id' name='userPerPage' value={pageSize} onChange={(e) => { setPageSize(e.target.value) }} /> */}
                     <div className="spacer"></div>
                     <input type="number" placeholder='search by ID' id='searchInput' value={inputId} onChange={(e) => setInputId(e.target.value)} />

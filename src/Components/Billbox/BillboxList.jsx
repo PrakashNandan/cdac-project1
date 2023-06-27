@@ -192,7 +192,7 @@ function BillboxList() {
           {/* <button id='close-btn' onClick={closeModal}>close</button> */}
     
           <div className="cont">
-            <form className = "modalForm">
+            <form className = "modalForm1">
               <div className="row">
                 <div className="col-half">
                   <div className="invoice">

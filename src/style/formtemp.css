@@ -252,6 +252,7 @@ select:active {
   border-radius: 4.2px;
   width: 90%;
   margin-top: -1.8rem;
+  
   position: relative;
   height: 100vh;
   overflow-y: auto;
