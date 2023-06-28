@@ -141,6 +141,9 @@ select:active {
 #op {
   height: 20px;
 }
+#yes{
+  height: 5vh;
+}
 .input-group {
   margin-bottom: 1em;
   margin-top: 20px;
@@ -284,6 +287,11 @@ select:active {
 .cont::-webkit-scrollbar {
   display: none;
 }
+.cont::-webkit-scrollbar:horizontal {
+  height: 0;
+  width: 0;
+  display: none;
+}
 
   .row {
     margin-left: -1rem;
@@ -331,7 +339,6 @@ select:active {
   float: left;
   width: 100%;
   margin-top: 2vh;
-  margin-left: -16rem;
 }
 
 .col-half:last-of-type {
@@ -404,7 +411,7 @@ select:active {
     width: 20vw;
     background-image: linear-gradient(#42a1ec, #166cbe); */
 
-    margin-left: 9.5rem;
+  
   background-image: linear-gradient(#42A1EC, #0070C9);
   border: 1px solid #0077CC;
   border-radius: 4px;

@@ -202,10 +202,10 @@ function BillboxList() {
 
         <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
     
-          <button id='close-btn' onClick={closeModal}>close</button>
+          {/* <button id='close-btn' onClick={closeModal}>close</button> */}
           <h1>Bill Box Form</h1> 
           <div className="cont">
-                <h1>Bill Box Form</h1>
+              
             <form className = "modalForm">
               <div className="row">
                 <div className="col-half">
