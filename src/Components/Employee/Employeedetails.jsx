@@ -14,6 +14,13 @@ import '../../style/UserData.css'
 import { MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
 import FindAllEmployees from './FindAllEmployees'
 
+
+
+
+
+
+
+
 function Employeedetails() {
 
   const [allData, setAllData] = useState([]);
@@ -273,7 +280,19 @@ function Employeedetails() {
           // required
           />
         </div>
-
+          
+        <div className="d-flex flex-row align-items-center mb-3">
+          <MDBIcon  class="fas fa-lock fa-lg" size='lg' style={{ marginRight: '10px' }} />
+          <MDBInput
+            label="Password"
+            type="password"
+            name="password"
+            id="password"
+            value={user.password}
+            onChange={handleInputChange}
+          // required
+          />
+        </div>
 
 
 
@@ -303,7 +322,7 @@ function Employeedetails() {
             Submitting...
           </MDBBtn>
         ) : (
-          <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} >Submit</MDBBtn>
+          <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }}  >Submit</MDBBtn>
         )}
 
       </form>
