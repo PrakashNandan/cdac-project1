@@ -280,7 +280,7 @@ function Employeedetails() {
     <div className="d-flex flex-row align-items-center mb-3">
       <MDBIcon fas icon="pen-to-square" size='lg' style={{marginRight: '10px'}}/>
       <select className="form-select custom-select-width" style={{ height: '40px' }} name='role' value={user.role} onChange={handleSelect}>
-                      <option disabled>Role List</option>
+                      <option >Role List</option>
                       {roleList.map((role)=>(
                         // console.log(role);
                         // const { id, roleName } = role;
