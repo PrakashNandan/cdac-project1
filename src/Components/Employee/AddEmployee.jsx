@@ -108,8 +108,7 @@ function AddEmployee() {
       };
     
       if (isLoading) {
-        return 
-         <div class="spinner-border m-10rem" role="status">
+        return  <div class="spinner-border m-10rem" role="status">
         <span class="sr-only">Loading...</span>
       </div>
       }
