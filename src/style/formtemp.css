@@ -141,6 +141,9 @@ select:active {
 #op {
   height: 20px;
 }
+#yes{
+  height: 5vh;
+}
 .input-group {
   margin-bottom: 1em;
   margin-top: 20px;
@@ -282,6 +285,11 @@ select:active {
 
 
 .cont::-webkit-scrollbar {
+  display: none;
+}
+.cont::-webkit-scrollbar:horizontal {
+  height: 0;
+  width: 0;
   display: none;
 }
 

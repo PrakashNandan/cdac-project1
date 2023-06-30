@@ -326,18 +326,18 @@ function Employeedetails() {
   //         />
   //       </div>
 
-  //       <div className="d-flex flex-row align-items-center mb-3">
-  //         <MDBIcon class="far fa-envelope fa-lg" size='lg' style={{ marginRight: '10px' }} />
-  //         <MDBInput
-  //           label="Email Id"
-  //           type="email"
-  //           name="email"
-  //           id="email"
-  //           value={empData.email}
-  //           onChange={handleInputChange}
-  //         // required
-  //         />
-  //       </div>
+        // <div className="d-flex flex-row align-items-center mb-3">
+        //   <MDBIcon class="far fa-envelope fa-lg" size='lg' style={{ marginRight: '10px' }} />
+        //   <MDBInput
+        //     label="Email Id"
+        //     type="email"
+        //     name="email"
+        //     id="email"
+        //     value={user.email}
+        //     onChange={handleInputChange}
+        //   // required
+        //   />
+        // </div>
 
 
 
@@ -362,14 +362,14 @@ function Employeedetails() {
 
 
 
-  //       {isSubmitting ? (
-  //         <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} disabled>
-  //           <span class="spinner-border" style={{ margin: '0 0.3rem', height: '1.2rem', width: '1.2rem' }} role="status" aria-hidden="true"></span>
-  //           Submitting...
-  //         </MDBBtn>
-  //       ) : (
-  //         <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} >Submit</MDBBtn>
-  //       )}
+        {isSubmitting ? (
+          <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} disabled>
+            <span class="spinner-border" style={{ margin: '0 0.3rem', height: '1.2rem', width: '1.2rem' }} role="status" aria-hidden="true"></span>
+            Submitting...
+          </MDBBtn>
+        ) : (
+          <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} >Submit</MDBBtn>
+        )}
 
   //     </form>
 
@@ -390,7 +390,6 @@ function Employeedetails() {
         </div>
       </div>) : ""
       }
-
 
   
       <div className='find-container'>
