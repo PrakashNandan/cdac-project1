@@ -120,7 +120,9 @@ function AddEmployee() {
 
   }
 
-
+   const handleNaviagte =()=>{
+      navigate('/loggedin');
+   }
 
 
 
@@ -129,7 +131,7 @@ function AddEmployee() {
   return (
     <>
     
-    <button id='close-btn' >close</button>
+    <button id='close-btn' onClick={handleNaviagte}>close</button>
       <MDBIcon icon="user-plus" size="3x"/>
       <h3 style={{padding: "10px"}}>Add Employee</h3>
       <form onSubmit={onSubmit} className='modalForm' id='modalForm'>
