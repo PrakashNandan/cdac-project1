@@ -64,7 +64,14 @@ function Login() {
       [e.target.name]: e.target.value,
     }))
   }
-
+  const onEnter = (e) => {
+    
+    console.log(e.keyCode);
+    if(e.keyCode===13){
+      e.preventDefault();
+      onSubmit(e);
+    }
+  }
   const onSubmit = (e) => {
     e.preventDefault()
 
@@ -114,6 +121,7 @@ function Login() {
                     type={showPassword ? 'text' : 'password'}
                     value={password}
                     onChange={onChange}
+                    onKeyUp={onEnter}
                   />
                   <MDBIcon
                     icon={showPassword ? 'eye-slash' : 'eye'}
