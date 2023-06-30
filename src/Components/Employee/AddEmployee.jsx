@@ -128,7 +128,7 @@ function AddEmployee() {
 
   return (
     <>
-    
+  <Mymodal>
     <button id='close-btn' >close</button>
       <MDBIcon icon="user-plus" size="3x"/>
       <h3 style={{padding: "10px"}}>Add Employee</h3>
@@ -214,7 +214,7 @@ function AddEmployee() {
         )}
 
       </form>
-    
+      </Mymodal>
     <ToastContainer/>
     </>
   )
