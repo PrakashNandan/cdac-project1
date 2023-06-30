@@ -41,7 +41,7 @@ function BillboxList() {
     // entryDate: '',
     amount: '',
     // billNetAmount: '',
-    valid: '',
+    valid: '1',
     remarks: '',
 
   }, []);
@@ -75,9 +75,9 @@ function BillboxList() {
     // console.log("select1Data --> " + select1Data);
   };
 
-  useEffect(() => {
-    console.log("select1Data --> " + select1Data);
-  }, [select1Data]);
+  // useEffect(() => {
+  //   console.log("select1Data --> " + select1Data);
+  // }, [select1Data]);
 
   const fetchDataForSelect2 = async () => {
     try {
@@ -110,15 +110,23 @@ function BillboxList() {
   }
 
 
+  // const handleInputChange = (event) => {
+  //   const { name, value } = event.target;
+  //   console.log(event);
+  
+  //   setBillBox((prevBillBox) => ({ ...prevBillBox, [name]: value}));
+  // };
   const handleInputChange = (event) => {
+    console.log(event);
     const { name, value, type, checked } = event.target;
-    const inputValue = type === 'checkbox' ? checked : value;
-    setBillBox((prevBillBox) => ({ ...prevBillBox, [name]: inputValue }));
+    const inputValue = type === 'radio' ? checked : value;
+    setBillBox((prevBillBox) => ({ ...prevBillBox, [name]: inputValue}));
   };
 
   const handleTextAreaChange = (event) => {
     const { value } = event.target;
-    setBillBox({ remarks: value });
+    setBillBox({ ...billBox,remarks: value });
+    // onClick={()=>{setBillBox({...billBox,valid:'1'})}}
   };
 
 
@@ -127,16 +135,17 @@ function BillboxList() {
     event.preventDefault();
     console.log(billBox);
 
-    try {
-      const res = await axios.post("/charge/save", billBox);
-      toast.success('Submit Successfully')
-      setBillBoxes([...billBoxes, billBox]);
-      console.log(res);
+    // try {
+      
+    //   const res = await privateAxios.post("/charge/saveBillBoxDetails", billBox);
+    //   toast.success('Submit Successfully')
+    //   setBillBoxes([...billBoxes, billBox]);
+    //   console.log(res);
 
-    } catch (error) {
-      toast.error("Form not Submitted !! , please try again")
-      console.log(error);
-    }
+    // } catch (error) {
+    //   toast.error("Form not Submitted !! , please try again")
+    //   console.log(error);
+    // }
 
     closeModal();
   };
@@ -238,7 +247,7 @@ function BillboxList() {
                   <select name='BillType' value={billBox.BillType} onChange={handleInputChange}>
                     <option id="op" >Bill Type</option>
                     {select1Data.map((option) => (
-                      <option key={option.id} value={option.name}>
+                      <option key={option.id} value={option.id}>
                         {option.name}
                       </option>
                     ))}
@@ -257,10 +266,10 @@ function BillboxList() {
                     <option >Bill Category2</option>
                   </select> */} 
 
-              <select name='Department' value={billBox.Department} onChange={handleInputChange}>
+              <select  value={billBox.Department} >
                 <option>Department List</option>
                 {select2Data.map((option) => (
-                  <option key={option.id} value={option.name}>
+                  <option key={option.id} name='Department' onChange={handleInputChange} value={option.id}>
                     {option.name}
                   </option>
                 ))}
@@ -282,7 +291,7 @@ function BillboxList() {
                 <select name='PaymentType' value={billBox.PaymentType} onChange={handleInputChange}>
                   <option>Payment Type</option>
                   {select3Data.map((option) => (
-                    <option key={option.id} value={option.name}>
+                    <option key={option.id} value={option.id}>
                       {option.name}
                     </option>
                   ))}
@@ -325,10 +334,10 @@ function BillboxList() {
                     id="payment-method-card"
                     type="radio"
                     name="valid"
-                    defaultValue="card"
+                    
                     defaultChecked="true"
-                    value={billBox.valid}
-                    onChange={handleInputChange}
+                    
+                    onClick={()=>{setBillBox({...billBox,valid:'1'})}}
                   />
                   <label htmlFor="payment-method-card">
                     <span>
@@ -339,7 +348,9 @@ function BillboxList() {
                     id="payment-method-paypal"
                     type="radio"
                     name="valid"
+                    
                     // defaultValue="paypal"
+                    onClick={()=>{setBillBox({...billBox,valid:'0'})}}
                   />
                   <label htmlFor="payment-method-paypal">
                     {" "}

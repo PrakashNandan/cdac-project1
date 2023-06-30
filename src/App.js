@@ -39,7 +39,7 @@ function App() {
             <Route path='/login' element={<Protected2><Login/></Protected2>}/>
             <Route path='/register' element={<Protected2><Register/></Protected2>}/>
 
-            <Route path='/loggedin' element={<Protected><UserDetail/></Protected>}/>
+            <Route path='/loggedin' element={<UserDetail/>}/>
            
             <Route path='/addbill' element={<AddBillbox/>}/>
             {/* <Route path='/loggedin' element={<BillboxList/>}/> */}
