@@ -108,7 +108,10 @@ function AddEmployee() {
       };
     
       if (isLoading) {
-        return <Spinner/>
+        return 
+         <div class="spinner-border m-10rem" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
       }
 
 
@@ -130,7 +133,7 @@ function AddEmployee() {
 
   return (
     <>
-    
+  <Mymodal>
     <button id='close-btn' onClick={handleNaviagte}>close</button>
       <MDBIcon icon="user-plus" size="3x"/>
       <h3 style={{padding: "10px"}}>Add Employee</h3>
@@ -216,8 +219,8 @@ function AddEmployee() {
         )}
 
       </form>
-    
-    <ToastContainer/>
+      </Mymodal>
+    {/* <ToastContainer/> */}
     </>
   )
 }
