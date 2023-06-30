@@ -53,7 +53,8 @@ function AddEmployee() {
         }
         if (isSuccess && user) {
           // navigate('/')
-          toast.success("Register Successfully for Employee")
+          toast.success("Register Successfully for Employee");
+          navigate('/loggedin');
         }
         dispatch(reset1())
       }, [user, isError, isSuccess, message, dispatch])
@@ -107,7 +108,7 @@ function AddEmployee() {
       };
     
       if (isLoading) {
-        return <Spinner />
+        return <Spinner/>
       }
 
 
@@ -154,7 +155,7 @@ function AddEmployee() {
             id="mobileNo"
             value={empData.mobileNo}
             onChange={handleInputChange}
-          // required
+            required
           />
         </div>
 
@@ -167,7 +168,7 @@ function AddEmployee() {
             id="email"
             value={empData.email}
             onChange={handleInputChange}
-          // required
+             required
           />
         </div>
         <div className="d-flex flex-row align-items-center mb-3">
@@ -179,7 +180,7 @@ function AddEmployee() {
             id="password"
             value={empData.password}
             onChange={handleInputChange}
-          // required
+            required
           />
         </div>
 
@@ -191,9 +192,6 @@ function AddEmployee() {
           <select className="form-select custom-select-width" style={{ height: '40px' }} name='role' value={empData.role} onChange={handleSelect}>
             <option>Role List</option>
             {roleList.map((role) => (
-              // console.log(role);
-              // const { id, roleName } = role;
-              // console.log(roleName+"prakash");
               <option key={role.id} value={role.roleName}>{role.roleName}</option>
             ))}
 
@@ -204,9 +202,9 @@ function AddEmployee() {
 
 
 
+         
 
-
-        {isSubmitting ? (
+        {isLoading ? (
           <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} disabled>
             <span class="spinner-border" style={{ margin: '0 0.3rem', height: '1.2rem', width: '1.2rem' }} role="status" aria-hidden="true"></span>
             Submitting...
