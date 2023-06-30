@@ -18,8 +18,8 @@ function Mymodal({closeModal, children, handleSubmit}) {
 
           <div className="modal_wrapper"  onClick={closeModal}></div>
           <div id='modalParent'>
-            <div className="modal_container_bb">
-              
+            <div className="modal_container1">
+              <div  style={{position:'absolute', zIndex:'10', cursor:'pointer' ,top:'25px', right:'10px'}}><i style={{color:'red'}} onClick={closeModal} class="fa fa-window-close fa-2x " aria-hidden="true"></i></div>
               {children}
               
             </div>

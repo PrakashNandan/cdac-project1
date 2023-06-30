@@ -205,6 +205,7 @@ function BillboxList() {
           {/* <button id='close-btn' onClick={closeModal}>close</button> */}
     
           <div className="cont">
+                <h1>Bill Box Form</h1>
             <form className = "modalForm">
               <div className="row">
                 <div className="col-half">
@@ -212,9 +213,13 @@ function BillboxList() {
                     <input type="string" id="input-box1" value={billBox.billSlNo} placeholder="Bill Sl No" onChange={handleInputChange} />
                   </div> */}
                 </div>
-                <div className='col-half'>
+                <div className='row'>
+                <div className="input-group input-group-icon invoice">
+                <div className="input-icon">
+                <i class="fa fa-address-card-o" aria-hidden="true"></i></div>
                   <div className="invoice">
                     <input type="string" placeholder='Invoice no' name='invoiceNo' value={billBox.invoiceNo} onChange={handleInputChange} />
+                  </div>
                   </div>
                 </div>
                 <div className="input-group input-group-icon">
@@ -253,7 +258,7 @@ function BillboxList() {
                   </select> */} 
 
               <select name='Department' value={billBox.Department} onChange={handleInputChange}>
-                <option>DepartmentList</option>
+                <option>Department List</option>
                 {select2Data.map((option) => (
                   <option key={option.id} value={option.name}>
                     {option.name}
@@ -275,7 +280,7 @@ function BillboxList() {
                   </select> */}
 
                 <select name='PaymentType' value={billBox.PaymentType} onChange={handleInputChange}>
-                  <option>paymentType</option>
+                  <option>Payment Type</option>
                   {select3Data.map((option) => (
                     <option key={option.id} value={option.name}>
                       {option.name}
@@ -287,6 +292,7 @@ function BillboxList() {
                 </div>
               </div>
               <div className="row1">
+                <div className='row'>
                 <div className="col-half">
                   <h4>Invoice Date</h4>
                   <div className="input-group">
@@ -299,7 +305,18 @@ function BillboxList() {
                     <input type="date" id="entry" placeholder='entry date' name='entryDate' value={billBox.entryDate} onChange={handleInputChange} />     </div>
     
                 </div> */}
-              </div>
+                <div className='col-half'>
+                <h4>Bill Net Amount</h4>
+                  <div className="input-group input-group-icon">
+    
+                    <input type="number" id="yes" placeholder='Bill Net Amount' value={billBox.amount} name='amount' onChange={handleInputChange} />
+                    <div className="input-icon">
+                      <i class="fa fa-inr" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              
               <div className="row">
                 <h4>Is Valid ?</h4>
                 <div className="input-group">
@@ -330,15 +347,7 @@ function BillboxList() {
                     </span>
                   </label>
                 </div>
-                <div className='col-half'>
-                  <div className="input-group input-group-icon">
-    
-                    <input type="number" id="yes" placeholder='Bill Net Amount' value={billBox.amount} name='amount' onChange={handleInputChange} />
-                    <div className="input-icon">
-                      <i class="fa fa-inr" aria-hidden="true"></i>
-                    </div>
-                  </div>
-                </div>
+                
                 {/* <div className="col-half">
                   <div className="input-group input-group-icon">
                     <input type="number" id="no" placeholder='Base Amount' name='baseAmount' value={billBox.baseAmount} onChange={handleInputChange} />
@@ -360,6 +369,7 @@ function BillboxList() {
             </div>
           </div> */}
               </div>
+              </div>
               <div className="row">
                 <h4>Remarks</h4>
                 {/* <div className="input-group">
@@ -375,7 +385,8 @@ function BillboxList() {
                 </div>
     
               </div>
-              <button id='submitbtn' type='submit' onClick={handleSubmit} >Submit</button>
+              <div className='row'><button id='submitbtn' type='submit' onClick={handleSubmit} >Submit</button></div>
+              
             </form>
           </div>
     

@@ -13,6 +13,7 @@ import AddAndDisplayUserPage from './Components/AddUser';
 import AddBillbox from './Components/Billbox/AddBillbox';
 import BillboxList from './Components/Billbox/BillboxList';
 import ErrorPage from './Components/ErrorPage';
+import AddEmployee from './Components/Employee/AddEmployee';
 
 
 
@@ -42,6 +43,8 @@ function App() {
             <Route path='/addbill' element={<AddBillbox/>}/>
             {/* <Route path='/loggedin' element={<BillboxList/>}/> */}
             <Route path='/form' element = {<AddAndDisplayUserPage/>}/>
+            <Route path='/AddEmployee' element = {<AddEmployee/>}/>
+
             <Route path='*' element = {<ErrorPage/>}/>
             
             
@@ -53,7 +56,7 @@ function App() {
         </div>
       
       </BrowserRouter>
-      <ToastContainer/>
+      {/* <ToastContainer/> */}
 
 
 
