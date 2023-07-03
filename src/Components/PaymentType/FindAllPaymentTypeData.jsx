@@ -52,24 +52,7 @@ function FindAllPaymentType({ allData, setAllData, handleFindALL }) {
     setShowModal(true);
     // setDataForUpdate((prevUser) => ({ ...prevUser, id: id }));
     setUid(curData.paymentTypeId);
-    /*
-          if(allData.length===1){
-            console.log(allData[0]);
-            const user1=allData[0];
-            setDataForUpdate(user1);
     
-          }else{
-            try{
-                const res = await axios.get(`/paymentType/find/${id}`);
-                setDataForUpdate(res.data);
-        
-                }catch(error){
-                  console.log(error.message);
-                  toast.error("NOT Found !!!")
-                }
-        
-          }
-      */
 
     setDataForUpdate({
       paymentTypeId: curData.paymentTypeId,

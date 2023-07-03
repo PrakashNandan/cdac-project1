@@ -16,6 +16,7 @@ import ErrorPage from './Components/ErrorPage';
 import AddEmployee from './Components/Employee/AddEmployee';
 import Protected from './features/auth/Protected';
 import Protected2 from './features/auth/Protected2';
+import PdfM from './Components/Billbox/PdfM';
 
 
 
@@ -47,6 +48,7 @@ function App() {
             <Route path='/AddEmployee' element = {<AddEmployee/>}/>
 
             <Route path='*' element = {<ErrorPage/>}/>
+            <Route path='/pdf' element = {<PdfM/>}/>
             
             
            

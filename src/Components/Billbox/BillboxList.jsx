@@ -8,6 +8,7 @@ import '../../style/modal2.css'
 import '../../style/formtemp.css'
 import '../../style/chargeList.css'
 import { privateAxios } from '../../service/helperUtil'
+import Pagination from '../Pagination'
 
 function BillboxList() {
 
@@ -25,10 +26,17 @@ function BillboxList() {
   const [select2Data, setSelect2Data] = useState([]);
   const [select3Data, setSelect3Data] = useState([]);
 
+  const [isAllData, setIsAllData]=useState(false);
+  const [isReady , setIsready] =useState(false);
+  const [totalElements, setTotalElements]=useState();
+    const [totalPages, setTotalPages]=useState();
+    const [lastIndex, setLastIndex]=useState();
+    const [firstIndex,setFirstIndex]=useState();
+    const [pageSize, setPageSize]=useState(5);
+    const [pageNumber, setPageNumber]=useState(1);
+    const [datafetching, setDataFetching]=useState(false);
+ 
 
-    useEffect(() => {
-        handleFindALL();
-    }, [])
 
    
   const [billBox, setBillBox] = useState({
@@ -36,12 +44,12 @@ function BillboxList() {
     BillType: '',
     Department: '',
     PaymentType: '',
-    invoiceNo: "",
+    invoiceNo: '',
     invoiceDate: '',
     // entryDate: '',
     amount: '',
     // billNetAmount: '',
-    valid: '1',
+    valid:true ,
     remarks: '',
 
   }, []);
@@ -135,46 +143,113 @@ function BillboxList() {
     event.preventDefault();
     console.log(billBox);
 
-    // try {
+    try {
       
-    //   const res = await privateAxios.post("/charge/saveBillBoxDetails", billBox);
-    //   toast.success('Submit Successfully')
-    //   setBillBoxes([...billBoxes, billBox]);
-    //   console.log(res);
+      const res = await privateAxios.post("/charge/saveBillBoxDetails", billBox);
+      toast.success('Submit Successfully')
+      setBillBoxes([...billBoxes, billBox]);
+      console.log(res);
 
-    // } catch (error) {
-    //   toast.error("Form not Submitted !! , please try again")
-    //   console.log(error);
-    // }
+    } catch (error) {
+      toast.error("Form not Submitted !! , please try again")
+      console.log(error);
+    }
 
     closeModal();
   };
 
 
-  const lastIndex = currentPage * billPerPage;
-  const firstIndex = lastIndex - billPerPage;
-  const slicedBill = billBoxes.slice(firstIndex, lastIndex);
+  
+
+    // const handleFindALL = async () => {
+
+    //     try {
+
+    //         const res = await privateAxios.get("/charge/getBillBoxDetail");
+    //         setAllData(res.data.pageList.content);
+    //         console.log(res.data);
+
+
+    //     } catch (error) {
+    //         setisError(error.message); showErrorToast();
+    //     }
+    // }
 
     const handleFindALL = async () => {
 
-        try {
+      setDataFetching(true);        
+      const res =  privateAxios.get(`/charge/getBillBoxDetail?pageNumber=${pageNumber-1}&pageSize=${pageSize}`)
+      .then((res)=>{
+           //alert("inside then")
+          console.log(res);
+          const {pageNumber} = res.data.pageList;
+          
+          
+         
+          if(pageNumber!==''){
+          setIsAllData(true);
+          setAllData(res.data.pageList.content);
+          setTotalPages(res.data.pageList.totalPages);
+          setTotalElements(res.data.pageList.totalElements);
+           if(pageSize>res.data.pageList.content?.length){
+              setLastIndex(Math.max(((pageNumber+1)*res.data.pageList.content?.length), res.data.pageList.totalElements))
+           }
+           else{
+               setLastIndex( (pageNumber+1)*pageSize);
+           }
+          // if(lastIndex){
+          setFirstIndex(((pageNumber+1)*pageSize) - pageSize);
+          // }
+          // setFirstIndex(((pageNumber-1)*pageSize)+1);
+          // setLastIndex(Math.min(firstIndex + pageSize-1, res.data.pageList.totalElements))
+          // setSlicedAllData(res.data.pageList.content.slice(firstIndex, lastIndex));
+          }
+      }).catch((err)=>console.log(err))
 
-            const res = await axios.get("/charge/findAll");
-            setAllData(res.data);
-            console.log(res.data);
+  
+     setDataFetching(false);
+  }
 
+  // pagination work
+  if(pageSize<1){
+      setPageSize(5);
+  }
 
-        } catch (error) {
-            setisError(error.message);
-            console.log(error.message);
-            showErrorToast();
-        }
-    }
-
-    useEffect(() => {
-        handleFindALL();
-    }, [])
-
+    useEffect(()=>{
+    if(isReady){
+      setDataFetching(true);        
+      const res =  privateAxios.get(`/charge/getBillBoxDetail?pageNumber=${pageNumber-1}&pageSize=${pageSize}`)
+      .then((res)=>{
+           //alert("inside then")
+          console.log(res);
+          const {pageNumber} = res.data.pageList;
+         
+          if(pageNumber!==''){
+          setIsAllData(true);
+          setAllData(res.data.pageList.content);
+          setTotalPages(res.data.pageList.totalPages);
+          setTotalElements(res.data.pageList.totalElements);
+           if(pageSize>res.data.pageList.content?.length){
+              setLastIndex(Math.max(((pageNumber+1)*res.data.pageList.content?.length), res.data.pageList.totalElements))
+           }
+           else{
+               setLastIndex( (pageNumber+1)*pageSize);
+           }
+          // if(lastIndex){
+          setFirstIndex(((pageNumber+1)*pageSize) - pageSize);
+          // }
+          // setFirstIndex(((pageNumber-1)*pageSize)+1);
+          // setLastIndex(Math.min(firstIndex + pageSize-1, res.data.pageList.totalElements))
+          // setSlicedAllData(res.data.pageList.content.slice(firstIndex, lastIndex));
+          }
+      }).catch((err)=>console.log(err))
+  
+     setDataFetching(false);
+  }else{
+      setIsready(true)
+  }
+  
+  },[isReady ,pageNumber ,pageSize])
 
 
     const showErrorToast = () => {
@@ -227,7 +302,7 @@ function BillboxList() {
                 <div className="input-icon">
                 <i class="fa fa-address-card-o" aria-hidden="true"></i></div>
                   <div className="invoice">
-                    <input type="string" placeholder='Invoice no' name='invoiceNo' value={billBox.invoiceNo} onChange={handleInputChange} />
+                    <input type="text" placeholder='Invoice no' name='invoiceNo' value={billBox.invoiceNo} onChange={handleInputChange} />
                   </div>
                   </div>
                 </div>
@@ -266,10 +341,10 @@ function BillboxList() {
                     <option >Bill Category2</option>
                   </select> */} 
 
-              <select  value={billBox.Department} >
+              <select name='Department' value={billBox.Department} onChange={handleInputChange}>
                 <option>Department List</option>
                 {select2Data.map((option) => (
-                  <option key={option.id} name='Department' onChange={handleInputChange} value={option.id}>
+                  <option key={option.id}  value={option.id}>
                     {option.name}
                   </option>
                 ))}
@@ -337,7 +412,7 @@ function BillboxList() {
                     
                     defaultChecked="true"
                     
-                    onClick={()=>{setBillBox({...billBox,valid:'1'})}}
+                    onClick={()=>{setBillBox({...billBox,valid:true})}}
                   />
                   <label htmlFor="payment-method-card">
                     <span>
@@ -350,7 +425,7 @@ function BillboxList() {
                     name="valid"
                     
                     // defaultValue="paypal"
-                    onClick={()=>{setBillBox({...billBox,valid:'0'})}}
+                    onClick={()=>{setBillBox({...billBox,valid:false})}}
                   />
                   <label htmlFor="payment-method-paypal">
                     {" "}
@@ -430,27 +505,29 @@ function BillboxList() {
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Bill No</th>
+                                
                                 <th>Bill Type</th>
                                 <th>Department</th>
-                                <th>Funding Source</th>
+                                <th>Payment Type</th>
                                 <th>Invoice No</th>
                                 <th>Invoice Date</th>
                                 {/* <th>Entry Date</th> */}
                                 {/* <th>Base Amount</th> */}
                                 <th>Amount</th>
-                                <th>Valid</th>
-                                <th>Remarks</th>
+                                {/* <th>Valid</th>
+                                <th>Remarks</th> */}
                                 <th>Actions</th>
                                 <th>Download</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <FindBillBoxData allData={allData} setAllData={setAllData} handleFindALL={handleFindALL} />
+                            <FindBillBoxData select1Data={select1Data} select2Data={select2Data} select3Data={select3Data} allData={allData} setAllData={setAllData} handleFindALL={handleFindALL} />
                         </tbody>
 
                     </table>
                 </div>
+                { isAllData && <Pagination totalUsers={allData.length} pageSize={pageSize} setPageSize={setPageSize} setPageNumber={setPageNumber} pageNumber={pageNumber} lastIndex={lastIndex} firstIndex={firstIndex} totalPages={totalPages} totalElements={totalElements} />}
+
             </div>
 
 
