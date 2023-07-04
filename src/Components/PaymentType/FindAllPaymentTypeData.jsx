@@ -129,7 +129,7 @@ function FindAllPaymentType({ allData, setAllData, handleFindALL }) {
         </div>
 
         <div className="d-flex flex-row align-items-center mb-3">
-          <MDBIcon fas icon="calendar" size='lg' style={{ marginRight: '13px' }} />
+          <MDBIcon fas icon="calendar" size='lg' style={{ marginRight: '10px' }} />
           <MDBInput
             label="Entry Date"
             type="date"

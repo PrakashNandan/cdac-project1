@@ -13,6 +13,7 @@ import Db from "./Db";
 import Homepage from "./Homepage";
 import AddBillbox from "./Billbox/AddBillbox"
 import BillboxList from "./Billbox/BillboxList";
+import BillboxList2 from "./Billbox/BillboxList2";
 import Employeedetails from "./Employee/Employeedetails";
 function UserDetail() {
   // const
@@ -63,7 +64,7 @@ function UserDetail() {
       {(ShowEmployee)&&
 <Employeedetails></Employeedetails>}
        {(ShowBillbox)&&
-<BillboxList></BillboxList>}
+<BillboxList2></BillboxList2>}
   {(ShowHomepage)&&
 <Homepage></Homepage>}
     {(ShowDashboard)&&

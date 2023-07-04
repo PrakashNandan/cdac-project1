@@ -9,17 +9,15 @@ const initialState = {
     invoiceDate: '',
     
     amount: '',
+    DownloadPdf:false,
     
    
 };
 
-// export const getUserAccount = createAsyncThunk(
-//   'account/getUser',
-//   async (userId, thunkAPI) => {
-//     const { data } = await axios.get(
-//       `http://localhost:8080/accounts/${userId}`
-//     );
-//     return data.amount;
+// export const setDownloadPdfAsync = createAsyncThunk(
+//   'billBox/setDownloadPdf',
+//   async () => {
+//     state.
 //   }
 // );
 
@@ -27,9 +25,9 @@ export const billBoxSlice = createSlice({
   name: 'billBox',
   initialState,
   reducers: {
-    // increment: (state) => {
-    //   state.amount += 1; //immer
-    // },
+    setDownloadPdf: (state,action) => {
+      state.DownloadPdf = action.payload; //immer
+    },
     // decrement: (state) => {
     //   state.amount -= 1;
     // },
@@ -49,7 +47,7 @@ export const billBoxSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setPdf } = billBoxSlice.actions;
+export const { setPdf ,setDownloadPdf} = billBoxSlice.actions;
 
 export const selectPdf = (state) => state.billBox;
 

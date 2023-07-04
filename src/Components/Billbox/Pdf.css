@@ -1,0 +1,12 @@
+.body{
+    width:60%;
+    margin-left:auto;
+    margin-right:auto;
+}
+.header2{
+    /* background: #fda2a2; */
+    height:71px;
+    background-image: url('./cdac-logo.png');
+     background-repeat: no-repeat;
+     border-bottom: 2px solid rgb(156, 156, 156);
+}

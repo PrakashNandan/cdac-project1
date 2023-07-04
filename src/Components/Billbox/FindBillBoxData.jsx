@@ -21,6 +21,7 @@ function FindBillBoxData({select1Data,select2Data,select3Data,allData,setAllData
               // setDataForUpdate(res.data);
               navigate('/pdf')
     dispatch(setPdf(curData));
+   
   
   }
   const handleDeleteData=async(id)=>{
@@ -285,60 +286,60 @@ function FindBillBoxData({select1Data,select2Data,select3Data,allData,setAllData
 
 
   return (
-    // <>
+    <>
 
 
-    //   {showModal && mainModal}
+      {showModal && mainModal}
 
-    // {
-    //   allData && allData.length > 0 &&
-    //     allData.map((curData) => {
-    //         const {id,billSlNo,BillTypeName,DepartmentName,PaymentTypeName,invoiceNo,invoiceDate,entryDate,
-    //           amount,valid,remarks,DepartmentId,PaymentTypeId,BillTypeId
-    //             } = curData;
+    {
+      allData && allData.length > 0 &&
+        allData.map((curData) => {
+            const {id,billSlNo,BillTypeName,DepartmentName,PaymentTypeName,invoiceNo,invoiceDate,entryDate,
+              amount,valid,remarks,DepartmentId,PaymentTypeId,BillTypeId
+                } = curData;
 
           
-    //         return (
-    //             <tr >
-    //                 <td>{id}</td> 
-    //                 <td>{BillTypeName}</td>
-    //                 <td>{DepartmentName}</td>
-    //                 <td>{PaymentTypeName}</td>
-    //                 <td>{invoiceNo}</td>
-    //                 <td>{invoiceDate}</td>
-    //                 <td>Rs. {amount}</td>
-    //                 {/* <td>{valid===true ? "YES" : "NO" }</td> */}
-    //                 {/* <td>{remarks}</td> */}
-  
-    //                 <td><button type="button" class="btn btn-danger" onClick={()=>handleDeleteData(id)}>Delete</button>
-    //                     <button type="button" class="btn m-1 btn-light" onClick={()=>handleUpdateData(curData)}>Update</button>
-    //                 </td>
-    //                 <td><button type="button" class="btn m-1 btn-light" onClick={()=>pdf(curData)}>Generate PDF</button></td>
-    //             </tr>
-    //         )
-    //     })
-
-    // }
-    // <ToastContainer/>
-
-    // </>
-    <>
-     <tr >
-                    <td>2</td> 
-                    <td>CGST</td>
-                    <td>Electrical</td>
-                    <td>Card</td>
-                    <td>23237678</td>
-                    <td>23-07-2023</td>
-                    <td>Rs. 77856</td>
+            return (
+                <tr >
+                    <td>{id}</td> 
+                    <td>{BillTypeName}</td>
+                    <td>{DepartmentName}</td>
+                    <td>{PaymentTypeName}</td>
+                    <td>{invoiceNo}</td>
+                    <td>{invoiceDate}</td>
+                    <td>Rs. {amount}</td>
                     {/* <td>{valid===true ? "YES" : "NO" }</td> */}
                     {/* <td>{remarks}</td> */}
   
-                    <td><button type="button" class="btn btn-danger" onClick={()=>handleDeleteData()}>Delete</button>
-                        <button type="button" class="btn m-1 btn-light" onClick={()=>handleUpdateData()}>Update</button>
+                    <td><button type="button" class="btn btn-danger" onClick={()=>handleDeleteData(id)}>Delete</button>
+                        <button type="button" class="btn m-1 btn-light" onClick={()=>handleUpdateData(curData)}>Update</button>
                     </td>
-                    <td><button type="button" class="btn m-1 btn-light" onClick={()=>pdf()}>Generate PDF</button></td>
-                </tr></>
+                    <td><button type="button" class="btn m-1 btn-light" onClick={()=>pdf(curData)}>Generate PDF</button></td>
+                </tr>
+            )
+        })
+
+    }
+    <ToastContainer/>
+
+    </>
+    // <>
+    //  <tr >
+    //                 <td>2</td> 
+    //                 <td>CGST</td>
+    //                 <td>Electrical</td>
+    //                 <td>Card</td>
+    //                 <td>23237678</td>
+    //                 <td>23-07-2023</td>
+    //                 <td>Rs. 77856</td>
+    //                 {/* <td>{valid===true ? "YES" : "NO" }</td> */}
+    //                 {/* <td>{remarks}</td> */}
+  
+    //                 <td><button type="button" class="btn btn-danger" onClick={()=>handleDeleteData()}>Delete</button>
+    //                     <button type="button" class="btn m-1 btn-light" onClick={()=>handleUpdateData()}>Update</button>
+    //                 </td>
+    //                 <td><button type="button" className='btn m-1 btn-info btn-sm' onClick={()=>pdf()}>Generate PDF</button></td>
+    //             </tr></>
   )
 }
 

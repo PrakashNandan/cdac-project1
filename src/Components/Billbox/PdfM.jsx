@@ -3,7 +3,7 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { useRef } from "react";
 import { selectPdf } from "./billBoxSlice";
-
+import  './Pdf.css'
 
 
 
@@ -21,7 +21,7 @@ function PdfM(){
                 const imgHeight=canvas.height;
                 const ratio=Math.min(pdfWidth/ imgWidth, pdfHeight/imgHeight);
                 const imgX=(pdfWidth - imgWidth* ratio)/2;
-                const imgY=30;
+                const imgY=6;
 
                 pdf.addImage(imgData, 'PNG', imgX, imgY,imgWidth*ratio,imgHeight*ratio);
                 pdf.save('downloadedPDF.pdf');
@@ -32,19 +32,23 @@ function PdfM(){
         //     (state) => state.billBox
         //   ))
         console.log(pdf.BillType);
+        
 return (
-    <><div ref={pdfRef}>
-        <div style={{marginTop:'60px'}}>
+    <><div className='body' ref={pdfRef} style={{marginTop:'20px'}}>
+        <header className="header2"></header>
+        <div >
                     <div>Bill Type : {pdf.BillType}</div>
                     <div>Department : {pdf.Department}</div>
                     <div>Payment Type : {pdf.PaymentType}</div>
                     <div>Invoice Number : {pdf.invoiceNo}</div>
                     <div>Invoice Date : {pdf.invoiceDate}</div>
                     <div>Bill Net Amount : Rs.{pdf.amount}</div>
+ 
+                    
                     </div>
       
        </div>
-       <button onClick={()=>{Download()}}>Download</button>
+       <button style={{marginTop:'30px'}} className='btn btn-primary' onClick={()=>{Download()}}>Download</button>
     </>
 )
 

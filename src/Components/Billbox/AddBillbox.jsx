@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import Pagination from '../Pagination';
 import Mymodal from './showModal_bill.jsx';
-import '../../style/modal2.css'
+
 import '../../style/formtemp.css'
 import BillboxData from './BillboxData.jsx';
 import BillboxList from './BillboxList.jsx';
