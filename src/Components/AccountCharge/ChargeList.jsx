@@ -317,7 +317,7 @@ function ChargeList() {
               />
             </div>
     
-            <div >
+            <div style={{paddingLeft: '30px', paddingTop: '5px'}}>
               <MDBCheckbox
                 label="Hoa Posting Required?"
                 type="checkbox"
@@ -328,7 +328,7 @@ function ChargeList() {
     
               />
             </div>
-            <div >
+            <div style={{paddingLeft: '30px', paddingTop: '3px'}}>
               <MDBCheckbox
                 label="Deposit to Govt?"
                 type="checkbox"

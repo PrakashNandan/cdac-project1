@@ -51,6 +51,7 @@
   min-width: 300px;
   /* margin-left: -2rem; */
 }
+
 .modalForm1 {
   min-width: 300px;
   margin-left: -2.5rem;
@@ -131,8 +132,20 @@
   }
 }
 
+@media (max-width: 600px) {
+  .modal_container {
+    width: 85%;
+  }
+}
+
+@media (max-width: 470px) {
+  .modal_container {
+    width: 95%;
+  }
+}
+
 @media (max-width: 450px) {
   .modalForm {
-    min-width: 200px;
+    min-width: 250px;
   }
 }

@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import Pagination from '../Pagination';
 import Mymodal from './showModal_bill.jsx';
-import '../../style/modal2.css'
 import '../../style/formtemp.css'
 import BillboxData from './BillboxData.jsx';
 import BillboxList from './BillboxList.jsx';
@@ -141,7 +140,7 @@ function AddBillbox() {
       <button id='close-btn-bb' onClick={closeModal}>close</button>
 
       <div className="cont">
-        <form className = "modalForm">
+        <form className="modalForm">
           <div className="row">
             <div className="col-half">
               <div className="invoice">
@@ -283,7 +282,7 @@ function AddBillbox() {
 
       <button className='modal-btn' id='addButton' onClick={() => setShowModal(true)}>Add BillBox</button>
       {ShowModal && mainModal}
-     
+
       <div className="user-list">
 
 

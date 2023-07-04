@@ -282,7 +282,7 @@ function Employeedetails() {
         </div>
           
         <div className="d-flex flex-row align-items-center mb-3">
-          <MDBIcon  class="fas fa-lock fa-lg" size='lg' style={{ marginRight: '10px' }} />
+          <MDBIcon  class="fas fa-lock fa-lg" size='lg' style={{ marginRight: '12px' }} />
           <MDBInput
             label="Password"
             type="password"
