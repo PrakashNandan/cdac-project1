@@ -245,8 +245,8 @@ function FindAllFinYear({ allData, setAllData, handleFindALL }) {
               <td>{entryDate}</td>
 
 
-              <td><button type="button" class="btn btn-danger" onClick={() => handleDeleteData(finYearId)}>Delete</button>
-                <button type="button" class="btn m-1 btn-light" onClick={() => handleUpdateData(curData)}>Update</button>
+              <td><button type="button" class="btn btn-danger btn-sm" onClick={() => handleDeleteData(finYearId)}>Delete</button>
+                <button type="button" class="btn ml-2 btn-secondary btn-sm" onClick={() => handleUpdateData(curData)}>Update</button>
               </td>
             </tr>
           )

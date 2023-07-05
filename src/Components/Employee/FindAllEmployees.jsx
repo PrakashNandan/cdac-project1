@@ -26,7 +26,6 @@ function FindAllEmployees({ allData, setAllData, handleFindALL }) {
 
 
   const handleDeleteData = async (id) => {
-
     const conf = window.confirm("Are you sure to delete the data with id: " + (+id))
     if (conf) {
 
@@ -107,7 +106,7 @@ function FindAllEmployees({ allData, setAllData, handleFindALL }) {
     try {
       console.log(dataForUpdate);
       const res = await privateAxios.put(`/charge/updateUser/${uid}`, dataForUpdate);
-      console.log(res.data);
+      console.log(res);
       toast.success("updated Successfully")
     } catch (error) {
       toast.error("Error !! Not updated");
@@ -225,15 +224,15 @@ function FindAllEmployees({ allData, setAllData, handleFindALL }) {
               {/* <td>{entryDate}</td> */}
 
 
-              <td><button type="button" class="btn btn-danger" onClick={() => handleDeleteData(userId)}>Delete</button>
-                <button type="button" class="btn m-1 btn-light" onClick={() => handleUpdateData(curData)}>Edit</button>
+              <td><button type="button" class="btn btn-danger btn-sm" onClick={() => handleDeleteData(userId)}>Delete</button>
+                <button type="button" class="btn ml-2 btn-secondary btn-sm" onClick={() => handleUpdateData(curData)}>Update</button>
               </td>
             </tr>
           )
         })
 
       }
-      <ToastContainer />
+      {/* <ToastContainer /> */}
 
     </>
   )

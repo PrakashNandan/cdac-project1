@@ -52,24 +52,7 @@ function FindAllPaymentType({ allData, setAllData, handleFindALL }) {
     setShowModal(true);
     // setDataForUpdate((prevUser) => ({ ...prevUser, id: id }));
     setUid(curData.paymentTypeId);
-    /*
-          if(allData.length===1){
-            console.log(allData[0]);
-            const user1=allData[0];
-            setDataForUpdate(user1);
     
-          }else{
-            try{
-                const res = await axios.get(`/paymentType/find/${id}`);
-                setDataForUpdate(res.data);
-        
-                }catch(error){
-                  console.log(error.message);
-                  toast.error("NOT Found !!!")
-                }
-        
-          }
-      */
 
     setDataForUpdate({
       paymentTypeId: curData.paymentTypeId,
@@ -146,7 +129,7 @@ function FindAllPaymentType({ allData, setAllData, handleFindALL }) {
         </div>
 
         <div className="d-flex flex-row align-items-center mb-3">
-          <MDBIcon fas icon="calendar" size='lg' style={{ marginRight: '13px' }} />
+          <MDBIcon fas icon="calendar" size='lg' style={{ marginRight: '10px' }} />
           <MDBInput
             label="Entry Date"
             type="date"
@@ -211,8 +194,8 @@ function FindAllPaymentType({ allData, setAllData, handleFindALL }) {
               {/* <td>{entryDate}</td> */}
 
 
-              <td><button type="button" class="btn btn-danger" onClick={() => handleDeleteData(paymentTypeId)}>Delete</button>
-                <button type="button" class="btn m-1 btn-light" onClick={() => handleUpdateData(curData)}>Update</button>
+              <td><button type="button" class="btn btn-danger btn-sm" onClick={() => handleDeleteData(paymentTypeId)}>Delete</button>
+                <button type="button" class="btn ml-2 btn-secondary btn-sm" onClick={() => handleUpdateData(curData)}>Update</button>
               </td>
             </tr>
           )

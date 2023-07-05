@@ -5,7 +5,6 @@ import Pagination from '../Pagination';
 import Mymodal from './showModal_bill.jsx';
 import '../../style/formtemp.css'
 import BillboxData from './BillboxData.jsx';
-import BillboxList from './BillboxList.jsx';
 
 
 function AddBillbox() {

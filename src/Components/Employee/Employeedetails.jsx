@@ -6,26 +6,25 @@ import { ToastContainer, toast } from 'react-toastify'
 import { privateAxios } from '../../service/helperUtil'
 import Pagination from '../Pagination'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import Mymodal from '../ShowModal.jsx';
 import '../../style/modal.css'
-
+import Spinner from '../Spinner'
 
 import '../../style/UserData.css'
 import { MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
 import FindAllEmployees from './FindAllEmployees'
 
-
-
-
-
-
-
+import { reset1 } from '../../features/empAuth/empAuthSlice'
+import { register1 } from '../../features/empAuth/empAuthSlice'
 
 function Employeedetails() {
 
   const [allData, setAllData] = useState([]);
   const [roleList, setRoleList] = useState([]);
-  const [isError, setisError] = useState('');
+  
+  // const [isError, setisError] = useState('');
   const [inputId, setInputId] = useState('');
   const [showAllData, setShowAllData] = useState(true);
 
@@ -48,52 +47,125 @@ function Employeedetails() {
   // let lastIndex = pageNumber*pageSize;
   // let firstIndex = lastIndex - pageSize;
   // let slicedAllData=allData.slice(firstIndex, lastIndex);
-  const [user, setUser] = useState({
-    userName: '',
-    email: '',
-    mobile: '',
-    //   role:''
-  }, []);
+  // const [empData, setEmpData] = useState({
+  //   username: '',
+  //   email: '',
+  //   mobileNo: '',
+  //   role:'',
+  //   password:''
+  // }, []);
 
-  const [users, setUsers] = useState([]);
-  const closeModal = () => {
-    return setShowModal(false);
-  }
-
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-
-    setUser((prevUser) => ({ ...prevUser, [name]: value }));
-  };
-  const handleSubmit = async (event) => {
-
-    event.preventDefault();
-    setIsSubmitting(true);
-
-    console.log(user);
+  const [error, setError] = useState(false);
+   
 
 
-    try {
-      console.log(user);
-      const res = await privateAxios.post("/charge/newUser", user)
-        .then((Response) => console.log(Response))
-        .catch((err) => console.log(err))
 
-      toast.success('Submit Successfully')
-      setUsers([...users, user]);
-      console.log(res);
+  // const { username, email, mobileNo, password, role} = empData
+  const navigate = useNavigate()
+  // const dispatch = useDispatch()
+  // const { user, isLoading, isError, isSuccess, message } = useSelector(
+  //   (state) => state.empAuth
+  // )
 
-    } catch (error) {
-      toast.error("Form not Submitted !! , please try again")
-      console.log(error);
-    }
+  // useEffect(() => {
+  //   if (isError) {
+  //     toast.error(message)
+  //   }
+  //   if (isSuccess || user) {
+  //     // navigate('/')
+  //     toast.success("Register Successfully for Employee")
+  //   }
+  //   dispatch(reset1())
+  // }, [user, isError, isSuccess, message, dispatch])
 
-    setIsSubmitting(false);
-    closeModal();
-    handleFindALL();
+  // // const handleAfterSubmit=()=>{
 
-  };
+  // //   if (isError) {
+  // //     toast.error(message)
+  // //   }
+  // //   if (isSuccess || user) {
+  // //     // navigate('/')
+  // //     toast.success("Register Successfully for Employee")
+  // //   }
+  // //   dispatch(reset1())
+
+  // // }
+
+
+
+
+
+
+
+  // const [AllEmpData, setAllEmpData] = useState([]);
+
+
+  // const closeModal = () => {
+  //   return setShowModal(false);
+  // }
+
+
+  // const handleInputChange = (event) => {
+  //   const { name, value } = event.target;
+
+  //   setEmpData((prevUser) => ({ ...prevUser, [name]: value }));
+  // };
+
+
+
+  // // const handleSubmit = async (event) => {
+
+  // //   event.preventDefault();
+  // //   setIsSubmitting(true);
+
+  // //   console.log(user);
+
+
+  // //   try {
+  // //     console.log(user);
+  // //     const res = await privateAxios.post("/charge/newUser", user)
+  // //       // .then((Response) => console.log(Response))
+  // //       // .catch((err) => console.log(err))
+
+  // //       console.log(res);
+
+  // //     toast.success('Submit Successfully')
+  // //     setUsers([...users, user]);
+
+  // //   } catch (error) {
+  // //     toast.error("Form not Submitted !! , please try again")
+  // //     console.log(error);
+  // //   }
+
+  // //   setIsSubmitting(false);
+  // //   closeModal();
+  // //   handleFindALL();
+
+  // // };
+
+  
+  // const onSubmit = (e) => {
+  //   e.preventDefault()
+
+  //   console.log(empData);
+
+  //   const userData = {
+  //     username,
+  //     email,
+  //     password,
+  //     mobileNo,
+  //     role
+  //   }
+  //   dispatch(register1(userData));
+  // };
+
+  // if (isLoading) {
+  //   return <Spinner />
+  // }
+
+
+
+
 
 
   useEffect(() => {
@@ -130,7 +202,8 @@ function Employeedetails() {
 
 
       setDataFetching(false);
-    } else {
+    } 
+    else {
       setIsready(true)
     }
 
@@ -145,31 +218,16 @@ function Employeedetails() {
   }
 
 
-  // axios.interceptors.request.use(
-  //     (config) => {
-  //       const token = localStorage.getItem('token');
-  //       if (token) {
-  //         config.headers['Authorization'] = `Bearer ${token}`;
-  //       }
-  //       return config;
-  //     },
-  //     (error) => {
-  //       return Promise.reject(error);
-  //     }
-  //   );
-  function handleSelect(event) {
-    console.log(event.target);
-    const { name, value } = event.target;
-    setUser((prevUser) => ({ ...prevUser, [name]: value }))
+  // function handleSelect(event) {
+  //   console.log(event.target);
+  //   const { name, value } = event.target;
+  //   setEmpData((prevUser) => ({ ...prevUser, [name]: value }))
 
-  }
-  useEffect(() => {
-    console.log(roleList);
+  // }
 
-  }, [roleList])
 
   const handleFindALL = async () => {
-    alert("handleFindAll called")
+    // alert("handleFindAll called")
     setDataFetching(true);
 
     try {
@@ -177,7 +235,7 @@ function Employeedetails() {
       const res = await privateAxios.get(`/charge/getUserList?pageNumber=${pageNumber - 1}&pageSize=${pageSize}`)
       // .then((res)=>console.log(res)).catch((err)=>console.log(err));
       if (res) {
-        console.log(res);
+        // console.log(res);
         setAllData(res.data.pageList.content);
         setTotalPages(res.data.pageList.totalPages);
         setTotalElements(res.data.pageList.totalElements);
@@ -193,7 +251,7 @@ function Employeedetails() {
 
 
     } catch (error) {
-      setisError(error.message);
+      setError(error.message);
       console.log(error.message);
       showErrorToast();
     }
@@ -222,95 +280,83 @@ function Employeedetails() {
       setAllData([res.data.pageList.content]);
       console.log([res.data.pageList.content]);
     } catch (error) {
-      setisError(error.message);
+      setError(error.message);
       console.log(error.message);
       showErrorNotFoundToast();
     }
 
   }
 
-  useEffect(() => {
-    console.log(firstIndex + " --first");
-    console.log(lastIndex + " --lastIndex");
-    console.log(slicedAllData + " sliced data");
-  })
+  // useEffect(() => {
+  //   console.log(firstIndex + " --first");
+  //   console.log(lastIndex + " --lastIndex");
+  //   console.log(slicedAllData + " sliced data");
+  // },[firstIndex,lastIndex])
 
-  const mainModal = (
-    <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
+  // const mainModal = (
+  //   <Mymodal closeModal={closeModal} handleSubmit={onSubmit} handleInputChange={handleInputChange} >
 
-      <button id='close-btn' onClick={closeModal}>close</button>
-      <MDBIcon icon="user-plus" size="3x"/>
-      <h3 style={{padding: "10px"}}>Add Employee</h3>
-      <form onSubmit={handleSubmit} className='modalForm' id='modalForm'>
-        <div className="d-flex flex-row align-items-center mb-3 mt-3">
-          <MDBIcon fas icon="user-pen" size='lg' style={{ marginRight: '5px' }} />
-          <MDBInput
-            label="User name"
-            type="text"
-            name="userName"
-            id="userName"
-            value={user.userName}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
+  //     <button id='close-btn' onClick={closeModal}>close</button>
+  //     <MDBIcon icon="user-plus" size="3x"/>
+  //     <h3 style={{padding: "10px"}}>Add Employee</h3>
+  //     <form onSubmit={onSubmit} className='modalForm' id='modalForm'>
+  //       <div className="d-flex flex-row align-items-center mb-3 mt-3">
+  //         <MDBIcon fas icon="user-pen" size='lg' style={{ marginRight: '5px' }} />
+  //         <MDBInput
+  //           label="User name"
+  //           type="text"
+  //           name="userName"
+  //           id="userName"
+  //           value={empData.userName}
+  //           onChange={handleInputChange}
+  //           required
+  //         />
+  //       </div>
 
-        <div className="d-flex flex-row align-items-center mb-3">
-          <MDBIcon class="fas fa-mobile fa-lg" size='lg' style={{ marginRight: '13px', marginLeft: '2px' }} />
-          <MDBInput
-            label="Mobile No"
-            type="string"
-            name="mobile"
-            id="mobile"
-            value={user.mobile}
-            onChange={handleInputChange}
-          // required
-          />
-        </div>
+  //       <div className="d-flex flex-row align-items-center mb-3">
+  //         <MDBIcon class="fas fa-mobile fa-lg" size='lg' style={{ marginRight: '13px', marginLeft: '2px' }} />
+  //         <MDBInput
+  //           label="Mobile No"
+  //           type="string"
+  //           name="mobile"
+  //           id="mobile"
+  //           value={empData.mobile}
+  //           onChange={handleInputChange}
+  //         // required
+  //         />
+  //       </div>
 
-        <div className="d-flex flex-row align-items-center mb-3">
-          <MDBIcon class="far fa-envelope fa-lg" size='lg' style={{ marginRight: '10px' }} />
-          <MDBInput
-            label="Email Id"
-            type="email"
-            name="email"
-            id="email"
-            value={user.email}
-            onChange={handleInputChange}
-          // required
-          />
-        </div>
-          
-        <div className="d-flex flex-row align-items-center mb-3">
-          <MDBIcon  class="fas fa-lock fa-lg" size='lg' style={{ marginRight: '12px' }} />
-          <MDBInput
-            label="Password"
-            type="password"
-            name="password"
-            id="password"
-            value={user.password}
-            onChange={handleInputChange}
-          // required
-          />
-        </div>
+        // <div className="d-flex flex-row align-items-center mb-3">
+        //   <MDBIcon class="far fa-envelope fa-lg" size='lg' style={{ marginRight: '10px' }} />
+        //   <MDBInput
+        //     label="Email Id"
+        //     type="email"
+        //     name="email"
+        //     id="email"
+        //     value={user.email}
+        //     onChange={handleInputChange}
+        //   // required
+        //   />
+        // </div>
 
 
 
-        <div className="d-flex flex-row align-items-center mb-3">
-          <MDBIcon fas icon="pen-to-square" size='lg' style={{ marginRight: '10px' }} />
-          <select className="form-select custom-select-width" style={{ height: '40px' }} name='role' value={user.role} onChange={handleSelect}>
-            <option disabled>Role List</option>
-            {roleList.map((role) => (
-              // console.log(role);
-              // const { id, roleName } = role;
-              // console.log(roleName+"prakash");
-              <option key={role.id} value={role.roleName}>{role.roleName}</option>
-            ))}
+
+  //       <div className="d-flex flex-row align-items-center mb-3">
+  //         <MDBIcon fas icon="pen-to-square" size='lg' style={{ marginRight: '10px' }} />
+  //         <select className="form-select custom-select-width" style={{ height: '40px' }} name='role' value={empData.role} onChange={handleSelect}>
+  //           <option>Role List</option>
+  //           {roleList.map((role) => (
+  //             // console.log(role);
+  //             // const { id, roleName } = role;
+  //             // console.log(roleName+"prakash");
+  //             <option key={role.id} value={role.roleName}>{role.roleName}</option>
+  //           ))}
 
 
-          </select>
+  //         </select>
 
-        </div>
+  //       </div>
 
 
 
@@ -322,15 +368,15 @@ function Employeedetails() {
             Submitting...
           </MDBBtn>
         ) : (
-          <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }}  >Submit</MDBBtn>
+          <MDBBtn className='btn-rounded mt-3 btn-lg' style={{ width: '100%' }} >Submit</MDBBtn>
         )}
 
-      </form>
+  //     </form>
 
-    </Mymodal>
+  //   </Mymodal>
 
 
-  )
+  // )
 
   return (
 
@@ -345,12 +391,12 @@ function Employeedetails() {
       </div>) : ""
       }
 
-
+  
       <div className='find-container'>
         {/* <div className='findButtonClass'><button className='btn-find btn btn-primary' onClick={()=>handleFindALL()}>FindAll</button></div> */}
         <div className="parentSearchInput">
-          <div> <button className='btn btn-primary' id='searchDataID' onClick={() => setShowModal(true)}>Add Employee</button>
-          </div>{ShowModal && mainModal}
+          <div> <button className='btn btn-primary' id='searchDataID' onClick={() => navigate('/AddEmployee')}>Add Employee</button>
+          </div>
 
           {/* <input type="number" className='userPerPageClass' id='Pagi_input_id' name='userPerPage' value={pageSize} onChange={(e) => { setPageSize(e.target.value) }} /> */}
           <div className="spacer"></div>

@@ -13,6 +13,10 @@ import AddAndDisplayUserPage from './Components/AddUser';
 import AddBillbox from './Components/Billbox/AddBillbox';
 import BillboxList from './Components/Billbox/BillboxList';
 import ErrorPage from './Components/ErrorPage';
+import AddEmployee from './Components/Employee/AddEmployee';
+import Protected from './features/auth/Protected';
+import Protected2 from './features/auth/Protected2';
+import PdfM from './Components/Billbox/PdfM';
 
 
 
@@ -23,7 +27,6 @@ import ErrorPage from './Components/ErrorPage';
 
 function App() {
 
-  const token =localStorage.getItem('accessToken');
   return (
     <div className="App">
 
@@ -33,16 +36,19 @@ function App() {
          
            
           <Routes>
-            <Route path='/' element={token? <UserDetail/>:<Dashboard/>}/>
-            <Route path='/login' element={<Login/>}/>
-            <Route path='/register' element={<Register/>}/>
+          <Route path='/' element={<Protected2><Dashboard/></Protected2>}/>
+            <Route path='/login' element={<Protected2><Login/></Protected2>}/>
+            <Route path='/register' element={<Protected2><Register/></Protected2>}/>
 
             <Route path='/loggedin' element={<UserDetail/>}/>
            
             <Route path='/addbill' element={<AddBillbox/>}/>
             {/* <Route path='/loggedin' element={<BillboxList/>}/> */}
             <Route path='/form' element = {<AddAndDisplayUserPage/>}/>
+            <Route path='/AddEmployee' element = {<AddEmployee/>}/>
+
             <Route path='*' element = {<ErrorPage/>}/>
+            <Route path='/pdf' element = {<PdfM/>}/>
             
             
            
@@ -53,7 +59,7 @@ function App() {
         </div>
       
       </BrowserRouter>
-      <ToastContainer/>
+      {/* <ToastContainer/> */}
 
 
 

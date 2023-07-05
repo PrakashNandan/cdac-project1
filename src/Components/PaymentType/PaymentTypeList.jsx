@@ -223,7 +223,7 @@ function PaymentTypeList() {
             </div>
     
             <div className="d-flex flex-row align-items-center mb-3">
-              <MDBIcon fas icon="pen-to-square" size='lg' style={{ marginRight: '13px' }} />
+              <MDBIcon fas icon="pen-to-square" size='lg' style={{ marginRight: '10px' }} />
               <MDBInput
                 label="Is Valid?"
                 type="number"
