@@ -196,7 +196,7 @@ function AddEmployee() {
           <select className="form-select custom-select-width" style={{ height: '40px' }} name='role' value={empData.role} onChange={handleSelect}>
             <option>Role List</option>
             {roleList.map((role) => (
-              <option key={role.id} value={role.roleName}>{role.roleName}</option>
+              <option key={role.id} value={role.id}>{role.roleName}</option>
             ))}
 
 

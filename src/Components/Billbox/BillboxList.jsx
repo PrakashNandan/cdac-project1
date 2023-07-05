@@ -145,6 +145,8 @@ function BillboxList() {
       toast.success("Submit Successfully");
       setBillBoxes([...billBoxes, billBox]);
       console.log(res);
+      handleFindALL();
+
     } catch (error) {
       toast.error("Form not Submitted !! , please try again");
       console.log(error);

@@ -15,27 +15,22 @@ import AddBillbox from "./Billbox/AddBillbox"
 import BillboxList from "./Billbox/BillboxList";
 import BillboxList2 from "./Billbox/BillboxList2";
 import Employeedetails from "./Employee/Employeedetails";
+import ApprovedBillList from "./Billbox/ApprovedBillList";
 function UserDetail() {
   // const
   const [showChargeList, setShowChargeList] = useState(false);
-  const [showAddCharge,setShowAddCharge]=useState(false);
-  const [showAddBillType,setShowAddBillType]=useState(false);
   const [showBillTypeList,setShowBillTypeList]=useState(false);
-  const [showAddBillCategory,setShowAddBillCategory]=useState(false);
   const [showBillCategoryList,setShowBillCategoryList]=useState(false);
-  const [showAddDept,setShowAddDept]=useState(false);
   const [showDeptList,setShowDeptList]=useState(false);
-  const [showAddFinYear,setShowAddFinYear]=useState(false);
   const [showFinYearList,setShowFinYearList]=useState(false);
-  const [showAddFundingSource,setShowAddFundingSource]=useState(false);
   const [showFundingSourceList,setShowFundingSourceList]=useState(false);
-  const [showAddLedgerType,setShowAddLedgerType]=useState(false);
   const [showLedgerTypeList,setShowLedgerTypeList]=useState(false);
-  const [showAddPaymentType,setShowAddPaymentType]=useState(false);
   const [showPaymentTypeList,setShowPaymentTypeList]=useState(false);
   const [ShowDashboard, setShowDashboard] = useState(false);
   const [ShowHomepage, setShowHomepage] = useState(true);
   const [ShowBillbox, setShowBillbox] = useState(false);
+  const [ShowAdminBillbox, setShowAdminBillbox] = useState(false);
+  const [ShowApprovedBills, setShowApprovedBills] = useState(false);
   const [ShowEmployee, setShowEmployee] = useState(false);
   return (
     <div>
@@ -45,26 +40,24 @@ function UserDetail() {
         setShowHomepage= {setShowHomepage}
         setShowDashboard= {setShowDashboard}
         setShowChargeList={setShowChargeList}
-        setShowAddCharge={setShowAddCharge}
         setShowBillTypeList={setShowBillTypeList}
-        setShowAddBillType={setShowAddBillType}
-        setShowAddBillCategory={setShowAddBillCategory}
         setShowBillCategoryList={setShowBillCategoryList}
-        setShowAddFundingSource={setShowAddFundingSource}
         setShowFundingSourceList={setShowFundingSourceList}
-        setShowAddPaymentType={setShowAddPaymentType}
         setShowPaymentTypeList={setShowPaymentTypeList}
-        setShowAddLedgerType={setShowAddLedgerType}
         setShowLedgerTypeList={setShowLedgerTypeList}
         setShowDeptList={setShowDeptList}
-        setShowAddDept={setShowAddDept}
-        setShowAddFinYear={setShowAddFinYear}
         setShowFinYearList={setShowFinYearList}
+        setShowAdminBillbox={setShowAdminBillbox}
+        setShowApprovedBills={setShowApprovedBills}
       ></Sidebar>
       {(ShowEmployee)&&
 <Employeedetails></Employeedetails>}
        {(ShowBillbox)&&
 <BillboxList></BillboxList>}
+       {(ShowAdminBillbox)&&
+<BillboxList2></BillboxList2>}
+       {(ShowApprovedBills)&&
+<ApprovedBillList></ApprovedBillList>}
   {(ShowHomepage)&&
 <Homepage></Homepage>}
     {(ShowDashboard)&&
