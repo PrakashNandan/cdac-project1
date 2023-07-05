@@ -8,9 +8,9 @@ import '../../style/formtemp.css'
 import '../../style/chargeList.css'
 import { privateAxios } from '../../service/helperUtil'
 import Pagination from '../Pagination'
-import FindBillBoxData2 from './FindBillBoxData2'
+import ApprovedBillsData from './ApprovedBillsData';
 
-function BillboxList2() {
+function ApprovedBillList() {
 
     const [allData, setAllData] = useState([]);
     const [isError, setisError] = useState('');
@@ -57,12 +57,42 @@ function BillboxList2() {
   const [billBoxes, setBillBoxes] = useState([]);
 
 
- 
+
+
+
+
+  if (billPerPage < 1) {
+    setbillPerPage(3);
+  }
+
+  const closeModal = () => {
+    return setShowModal(false);
+  }
+
+
+  
+
+
+  
+
+    // const handleFindALL = async () => {
+
+    //     try {
+
+    //         const res = await privateAxios.get("/charge/getBillBoxDetail");
+    //         setAllData(res.data.pageList.content);
+    //         console.log(res.data);
+
+
+    //     } catch (error) {
+    //         setisError(error.message); showErrorToast();
+    //     }
+    // }
 
     const handleFindALL = async () => {
 
       setDataFetching(true);        
-      const res =  privateAxios.get(`/charge/getBillBoxDetail?pageNumber=${pageNumber-1}&pageSize=${pageSize}`)
+      const res =  privateAxios.get(`/charge/getApprovalBillBoxList?pageNumber=${pageNumber-1}&pageSize=${pageSize}`)
       .then((res)=>{
            //alert("inside then")
           console.log(res);
@@ -102,7 +132,7 @@ function BillboxList2() {
     useEffect(()=>{
     if(isReady){
       setDataFetching(true);        
-      const res =  privateAxios.get(`/charge/getBillBoxDetail?pageNumber=${pageNumber-1}&pageSize=${pageSize}`)
+      const res =  privateAxios.get(`/charge/getApprovalBillBoxList?pageNumber=${pageNumber-1}&pageSize=${pageSize}`)
       .then((res)=>{
            //alert("inside then")
           console.log(res);
@@ -172,14 +202,14 @@ function BillboxList2() {
 
         <>
         
-            <h2 id='chargeHeadID'>List of Submitted Bills</h2>
+            <h2 id='chargeHeadID'>List of Approved Bills</h2>
 
 
             <div className='find-container'>
                 {/* <div className='findButtonClass'><button className='btn-find btn btn-primary' onClick={()=>handleFindALL()}>FindAll</button></div> */}
                 
                 <div className="parentSearchInput">
-                
+               
                     <div className="spacer"></div>
                     <input type="number" placeholder='search by ID' id='searchInput' value={inputId} onChange={(e) => setInputId(e.target.value)} />
                     <button className='btn btn-primary' id='searchDataID' onClick={fetchData}>Search</button>
@@ -201,12 +231,12 @@ function BillboxList2() {
                                 <th>Amount</th>
                                 {/* <th>Valid</th>
                                 <th>Remarks</th> */}
-                                <th>Action</th>
+                                {/* <th>Action</th> */}
                                 {/* <th>Download</th> */}
                             </tr>
                         </thead>
                         <tbody>
-                            <FindBillBoxData2 select1Data={select1Data} select2Data={select2Data} select3Data={select3Data} allData={allData} setAllData={setAllData} handleFindALL={handleFindALL}  />
+                            <ApprovedBillsData select1Data={select1Data} select2Data={select2Data} select3Data={select3Data} allData={allData} setAllData={setAllData} handleFindALL={handleFindALL}  />
                         </tbody>
 
                     </table>
@@ -222,4 +252,4 @@ function BillboxList2() {
     )
 }
 
-export default BillboxList2
+export default ApprovedBillList;

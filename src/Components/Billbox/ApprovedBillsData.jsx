@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import { setPdf } from './billBoxSlice.js';
 
 
-function FindBillBoxData2({allData,setAllData,handleFindALL}) {
+function ApprovedBillsData({allData,setAllData,handleFindALL}) {
 
   // const [showModal, setShowModal] = useState(false);
   // const [dataForUpdate, setDataForUpdate] = useState([]);
@@ -24,27 +24,7 @@ function FindBillBoxData2({allData,setAllData,handleFindALL}) {
    
   
   }
-  const handleApprove=async(id)=>{
-
-    const conf = window.confirm("Are you sure to approve the data with id: "+(+id))
-    if(conf){
-
-        try{
-            const res = await privateAxios.get(`/charge/approveBillBoxDetails/${id}`)
-            toast.warn("The bill has been approved ")
-            setAllData(res.data);
-            console.log(res);
-            handleFindALL();
-
-        }catch(error){
-            toast.error("Error in approval")
-            console.log(error.message);
-        }
-    
-        // handleFindALL();
-    }
-  }
-
+  
   
 
 
@@ -66,7 +46,7 @@ function FindBillBoxData2({allData,setAllData,handleFindALL}) {
               amount,valid,remarks,DepartmentId,PaymentTypeId,BillTypeId
                 } = curData;
 
-          
+                // str.substring(0, index)
             return (
                 <tr >
                     <td>{id}</td> 
@@ -74,14 +54,11 @@ function FindBillBoxData2({allData,setAllData,handleFindALL}) {
                     <td>{DepartmentName}</td>
                     <td>{PaymentTypeName}</td>
                     <td>{invoiceNo}</td>
-                    <td>{invoiceDate}</td>
+                    <td>{invoiceDate.substring(0, 10)}</td>
                     <td>Rs. {amount}</td>
                     {/* <td>{valid===true ? "YES" : "NO" }</td> */}
                     {/* <td>{remarks}</td> */}
   
-                    <td><button type="button" class="btn btn-success btn-sm" onClick={()=>handleApprove(id)}>Approve</button>
-                        
-                                      </td>
                     {/* <td><button type="button" class="btn m-1 btn-light" onClick={()=>pdf(curData)}>Generate PDF</button></td> */}
                 </tr>
             )
@@ -111,4 +88,4 @@ function FindBillBoxData2({allData,setAllData,handleFindALL}) {
   )
 }
 
-export default FindBillBoxData2;
+export default ApprovedBillsData;

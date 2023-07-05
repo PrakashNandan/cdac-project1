@@ -21,8 +21,9 @@ const login = async (userData) => {
 
   const token = response.data.accessToken ; 
   localStorage.setItem("accessToken", token);
-  
-
+  const userRole = response.data.role[0].name;
+  localStorage.setItem("role",userRole)
+    console.log(userRole)
   
 
   if (response.data) {

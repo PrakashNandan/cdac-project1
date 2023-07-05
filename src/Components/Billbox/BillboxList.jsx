@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "../../style/chargeList.css";
 import axios from "../axios.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import FindBillBoxData from "./FindBillBoxData";
@@ -145,6 +144,8 @@ function BillboxList() {
       toast.success("Submit Successfully");
       setBillBoxes([...billBoxes, billBox]);
       console.log(res);
+      handleFindALL();
+
     } catch (error) {
       toast.error("Form not Submitted !! , please try again");
       console.log(error);
@@ -280,274 +281,109 @@ function BillboxList() {
   //       privateAxios.get("/charge/getBillBoxDetail").then((res)=>console.log(res)).catch((err)=>console.log("error from billbox" + err))
   // })
 
-  const mainModal = (
-
-      <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
-
-        {/* <button id='close-btn' onClick={closeModal}>close</button> */}
-        <h1>Bill Box Form</h1>
-        <div className="cont">
-
-          <form className = "modalForm">
-            <div className="row">
-              <div className="col-half">
-                {/* <div className="invoice">
-                  <input type="string" id="input-box1" value={billBox.billSlNo} placeholder="Bill Sl No" onChange={handleInputChange} />
-                </div> */}
-              </div>
-              <div className='row'>
-              <div className="input-group input-group-icon invoice">
-              <div className="input-icon">
-              <i class="fa fa-address-card-o" aria-hidden="true"></i></div>
-                <div className="invoice">
-                  <input type="text" placeholder='Invoice no' name='invoiceNo' value={billBox.invoiceNo} onChange={handleInputChange} />
-                </div>
-                </div>
-              </div>
-              <div className="input-group input-group-icon">
-                {/* <input type="text" placeholder="Full Name" /> */}
-                <div className="input-icon">
-                  <i class="fa fa-columns" aria-hidden="true"></i>
-                </div>
-
-                
-
-                <select name='BillType' value={billBox.BillType} onChange={handleInputChange}>
-                  <option id="op" >Bill Type</option>
-                  {select1Data.map((option) => (
-                    <option key={option.id} value={option.id}>
-                      {option.name}
-                    </option>
-                  ))}
-                </select>
-
-              </div>
-              <div className="input-group input-group-icon">
-
-                <div className="input-icon">
-                  <i class="fa fa-money" aria-hidden="true"></i>        </div>
-
-                {/* <select>
-                  <option >Bill Category</option>
-                  <option >Bill Category2</option>
-                </select> */}
-
-            <select name='Department' value={billBox.Department} onChange={handleInputChange}>
-              <option>Department List</option>
-              {select2Data.map((option) => (
-                <option key={option.id}  value={option.id}>
-                  {option.name}
-                </option>
-              ))}
-            </select>
-
-              </div>
-              <div className="input-group input-group-icon">
-
-                <div className="input-icon">
-                  <i className="fa fa-credit-card" />        </div>
-                {/* <select >
-                  <option>Funding Source</option>
-                  <option>Funding Source2</option>
-                </select> */}
-
-              <select name='PaymentType' value={billBox.PaymentType} onChange={handleInputChange}>
-                <option>Payment Type</option>
-                {select3Data.map((option) => (
-                  <option key={option.id} value={option.id}>
-                    {option.name}
-                  </option>
-                ))}
-              </select>
-
-              </div>
-            </div>
-
-            <div className="row1">
-              <div className='row'>
-              <div className="col-half">
-                <h4>Invoice Date</h4>
-                <div className="input-group">
-                  <input type="date" id="entry" placeholder='Invoice date' name='invoiceDate' value={billBox.invoiceDate} onChange={handleInputChange} />
-                </div>
-              </div>
-             
-              <div className='col-half'>
-              <h4>Bill Net Amount</h4>
-                <div className="input-group input-group-icon">
-
-                  <input type="number" id="yes" placeholder='Bill Net Amount' value={billBox.amount} name='amount' onChange={handleInputChange} />
-                  <div className="input-icon">
-                    <i class="fa fa-inr" aria-hidden="true"></i>
-                  </div>
-                </div>
-              </div>
-              </div>
-
-            <div className="row">
-              <h4>Is Valid ?</h4>
-              <div className="input-group">
-                <input
-                  id="payment-method-card"
-                  type="radio"
-                  name="valid"
-
-                  defaultChecked="true"
-
-                  onClick={()=>{setBillBox({...billBox,valid:true})}}
-                />
-                <label htmlFor="payment-method-card">
-                  <span>
-                    YES
-                  </span>
-                </label>
-                <input
-                  id="payment-method-paypal"
-                  type="radio"
-                  name="valid"
-
-                  // defaultValue="paypal"
-                  onClick={()=>{setBillBox({...billBox,valid:false})}}
-                />
-                <label htmlFor="payment-method-paypal">
-                  {" "}
-                  <span>
-                    NO
-                  </span>
-                </label>
-              </div>
-
-            </div>
-            </div>
-            <div className="row">
-              <h4>Remarks</h4>
-             
-             
-              <div className="input-group input-group-icon">
-                <textarea id="w3review" name="remark" value={billBox.remarks} onChange={handleTextAreaChange} rows="2" cols="100"  />
-
-              </div>
-
-            </div>
-            <div className='row'><button id='submitbtn' type='submit' onClick={handleSubmit} >Submit</button></div>
-
-          </form>
-        </div>
-
-      </Mymodal>
-    )
   // const mainModal = (
 
+  //     <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
 
-  //   <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
+  //       {/* <button id='close-btn' onClick={closeModal}>close</button> */}
+  //       <h1>Bill Box Form</h1>
+  //       <div className="cont">
 
-  //     {/* <button id='close-btn' onClick={closeModal}>close</button> */}
-  //     <h1>Bill Box Form</h1>
-  //     <div className="cont">
-
-  //       <form className="modalForm">
-  //         <div className="row">
-  //           <div className="col-half">
-  //             {/* <div className="invoice">
-  //                   <input type="string" id="input-box1" value={billBox.billSlNo} placeholder="Bill Sl No" onChange={handleInputChange} />
-  //                 </div> */}
-  //           </div>
-  //           <div className='row'>
+  //         <form className = "modalForm">
+  //           <div className="row">
+  //             <div className="col-half">
+  //               {/* <div className="invoice">
+  //                 <input type="string" id="input-box1" value={billBox.billSlNo} placeholder="Bill Sl No" onChange={handleInputChange} />
+  //               </div> */}
+  //             </div>
+  //             <div className='row'>
   //             <div className="input-group input-group-icon invoice">
-  //               <div className="input-icon">
-  //                 <i class="fa fa-address-card-o" aria-hidden="true"></i></div>
+  //             <div className="input-icon">
+  //             <i class="fa fa-address-card-o" aria-hidden="true"></i></div>
   //               <div className="invoice">
   //                 <input type="text" placeholder='Invoice no' name='invoiceNo' value={billBox.invoiceNo} onChange={handleInputChange} />
   //               </div>
+  //               </div>
   //             </div>
-  //           </div>
-  //           <div className='row'>
   //             <div className="input-group input-group-icon">
   //               {/* <input type="text" placeholder="Full Name" /> */}
   //               <div className="input-icon">
   //                 <i class="fa fa-columns" aria-hidden="true"></i>
   //               </div>
 
-
-               
-
+                
 
   //               <select name='BillType' value={billBox.BillType} onChange={handleInputChange}>
   //                 <option id="op" >Bill Type</option>
   //                 {select1Data.map((option) => (
-  //                   <option key={option.id} value={option.name}>
+  //                   <option key={option.id} value={option.id}>
   //                     {option.name}
   //                   </option>
   //                 ))}
   //               </select>
+
   //             </div>
-
-
-
-  //           </div>
-  //           <div className='row'>
   //             <div className="input-group input-group-icon">
 
   //               <div className="input-icon">
   //                 <i class="fa fa-money" aria-hidden="true"></i>        </div>
 
-               
+  //               {/* <select>
+  //                 <option >Bill Category</option>
+  //                 <option >Bill Category2</option>
+  //               </select> */}
 
-  //               <select name='Department' value={billBox.Department} onChange={handleInputChange}>
-  //                 <option>Department List</option>
-  //                 {select2Data.map((option) => (
-  //                   <option key={option.id} value={option.name}>
-  //                     {option.name}
-  //                   </option>
-  //                 ))}
-  //               </select>
+  //           <select name='Department' value={billBox.Department} onChange={handleInputChange}>
+  //             <option>Department List</option>
+  //             {select2Data.map((option) => (
+  //               <option key={option.id}  value={option.id}>
+  //                 {option.name}
+  //               </option>
+  //             ))}
+  //           </select>
 
   //             </div>
-  //           </div>
-  //           <div className='row'>
   //             <div className="input-group input-group-icon">
 
   //               <div className="input-icon">
   //                 <i className="fa fa-credit-card" />        </div>
   //               {/* <select >
-  //                   <option>Funding Source</option>
-  //                   <option>Funding Source2</option>
-  //                 </select> */}
+  //                 <option>Funding Source</option>
+  //                 <option>Funding Source2</option>
+  //               </select> */}
 
-  //               <select name='PaymentType' value={billBox.PaymentType} onChange={handleInputChange}>
-  //                 <option>Payment Type</option>
-  //                 {select3Data.map((option) => (
-  //                   <option key={option.id} value={option.name}>
-  //                     {option.name}
-  //                   </option>
-  //                 ))}
-  //               </select>
-
+  //             <select name='PaymentType' value={billBox.PaymentType} onChange={handleInputChange}>
+  //               <option>Payment Type</option>
+  //               {select3Data.map((option) => (
+  //                 <option key={option.id} value={option.id}>
+  //                   {option.name}
+  //                 </option>
+  //               ))}
+  //             </select>
 
   //             </div>
   //           </div>
-  //         </div>
 
-  //         <div className="row">
-
-  //           <div className="col-half">
-  //             <h4>Invoice Date</h4>
-  //             <div className="input-group">
-  //               <input type="date" id="entry" placeholder='Invoice date' name='invoiceDate' value={billBox.invoiceDate} onChange={handleInputChange} />
-  //             </div>
-  //           </div>
-            
-  //           <div className='col-half'>
-  //             <h4>Bill Net Amount</h4>
-  //             <div className="input-group input-group-icon">
-
-  //               <input type="number" id="yes" placeholder='Bill Net Amount' value={billBox.amount} name='amount' onChange={handleInputChange} />
-  //               <div className="input-icon">
-  //                 <i class="fa fa-inr" aria-hidden="true"></i>
+  //           <div className="row1">
+  //             <div className='row'>
+  //             <div className="col-half">
+  //               <h4>Invoice Date</h4>
+  //               <div className="input-group">
+  //                 <input type="date" id="entry" placeholder='Invoice date' name='invoiceDate' value={billBox.invoiceDate} onChange={handleInputChange} />
   //               </div>
   //             </div>
-  //           </div>
+             
+  //             <div className='col-half'>
+  //             <h4>Bill Net Amount</h4>
+  //               <div className="input-group input-group-icon">
 
+  //                 <input type="number" id="yes" placeholder='Bill Net Amount' value={billBox.amount} name='amount' onChange={handleInputChange} />
+  //                 <div className="input-icon">
+  //                   <i class="fa fa-inr" aria-hidden="true"></i>
+  //                 </div>
+  //               </div>
+  //             </div>
+  //             </div>
 
   //           <div className="row">
   //             <h4>Is Valid ?</h4>
@@ -583,25 +419,188 @@ function BillboxList() {
   //             </div>
 
   //           </div>
-  //         </div>
-  //         <div className="row">
-  //           <h4>Remarks</h4>
-          
-          
-  //           <div className="input-group input-group-icon">
-  //             <textarea id="w3review" name="remark" value={billBox.remarks} onChange={handleTextAreaChange} rows="2" cols="100" />
+  //           </div>
+  //           <div className="row">
+  //             <h4>Remarks</h4>
+             
+             
+  //             <div className="input-group input-group-icon">
+  //               <textarea id="w3review" name="remark" value={billBox.remarks} onChange={handleTextAreaChange} rows="2" cols="100"  />
+
+  //             </div>
 
   //           </div>
+  //           <div className='row'><button id='submitbtn' type='submit' onClick={handleSubmit} >Submit</button></div>
 
-  //         </div>
-  //         <div className='row'><button id='submitbtn' type='submit' onClick={handleSubmit} >Submit</button></div>
+  //         </form>
+  //       </div>
 
-  //       </form>
-  //     </div>
+  //     </Mymodal>
+  //   )
+  const mainModal = (
 
 
-  //   </Mymodal>
-  // )
+    <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
+
+      {/* <button id='close-btn' onClick={closeModal}>close</button> */}
+      <h1>Bill Box Form</h1>
+      <div className="cont">
+
+        <form className="modalForm">
+          <div className="row">
+            <div className="col-half">
+             
+            </div>
+            <div className='row'>
+              <div className="input-group input-group-icon invoice">
+                <div className="input-icon">
+                  <i class="fa fa-address-card-o" aria-hidden="true"></i></div>
+                <div className="invoice">
+                  <input type="text" placeholder='Invoice no' name='invoiceNo' value={billBox.invoiceNo} onChange={handleInputChange} />
+                </div>
+              </div>
+            </div>
+            <div className='row'>
+              <div className="input-group input-group-icon">
+                {/* <input type="text" placeholder="Full Name" /> */}
+                <div className="input-icon">
+                  <i class="fa fa-columns" aria-hidden="true"></i>
+                </div>
+
+
+               
+
+
+                <select name='BillType' value={billBox.BillType} onChange={handleInputChange}>
+                  <option id="op" >Bill Type</option>
+                  {select1Data.map((option) => (
+                    <option key={option.id} value={option.id}>
+                      {option.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+
+
+            </div>
+            <div className='row'>
+              <div className="input-group input-group-icon">
+
+                <div className="input-icon">
+                  <i class="fa fa-money" aria-hidden="true"></i>        </div>
+
+               
+
+                <select name='Department' value={billBox.Department} onChange={handleInputChange}>
+                  <option>Department List</option>
+                  {select2Data.map((option) => (
+                    <option key={option.id} value={option.id}>
+                      {option.name}
+                    </option>
+                  ))}
+                </select>
+
+              </div>
+            </div>
+            <div className='row'>
+              <div className="input-group input-group-icon">
+
+                <div className="input-icon">
+                  <i className="fa fa-credit-card" />        </div>
+                {/* <select >
+                    <option>Funding Source</option>
+                    <option>Funding Source2</option>
+                  </select> */}
+
+                <select name='PaymentType' value={billBox.PaymentType} onChange={handleInputChange}>
+                  <option>Payment Type</option>
+                  {select3Data.map((option) => (
+                    <option key={option.id} value={option.id}>
+                      {option.name}
+                    </option>
+                  ))}
+                </select>
+
+
+              </div>
+            </div>
+          </div>
+
+          <div className="row">
+
+            <div className="col-half">
+              <h4>Invoice Date</h4>
+              <div className="input-group">
+                <input type="date" id="entry" placeholder='Invoice date' name='invoiceDate' value={billBox.invoiceDate} onChange={handleInputChange} />
+              </div>
+            </div>
+            
+            <div className='col-half'>
+              <h4>Bill Net Amount</h4>
+              <div className="input-group input-group-icon">
+
+                <input type="number" id="yes" placeholder='Bill Net Amount' value={billBox.amount} name='amount' onChange={handleInputChange} />
+                <div className="input-icon">
+                  <i class="fa fa-inr" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+
+
+            <div className="row">
+              <h4>Is Valid ?</h4>
+              <div className="input-group">
+                <input
+                  id="payment-method-card"
+                  type="radio"
+                  name="valid"
+
+                  defaultChecked="true"
+
+                  onClick={()=>{setBillBox({...billBox,valid:true})}}
+                />
+                <label htmlFor="payment-method-card">
+                  <span>
+                    YES
+                  </span>
+                </label>
+                <input
+                  id="payment-method-paypal"
+                  type="radio"
+                  name="valid"
+
+                  // defaultValue="paypal"
+                  onClick={()=>{setBillBox({...billBox,valid:false})}}
+                />
+                <label htmlFor="payment-method-paypal">
+                  {" "}
+                  <span>
+                    NO
+                  </span>
+                </label>
+              </div>
+
+            </div>
+          </div>
+          <div className="row">
+            <h4>Remarks</h4>
+          
+          
+            <div className="input-group ">
+              <textarea id="w3review" style={{paddingLeft:'10px' ,paddingTop:'5px'}} name="remark" value={billBox.remarks} onChange={handleTextAreaChange} rows="2" cols="54" />
+
+            </div>
+
+          </div>
+          <div className='row'><button id='submitbtn' type='submit' onClick={handleSubmit} >Submit</button></div>
+
+        </form>
+      </div>
+
+
+    </Mymodal>
+  )
   return (
     <>
       <h2 id="chargeHeadID">List of Submitted Bills</h2>
