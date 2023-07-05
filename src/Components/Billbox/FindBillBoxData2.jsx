@@ -79,7 +79,7 @@ function FindBillBoxData2({allData,setAllData,handleFindALL}) {
                     {/* <td>{valid===true ? "YES" : "NO" }</td> */}
                     {/* <td>{remarks}</td> */}
   
-                    <td><button type="button" class="btn btn-success" onClick={()=>handleApprove(id)}>Approve</button>
+                    <td><button type="button" class="btn btn-success btn-sm" onClick={()=>handleApprove(id)}>Approve</button>
                         
                                       </td>
                     {/* <td><button type="button" class="btn m-1 btn-light" onClick={()=>pdf(curData)}>Generate PDF</button></td> */}
