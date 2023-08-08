@@ -148,24 +148,11 @@ function FindAllData({ allData, setAllData, handleFindALL }) {
     <Mymodal closeModal={closeModal} handleSubmit={handleUpdateSubmit} handleInputChange={handleInputChange}  >
 
       <button id='close-btn' onClick={closeModal}>close</button>
-      <h2>Form</h2>
+      <h2>Update ID: {dataForUpdate.chargeId}</h2>
 
       <form onSubmit={handleUpdateSubmit} className='modalForm' id='modalForm'>
 
-        <div className="d-flex flex-row align-items-center mb-3 mt-3">
-          <MDBIcon fas icon="address-card" size='lg' style={{ marginRight: '5px' }} />
-          <MDBInput
-            label="ID"
-            type="number"
-            name="id"
-            id="id"
-            value={dataForUpdate.id}
-            onChange={handleInputChange}
-            disabled
-          />
-        </div>
-
-        <div className="d-flex flex-row align-items-center mb-3">
+        <div className="d-flex flex-row align-items-center mt-3 mb-3">
           <MDBIcon fas icon="user-pen" size='lg' style={{marginRight: '5px'}} />
           <MDBInput
             label="Charge Name"

@@ -98,24 +98,11 @@ function FindAllPaymentType({ allData, setAllData, handleFindALL }) {
     <Mymodal closeModal={closeModal} handleSubmit={handleSubmit} handleInputChange={handleInputChange} >
 
       <button id='close-btn' onClick={closeModal}>close</button>
-      <h2>Form</h2>
+      <h2>Update ID: {dataForUpdate.paymentTypeId}</h2>
 
       <form onSubmit={handleSubmit} className='form'>
 
-        <div className="d-flex flex-row align-items-center mb-3 mt-3">
-          <MDBIcon fas icon="address-card" size='lg' style={{ marginRight: '5px' }} />
-          <MDBInput
-            label="Payment Type ID"
-            type="number"
-            name="paymentTypeId"
-            id="paymentTypeId"
-            value={dataForUpdate.paymentTypeId}
-            onChange={handleInputChange}
-            disabled
-          />
-        </div>
-
-        <div className="d-flex flex-row align-items-center mb-3">
+        <div className="d-flex flex-row align-items-center mt-3 mb-3">
           <MDBIcon fas icon="pen-to-square" size='lg' style={{ marginRight: '10px' }} />
           <MDBInput
             label="Payment Type"

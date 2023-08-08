@@ -123,25 +123,12 @@ function FindAllFinYear({ allData, setAllData, handleFindALL }) {
 
       <button id='close-btn' onClick={closeModal}>close</button>
       {/* <h2>Form</h2> */}
-      <h4 style={{color:'black', marginBottom:'1rem'}}> <strong>Update ID : {dataForUpdate.finYearId}</strong> </h4>
+      <h2>Update ID: {dataForUpdate.finYearId}</h2>
       
 
       <form onSubmit={handleSubmit} className='form'>
 
-        <div className="d-flex flex-row align-items-center mb-3 mt-3">
-          <MDBIcon fas icon="address-card" size='lg' style={{ marginRight: '5px' }} />
-          <MDBInput
-            label="Financial Year ID"
-            type="number"
-            name="finYearId"
-            id="finYearId"
-            value={dataForUpdate.finYearId}
-            onChange={handleInputChange}
-            disabled
-          />
-        </div>
-
-        <div className="d-flex flex-row align-items-center mb-3">
+        <div className="d-flex flex-row align-items-center mt-3 mb-3">
           <MDBIcon fas icon="calendar" size='lg' style={{ marginRight: '13px' }} />
           <MDBInput
             label="Financial Year Start Date"

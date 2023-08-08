@@ -130,24 +130,11 @@ function FindAllBillType({ allData, setAllData, handleFindALL }) {
 
       <button id='close-btn' onClick={closeModal}>close</button>
       {/* <h2>Form</h2> */}
-      <h4 style={{ color: 'black', marginBottom: '1rem' }}> <strong>Update ID : {dataForUpdate.billTypeId}</strong> </h4>
+      <h2>Update ID: {dataForUpdate.billTypeId}</h2>
 
       <form onSubmit={handleSubmit} className='form'>
 
-        <div className="d-flex flex-row align-items-center mb-3 mt-3">
-          <MDBIcon fas icon="address-card" size='lg' style={{ marginRight: '5px' }} />
-          <MDBInput
-            label="Bill Type ID"
-            type="number"
-            name="billTypeId"
-            id="billTypeId"
-            value={dataForUpdate.billTypeId}
-            onChange={handleInputChange}
-            disabled
-          />
-        </div>
-
-        <div className="d-flex flex-row align-items-center mb-3">
+        <div className="d-flex flex-row align-items-center mt-3 mb-3">
           <MDBIcon fas icon="pen-to-square" size='lg' style={{ marginRight: '10px' }} />
           <MDBInput
             label="Bill Type Name"
