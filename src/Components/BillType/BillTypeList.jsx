@@ -63,10 +63,11 @@ function BillTypeList() {
 
 
         try {
-            const res = await axios.post("/billType/save", billType);
+            const res = await privateAxios.post("/billType/save", billType);
             toast.success('Submit Successfully')
             setBillTypes([...billTypes, billType]);
             console.log(res);
+            handleFindALL();
 
         } catch (error) {
             toast.error("Form not Submitted !! , please try again")

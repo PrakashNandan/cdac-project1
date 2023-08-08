@@ -442,7 +442,7 @@ function handleClick20 (){
                          Bill Box 
                         </button>
                 </li>}
-                {role==='ADMIN' &&<li>
+                {(role==='ADMIN'||role==='ACCOUNT') &&<li>
                 <button
                           className="sidebar-dropdown3"
                           onClick={() => handleClick18()}
@@ -450,7 +450,7 @@ function handleClick20 (){
                         Submitted Bills 
                         </button>
                 </li>}
-                {role==='ADMIN' &&<li>
+                {(role==='ADMIN'||role==='ACCOUNT') &&<li>
                 <button
                           className="sidebar-dropdown3"
                           onClick={() => handleClick19()}
